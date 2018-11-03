@@ -55,7 +55,6 @@
 
   //顶部导航滑块
   $('.header_nav ul li').click(function () {
-    var index = $(this).index();
     var lefts = $(this).position().left;
     $('.header_nav .slider').css({left:lefts+3});
   })
