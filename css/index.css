@@ -135,15 +135,15 @@
 .header .header_right_menu .theme ul{
   display: none;
   width: 100px;
-  background: #fff;
+  background: #eaeaea;
   margin-left: -12px;
   margin-top: 10px;
   border-radius: 5px;
   position: relative;
 }
-.header .header_right_menu .theme ul div{
+.header .header_right_menu .theme ul:after{
   content: '';
-  border-bottom: 10px solid #fff;
+  border-bottom: 10px solid #eaeaea;
   border-top: 10px solid transparent;
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
@@ -161,6 +161,8 @@
   -o-transition: all 0.3s;
   transition: all 0.3s;
   cursor: pointer;
+  box-sizing: border-box;
+  border-bottom: 1px solid #fff;
 }
 .header .header_right_menu .theme ul li:first-child{
   border-top-left-radius: 5px;
@@ -169,6 +171,7 @@
 .header .header_right_menu .theme ul li:last-child{
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  border: none;
 }
 .header .header_right_menu .theme ul li:hover{
   background: #108EE9;

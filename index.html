@@ -29,12 +29,13 @@
         <input type="text" placeholder="搜索">
       </div>
       <div class="theme">
-        <span>蓝色版</span>
+        <span class="theme_text">蓝色版</span>
         <span>&gt;</span>
-        <ul>
-          <li>红色版</li>
-          <li>绿色版</li>
-          <div></div>
+        <ul class="theme_btn">
+          <li>蓝色版</li>
+          <li>淡蓝版</li>
+          <li>暗黑版</li>
+          <li>灰色版</li>
         </ul>
       </div>
     </div>
@@ -51,6 +52,14 @@
   });
   $('.theme').mouseleave(function () {
     $(this).find('ul').stop().slideUp(300);
+  });
+  //主题色切换
+  $('.theme_btn li').click(function () {
+    var index = $(this).index();
+    var con = $(this).text();
+    $('.theme_text').text(con);
+    var color = ['#108EE9','#53d1ff','#464646','#545f64'];
+    $('.header').css({background:color[index]});
   });
 
   //顶部导航滑块
