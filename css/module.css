@@ -1,0 +1,17 @@
+html,body{height: 100%;}
+.module_wrapper{height: 100%;}
+.layui-tab-brief{margin: 0;overflow: hidden;height: 100%;}
+.layui-tab-title{width: 10%;float: left;height: 100%;background: #1B354E;border-bottom:0;}
+.layui-tab-title li{display: block;padding: 0 0 0 20px;text-align: left;line-height: 36px;color: #fff;font-size: 16px;margin: 8px 0;}
+.layui-tab-title li.hoverActive{background: rgba(255, 255, 255, 0.2);}
+.layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after{border-left: 3px solid #108EE9;border-bottom: 0;}
+.layui-tab-title .layui-this:after{height: 36px;}
+.layui-tab-brief>.layui-tab-title .layui-this{color: #fff;background: rgba(255, 255, 255, 0.2);}
+.layui-tab-content{float: left;width: 90%;padding: 0;}
+#csxz .subtitle{font-size: 24px; margin: 40px 0 0 35px;}
+#csxz .subCon{font-size: 16px;margin: 30px 0 0 80px;}
+#csxz .subCon .conDesc{line-height: 28px;}
+#csxz .subCon .conList li{line-height: 28px;}
+#csxz .subCon .selectBox{height: 98px;width: 620px;box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);border-radius: 4px;margin-top: 6px;}
+#csxz .subCon .selectBox .btn{height: 35px; width: 100px;border-radius: 3px;border: 1px solid #CCCCCC;line-height: 36px;text-align: center;margin-top: 32px;float: left;}
+#csxz .subCon .selectBox #csxzBtn{margin-left: 38px;margin-right: 10px;}
