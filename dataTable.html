@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>数据表格</title>
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="SyntaxHighlight/prism.css">
+  <link rel="stylesheet" href="css/dataTable.css">
+  <script src="js/jquery-3.3.1.js"></script>
+  <script src="layui/layui.js"></script>
+  <script src="SyntaxHighlight/prism.js"></script>
+</head>
+<body>
+  <blockquote class="layui-elem-quote">
+    它用于对表格进行一些列功能和动态化数据操作，涵盖了日常业务所涉及的几乎全部需求。支持固定表头、固定行、固定列左/列右，支持拖拽改变列宽度，支持排序，支持多级表头，支持单元格的自定义模板，支持对表格重载（比如搜索、条件筛选等），支持复选框，支持分页，支持单元格编辑等等一些列功能。
+  </blockquote>
+
+  <!--快速使用-->
+  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>快速使用</legend>
+  </fieldset>
+  <p class="docu_title">创建一个table实例最简单的方式是，在页面放置一个元素<em>&lt;table id=&quot;demo&quot;&gt;&lt;/table&gt;</em>，然后通过<em>table.render()</em> 方法指定该容器。<a href="https://www.easy-mock.com/mock/5bdffa7aae524521410b1598/tableData/demo/table/user" target="_blank" style="color: #1E9FFF;">点击查看数据格式。</a>如下所示：</p>
+  <table id="demo" lay-filter="test"></table>
+  <script>
+    layui.use('table', function(){
+      var table = layui.table;
+      //第一个实例
+      table.render({
+        elem: '#demo',   //设置绑定容器
+        height: 312,     //设置表格高度
+        url: 'https://www.easy-mock.com/mock/5bdffa7aae524521410b1598/tableData/demo/table/user', //设置数据接口
+        page: true,  //开启分页
+        cols: [[ //表头
+          {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'},
+          {field: 'username', title: '用户名', width:120},
+          {field: 'sex', title: '性别', width:80, sort: true},
+          {field: 'city', title: '城市', width:80},
+          {field: 'sign', title: '签名', width: 177},
+          {field: 'experience', title: '积分', width: 80, sort: true},
+          {field: 'score', title: '评分', width: 80, sort: true},
+          {field: 'classify', title: '职业', width: 80},
+          {field: 'wealth', title: '财富', sort: true}
+        ]]
+      });
+    });
+  </script>
+  <!--代码展示-->
+  <div>
+    <div class="open_code">代码展示：点击<span>展开</span>代码。</div>
+    <pre class="line-numbers syntax">
+      <code class="language-javascript">
+        &lt;table id=&quot;demo&quot; lay-filter=&quot;test&quot;&gt;&lt;/table&gt;
+        &lt;script src=&quot;/layui/layui.js&quot;&gt;&lt;/script&gt;
+        &lt;script&gt;
+          layui.use(&#x27;table&#x27;, function(){
+            var table = layui.table;
+            table.render({
+              elem: &#x27;#demo&#x27;
+              ,height: 312
+              ,url: &#x27;/demo/table/user/&#x27; //数据接口
+              ,page: true //开启分页
+              ,cols: [[ //表头
+                {field: &#x27;id&#x27;, title: &#x27;ID&#x27;, width:80, sort: true, fixed: &#x27;left&#x27;}
+                ,{field: &#x27;username&#x27;, title: &#x27;用户名&#x27;, width:80}
+                ,{field: &#x27;sex&#x27;, title: &#x27;性别&#x27;, width:80, sort: true}
+                ,{field: &#x27;city&#x27;, title: &#x27;城市&#x27;, width:80}
+                ,{field: &#x27;sign&#x27;, title: &#x27;签名&#x27;, width: 177}
+                ,{field: &#x27;experience&#x27;, title: &#x27;积分&#x27;, width: 80, sort: true}
+                ,{field: &#x27;score&#x27;, title: &#x27;评分&#x27;, width: 80, sort: true}
+                ,{field: &#x27;classify&#x27;, title: &#x27;职业&#x27;, width: 80}
+                ,{field: &#x27;wealth&#x27;, title: &#x27;财富&#x27;, width: 135, sort: true}
+              ]]
+            });
+          });
+        &lt;/script&gt;
+      </code>
+    </pre>
+  </div>
+
+  <!--初始化渲染方式-->
+  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>初始化渲染方式</legend>
+  </fieldset>
+  <table class="layui-table">
+    <colgroup>
+      <col width="50">
+      <col width="120">
+      <col width="200">
+      <col>
+    </colgroup>
+    <thead>
+    <tr>
+      <th></th>
+      <th>方式</th>
+      <th>机制</th>
+      <th>适用场景</th>
+    </tr>
+    </thead>
+    <tbody class="layui-text">
+    <tr>
+      <td>01.</td>
+      <td><a>方法渲染</a></td>
+      <td>用JS方法的配置完成渲染</td>
+      <td>（推荐）无需写过多的 HTML，在 JS 中指定原始元素，再设定各项参数即可。</td>
+    </tr>
+    <tr>
+      <td>02.</td>
+      <td><a>自动渲染</a></td>
+      <td>HTML配置，自动渲染</td>
+      <td>无需写过多 JS，可专注于 HTML 表头部分</td>
+    </tr>
+    <tr>
+      <td>03.</td>
+      <td><a>转换静态表格</a></td>
+      <td>转化一段已有的表格元素</td>
+      <td>无需配置数据接口，在JS中指定表格元素，并简单地给表头加上自定义属性即可</td>
+    </tr>
+    </tbody>
+  </table>
+  <h3 class="sm_title">1、方法渲染：最大的优势在于你可以脱离HTML文件，而专注于JS本身</h3>
+  <!--代码展示-->
+  <div>
+    <div class="open_code">代码展示：点击<span>展开</span>代码。</div>
+    <pre class="line-numbers syntax">
+      <code class="language-javascript">
+        &lt;script&gt;
+          var table = layui.table;
+          //执行渲染
+          table.render({
+            elem: &#x27;#demo&#x27; //指定原始表格元素选择器（推荐id选择器）
+            ,height: 315 //容器高度
+            ,cols: [{}] //设置表头
+          });
+        &lt;/script&gt;
+      </code>
+    </pre>
+  </div>
+  <h3 class="sm_title">2、自动渲染：在一段 table 容器中配置好相应的参数，由 table 模块内部自动对其完成渲染，而无需你写初始的渲染方法。</h3>
+  <div class="docu_title sm_title">
+    <p>1）带有 <em>class="layui-table"</em> 的 <em>&lt;table&gt;</em> 标签。</p>
+    <p>2）对标签设置属性 <em>lay-data=""</em> 用于配置一些基础参数。</p>
+    <p>3）在 <em>&lt;th&gt;</em> 标签中设置属性 <em>lay-data=""</em> 用于配置表头信息</p>
+  </div>
+  <!--代码展示-->
+  <div>
+    <div class="open_code">代码展示：点击<span>展开</span>代码。</div>
+    <pre class="line-numbers syntax">
+      <code class="language-markup">
+        &lt;table class=&quot;layui-table&quot; lay-data=&quot;{height:315, url:&#x27;/demo/table/user/&#x27;, page:true, id:&#x27;test&#x27;}&quot; lay-filter=&quot;test&quot;&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;
+              &lt;th lay-data=&quot;{field:&#x27;id&#x27;, width:80, sort: true}&quot;&gt;ID&lt;/th&gt;
+              &lt;th lay-data=&quot;{field:&#x27;username&#x27;, width:80}&quot;&gt;用户名&lt;/th&gt;
+              &lt;th lay-data=&quot;{field:&#x27;sex&#x27;, width:80, sort: true}&quot;&gt;性别&lt;/th&gt;
+              &lt;th lay-data=&quot;{field:&#x27;city&#x27;}&quot;&gt;城市&lt;/th&gt;
+              &lt;th lay-data=&quot;{field:&#x27;sign&#x27;}&quot;&gt;签名&lt;/th&gt;
+              &lt;th lay-data=&quot;{field:&#x27;experience&#x27;, sort: true}&quot;&gt;积分&lt;/th&gt;
+              &lt;th lay-data=&quot;{field:&#x27;score&#x27;, sort: true}&quot;&gt;评分&lt;/th&gt;
+              &lt;th lay-data=&quot;{field:&#x27;classify&#x27;}&quot;&gt;职业&lt;/th&gt;
+              &lt;th lay-data=&quot;{field:&#x27;wealth&#x27;, sort: true}&quot;&gt;财富&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+        &lt;/table&gt;
+      </code>
+    </pre>
+  </div>
+
+  <!--基础参数一览表-->
+  <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>基础参数一览表</legend>
+  </fieldset>
+</body>
+</html>
+<script>
+  //代码展示折叠面板
+  $('.open_code').click(function () {
+    var flag = true;
+    var that = $(this);
+    if (flag){
+      $(this).next().slideDown(300,function () {
+        flag = false;
+        that.find('span').text('关闭');
+      });
+    }
+    if (!flag){
+      $(this).next().slideUp(300,function () {
+        flag = true;
+        that.find('span').text('展开');
+      });
+    }
+  });
+</script>

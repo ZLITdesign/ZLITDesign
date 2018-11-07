@@ -3,8 +3,359 @@
 <head>
   <meta charset="UTF-8">
   <title>基础</title>
+  <link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
+  <link rel="stylesheet" href="css/basics.css">
 </head>
 <body>
-  基础
+  <div class="basics_box">
+    <div class="layui-tab layui-tab-brief" lay-filter="basics">
+      <ul class="layui-tab-title">
+        <li class="layui-this">说明</li>
+        <li>色彩</li>
+        <li>字体</li>
+        <li>图标</li>
+        <li>数据格式</li>
+        <li>特殊状态</li>
+      </ul>
+      <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+          <div class="explain">
+            <h1>说明</h1>
+            <div class="explain_con">
+              <h2>组件化设计优势</h2>
+              <p>1.高效简单</p>
+              <p>熟悉了解组件的用法之后，在做界面设计时，只需要合理运用组件就可以快速搭建web端界面，高效无差错。由于有成套的组件规范，所以在交互设计和视觉设计过程中无需每次都重复劳动。</p>
+              <p>2.统一用户体验</p>
+              <p>统一性是交互设计的一个基本原则，在一个长期迭代多人合作的项目中，不同的设计师会负责不同的模块，每个人都有各自的思路，就有可能会对相同的元素做出了不同的方案，对于用户来说容易造成困惑；使用统一的组件规范，可以保证视觉和交互设计统一性，达到用户体验的统一性。</p>
+              <p>3.提升设计综合能力</p>
+              <p>由于减少了做组件重复性劳动，产品经理/交互设计师可以将更多时间和精力放在讨论业务、设计方法、设计思维、定义产品等综合能力方面，从而驱动业务创新。视觉设计师可以有更多精力设计有特色的界面。</p>
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_con">
+              <h2>组件化设计特点</h2>
+              <p>组件化思维的精髓是独立、完整、自由组合。</p>
+              <p>组件化设计应该具有一致性、灵活性、完整性、可扩展性。</p>
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_con">
+              <p style="float:left;">注：</p>
+              <div class="explain_ps">
+                <p>1.组件规范不可能面面俱到，主要是从全局考虑，并不是要无条件遵守，设计界面可以在大统一的基础上做局部的特色处理。</p>
+                <p>2.统一规范是启发和引导而不是限制。</p>
+                <p>3.共享资源需要持续优化迭代，需要大家贡献建议。</p>
+              </div>
+            </div>
+          </div>
+          <div class="explain">
+            <h1>链接</h1>
+            <div class="explain_link">
+              <a href="https://ant.design/index-cn" target="_blank">Ant Design</a>
+              <a href="https://github.com/ant-design/ant-design/wiki/Ant-Design-设计基础简版" target="_blank">Ant Design基础设计简版</a>
+              <a href="http://element-cn.eleme.io/#/zh-CN/component/installation" target="_blank">Element</a>
+              <a href="https://antv.alipay.com/zh-cn/vis/chart/index.html" target="_blank">可视化图表</a>
+              <a href="http://echarts.baidu.com/examples/" target="_blank">Echarts</a>
+              <a href="http://www.iconfont.cn/" target="_blank">Iconfont矢量图标库</a>
+              <a href="https://motion.ant.design/" target="_blank">动效</a>
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_page">
+              <div class="page_box">
+                <p></p>
+                <p>色彩 <span>&gt;</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layui-tab-item">
+          <div class="explain">
+            <h1>色彩</h1>
+            <div class="explain_con">
+              <h2>系统主色调</h2>
+              <p>系统主色调占比25%</p>
+              <p>主色调即界面中偏向的颜色，可根据可以根据企业VI、用户人群、行业特征三种方法来确定UI界面的主色调。</p>
+              <p>一般应用在界面比较强调的地方，比如标题、价格、按钮、导航等；主色用量基本占据全部用色的25%，基本决定了整个界面的视觉风格。</p>
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_con">
+              <h2>系统辅助色</h2>
+              <p>系统辅助色占比70%</p>
+              <p>辅助色起到辅助主色的作用，又叫背景色，用与主色同色系色彩作为辅助色可以呈现柔和、整体、统一的视觉效果；而用主色邻近色作为辅助色可以让界面有丰富的变化，产生活泼感；用主色调对比色作为辅助色可以让主色更为突出。</p>
+              <p>通常情况下辅色为白色或者灰色比较多。</p>
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_con">
+              <h2>系统点睛色</h2>
+              <p>系统点睛色占比5%</p>
+              <p>点睛色起提醒强调作用，可应用在鼠标悬停，选中状态，强调部分。点缀色要与界面整体色调相区别，一般在明度、饱和度上要有明显差异，一般会用明度或饱和度高的颜色。</p>
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_con">
+              <h2>功能色</h2>
+              <p>具备特定含义的功能色，这类色彩起到传递功能信息，代表某种状态等作用。主要应用于消息通知、反馈提醒、表单校验等这类场景中的成功、失败、出错、提示、链接等状态。</p>
+              <p>功能色的选取需要遵守用户对色彩的基本认知，在一套产品体系下，功能色尽量保持一致，不要有过多的自定义干扰用户的认知。</p>
+              <div class="color_box">
+                <div class="blue">蓝色：提示、链接</div>
+                <div class="green">绿色：成功、完成</div>
+                <div class="orange">橙色：警示、提醒</div>
+                <div class="red">红色：出错、失败</div>
+                <div class="gray">灰色：失效、未完成</div>
+              </div>
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_page">
+              <div class="page_box">
+                <p><span>&lt;</span> 说明</p>
+                <p>字体 <span>&gt;</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layui-tab-item">
+          <div class="explain">
+            <h1>字体</h1>
+            <div class="explain_con">
+              <h2>字体家族</h2>
+              <p>一般使用系统默认字体，中文“微软雅黑”、英文或数字“Helvetica/Arial”。</p>
+              <p>字体始终保持良好的易读性和可读性，体现友好、稳定和专业的特性；根据需要选择合适的字体。</p>
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_con">
+              <h2>字体大小与行间距</h2>
+              <p>字体大小设置为偶数大小，web界面最小字体14px，最大字体不超过48px，特殊情况可根据需要调整字体大小。</p>
+              <p>行间距一般为字体大小的1.5-2倍(偶数)，一般设置为字体大小的1.5倍，可根据实际需要调整合适的间距以保证文本的易读性。</p>
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_con">
+              <h2>字重</h2>
+              <p>需要强调文本可通过调整字重实现，多数情况只出现 regular 以及 medium 的两种字体重量；设计界面时忌用文字加粗(B)功能。</p>
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_con">
+              <h2>字体颜色</h2>
+              <p>文本颜色如果和背景颜色太接近就会难以阅读；浅色背景黑色(#000)字体，深色背景白色(#fff)字体；通过调整不透明度实现文字在不同背景上的可读性。</p>
+              <p>对于某些特殊的彩色背景上，用带不透明度的黑白颜色字体无法保证可读性时，需要视具体情况调整颜色。</p>
+              <div class="font_box">
+                <table>
+                  <tr>
+                    <td>文字类型</td>
+                    <td>浅色背景</td>
+                    <td>深色背景</td>
+                  </tr>
+                  <tr>
+                    <td>标题/正文</td>
+                    <td class="b_hundred">文本    #000   80%</td>
+                    <td class="w_eighty">文本    #fff   100%</td>
+                  </tr>
+                  <tr>
+                    <td>辅助文字1</td>
+                    <td class="b_eighty">文本    #000   60%</td>
+                    <td class="w_sixty">文本    #fff   80%</td>
+                  </tr>
+                  <tr>
+                    <td>辅助文字2</td>
+                    <td class="b_sixty">文本    #000   40%</td>
+                    <td class="w_forty">文本    #fff   60%</td>
+                  </tr>
+                  <tr>
+                    <td>失效文字</td>
+                    <td class="b_forty">文本    #000   20%</td>
+                    <td class="w_twenty">文本    #fff   40%</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_page">
+              <div class="page_box">
+                <p><span>&lt;</span> 色彩</p>
+                <p>图标 <span>&gt;</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layui-tab-item">
+          <div class="explain">
+            <h1>图标</h1>
+            <div class="explain_con">
+              <p>图标是将某个概念转换成清晰易读的图形，从而降低用户的理解成本，提升界面的美观度。</p>
+              <p>1.运用中同区域或同类型图标风格统一，如线性或面性，线条的粗细，圆角或尖角，简单或复杂，点缀元素等。 <span style="color: #108EE9;">图标设计</span></p>
+              <p>2.同系统中表示同意义的图标形状保持一致，风格可根据具体应用场景变换。</p>
+              <p>3.建议使用Iconfont阿里巴巴矢量图标库。 <span style="color: #108EE9;">图标库&nbsp;&nbsp;&nbsp;代码应用</span></p>
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_con">
+              <h2>图标尺寸</h2>
+              <p>图标常用尺寸(偶数)：16px、18px、24px、32px，…；图标与文字搭配使用时，图标与文字保持视觉大小一致。</p>
+
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_con">
+              <h2>系统图标示例</h2>
+
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_con">
+              <h2>业务图标示例</h2>
+
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_page">
+              <div class="page_box">
+                <p><span>&lt;</span> 字体</p>
+                <p>数据格式 <span>&gt;</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layui-tab-item">
+          <div class="explain">
+            <h1>数据格式</h1>
+          </div>
+          <div class="explain">
+            <div class="explain_con">
+              <h2>日期时间</h2>
+              <p style="float:left;">示例：</p>
+              <div class="explain_ps">
+                <p>2018/10/01 12:00:00</p>
+                <p>2018/10/01-2018/10/07</p>
+              </div>
+              <p>注：『-』『:』『/』  半角输入</p>
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_con">
+              <h2>数字</h2>
+              <p>1.大数据间隔：1,000,000</p>
+              <p>2.同类型数据小数点后保留位数一致，通常情况最多保留两位即可。</p>
+              <p>3.对齐：表示统计数据的数字右对齐，方便对比数值大小。</p>
+              <div class="number_box">
+                <div class="number">
+                  <div>
+                    <p>提现</p>
+                    <p>-889.00</p>
+                  </div>
+                  <div>
+                    <p>消费</p>
+                    <p>-763.00</p>
+                  </div>
+                  <div>
+                    <p>向小明转账</p>
+                    <p>-245.50</p>
+                  </div>
+                  <div>
+                    <p>账户充值</p>
+                    <p>+3420.00</p>
+                  </div>
+                  <div>
+                    <p>结余</p>
+                    <p>+1522.50</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_con">
+              <h2>文案</h2>
+              <p>1.不使用句号：标题、输入框下的提示、表格中的句子、toast提示文字、悬停提示文本</p>
+              <p>2.精简语句：省略无用词汇，直接阐述信息，不重复用户已知事实；尽量提供简短、易于快速获取的内容。</p>
+              <p>3.统计数据使用阿拉伯数字：如“已更新3条信息”。</p>
+              <p>注：更多规则参考Ant Design。<a href="https://ant.design/docs/spec/copywriting-cn" target="_blank" style="color: #108EE9;">文案</a></p>
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_page">
+              <div class="page_box">
+                <p><span>&lt;</span> 图标</p>
+                <p>特殊格式 <span>&gt;</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layui-tab-item">
+          <div class="explain">
+            <h1>特殊状态</h1>
+            <div class="explain_con">
+              <h2>加载中</h2>
+              <p>1.图案+文字(较少信息)</p>
+              <div class="loading-1 error">
+                <div><img src="./img/loading.png" alt=""></div>
+                <p>进程中提示文字</p>
+              </div>
+              <p>2.加载占位图(图文信息较多的列表或卡片中)</p>
+              <div class="loading-2 error">
+                <img src="./img/zwt.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_con">
+              <h2>无数据</h2>
+              <div class="nothing error">
+                <div><img src="./img/loading.png" alt=""></div>
+                <p>无数据提示文字</p>
+                <button class="layui-btn layui-btn-normal">立即导入</button>
+              </div>
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_con">
+              <h2>加载失败</h2>
+              <div class="nothing error">
+                <div><img src="./img/loading.png" alt=""></div>
+                <p>加载失败提示文字</p>
+                <button class="layui-btn layui-btn-normal">返回首页</button>
+              </div>
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_con">
+              <h2>网络出错</h2>
+              <div class="nothing error">
+                <div><img src="./img/loading.png" alt=""></div>
+                <p>网络出错提示文字</p>
+                <button class="layui-btn layui-btn-normal">返回首页</button>
+              </div>
+            </div>
+          </div>
+          <div class="explain">
+            <div class="explain_page">
+              <div class="page_box">
+                <p><span>&lt;</span> 数据格式</p>
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
+<script src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="layui/layui.js"></script>
+<script src="js/share.js"></script>
+<script>
+  //启用选项卡
+  layui.use('element', function(){
+    var element = layui.element;
+  });
+
+  //底部翻页
+  paging();
+</script>

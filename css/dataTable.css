@@ -1,0 +1,25 @@
+@import url('base.css');
+body{
+  padding: 15px;
+}
+.docu_title{
+  margin-left: 20px;
+}
+.docu_title em{
+  color: #666;
+}
+.sm_title{
+  margin-bottom: 10px;
+}
+/*展开/折叠代码展示*/
+pre.syntax{
+  font-size: 12px;
+  display: none;
+}
+.open_code{
+  font-size: 14px;
+  margin-left: 20px;
+  cursor: pointer;
+  user-select: none;
+  color:#1E9FFF;
+}
