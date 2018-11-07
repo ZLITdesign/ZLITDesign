@@ -1,0 +1,131 @@
+@import url('base.css');
+
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+.component_box {
+  height: 100%;
+}
+
+.layui-tab-brief {
+  margin: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+.layui-tab-title {
+  width: 11%;
+  height: 100%;
+  background: #1B354E;
+  border-bottom: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.layui-tab-title li {
+  display: block;
+  padding: 0 0 0 20px;
+  text-align: left;
+  line-height: 36px;
+  color: #fff;
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.layui-tab-title li:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.layui-tab-brief > .layui-tab-more li.layui-this:after, .layui-tab-brief > .layui-tab-title .layui-this:after {
+  border-left: 3px solid #108EE9;
+  border-bottom: 0;
+}
+
+.layui-tab-title .layui-this:after {
+  height: 36px;
+}
+
+.layui-tab-brief > .layui-tab-title .layui-this {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/*右部分*/
+.layui-tab-content {
+  float: left;
+  width: 89%;
+  height: 100%;
+  padding: 0;
+  margin-left: 11%;
+  overflow: auto;
+}
+
+.layui-tab-item {
+  padding: 40px 35px;
+}
+
+.layui-tab-item .explain {
+  margin-bottom: 40px;
+}
+
+.layui-tab-item .explain h1 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 25px;
+}
+
+.layui-tab-item .explain h2 {
+  font-size: 20px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.layui-tab-item .explain .explain_con p {
+  line-height: 28px;
+  font-size: 16px;
+  color: #333;
+}
+
+
+
+
+/*底部翻页*/
+.page_box {
+  width: 100%;
+  padding-top: 20px;
+  border-top: 1px solid #EBEBEB;
+}
+
+.page_box p {
+  font-size: 16px;
+  color: #108EE9;
+  cursor: pointer;
+}
+
+.page_box p span {
+  font-family: "SimSun";
+  font-size: 20px;
+  color: #333;
+  font-weight: bold;
+  vertical-align: -1px;
+}
+
+.page_box p:first-child {
+  float: left;
+}
+
+.page_box p:first-child span{
+  margin-right: 7px;
+}
+
+.page_box p:last-child {
+  float: right;
+}
+
+.page_box p:last-child span{
+  margin-left: 7px;
+}
