@@ -7,9 +7,9 @@ yarn-error.log*
 
 # Editor directories and files
 .idea
-.project
 .vscode
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
+/.project
