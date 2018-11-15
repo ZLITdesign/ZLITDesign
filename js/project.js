@@ -2,7 +2,6 @@
 var floors = $('.project_items');
 var navLis = $('.catalog ul li');
 var clientH = $(window).height();
-console.log(clientH);
 var isJump = true;
 $('body').scroll(function () {
   if (!isJump){

@@ -5,126 +5,1685 @@
   <title>组件</title>
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/showCode.css">
 </head>
 <body>
-  <div class="component_box">
-    <div class="layui-tab layui-tab-brief" lay-filter="basics">
-      <ul class="layui-tab-title">
-        <li class="layui-this">顶部导航</li>
-        <li>侧边栏导航</li>
-        <li>Tab标签页</li>
-        <li>面包屑导航</li>
-        <li>分页导航</li>
-        <li>按钮</li>
-        <li>表单类控件</li>
-        <li>反馈</li>
-        <li>其他</li>
-      </ul>
-      <div class="layui-tab-content">
-        <div class="layui-tab-item layui-show">
-
-          <div class="explain">
-            <div class="explain_page">
-              <div class="page_box">
-                <p></p>
-                <p>侧边栏导航 <span>&gt;</span></p>
+<div class="component_box side_box">
+  <div class="layui-tab layui-tab-brief" lay-filter="basics">
+    <ul class="layui-tab-title">
+      <li class="layui-this">顶部导航</li>
+      <li>侧边栏导航</li>
+      <li>Tab标签页</li>
+      <li>面包屑导航</li>
+      <li>分页导航</li>
+      <li>按钮</li>
+      <li>表单类控件</li>
+      <li>反馈</li>
+      <li>其他</li>
+    </ul>
+    <div class="layui-tab-content component_content">
+      <!--顶部导航-->
+      <div class="layui-tab-item layui-show">
+        <div class="explain">
+          <h1>顶部导航</h1>
+          <div class="explain_con">
+            <h2>顶部包含一级导航</h2>
+            <p>适用于3个层级及以上系统，高度(48+8n)px；示例为72px。</p>
+            <p>1.logo+系统名称偏左显示。</p>
+            <p>2.辅助菜单如消息提醒、系统设置、用户信息偏右显示。</p>
+            <p>3.一级导航菜单中部显示，数量在2-7个为宜，导航名称文字不超过4个字。</p>
+            <div class="head-nav-box">
+              <div class="head-nav">
+                <div class="head-nav-l">
+                  <div>
+                    <img src="./img/loading.png" alt="">
+                  </div>
+                  <p>智林信息技术XXXX系统</p>
+                </div>
+                <div class="head-nav-m">
+                  <ul>
+                    <li class="active">
+                      <div></div>
+                      <p>一级导航</p>
+                    </li>
+                    <li>
+                      <div></div>
+                      <p>一级导航</p>
+                    </li>
+                    <li>
+                      <div></div>
+                      <p>一级导航</p>
+                    </li>
+                    <li>
+                      <div></div>
+                      <p>一级导航</p>
+                    </li>
+                    <li>
+                      <div></div>
+                      <p>一级导航</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="head-nav-r">
+                  <div class="setting">
+                    <img src="./img/setting.png" alt="">
+                  </div>
+                  <div class="ling">
+                    <img src="./img/ling.png" alt="">
+                    <span>6</span>
+                  </div>
+                  <div class="vertical"></div>
+                  <div class="user">
+                    <div>
+                      <img src="./img/tx.png" alt="">
+                    </div>
+                    <p>用户名</p>
+                    <div></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="layui-tab-item">
-
-          <div class="explain">
-            <div class="explain_page">
-              <div class="page_box">
-                <p><span>&lt;</span> 顶部导航</p>
-                <p>Tab标签页 <span>&gt;</span></p>
+        <div class="explain">
+          <div class="explain_con">
+            <h2>顶部无导航</h2>
+            <p>适用于2个层级及以下系统，高度(48+8n)px；示例为64px。</p>
+            <p>1.logo+系统名称偏左显示。</p>
+            <p>2.辅助菜单如消息提醒、系统设置、用户信息偏右显示。</p>
+            <div class="head-nav-box head-nav-box1">
+              <div class="head-nav">
+                <div class="head-nav-l">
+                  <div>
+                    <img src="./img/loading.png" alt="">
+                  </div>
+                  <p>智林信息技术XXXX系统</p>
+                </div>
+                <div class="head-nav-r">
+                  <div class="setting">
+                    <img src="./img/setting.png" alt="">
+                  </div>
+                  <div class="ling">
+                    <img src="./img/ling.png" alt="">
+                    <span>6</span>
+                  </div>
+                  <div class="vertical"></div>
+                  <div class="user">
+                    <div>
+                      <img src="./img/tx.png" alt="">
+                    </div>
+                    <p>用户名</p>
+                    <div></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="layui-tab-item">
-
-          <div class="explain">
-            <div class="explain_page">
-              <div class="page_box">
-                <p><span>&lt;</span> 侧边栏导航</p>
-                <p>面包屑导航 <span>&gt;</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="layui-tab-item">
-
-          <div class="explain">
-            <div class="explain_page">
-              <div class="page_box">
-                <p><span>&lt;</span> Tab标签页</p>
-                <p>分页导航 <span>&gt;</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="layui-tab-item">
-
-          <div class="explain">
-            <div class="explain_page">
-              <div class="page_box">
-                <p><span>&lt;</span> 面包屑导航</p>
-                <p>按钮 <span>&gt;</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="layui-tab-item">
-
-          <div class="explain">
-            <div class="explain_page">
-              <div class="page_box">
-                <p><span>&lt;</span> 分页导航</p>
-                <p>表单类控件 <span>&gt;</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="layui-tab-item">
-
-          <div class="explain">
-            <div class="explain_page">
-              <div class="page_box">
-                <p><span>&lt;</span> 按钮</p>
-                <p>反馈 <span>&gt;</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="layui-tab-item">
-
-          <div class="explain">
-            <div class="explain_page">
-              <div class="page_box">
-                <p><span>&lt;</span> 表单类控件</p>
-                <p>其他 <span>&gt;</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="layui-tab-item">
-
-          <div class="explain">
-            <div class="explain_page">
-              <div class="page_box">
-                <p><span>&lt;</span> 反馈</p>
-                <p></p>
-              </div>
+        <div class="explain">
+          <div class="explain_page">
+            <div class="page_box">
+              <p></p>
+              <p>侧边栏导航 <span>&gt;</span></p>
             </div>
           </div>
         </div>
       </div>
+
+      <!--侧边导航-->
+      <div class="layui-tab-item">
+        <div class="explain">
+          <h1>侧边栏导航</h1>
+          <div class="explain_con">
+            <h2>菜单全展开</h2>
+            <p>适用于菜单项目较少时，宽度(200+8n)px；示例为224px。</p>
+            <p>1.业务图标+菜单文字。</p>
+            <p>2.菜单文字长度2-7字为宜。</p>
+            <div class="nav-side">
+              <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
+                <li class="layui-nav-item layui-this">
+                  <a href="javascript:;"><i></i>一级导航</a>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                  <a href="javascript:;"><i></i>一级导航</a>
+                  <dl class="layui-nav-child">
+                    <dd><a href="#">二级导航</a></dd>
+                    <dd><a href="#">二级导航</a></dd>
+                    <dd><a href="#">二级导航</a></dd>
+                  </dl>
+                </li>
+                <li class="layui-nav-item"><a href="#"><i></i>一级导航</a></li>
+                <li class="layui-nav-item"><a href="#"><i></i>一级导航</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="explain">
+          <div class="explain_con">
+            <h2>子菜单收起</h2>
+            <p>适用于菜单项目较多时，宽度(200+8n)px；示例为224px。</p>
+            <p>1.一级菜单：业务图标+菜单文字；二级菜单：文字。</p>
+            <p>2.菜单文字长度2-7字为宜。</p>
+            <p>3.可同时展开多个。</p>
+            <div class="nav-side">
+              <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
+                <li class="layui-nav-item">
+                  <a href="javascript:;"><i></i>一级导航</a>
+                  <dl class="layui-nav-child">
+                    <dd><a href="#">二级导航</a></dd>
+                    <dd><a href="#">二级导航</a></dd>
+                    <dd><a href="#">二级导航</a></dd>
+                  </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-itemed">
+                  <a href="javascript:;"><i></i>一级导航</a>
+                  <dl class="layui-nav-child">
+                    <dd class="layui-this"><a href="#">二级导航</a></dd>
+                    <dd><a href="#">二级导航</a></dd>
+                    <dd><a href="#">二级导航</a></dd>
+                  </dl>
+                </li>
+                <li class="layui-nav-item">
+                  <a href="#"><i></i>一级导航</a>
+                  <dl class="layui-nav-child">
+                    <dd><a href="#">二级导航</a></dd>
+                    <dd><a href="#">二级导航</a></dd>
+                    <dd><a href="#">二级导航</a></dd>
+                  </dl>
+                </li>
+                <li class="layui-nav-item">
+                  <a href="#"><i></i>一级导航</a>
+                  <dl class="layui-nav-child">
+                    <dd><a href="#">二级导航</a></dd>
+                    <dd><a href="#">二级导航</a></dd>
+                    <dd><a href="#">二级导航</a></dd>
+                  </dl>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!--代码展示-->
+        <div class="explain">
+          <div class="explain_con">
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <!--菜单全展开-->
+  <div class="nav-side">
+    <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
+      <li class="layui-nav-item layui-this"><a href="javascript:;"><i></i>一级导航</a></li>
+      <li class="layui-nav-item layui-nav-itemed">
+        <a href="javascript:;"><i></i>一级导航</a>
+        <dl class="layui-nav-child">
+          <dd><a href="#">二级导航</a></dd>
+          <dd><a href="#">二级导航</a></dd>
+          <dd><a href="#">二级导航</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href="#"><i></i>一级导航</a></li>
+      <li class="layui-nav-item"><a href="#"><i></i>一级导航</a></li>
+    </ul>
+  </div>
+  <!--子菜单收起-->
+  <div class="nav-side">
+    <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
+      <li class="layui-nav-item">
+        <a href="javascript:;"><i></i>一级导航</a>
+        <dl class="layui-nav-child">
+          <dd><a href="#">二级导航</a></dd>
+          <dd><a href="#">二级导航</a></dd>
+          <dd><a href="#">二级导航</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item layui-nav-itemed">
+        <a href="javascript:;"><i></i>一级导航</a>
+        <dl class="layui-nav-child">
+          <dd class="layui-this"><a href="#">二级导航</a></dd>
+          <dd><a href="#">二级导航</a></dd>
+          <dd><a href="#">二级导航</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item">
+        <a href="#"><i></i>一级导航</a>
+        <dl class="layui-nav-child">
+          <dd><a href="#">二级导航</a></dd>
+          <dd><a href="#">二级导航</a></dd>
+          <dd><a href="#">二级导航</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item">
+        <a href="#"><i></i>一级导航</a>
+        <dl class="layui-nav-child">
+          <dd><a href="#">二级导航</a></dd>
+          <dd><a href="#">二级导航</a></dd>
+          <dd><a href="#">二级导航</a></dd>
+        </dl>
+      </li>
+    </ul>
+  </div></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+  <!--js代码-->
+  //启用选项卡
+  layui.use('element', function(){
+    var element = layui.element;
+  });</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+
+        <div class="explain">
+          <div class="explain_page">
+            <div class="page_box">
+              <p><span>&lt;</span> 顶部导航</p>
+              <p>Tab标签页 <span>&gt;</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--tab标签页-->
+      <!--风格一类名  tab-style-1-->
+      <!--风格二类名  tab-style-2-->
+      <div class="layui-tab-item">
+        <div class="explain">
+          <h1>Tab标签页</h1>
+          <div class="explain_con">
+            <p>适用于平级的区域将大块内容进行收纳和展现。</p>
+            <p>1.可根据需求与图标搭配使用。</p>
+            <p>2.标签数量7个以内，文字长度2-7字为宜。</p>
+          </div>
+        </div>
+        <div class="explain">
+          <div class="explain_con">
+            <h2>基础样式</h2>
+            <div class="tab-box tab-style-1">
+              <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                <ul class="layui-tab-title">
+                  <li class="layui-this">标签一</li>
+                  <li>标签二</li>
+                  <li>标签三</li>
+                  <div class="slider"></div>
+                </ul>
+                <div class="layui-tab-content" style="height: 100px;">
+                  <div class="layui-tab-item layui-show layui-anim layui-anim-left">标签一内容</div>
+                  <div class="layui-tab-item layui-anim layui-anim-left">标签二内容</div>
+                  <div class="layui-tab-item layui-anim layui-anim-left">标签三内容</div>
+                </div>
+              </div>
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script>
+  <script src="js/jquery-3.3.1.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <!--风格一-->
+  <div class="tab-style-1">
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+      <ul class="layui-tab-title">
+        <li class="layui-this">标签一</li>
+        <li>标签二</li>
+        <li>标签三</li>
+        <div class="slider"></div>
+      </ul>
+      <div class="layui-tab-content" style="height: 100px;">
+        <div class="layui-tab-item layui-show layui-anim layui-anim-left">标签一内容</div>
+        <div class="layui-tab-item layui-anim layui-anim-left">标签二内容</div>
+        <div class="layui-tab-item layui-anim layui-anim-left">标签三内容</div>
+      </div>
+    </div>
+  </div></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+<!--js代码-->
+//启用选项卡
+layui.use('element', function(){
+var element = layui.element;
+});
+//tab标签
+$('.tab-style-1 .layui-tab-title li').click(function () {
+  var lefts = $(this).position().left;
+  $('.tab-style-1 .layui-tab-title .slider').css({left:lefts+15});
+});</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+        <div class="explain">
+          <div class="explain_con">
+            <h2>选项卡样式</h2>
+            <div class="tab-box tab-style-2">
+              <div class="layui-tab layui-tab-card">
+                <ul class="layui-tab-title">
+                  <li class="layui-this">标签一</li>
+                  <li>标签二</li>
+                  <li>标签三</li>
+                </ul>
+                <div class="layui-tab-content" style="height: 100px;">
+                  <div class="layui-tab-item layui-show layui-anim layui-anim-left">标签一内容</div>
+                  <div class="layui-tab-item layui-anim layui-anim-left">标签二内容</div>
+                  <div class="layui-tab-item layui-anim layui-anim-left">标签三内容</div>
+                </div>
+              </div>
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+<!--风格二-->
+<div class="tab-style-2">
+<div class="layui-tab layui-tab-card">
+  <ul class="layui-tab-title">
+    <li class="layui-this">标签一</li>
+    <li>标签二</li>
+    <li>标签三</li>
+  </ul>
+  <div class="layui-tab-content" style="height: 100px;">
+    <div class="layui-tab-item layui-show layui-anim layui-anim-left">标签一内容</div>
+    <div class="layui-tab-item layui-anim layui-anim-left">标签二内容</div>
+    <div class="layui-tab-item layui-anim layui-anim-left">标签三内容</div>
+  </div>
+</div>
+</div></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+<!--js代码-->
+//启用选项卡
+layui.use('element', function(){
+var element = layui.element;
+});
+</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+
+        <div class="explain">
+          <div class="explain_page">
+            <div class="page_box">
+              <p><span>&lt;</span> 侧边栏导航</p>
+              <p>面包屑导航 <span>&gt;</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--面包屑导航-->
+      <div class="layui-tab-item">
+        <div class="explain">
+          <h1>面包屑导航</h1>
+          <div class="explain_con">
+            <p>当前显示界面超过两级以上的层级结构时，需要告知用户『在哪里』。</p>
+            <p>1.显示当前页面的路径，并能向上返回。</p>
+            <p>2.鼠标移入路径需要有移入效果。</p>
+          </div>
+          <div class="explain_con">
+            <div class="crumbs-nav">
+              <div class="title">
+                <h3>当前页面标题</h3>
+                <div class="layui-btn layui-btn-primary layui-btn-sm">返回</div>
+                <span class="layui-breadcrumb">
+                  <a href="">首页</a>
+                  <a href="">国际新闻</a>
+                  <a href="">亚太地区</a>
+                  <a><cite>正文</cite></a>
+                </span>
+              </div>
+              <div class="content"></div>
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+<div class="crumbs-nav">
+  <div class="title">
+    <div class="layui-btn layui-btn-primary layui-btn-sm">返回</div>
+    <span class="layui-breadcrumb">
+      <a href="">首页</a>
+      <a href="">国际新闻</a>
+      <a href="">亚太地区</a>
+      <a><cite>正文</cite></a>
+    </span>
+  </div>
+</div></pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+
+        <div class="explain">
+          <div class="explain_page">
+            <div class="page_box">
+              <p><span>&lt;</span> Tab标签页</p>
+              <p>分页导航 <span>&gt;</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--分页导航-->
+      <div class="layui-tab-item">
+        <div class="explain">
+          <h1>分页导航</h1>
+        </div>
+        <div class="explain">
+          <div class="explain_con">
+            <h2>标准样式</h2>
+            <p>全局页面多于10页使用；附加功能[总条数]和[每页显示条数]根据需要显示。</p>
+            <div class="paging paging-1">
+              <div id="paging-1"></div>
+            </div>
+          </div>
+        </div>
+        <div class="explain">
+          <div class="explain_con">
+            <h2>简易样式</h2>
+            <p>全局页面少于10页使用。</p>
+            <div class="paging">
+              <div class="paging-2">
+                <div id="paging-2"></div>
+              </div>
+              <div class="paging-3">
+                <div id="paging-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="explain">
+          <div class="explain_con">
+            <h2>迷你样式</h2>
+            <p>适用于卡片，页数一般不超过10页。</p>
+            <div class="paging">
+              <div class="paging-4">
+                <a href="#" class="prev_page disabled">&lt;</a>
+                <p><span class="current_page">1</span> / <span class="max_page">4</span></p>
+                <a href="#" class="next_page">&gt;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="explain">
+          <div class="explain_con">
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <!--标准样式-->
+  <div class="paging paging-1">
+    <div id="paging-1"></div>
+  </div>
+
+  <!--简易样式一-->
+  <div class="paging paging-2">
+    <div id="paging-2"></div>
+  </div>
+
+  <!--简易样式二-->
+  <div class="paging paging-3">
+    <div id="paging-3"></div>
+  </div></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+<!--js代码-->
+//标准样式完整功能
+layui.use('laypage', function(){
+  var laypage = layui.laypage;
+  //完整功能
+  laypage.render({
+    elem: 'paging-1',
+    count: 100,
+    theme: '#108EE9',
+    prev: '<em style="font-family: SimSun">&lt;</em>',
+    next: '<em style="font-family: SimSun">&gt;</em>',
+    layout: ['prev', 'page', 'next', 'count', 'limit', 'skip'],
+    jump: function(obj){
+      console.log(obj)
+    }
+  });
+});
+
+//简易样式
+layui.use('laypage', function(){
+  var laypage = layui.laypage;
+  //简易样式一
+  laypage.render({
+    elem: 'paging-2',
+    count: 70, //数据总数
+    theme: '#108EE9',
+    groups: 10,
+    prev: '<em style="font-family: SimSun">&lt;</em>',
+    next: '<em style="font-family: SimSun">&gt;</em>',
+  });
+
+  //简易样式二
+  laypage.render({
+    elem: 'paging-3',
+    count: 70, //数据总数
+    theme: '#fff',
+    groups: 10,
+    prev: '<em style="font-family: SimSun">&lt;</em>',
+    next: '<em style="font-family: SimSun">&gt;</em>',
+  });
+});</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+
+        <div class="explain">
+          <div class="explain_page">
+            <div class="page_box">
+              <p><span>&lt;</span> 面包屑导航</p>
+              <p>按钮 <span>&gt;</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--按钮-->
+      <div class="layui-tab-item">
+        <div class="explain">
+          <h1>按钮</h1>
+          <div class="explain_con">
+            <h2>常用按钮</h2>
+            <p>1.主要按钮在同一个操作区域最多出现一次。</p>
+            <p>2.方形按钮：圆角4px,左右边距≥10px。</p>
+            <p>3.圆角按钮：圆角区域内不显示文字。</p>
+            <p>4.可以在不同场景选用不同尺寸的按钮，同场景按钮尺寸保持一致</p>
+            <div class="often-btn">
+              <div class="often-btn-circular">
+                <div class="btn-mid">
+                  <button class="layui-btn zlit-btn-default">主要按钮</button>
+                  <button class="layui-btn layui-btn-primary zlit-btn-main">普通按钮</button>
+                  <button class="layui-btn layui-btn-danger zlit-btn-danger">警告按钮</button>
+                  <button class="layui-btn layui-btn-primary zlit-btn-primary">次要按钮</button>
+                  <button class="layui-btn layui-btn-disabled zlit-btn-disabled">失效按钮</button>
+                </div>
+                <div class="btn-small">
+                  <button class="layui-btn zlit-btn-default layui-btn-sm">主要按钮</button>
+                  <button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">普通按钮</button>
+                  <button class="layui-btn layui-btn-danger zlit-btn-danger layui-btn-sm">警告按钮</button>
+                  <button class="layui-btn layui-btn-primary zlit-btn-primary layui-btn-sm">次要按钮</button>
+                  <button class="layui-btn layui-btn-disabled zlit-btn-disabled layui-btn-sm">失效按钮</button>
+                </div>
+                <div class="btn-big">
+                  <button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-lg">大尺寸主要按钮</button>
+                  <button class="layui-btn layui-btn-primary zlit-btn-primary layui-btn-lg">大尺寸次要按钮</button>
+                </div>
+                <div class="btn-min">
+                  <button class="layui-btn zlit-btn-default">确定</button>
+                  <button class="layui-btn layui-btn-danger zlit-btn-del">删除</button>
+                  <button class="layui-btn layui-btn-primary zlit-btn-primary">取消</button>
+                  <button class="layui-btn layui-btn-primary zlit-btn-primary">关闭</button>
+                </div>
+              </div>
+              <div class="often-btn-ellipse">
+                <div class="btn-mid">
+                  <button class="layui-btn zlit-btn-default zlit-btn-radius">主要按钮</button>
+                  <button class="layui-btn layui-btn-primary zlit-btn-main zlit-btn-radius">普通按钮</button>
+                  <button class="layui-btn layui-btn-danger zlit-btn-danger zlit-btn-radius">警告按钮</button>
+                  <button class="layui-btn layui-btn-primary zlit-btn-primary zlit-btn-radius">次要按钮</button>
+                  <button class="layui-btn layui-btn-disabled zlit-btn-disabled zlit-btn-radius">失效按钮</button>
+                </div>
+                <div class="btn-small">
+                  <button class="layui-btn zlit-btn-default layui-btn-sm zlit-btn-radius">主要按钮</button>
+                  <button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm zlit-btn-radius">普通按钮</button>
+                  <button class="layui-btn layui-btn-danger zlit-btn-danger layui-btn-sm zlit-btn-radius">警告按钮</button>
+                  <button class="layui-btn layui-btn-primary zlit-btn-primary layui-btn-sm zlit-btn-radius">次要按钮</button>
+                  <button class="layui-btn layui-btn-disabled zlit-btn-disabled layui-btn-sm zlit-btn-radius">失效按钮</button>
+                </div>
+                <div class="btn-big">
+                  <button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-lg zlit-btn-radius">大尺寸主要按钮</button>
+                  <button class="layui-btn layui-btn-primary zlit-btn-primary layui-btn-lg zlit-btn-radius">大尺寸次要按钮</button>
+                </div>
+                <div class="btn-min">
+                  <button class="layui-btn zlit-btn-default zlit-btn-radius">确定</button>
+                  <button class="layui-btn layui-btn-danger zlit-btn-del zlit-btn-radius">删除</button>
+                  <button class="layui-btn layui-btn-primary zlit-btn-primary zlit-btn-radius">取消</button>
+                  <button class="layui-btn layui-btn-primary zlit-btn-primary zlit-btn-radius">关闭</button>
+                </div>
+              </div>
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+<!--默认大小-->
+<button class="layui-btn zlit-btn-default">主要按钮</button>
+<button class="layui-btn layui-btn-primary zlit-btn-main">普通按钮</button>
+<button class="layui-btn layui-btn-danger zlit-btn-danger">警告按钮</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary">次要按钮</button>
+<button class="layui-btn layui-btn-disabled zlit-btn-disabled">失效按钮</button>
+
+  <!--小尺寸按钮-->
+<button class="layui-btn zlit-btn-default layui-btn-sm">主要按钮</button>
+<button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">普通按钮</button>
+<button class="layui-btn layui-btn-danger zlit-btn-danger layui-btn-sm">警告按钮</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary layui-btn-sm">次要按钮</button>
+<button class="layui-btn layui-btn-disabled zlit-btn-disabled layui-btn-sm">失效按钮</button>
+
+  <!--大尺寸按钮-->
+<button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-lg">大尺寸主要按钮</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary layui-btn-lg">大尺寸次要按钮</button>
+
+  <!--确定取消删除-->
+<button class="layui-btn zlit-btn-default">确定</button>
+<button class="layui-btn layui-btn-danger zlit-btn-del">删除</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary">取消</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary">关闭</button>
+
+  <!--圆角按钮-->
+统一追加类名“zlit-btn-radius”</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+        <div class="explain">
+          <div class="explain_con">
+            <h2>文字按钮</h2>
+            <p>区域有限或不是主要操作时可使用文字按钮。</p>
+            <div class="text_btn">
+              <button class="layui-btn layui-btn-primary zlit-btn-text">文字按钮</button>
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <button class="layui-btn layui-btn-primary zlit-btn-text">文字按钮</button></pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+        <div class="explain">
+          <div class="explain_con">
+            <h2>图标按钮</h2>
+            <p>1.增强按钮辨识度可可使用图标+文字按钮，空间有限时可不显示文字。</p>
+            <p>2.样式不局限于示例，可按需要参照常用按钮样式。</p>
+            <div class="icon_btn">
+              <button class="layui-btn zlit-btn-default"><i class="layui-icon layui-icon-add-1"></i></button>
+              <button class="layui-btn layui-btn-danger zlit-btn-del"><i class="layui-icon layui-icon-delete"></i></button>
+              <button class="layui-btn zlit-btn-default"><i class="layui-icon layui-icon-add-1"></i>添加</button>
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <button class="layui-btn zlit-btn-default"><i class="layui-icon layui-icon-add-1"></i></button>
+  <button class="layui-btn layui-btn-danger zlit-btn-del"><i class="layui-icon layui-icon-delete"></i></button>
+  <button class="layui-btn zlit-btn-default"><i class="layui-icon layui-icon-add-1"></i>添加</button></pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+        <div class="explain">
+          <div class="explain_con">
+            <h2>菜单按钮</h2>
+            <p>1.同区域按钮较多时，将同一个操作的多种选项用菜单按钮的方式显示。</p>
+            <p>2.样式不局限于示例，可按需要参照常用按钮样式。</p>
+            <div class="menu_btn">
+
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+        <div class="explain">
+          <div class="explain_con">
+            <h2>按钮组</h2>
+            <p>用于多项同类型操作或同区域按钮较多时，节省空间使用按钮组。</p>
+            <div class="group_btn">
+              <div class="layui-btn-group zlit-btn-group">
+                <button class="layui-btn layui-btn-primary zlit-btn-main">操作一</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-main">操作二</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-main">操作三</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-main">操作四</button>
+              </div>
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <div class="layui-btn-group zlit-btn-group">
+    <button class="layui-btn layui-btn-primary zlit-btn-main">操作一</button>
+    <button class="layui-btn layui-btn-primary zlit-btn-main">操作二</button>
+    <button class="layui-btn layui-btn-primary zlit-btn-main">操作三</button>
+    <button class="layui-btn layui-btn-primary zlit-btn-main">操作四</button>
+  </div></pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+
+        <div class="explain">
+          <div class="explain_page">
+            <div class="page_box">
+              <p><span>&lt;</span> 分页导航</p>
+              <p>表单类控件 <span>&gt;</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--表单类控件-->
+      <div class="layui-tab-item">
+
+        <div class="explain">
+          <div class="explain_page">
+            <div class="page_box">
+              <p><span>&lt;</span> 按钮</p>
+              <p>反馈 <span>&gt;</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--反馈-->
+      <div class="layui-tab-item feedback_box">
+        <div class="explain feedback_floor">
+          <h1>反馈</h1>
+          <div class="explain_con feedback">
+            <h2>toast提示</h2>
+            <p>全局展示操作反馈信息，或页面数据更新信息；是不打断用户操作的轻量级提示方式。</p>
+            <p>1.顶部居中显示，2-3s自动消失，字数一般不超过15字。</p>
+            <p>2.根据不同提示类型区分样式：成功、失败、警示、提示等。</p>
+            <div class="toast_box">
+              <div class="whiteBg">
+                <span>白色背景</span>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary" data-method="offset" data-type="t">成功</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary" data-method="offset" data-type="t">失败</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary" data-method="offset" data-type="t">警示</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary" data-method="offset" data-type="t">提示</button>
+              </div>
+              <div class="darkBg">
+                <span>深色背景</span>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary">成功</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary">失败</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary">警示</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary">提示</button>
+              </div>
+            </div>
+            <div>
+              <!--代码展示-->
+              <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+<!--js代码-->
+layui.use('layer', function(){
+  var layer = layui.layer;
+  //白色背景
+  //成功反馈
+  var index = layer.msg('提示信息', {
+    offset: '24px',
+    anim: 1,
+    time: 3000,
+    icon: 1
+  });
+  layer.style(index,{
+    background:'#fff',
+    color:'rgba(0,0,0,0.6)',
+    boxShadow: '0 2px 8px 0 rgba(0,0,0,0.2)',
+    borderRadius:'4px',
+    fontSize: '14px'
+  });
+
+  //失败反馈
+  var index = layer.msg('提示信息', {
+    offset: '24px',
+    anim: 1,
+    time: 3000,
+    icon: 2
+  });
+  layer.style(index,{
+    background:'#fff',
+    color:'rgba(0,0,0,0.6)',
+    boxShadow: '0 2px 8px 0 rgba(0,0,0,0.2)',
+    borderRadius:'4px',
+    fontSize: '14px'
+  });
+
+  //警示反馈
+  var index = layer.msg('提示信息', {
+    offset: '24px',
+    anim: 1,
+    time: 3000,
+    icon: 0
+  });
+  layer.style(index,{
+    background:'#fff',
+    color:'rgba(0,0,0,0.6)',
+    boxShadow: '0 2px 8px 0 rgba(0,0,0,0.2)',
+    borderRadius:'4px',
+    fontSize: '14px'
+  });
+
+  //提示反馈
+  var index = layer.msg('提示信息', {
+    offset: '24px',
+    anim: 1,
+    time: 3000,
+    icon: 4
+  });
+  layer.style(index,{
+    background:'#fff',
+    color:'rgba(0,0,0,0.6)',
+    boxShadow: '0 2px 8px 0 rgba(0,0,0,0.2)',
+    borderRadius:'4px',
+    fontSize: '14px'
+  });
+
+
+  //深色背景
+  //成功反馈
+  var index = layer.msg('提示信息', {
+    offset: '24px',
+    anim: 1,
+    time: 3000,
+    icon: 1
+  });
+  layer.style(index,{
+    background:'rgba(0,0,0,0.6)',
+    color:'#fff',
+    borderRadius:'4px',
+    fontSize: '14px'
+  });
+
+  //失败反馈
+  var index = layer.msg('提示信息', {
+    offset: '24px',
+    anim: 1,
+    time: 3000,
+    icon: 2
+  });
+  layer.style(index,{
+    background:'rgba(0,0,0,0.6)',
+    color:'#fff',
+    borderRadius:'4px',
+    fontSize: '14px'
+  });
+
+  //警示反馈
+  var index = layer.msg('提示信息', {
+    offset: '24px',
+    anim: 1,
+    time: 3000,
+    icon: 0
+  });
+  layer.style(index,{
+    background:'rgba(0,0,0,0.6)',
+    color:'#fff',
+    borderRadius:'4px',
+    fontSize: '14px'
+  });
+
+  //提示反馈
+  var index = layer.msg('提示信息', {
+    offset: '24px',
+    anim: 1,
+    time: 3000,
+    icon: 4
+  });
+  layer.style(index,{
+    background:'rgba(0,0,0,0.6)',
+    color:'#fff',
+    borderRadius:'4px',
+    fontSize: '14px'
+  });
+});</pre>
+              </div>
+              <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+            </div>
+          </div>
+        </div>
+        <div class="explain feedback_floor">
+          <div class="explain_con feedback">
+            <h2>警告提示</h2>
+            <p>展示重要的信息，需要用户特别关注时使用。</p>
+            <p>1.顶部居中显示，始终显示，可以点击关闭。</p>
+            <p>2.根据不同提示类型区分样式：成功、失败、警示、提示等。</p>
+            <div class="warning_box">
+              <div class="whiteBg">
+                <button class="layui-btn layui-btn-primary zlit-btn-primary system_btn">系统</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary success_btn">成功</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary fail_btn">失败</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary warning_btn">警示</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary tips_btn">提示</button>
+              </div>
+            </div>
+            <div>
+              <!--代码展示-->
+              <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+<!--js代码-->
+layui.use('layer', function(){
+  var layer = layui.layer;
+
+  //系统全局警示
+  var clientW = $(window).width();
+  var index = layer.msg('系统全局公告，放置于页面导航顶部。', {
+    offset: 'lt',
+    anim: 1,
+    time: 3000,
+    icon: 0,
+    fixed: false,
+    closeBtn: 1
+  });
+  layer.style(index,{
+    background:'#FFFBE6',
+    color:'rgba(0,0,0,0.6)',
+    borderRadius:'4px',
+    fontSize: '14px',
+    width: clientW,
+    border: '1px solid #FFE58F',
+    boxSizing: 'border-box'
+  });
+
+  //成功提示
+  var index = layer.msg('成功提示的文案。', {
+    offset: '24px',
+    anim: 1,
+    time: 3000,
+    icon: 1,
+    closeBtn: 1
+  });
+  layer.style(index,{
+    background:'#F6FFED',
+    color:'rgba(0,0,0,0.6)',
+    borderRadius:'4px',
+    fontSize: '14px',
+    border: '1px solid #B7EB8F',
+    boxSizing: 'border-box'
+  })
+  //失败提示
+  var index = layer.msg('失败提示的文案。', {
+    offset: '24px',
+    anim: 1,
+    time: 3000,
+    icon: 2,
+    closeBtn: 1
+  });
+  layer.style(index,{
+    background:'#FFF2F1',
+    color:'rgba(0,0,0,0.6)',
+    borderRadius:'4px',
+    fontSize: '14px',
+    border: '1px solid #FFA39E',
+    boxSizing: 'border-box'
+  })
+
+  //警告提示
+  var index = layer.msg('警告提示的文案。', {
+    offset: '24px',
+    anim: 1,
+    time: 3000,
+    icon: 0,
+    closeBtn: 1
+  });
+  layer.style(index,{
+    background:'#FFFBE6',
+    color:'rgba(0,0,0,0.6)',
+    borderRadius:'4px',
+    fontSize: '14px',
+    border: '1px solid #FFE58F',
+    boxSizing: 'border-box'
+  })
+
+  //普通提示
+  var index = layer.msg('信息提示的文案。', {
+    offset: '24px',
+    anim: 1,
+    time: 3000,
+    icon: 4,
+    closeBtn: 1
+  });
+  layer.style(index,{
+    background:'#E6F7FF',
+    color:'rgba(0,0,0,0.6)',
+    borderRadius:'4px',
+    fontSize: '14px',
+    border: '1px solid #91D5FF',
+    boxSizing: 'border-box'
+  })
+});</pre>
+              </div>
+              <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+            </div>
+          </div>
+        </div>
+        <div class="explain feedback_floor">
+          <div class="explain_con feedback">
+            <h2>操作确认框</h2>
+            <p>操作需要用户进一步的确认时，询问或提示用户。</p>
+            <p>1.模态对话框：位于界面中心，可通过确认或取消按钮进行关闭，关闭前不能进行其他操作。</p>
+            <p>2.模态对话框的确认按钮文字可根据具体操作改变，如“提交”“删除”让用户明确当前操作。</p>
+            <p>3.气泡浮层：在目标元素附近弹出浮层提示，选择操作后消失或在空白处点击消失，交互形式更轻量；可用在列表页中删除单行数据时。</p>
+            <div class="confirm_box">
+              <div class="whiteBg">
+                <span>模态对话框</span>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary confirm_submit">提交</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary confirm_del confirm_delete">删除</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary confirm_success">操作成功</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary confirm_fail">操作失败</button>
+              </div>
+              <div class="darkBg">
+                <span>气泡提示</span>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary confirm_del tips_del">删除</button>
+              </div>
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+<!--js代码-->
+layui.use('layer', function(){
+  var layer = layui.layer;
+  //提交
+  var index = layer.open({
+    type: 0,
+    icon: 4,
+    title:'普通操作标题',
+    offset: 'auto',
+    content: '继续此操作的一些提示文字信息',
+    btn: ['提交','取消'],
+    yes: function(){
+      //点击提交后。。。
+    }
+  });
+  layer.style(index,{
+    borderRadius:'6px',
+    overflow:'hidden',
+  });
+
+  //删除
+  var index = layer.open({
+    type: 0,
+    icon: 0,
+    title:'普通操作标题',
+    offset: 'auto',
+    content: '继续此操作的一些提示文字信息',
+    btn: ['删除','取消'],
+    yes: function(){
+      //点击删除后。。。
+    }
+  });
+  layer.style(index,{
+    borderRadius:'6px',
+    overflow:'hidden',
+  });
+
+  //操作成功
+  var index = layer.open({
+    type: 0,
+    icon: 1,
+    title:'普通操作标题',
+    offset: 'auto',
+    time: 5000,
+    content: '继续此操作的一些提示文字信息，5秒后自动关闭',
+    btn: ['关闭'],
+    yes: function(){
+      //点击关闭后。。。
+    }
+  });
+  layer.style(index,{
+    borderRadius:'6px',
+    overflow:'hidden',
+  });
+
+  //操作失败
+  var index = layer.open({
+    type: 0,
+    icon: 2,
+    title:'普通操作标题',
+    offset: 'auto',
+    content: '继续此操作的一些提示文字信息',
+    btn: ['关闭'],
+    yes: function(){
+      layer.closeAll();
+    }
+  });
+  layer.style(index,{
+    borderRadius:'6px',
+    overflow:'hidden',
+  });
+});</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+        <div class="explain feedback_floor">
+          <div class="explain_con feedback">
+            <h2>通知提醒框</h2>
+            <p>用于由系统主动推送且较为重要的消息通知，带有交互的通知，给出用户下一步的行动点。</p>
+            <p>1.全局提醒式通知，顶部居中显示；需要进行操作或手动点击后关闭。</p>
+            <p>2.警示类通知和普通通知区分样式。</p>
+            <div class="mess_box">
+              <div class="whiteBg">
+                <button class="layui-btn layui-btn-primary zlit-btn-primary mess-btn1">普通通知</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary mess-btn2">警示通知</button>
+              </div>
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+<!--js代码-->
+layui.use('layer', function(){
+  var layer = layui.layer;
+  //普通通知
+  var index = layer.open({
+    type: 1,
+    offset: 't',
+    title:'普通类提醒标题',
+    content:'<div id="mess-btn1"><p>顶部居中显示，这是一些辅助文字</p><div><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
+    shade:0,
+    area:['276px','140px']
+  });
+
+  //警示通知
+  var index = layer.open({
+    type: 1,
+    offset: 't',
+    title: ['警示类提醒标题','color:#fff;background:rgba(255,0,0,0.5);border-color:rgba(255,0,0,0.5)'],
+    content:'<div id="mess-btn2"><p>顶部居中显示，这是一些辅助文字</p><div><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
+    shade:0,
+    area:['276px','140px']
+  });
+  layer.style(index,{
+    background:'rgba(255,0,0,0.7)'
+  });
+});</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+
+
+        </div>
+        <div class="explain feedback_floor">
+          <div class="explain_con feedback">
+            <h2>文字提示</h2>
+            <p>用于常用于展示鼠标移入时的提示信息。</p>
+            <p>1.鼠标移入则显示提示，移出消失，气泡浮层不承载复杂文本和操作。</p>
+            <p>2.根据移入目标的位置选择合适的提示方向。</p>
+            <div class="text_box">
+              <div class="whiteBg">
+                <span>白色背景</span>
+                <div class="text_single">
+                  <div>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary w-tl">上左</button>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary w-top">上边</button>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary w-tr">上右</button>
+                  </div>
+                  <div>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary w-lt">左上</button>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary w-rt">右上</button>
+                  </div>
+                  <div>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary w-left">左边</button>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary w-right">右边</button>
+                  </div>
+                  <div>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary w-lb">左下</button>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary w-rb">右下</button>
+                  </div>
+                  <div>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary w-bl">下左</button>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary w-bottom">下边</button>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary w-br">下右</button>
+                  </div>
+                </div>
+              </div>
+              <div class="darkBg">
+                <span>深色背景</span>
+                <div class="text_single">
+                  <div>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary d-tl">上左</button>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary d-top">上边</button>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary d-tr">上右</button>
+                  </div>
+                  <div>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary d-lt">左上</button>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary d-rt">右上</button>
+                  </div>
+                  <div>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary d-left">左边</button>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary d-right">右边</button>
+                  </div>
+                  <div>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary d-lb">左下</button>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary d-rb">右下</button>
+                  </div>
+                  <div>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary d-bl">下左</button>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary d-bottom">下边</button>
+                    <button class="layui-btn layui-btn-primary zlit-btn-primary d-br">下右</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入依赖文件-->
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="js/jquery-3.3.1.js"></script>
+  <script src="js/jquery.pure.tooltips.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+  <!--白色背景-->
+  $('.w-tl').pt({
+    position: 't',
+    align: 'l',
+    content: '信息提示上左对齐',
+    time:2000
+  });
+  $('.w-top').pt({
+    position: 't',
+    content: '信息提示上对齐',
+    time:2000
+  });
+  $('.w-tr').pt({
+    position: 't',
+    align: 'r',
+    content: '信息提示上右对齐',
+    time:2000
+  });
+  $('.w-lt').pt({
+    position: 'l',
+    align: 't',
+    content: '信息提示左上对齐信息提示左上对齐信息提示左上对齐',
+    time:2000
+  });
+  $('.w-left').pt({
+    position: 'l',
+    content: '信息提示左对齐信息提示左对齐信息提示左对齐',
+    time:2000
+  });
+  $('.w-lb').pt({
+    position: 'l',
+    align: 'b',
+    content: '信息提示左下对齐信息提示左下对齐信息提示左下对齐',
+    time:2000
+  });
+  $('.w-rt').pt({
+    position: 'r',
+    align: 't',
+    content: '信息提示右上对齐信息提示右上对齐信息提示右上对齐',
+    time:2000
+  });
+  $('.w-right').pt({
+    position: 'r',
+    content: '信息提示右对齐信息提示右对齐信息提示右对齐',
+    time:2000
+  });
+  $('.w-rb').pt({
+    position: 'r',
+    align: 'b',
+    content: '信息提示右下对齐信息提示右下对齐信息提示右下对齐',
+    time:2000
+  });
+  $('.w-bl').pt({
+    position: 'b',
+    align: 'l',
+    content: '信息提示下左对齐',
+    time:2000
+  });
+  $('.w-bottom').pt({
+    position: 'b',
+    content: '信息提示下对齐',
+    time:2000
+  });
+  $('.w-br').pt({
+    position: 'b',
+    align: 'r',
+    content: '信息提示下右对齐',
+    time: 2000
+  });
+
+  <!--深色背景-->
+  $('.d-tl').dt({
+    position: 't',
+    align: 'l',
+    content: '信息提示上左对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-top').dt({
+    position: 't',
+    content: '信息提示上对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-tr').dt({
+    position: 't',
+    align: 'r',
+    content: '信息提示上右对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-lt').dt({
+    position: 'l',
+    align: 't',
+    content: '信息提示左上对齐信息提示左上对齐信息提示左上对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-left').dt({
+    position: 'l',
+    content: '信息提示左对齐信息提示左对齐信息提示左对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-lb').dt({
+    position: 'l',
+    align: 'b',
+    content: '信息提示左下对齐信息提示左下对齐信息提示左下对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-rt').dt({
+    position: 'r',
+    align: 't',
+    content: '信息提示右上对齐信息提示右上对齐信息提示右上对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-right').dt({
+    position: 'r',
+    content: '信息提示右对齐信息提示右对齐信息提示右对齐',
+    time:2000
+  });
+  $('.d-rb').dt({
+    position: 'r',
+    align: 'b',
+    content: '信息提示右下对齐信息提示右下对齐信息提示右下对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-bl').dt({
+    position: 'b',
+    align: 'l',
+    content: '信息提示下左对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-bottom').dt({
+    position: 'b',
+    content: '信息提示下对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-br').dt({
+    position: 'b',
+    align: 'r',
+    content: '信息提示下右对齐',
+    time: 2000,
+    fontcolor:'#fff'
+  });</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+
+        <div class="explain">
+          <div class="explain_page">
+            <div class="page_box">
+              <p><span>&lt;</span> 表单类控件</p>
+              <p>其他 <span>&gt;</span></p>
+            </div>
+          </div>
+        </div>
+
+        <!--目录-->
+        <div class="feedback_catalog">
+          <ul>
+            <li class="active">toast提示</li>
+            <li>警告提示</li>
+            <li>操作确认框</li>
+            <li>通知提醒框</li>
+            <li>文字提示</li>
+            <div class="feedback_slider"></div>
+          </ul>
+        </div>
+      </div>
+
+      <!--其他-->
+      <div class="layui-tab-item other_box">
+        <div class="explain other_floor">
+          <h1>其他</h1>
+          <div class="explain_con other">
+            <h2>徽标数</h2>
+            <p>出现在按钮或图标的右上角，用于显示数字或状态标记，通过醒目视觉形式吸引用户处理。</p>
+            <p>1.数字需定义最大值。</p>
+            <p>2.可实现数字以外的文本内容，如：new，hot等状态标记。</p>
+            <p>3.可简单直接显示小红点无误任何文字，提示状态有更新。</p>
+            <p>4.也可单独使用，用于某菜单下的数量标记。</p>
+            <div class="other_single">
+              <div class="dadge-one">
+                <div><span class="layui-badge-dot zlit-dadge-dot"></span></div>
+                <div><span class="layui-badge zlit-dadge">6</span></div>
+                <div><span class="layui-badge zlit-dadge">99+</span></div>
+                <div><span class="layui-badge zlit-dadge">new</span></div>
+              </div>
+              <div class="dadge-two">
+                <div>正在下载<span class="layui-badge zlit-dadge">6</span></div>
+              </div>
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css"></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <span class="layui-badge-dot zlit-dadge-dot"></span>
+  <span class="layui-badge zlit-dadge">6</span>
+  <span class="layui-badge zlit-dadge">99+</span>
+  <span class="layui-badge zlit-dadge">new</span>
+</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+        <div class="explain other_floor">
+          <div class="explain_con other">
+            <h2>标签</h2>
+            <p>标记事物属性或维度，进行分类。</p>
+            <p>1.文字一般不超过6个字；同一事物标签数一般不超过3个。</p>
+            <p>2.不同属性标签可用颜色区分。</p>
+            <p>3.根据使用场景设置合适的尺寸。</p>
+            <div class="other_single">
+              <div class="label-one">
+                <p>样式一</p>
+                <div>
+                  <span class="zlit-label zlit-label-orange-border">标签</span>
+                  <span class="zlit-label zlit-label-red-border">标签</span>
+                  <span class="zlit-label zlit-label-green-border">标签</span>
+                  <span class="zlit-label zlit-label-cyan-border">标签</span>
+                  <span class="zlit-label zlit-label-blue-border">标签</span>
+                  <span class="zlit-label zlit-label-pink-border">标签</span>
+                  <span class="zlit-label zlit-label-violet-border">标签</span>
+                </div>
+              </div>
+              <div class="label-two">
+                <p>样式二</p>
+                <div>
+                  <span class="zlit-label zlit-label-orange">标签</span>
+                  <span class="zlit-label zlit-label-red">标签</span>
+                  <span class="zlit-label zlit-label-green">标签</span>
+                  <span class="zlit-label zlit-label-cyan">标签</span>
+                  <span class="zlit-label zlit-label-blue">标签</span>
+                  <span class="zlit-label zlit-label-pink">标签</span>
+                  <span class="zlit-label zlit-label-violet">标签</span>
+                </div>
+              </div>
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="css/zlitDesign.css"></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <!--样式一-->
+  <span class="zlit-label zlit-label-orange-border">标签</span>
+  <span class="zlit-label zlit-label-red-border">标签</span>
+  <span class="zlit-label zlit-label-green-border">标签</span>
+  <span class="zlit-label zlit-label-cyan-border">标签</span>
+  <span class="zlit-label zlit-label-blue-border">标签</span>
+  <span class="zlit-label zlit-label-pink-border">标签</span>
+  <span class="zlit-label zlit-label-violet-border">标签</span>
+
+  <!--样式二-->
+  <span class="zlit-label zlit-label-orange">标签</span>
+  <span class="zlit-label zlit-label-red">标签</span>
+  <span class="zlit-label zlit-label-green">标签</span>
+  <span class="zlit-label zlit-label-cyan">标签</span>
+  <span class="zlit-label zlit-label-blue">标签</span>
+  <span class="zlit-label zlit-label-pink">标签</span>
+  <span class="zlit-label zlit-label-violet">标签</span></pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+        <div class="explain other_floor">
+          <div class="explain_con other">
+            <h2>进度条</h2>
+            <p>适用于需要显示操作进度百分比，告知用户当前状态和预期；或操作打断当前界面且耗时超过2秒。</p>
+            <p>1.根据实际运用场景选择合适的样式或尺寸。</p>
+            <p>2.可暂停和取消当前操作</p>
+            <div class="other_single">
+              <div class="progress-line">
+                <div class="progress-w">
+                  <div class="layui-progress zlit-progress">
+                    <div class="layui-progress-bar layui-bg-blue" lay-percent="60%"></div>
+                    <span>60%</span>
+                  </div>
+                  <div class="layui-progress zlit-progress-fail">
+                    <div class="layui-progress-bar layui-bg-red" lay-percent="60%"></div>
+                    <i class="layui-icon layui-icon-close-fill"></i>
+                  </div>
+                  <div class="layui-progress zlit-progress-success">
+                    <div class="layui-progress-bar layui-bg-green" lay-percent="100%"></div>
+                    <i class="layui-icon layui-icon-ok-circle"></i>
+                  </div>
+                  <div class="layui-progress zlit-progress-wait">
+                    <div class="layui-progress-bar" lay-percent="0%"></div>
+                    <i class="layui-icon layui-icon-log"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="progress-circular"></div>
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="css/zlitDesign.css"></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML"></pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+
+        <div class="explain">
+          <div class="explain_page">
+            <div class="page_box">
+              <p><span>&lt;</span> 反馈</p>
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <!--目录-->
+        <div class="other_catalog">
+          <ul>
+            <li class="active">徽标数</li>
+            <li>标签</li>
+            <li>进度条</li>
+            <li>步骤条</li>
+            <li>锚点定位</li>
+            <div class="other_slider"></div>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
+</div>
 </body>
 <script src="js/jquery-3.3.1.js"></script>
+<script src="js/jquery.jqpagination.min.js"></script>
+<script src="js/jquery.pure.tooltips.js"></script>
 <script src="layui/layui.js"></script>
 <script src="js/share.js"></script>
 <script src="js/components.js"></script>

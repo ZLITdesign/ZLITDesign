@@ -119,6 +119,9 @@ html, body{
   margin-top: 17px;
   cursor: pointer;
 }
+.header .header_right_menu .theme span{
+  color: #fff;
+}
 .header .header_right_menu .theme span:nth-child(2){
   font-family: 'SimSun';
   display: block;
