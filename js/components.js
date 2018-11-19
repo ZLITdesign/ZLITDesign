@@ -9,10 +9,18 @@ layui.use(['element','layer'], function(){
     var catalog2 = $('.component_content>.layui-tab-item').eq(n).hasClass('feedback_box');
     var catalog3 = $('.component_content>.layui-tab-item').eq(n).hasClass('other_box');
     if (catalog2){
-      feedback();
+      // feedback();
+      var floors = $('.feedback_floor');
+      var navLis = $('.feedback_catalog ul li');
+      var slider = $('.feedback_slider');
+      catalogFun(floors,navLis,slider);
     }
     if (catalog3){
-      other();
+      // other();
+      var floors1 = $('.other_floor');
+      var navLis1 = $('.other_catalog ul li');
+      var slider1 = $('.other_slider');
+      catalogFun(floors1,navLis1,slider1);
     }
   });
 
@@ -119,9 +127,7 @@ prev_page.click(function () {
 
 
 //反馈目录楼层跳转
-function feedback(){
-  var floors = $('.feedback_floor');
-  var navLis = $('.feedback_catalog ul li');
+function catalogFun(floors,navLis,slider) {
   var clientH = $(window).height();
   var isJump = true;
   $('.component_content').scroll(function () {
@@ -130,10 +136,43 @@ function feedback(){
     }
     var floorTops = $('.component_content').scrollTop();
     floors.each(function (i) {
-      if(floorTops>=floors.eq(i).position().top-clientH+80){
+      if(floorTops>=floors.eq(i).position().top-clientH+10){
         navLis.eq(i).addClass('active').siblings().removeClass('active');
         var navTops = navLis.eq(i).position().top;
-        $('.feedback_slider').css({top:navTops+8});
+        slider.css({top:navTops+8});
+      }
+    });
+  });
+
+  navLis.click(function () {
+    isJump = false;
+    var index = $(this).index();
+    var that = $(this);
+    var t = floors.eq(index).position().top - 20;//获取每个楼层距离body的高度
+    var tops = $(this).position().top;  //获取滑块距离父元素的高度
+    $('.component_content').animate({scrollTop:t},function () {
+      that.addClass('active').siblings().removeClass('active');
+      slider.css({top:tops+8});
+      isJump = true;
+    });
+  });
+}
+/*function feedback(){
+  var floors = $('.feedback_floor');
+  var navLis = $('.feedback_catalog ul li');
+  var slider = $('.feedback_slider');
+  var clientH = $(window).height();
+  var isJump = true;
+  $('.component_content').scroll(function () {
+    if (!isJump){
+      return;
+    }
+    var floorTops = $('.component_content').scrollTop();
+    floors.each(function (i) {
+      if(floorTops>=floors.eq(i).position().top-clientH+10){
+        navLis.eq(i).addClass('active').siblings().removeClass('active');
+        var navTops = navLis.eq(i).position().top;
+        slider.css({top:navTops+8});
       }
     });
   });
@@ -147,10 +186,10 @@ function feedback(){
     $('.component_content').animate({scrollTop:t},function () {
       isJump = true;
       that.addClass('active').siblings().removeClass('active');
-      $('.feedback_slider').css({top:tops+8});
+      slider.css({top:tops+8});
     });
   });
-}
+}*/
 //反馈
 layui.use('layer', function(){
   var layer = layui.layer;
@@ -400,163 +439,166 @@ layui.use('layer', function(){
 });
 //-------------------------------文字提示--------------------------------
 //插件{白色背景}
-$('.w-tl').pt({
-  position: 't',
-  align: 'l',
-  content: '信息提示上左对齐',
-  time:2000
-});
-$('.w-top').pt({
-  position: 't',
-  content: '信息提示上对齐',
-  time:2000
-});
-$('.w-tr').pt({
-  position: 't',
-  align: 'r',
-  content: '信息提示上右对齐',
-  time:2000
-});
-$('.w-lt').pt({
-  position: 'l',
-  align: 't',
-  content: '信息提示左上对齐信息提示左上对齐信息提示左上对齐',
-  time:2000
-});
-$('.w-left').pt({
-  position: 'l',
-  content: '信息提示左对齐信息提示左对齐信息提示左对齐',
-  time:2000
-});
-$('.w-lb').pt({
-  position: 'l',
-  align: 'b',
-  content: '信息提示左下对齐信息提示左下对齐信息提示左下对齐',
-  time:2000
-});
-$('.w-rt').pt({
-  position: 'r',
-  align: 't',
-  content: '信息提示右上对齐信息提示右上对齐信息提示右上对齐',
-  time:2000
-});
-$('.w-right').pt({
-  position: 'r',
-  content: '信息提示右对齐信息提示右对齐信息提示右对齐',
-  time:2000
-});
-$('.w-rb').pt({
-  position: 'r',
-  align: 'b',
-  content: '信息提示右下对齐信息提示右下对齐信息提示右下对齐',
-  time:2000
-});
-$('.w-bl').pt({
-  position: 'b',
-  align: 'l',
-  content: '信息提示下左对齐',
-  time:2000
-});
-$('.w-bottom').pt({
-  position: 'b',
-  content: '信息提示下对齐',
-  time:2000
-});
-$('.w-br').pt({
-  position: 'b',
-  align: 'r',
-  content: '信息提示下右对齐',
-  time: 2000
-});
+function tooltips(){
+  $('.w-tl').pt({
+    position: 't',
+    align: 'l',
+    content: '信息提示上左对齐',
+    time:2000
+  });
+  $('.w-top').pt({
+    position: 't',
+    content: '信息提示上对齐',
+    time:2000
+  });
+  $('.w-tr').pt({
+    position: 't',
+    align: 'r',
+    content: '信息提示上右对齐',
+    time:2000
+  });
+  $('.w-lt').pt({
+    position: 'l',
+    align: 't',
+    content: '信息提示左上对齐信息提示左上对齐信息提示左上对齐',
+    time:2000
+  });
+  $('.w-left').pt({
+    position: 'l',
+    content: '信息提示左对齐信息提示左对齐信息提示左对齐',
+    time:2000
+  });
+  $('.w-lb').pt({
+    position: 'l',
+    align: 'b',
+    content: '信息提示左下对齐信息提示左下对齐信息提示左下对齐',
+    time:2000
+  });
+  $('.w-rt').pt({
+    position: 'r',
+    align: 't',
+    content: '信息提示右上对齐信息提示右上对齐信息提示右上对齐',
+    time:2000
+  });
+  $('.w-right').pt({
+    position: 'r',
+    content: '信息提示右对齐信息提示右对齐信息提示右对齐',
+    time:2000
+  });
+  $('.w-rb').pt({
+    position: 'r',
+    align: 'b',
+    content: '信息提示右下对齐信息提示右下对齐信息提示右下对齐',
+    time:2000
+  });
+  $('.w-bl').pt({
+    position: 'b',
+    align: 'l',
+    content: '信息提示下左对齐',
+    time:2000
+  });
+  $('.w-bottom').pt({
+    position: 'b',
+    content: '信息提示下对齐',
+    time:2000
+  });
+  $('.w-br').pt({
+    position: 'b',
+    align: 'r',
+    content: '信息提示下右对齐',
+    time: 2000
+  });
 
 //插件{深色背景}
-$('.d-tl').dt({
-  position: 't',
-  align: 'l',
-  content: '信息提示上左对齐',
-  time:2000,
-  fontcolor:'#fff'
-});
-$('.d-top').dt({
-  position: 't',
-  content: '信息提示上对齐',
-  time:2000,
-  fontcolor:'#fff'
-});
-$('.d-tr').dt({
-  position: 't',
-  align: 'r',
-  content: '信息提示上右对齐',
-  time:2000,
-  fontcolor:'#fff'
-});
-$('.d-lt').dt({
-  position: 'l',
-  align: 't',
-  content: '信息提示左上对齐信息提示左上对齐信息提示左上对齐',
-  time:2000,
-  fontcolor:'#fff'
-});
-$('.d-left').dt({
-  position: 'l',
-  content: '信息提示左对齐信息提示左对齐信息提示左对齐',
-  time:2000,
-  fontcolor:'#fff'
-});
-$('.d-lb').dt({
-  position: 'l',
-  align: 'b',
-  content: '信息提示左下对齐信息提示左下对齐信息提示左下对齐',
-  time:2000,
-  fontcolor:'#fff'
-});
-$('.d-rt').dt({
-  position: 'r',
-  align: 't',
-  content: '信息提示右上对齐信息提示右上对齐信息提示右上对齐',
-  time:2000,
-  fontcolor:'#fff'
-});
-$('.d-right').dt({
-  position: 'r',
-  content: '信息提示右对齐信息提示右对齐信息提示右对齐',
-  time:2000
-});
-$('.d-rb').dt({
-  position: 'r',
-  align: 'b',
-  content: '信息提示右下对齐信息提示右下对齐信息提示右下对齐',
-  time:2000,
-  fontcolor:'#fff'
-});
-$('.d-bl').dt({
-  position: 'b',
-  align: 'l',
-  content: '信息提示下左对齐',
-  time:2000,
-  fontcolor:'#fff'
-});
-$('.d-bottom').dt({
-  position: 'b',
-  content: '信息提示下对齐',
-  time:2000,
-  fontcolor:'#fff'
-});
-$('.d-br').dt({
-  position: 'b',
-  align: 'r',
-  content: '信息提示下右对齐',
-  time: 2000,
-  fontcolor:'#fff'
-});
-
+  $('.d-tl').dt({
+    position: 't',
+    align: 'l',
+    content: '信息提示上左对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-top').dt({
+    position: 't',
+    content: '信息提示上对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-tr').dt({
+    position: 't',
+    align: 'r',
+    content: '信息提示上右对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-lt').dt({
+    position: 'l',
+    align: 't',
+    content: '信息提示左上对齐信息提示左上对齐信息提示左上对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-left').dt({
+    position: 'l',
+    content: '信息提示左对齐信息提示左对齐信息提示左对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-lb').dt({
+    position: 'l',
+    align: 'b',
+    content: '信息提示左下对齐信息提示左下对齐信息提示左下对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-rt').dt({
+    position: 'r',
+    align: 't',
+    content: '信息提示右上对齐信息提示右上对齐信息提示右上对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-right').dt({
+    position: 'r',
+    content: '信息提示右对齐信息提示右对齐信息提示右对齐',
+    time:2000
+  });
+  $('.d-rb').dt({
+    position: 'r',
+    align: 'b',
+    content: '信息提示右下对齐信息提示右下对齐信息提示右下对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-bl').dt({
+    position: 'b',
+    align: 'l',
+    content: '信息提示下左对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-bottom').dt({
+    position: 'b',
+    content: '信息提示下对齐',
+    time:2000,
+    fontcolor:'#fff'
+  });
+  $('.d-br').dt({
+    position: 'b',
+    align: 'r',
+    content: '信息提示下右对齐',
+    time: 2000,
+    fontcolor:'#fff'
+  });
+}
+tooltips();
 
 
 //其他
-//反馈目录楼层跳转
-function other(){
+//其他目录楼层跳转
+/*function other(){
   var floors = $('.other_floor');
   var navLis = $('.other_catalog ul li');
+  var slider = $('.other_slider');
   var clientH = $(window).height();
   var isJump = true;
   $('.component_content').scroll(function () {
@@ -565,10 +607,10 @@ function other(){
     }
     var floorTops = $('.component_content').scrollTop();
     floors.each(function (i) {
-      if(floorTops>=floors.eq(i).position().top-clientH+80){
+      if(floorTops>=floors.eq(i).position().top-clientH+10){
         navLis.eq(i).addClass('active').siblings().removeClass('active');
         var navTops = navLis.eq(i).position().top;
-        $('.other_slider').css({top:navTops+8});
+        slider.css({top:navTops+8});
       }
     });
   });
@@ -582,12 +624,181 @@ function other(){
     $('.component_content').animate({scrollTop:t},function () {
       isJump = true;
       that.addClass('active').siblings().removeClass('active');
-      $('.other_slider').css({top:tops+8});
+      slider.css({top:tops+8});
+    });
+  });
+}*/
+//直线进度条
+layui.use('element', function(){
+  var element = layui.element;
+  //模拟loading
+  $('.loadingBtn').click(function () {
+    var i = $('<i class="layui-icon layui-icon-ok-circle"></i>');
+    var progressNum = 0, timer = setInterval(function(){
+      progressNum = progressNum + Math.random()*10|0;
+      if(progressNum>100){
+        progressNum = 100;
+        clearInterval(timer);
+        $('.lineDemo').addClass('zlit-progress-success').removeClass('zlit-progress');
+        $('.lineDemo').find('span').html('');
+        i.appendTo($('.lineDemo'));
+      }else{
+        $('.lineDemo').addClass('zlit-progress').removeClass('zlit-progress-success');
+        $('.lineDemo').find('i').remove();
+        $('.lineDemo').find('span').text(progressNum+'%');
+      }
+      element.progress('lineDemo', progressNum+'%');
+    }, 300+Math.random()*1000);
+  });
+});
+
+//圆形进度条
+//进行中状态
+$(".circleChart#0").circleChart({
+  size: 80,  // 滚动条大小
+  value: 50,  //当前进度值
+  text: 0,    //圆圈中间显示数字
+  color: '#428EE9',   //进度条颜色
+  // textSize: '16px',
+  onDraw: function (el, circle) {
+    circle.text(Math.round(circle.value) + "%");
+    if (Math.round(circle.value)===100){
+      circle.text('<i class="layui-icon layui-icon-ok" style="color: #87D068;font-size: 24px;"></i>');
+    }
+    if (Math.round(circle.value)<0){
+      circle.text('<i class="layui-icon layui-icon-close" style="color: #EF5306;font-size: 24px;"></i>');
+    }
+  }
+});
+setInterval(function () {
+  $("#0").circleChart({
+    value: Math.random() * 100
+  });
+}, 3000);
+
+//失败状态
+$(".circleChart#1").circleChart({
+  size: 80,
+  text: 0,
+  value: 60,
+  color: '#EF5306',
+  onDraw: function (el, circle) {
+    circle.text(Math.round(circle.value) + "%");
+    if (Math.round(circle.value)<0){
+      circle.text('<i class="layui-icon layui-icon-close" style="color: #EF5306;font-size: 24px;"></i>');
+    }
+  }
+});
+setTimeout(function () {
+  $("#1").circleChart({
+    value: -1
+  });
+}, 3000);
+
+//100%成功状态
+$(".circleChart#2").circleChart({
+  size: 80,
+  text: 0,
+  color: '#428EE9',
+  onDraw: function (el, circle) {
+    circle.text(Math.round(circle.value) + "%");
+    if (Math.round(circle.value)===100){
+      circle.text('<i class="layui-icon layui-icon-ok" style="color: #87D068;font-size: 24px;"></i>');
+    }
+  }
+});
+
+
+//步骤条
+function stepFun(next,prev,steps,stepCon,style){
+  var n = 0,          //依赖索引值
+      flag = true;    //防止过快点击
+  // 下一步
+  next.click(function () {
+    if (!flag){
+      return;
+    }
+    flag = false;
+    n++;
+    if (n!=0){
+      prev.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
+    }
+    if (n>=steps.length){
+      n = steps.length-1;
+      flag = true;
+      return;
+    }
+    if (steps.eq(n).index()===steps.length-1){
+      $(this).removeClass('zlit-btn-default').addClass('layui-btn-disabled zlit-btn-disabled');
+    }
+    stepCon.eq(n).addClass('active').siblings().removeClass('active');
+
+    steps.eq(n).find('.step-child').animate({[style]:0},function () {
+      steps.eq(n).find('.step-circle').addClass('step-circle-active').end().find('.step-con').addClass('step-con-active').text('进行中');
+      steps.eq(n-1).find('.step-circle').removeClass('step-circle-active').addClass('step-circle-end').find('i').text('').addClass('layui-icon-ok');
+      steps.eq(n-1).find('.step-con').removeClass('step-con-active').text('已完成');
+      flag = true;
+    });
+    steps.eq(n-1).find('.step-child').animate({[style]:100+'%'},function () {
+      flag = true;
+    });
+  });
+
+  //下一步
+  prev.click(function () {
+    if (!flag){
+      return;
+    }
+    flag = false;
+    n--;
+    if (n<=steps.length-1){
+      next.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
+    }
+    if (n<0){
+      n = 0;
+      flag = true;
+      return;
+    }
+    if (steps.eq(n).index()===0){
+      $(this).removeClass('zlit-btn-default').addClass('layui-btn-disabled zlit-btn-disabled');
+    }
+    stepCon.eq(n).addClass('active').siblings().removeClass('active');
+    steps.eq(n+1).find('.step-child').animate({[style]:-100+'%'},function () {
+      steps.eq(n+1).find('.step-circle').removeClass('step-circle-active').end().find('.step-con').removeClass('step-con-active').text('待完成');
+      steps.eq(n).find('.step-circle').removeClass('step-circle-end').addClass('step-circle-active').find('i').text(n+1).removeClass('layui-icon-ok');
+      steps.eq(n).find('.step-con').addClass('step-con-active').text('进行中');
+      flag = true;
+    });
+    steps.eq(n).find('.step-child').animate({[style]:0},function () {
+      flag = true;
     });
   });
 }
+//水平步骤条变量
+var Hsteps = $('.horizontal-step .step-single'),
+  HstepCon = $('.horizontal-con li'),
+  HprevBtn = $('.horizontal-btn button:first-child'),
+  HnextBtn = $('.horizontal-btn button:last-child');
+stepFun(HnextBtn,HprevBtn,Hsteps,HstepCon,'left');
+//垂直步骤条变量
+var Vsteps = $('.vertical-step .step-single'),
+  VstepCon = $('.vertical-con li'),
+  VprevBtn = $('.vertical-btn button:first-child'),
+  VnextBtn = $('.vertical-btn button:last-child');
+stepFun(VnextBtn,VprevBtn,Vsteps,VstepCon,'top');
 
 
+//锚点定位
+function anchors(){
+  var navLis = $('.anchors_catalog ul li');
+  var slider = $('.anchors_slider');
+  navLis.click(function () {
+    var tops = $(this).position().top;  //获取滑块距离父元素的高度
+    $(this).addClass('active').siblings().removeClass('active');
+    slider.css({top:tops+8});
+  });
+}
+anchors();
 
 
 
