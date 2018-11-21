@@ -722,6 +722,12 @@ html, body {
 .form-number-box>span:first-of-type{
   margin-right: 50px;
 }
+.h-slideInput{
+  width: 420px;
+}
+#slideTest1,#slideTest2{
+  margin-bottom: 50px;
+}
 
 
 .zlit-form-label{

@@ -169,6 +169,30 @@ $('.zlit-number-add').mousedown(function () {
     $(this).prev().val(val);
   }
 });
+//滑块输入
+layui.use('slider', function(){
+  var slider = layui.slider;
+  //渲染
+  slider.render({
+    elem: '#slideTest1',  //绑定元素
+    theme: '#91D5FF',     //自定义主题色
+    input: true,          //开启输入框
+    value: 25             //设置初始值
+  });
+  slider.render({
+    elem: '#slideTest2',  //绑定元素
+    theme: '#91D5FF',     //自定义主题色
+    step: 5,              //开启步进值
+    input: true,          //开启输入框
+    value: 40             //设置初始值
+  });
+  slider.render({
+    elem: '#slideTest3',  //绑定元素
+    theme: '#91D5FF',      //自定义主题色
+    range: true,           //开启拖拽范围
+    value: [5,55]             //设置初始值
+  });
+});
 
 
 

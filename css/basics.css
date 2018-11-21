@@ -269,9 +269,13 @@ html, body {
   text-align: center;
 }
 .loading-1{
-  height: 240px;
+  height: 360px;
+  padding: 20px 0;
 }
-.loading-1 div,.nothing div{
+.loading-1 p,.nothing p{
+  margin-top: 20px;
+}
+.nothing div{
   width: 100px;
   height: 100px;
   -webkit-border-radius: 50%;
@@ -287,10 +291,8 @@ html, body {
   text-align: center;
 }
 .nothing{
-  height: 345px;
-}
-.nothing div{
-  margin: 62px auto 22px;
+  height: 430px;
+  padding: 20px 0;
 }
 .nothing button{
   margin-top: 30px;
