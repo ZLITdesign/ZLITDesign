@@ -817,7 +817,511 @@ layui.use('laypage', function(){
       </div>
 
       <!--表单类控件-->
-      <div class="layui-tab-item">
+      <div class="layui-tab-item form_box">
+        <!--文本框输入-->
+        <div class="explain form_floor">
+          <h1>表单类控件</h1>
+          <div class="explain_con">
+            <h2>文本输入</h2>
+            <p>1.单行文本：可带文本联想功能提供联想匹配文本，减少输入成本；默认高度32px，根据需要可选择40px或24px。</p>
+            <p>2.文本域：多行输入需要换行，提示可输入范围，超出不可继续输入。</p>
+            <p>3.状态：初始态、激活态、报错态、完成态、禁用态。</p>
+            <div class="form-box">
+              <form action="" class="layui-form">
+                <div class="layui-form-item">
+                  <label class="layui-form-label zlit-form-label">初始</label>
+                  <div class="layui-input-block input-w">
+                    <input type="text" name="name1" required  lay-verify="required" placeholder="输入建议" class="layui-input" lay-verType="tips">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label zlit-form-label">报错</label>
+                  <div class="layui-input-block input-w">
+                    <input type="text" name="name2" required lay-verify="required" value="输入错误" class="layui-input" lay-verType="tips">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label zlit-form-label">完成</label>
+                  <div class="layui-input-block input-w">
+                    <input type="text" name="title" required lay-verify="required|title" value="输入完成" class="layui-input" lay-verType="tips">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label zlit-form-label">禁用</label>
+                  <div class="layui-input-block input-w">
+                    <input type="text" name="name4" placeholder="禁用状态，不可编辑" class="layui-input layui-disabled" lay-verType="tips">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label zlit-form-label">文本域</label>
+                  <div class="layui-input-block">
+                    <textarea placeholder="请输入建议" class="layui-textarea" name="desc"></textarea>
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <div class="layui-input-block">
+                    <button class="layui-btn zlit-btn-default" lay-submit lay-filter="demo1">立即提交</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <form action="" class="layui-form">
+    <div class="layui-form-item">
+      <label class="layui-form-label zlit-form-label">初始</label>
+      <div class="layui-input-block input-w">
+        <input type="text" name="name1" required  lay-verify="required" placeholder="输入建议" class="layui-input numAlpha" lay-verType="tips">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label zlit-form-label">报错</label>
+      <div class="layui-input-block input-w">
+        <input type="text" name="name2" required lay-verify="required" value="输入错误" class="layui-input" lay-verType="tips">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label zlit-form-label">完成</label>
+      <div class="layui-input-block input-w">
+        <input type="text" name="title" required lay-verify="required|title" value="输入完成" class="layui-input" lay-verType="tips">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label zlit-form-label">禁用</label>
+      <div class="layui-input-block input-w">
+        <input type="text" name="name4" placeholder="禁用状态，不可编辑" class="layui-input layui-disabled" lay-verType="tips">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label zlit-form-label">文本域</label>
+      <div class="layui-input-block">
+        <textarea placeholder="请输入建议" class="layui-textarea" name="desc"></textarea>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-input-block">
+        <button class="layui-btn" lay-submit lay-filter="demo1">立即提交</button>
+      </div>
+    </div>
+  </form></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+layui.use('form', function(){
+  var form = layui.form;
+
+  //自定义校验规则
+  form.verify({
+    title: function(value){
+      if(value.length < 5){
+        return '标题至少得5个字符啊';
+      }
+    }
+  });
+  //监听提交
+  form.on('submit(demo1)', function(data){
+    console.log(data.field);
+    console.log(JSON.stringify(data.field));
+    return false;
+  });
+});</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+
+        <!--数字输入-->
+        <div class="explain form_floor">
+          <div class="explain_con">
+            <h2>数字输入</h2>
+            <p>1.手动输入： 按实际需要显示附属功能：上下微调数值。</p>
+            <div class="form-box form-number-box">
+              <div class="zlit-number-1">
+                <button class="zlit-number-reduce">-</button>
+                <input value="1" type="text" maxlength="6" class="zlit-input-number" oninput = "value=value.replace(/[^\d]/g,'')">
+                <button class="zlit-number-add">+</button>
+              </div>
+              <span>单位</span>
+              <div class="zlit-number-2">
+                <button class="zlit-number-reduce layui-icon layui-icon-down"></button>
+                <input value="1" type="text" maxlength="6" class="zlit-input-number" oninput = "value=value.replace(/[^\d]/g,'')">
+                <button class="zlit-number-add layui-icon layui-icon-up"></button>
+              </div>
+              <span>单位</span>
+            </div>
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css"></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <!--样式一-->
+  <div class="zlit-number-1">
+    <button class="zlit-number-reduce">-</button>
+    <input value="1" type="text" maxlength="6" class="zlit-input-number" oninput = "value=value.replace(/[^\d]/g,'')">
+    <button class="zlit-number-add">+</button>
+  </div>
+
+  <!--样式二-->
+  <div class="zlit-number-2">
+    <button class="zlit-number-reduce layui-icon layui-icon-down"></button>
+    <input value="1" type="text" maxlength="6" class="zlit-input-number" oninput = "value=value.replace(/[^\d]/g,'')">
+    <button class="zlit-number-add layui-icon layui-icon-up"></button>
+  </div>
+</pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+$('.zlit-number-reduce').mousedown(function () {
+  var val = Number($(this).next().val());
+  val--;
+  if (val<=0){
+    $(this).next().val(0);
+  }else{
+    $(this).next().val(val);
+  }
+});
+$('.zlit-number-add').mousedown(function () {
+  var val = Number($(this).prev().val());
+  val++;
+  if (val>=999999){
+    $(this).prev().val(999999);
+  }else{
+    $(this).prev().val(val);
+  }
+});</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+
+            <p>2.滑动输入：适用于在数值区间/自定义区间内选择，数值可以是连续的或是离散的；</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;滑块值与输入框内数值同步；</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;离散数值滑块只能拽到刻度上。</p>
+            <div class="form-box">
+
+            </div>
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css"></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <!--样式一-->
+  <div class="zlit-number-1">
+    <button class="zlit-number-reduce">-</button>
+    <input value="1" type="text" maxlength="6" class="zlit-input-number" oninput = "value=value.replace(/[^\d]/g,'')">
+    <button class="zlit-number-add">+</button>
+  </div>
+
+                <!--样式二-->
+  <div class="zlit-number-2">
+    <button class="zlit-number-reduce layui-icon layui-icon-down"></button>
+    <input value="1" type="text" maxlength="6" class="zlit-input-number" oninput = "value=value.replace(/[^\d]/g,'')">
+    <button class="zlit-number-add layui-icon layui-icon-up"></button>
+  </div>
+</pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+$('.zlit-number-reduce').mousedown(function () {
+  var val = Number($(this).next().val());
+  val--;
+  if (val<=0){
+    $(this).next().val(0);
+  }else{
+    $(this).next().val(val);
+  }
+});
+$('.zlit-number-add').mousedown(function () {
+  var val = Number($(this).prev().val());
+  val++;
+  if (val>=999999){
+    $(this).prev().val(999999);
+  }else{
+    $(this).prev().val(val);
+  }
+});</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+
+        <!--单选框-->
+        <div class="explain form_floor">
+          <div class="explain_con">
+            <h2>单选框</h2>
+            <p>用于在多个备选项中选中单个状态，方便用户在比较中选择。</p>
+            <p>1.选项数量2-5个为宜。</p>
+            <p>2.一般会提供默认选中项，默认选中第一个。</p>
+            <div class="form-box">
+
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+</pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+
+        <!--多选框-->
+        <div class="explain form_floor">
+          <div class="explain_con">
+            <h2>多选框</h2>
+            <p>用于在在一组可选项中进行多项选择时；单个使用可表示两种状态的切换。</p>
+            <p>1.选项数量2-5个为宜。</p>
+            <p>2.根据实际需要默认勾选选项。</p>
+            <div class="form-box">
+
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+</pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+
+        <!--添加标签-->
+        <div class="explain form_floor">
+          <div class="explain_con">
+            <h2>添加标签</h2>
+            <p>标记属性或维度，可自定义输入添加标签</p>
+            <p>1.可添加多个标签，添加后可编辑和删除；修改标签文字失去焦点即可完成修改。</p>
+            <p>2.标签字数6字以内为宜。</p>
+            <div class="form-box">
+
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+</pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+
+        <!--下拉选择菜单-->
+        <div class="explain form_floor">
+          <div class="explain_con">
+            <h2>下拉选择菜单</h2>
+            <p>适用于选择项较多时，用下拉选择菜单收纳选项。</p>
+            <p>1.点击或移入触点，出现下拉菜单，在列表中进行选择。</p>
+            <p>2.当选项少时(少于 5 项)，可直接将选项平铺，使用单选框的方式。可根据实际应用场景随机应变。</p>
+            <p>3.选项很多时可带搜索功能，输入文字出现匹配项。</p>
+            <div class="form-box">
+
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+</pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+
+        <!--级联选择-->
+        <div class="explain form_floor">
+          <div class="explain_con">
+            <h2>级联选择</h2>
+            <p>适用于需要从一组相关联的数据集合进行选择，例如省市区，公司层级，事物分类等。</p>
+            <p>1.一般不要超过3级，且为单选。</p>
+            <p>2.鼠标移入或点击菜单触发子菜单。</p>
+            <p>3.选项很多时可带搜索功能，输入文字出现匹配项。</p>
+            <div class="form-box">
+
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+</pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+
+        <!--树选择-->
+        <div class="explain form_floor">
+          <div class="explain_con">
+            <h2>树选择</h2>
+            <p>适用于一组数据结构是一个树形结构的选择，例如省市区，公司层级，事物分类等。</p>
+            <p>1.一般不要超过3级，可单选可多选。</p>
+            <p>2.选项很多时可带搜索功能，输入文字出现匹配项。</p>
+            <div class="form-box">
+
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+</pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+
+        <!--日期选择-->
+        <div class="explain form_floor">
+          <div class="explain_con">
+            <h2>日期选择</h2>
+            <p>需要输入一个日期时，点击输入框，弹出日期面板进行选择。</p>
+            <p>1.根据需要使用合适维度的日期选择器：年，月，周，日；日期范围选择。</p>
+            <p>2.可提供快速跳转今天按钮或其他快捷选项，如昨天，一周前等。</p>
+            <div class="form-box" style="width: 88%;">
+
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+</pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+
+        <!--时间选择-->
+        <div class="explain form_floor">
+          <div class="explain_con">
+            <h2>时间选择</h2>
+            <p>需要输入一个时间时，点击输入框，弹出时间面板进行选择。</p>
+            <p>1.根据需要使用合适维度的时间选择器：时，时-分，时-分-秒；时间范围选择。</p>
+            <p>2.可根据实际选择需要提供某些固定时间的选项，同下拉选择菜单</p>
+            <div class="form-box">
+
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+</pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+
+        <!--开关-->
+        <div class="explain form_floor">
+          <div class="explain_con">
+            <h2>开关</h2>
+            <p>适用需表示两种相互对立的状态间的切换。</p>
+            <p>1.根据实际场景需要默认是开状态或关状态。</p>
+            <p>2.可搭配“开/关”、“状态文字(如：日间/夜间)”、对错图标符号使用。</p>
+            <div class="form-box">
+
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+</pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+
+        <!--上传/导入文件-->
+        <div class="explain form_floor">
+          <div class="explain_con">
+            <h2>上传/导入文件</h2>
+            <p>当需要上传/导入一个或多个文件时。</p>
+            <p>1.提示上传条件限制，包括文件格式和大小。</p>
+            <p>2.对于较大文件上传时，显示上传进度，上传动作可取消。</p>
+            <div class="form-box">
+
+            </div>
+            <div class="form-box">
+
+            </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+</pre>
+              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
 
         <div class="explain">
           <div class="explain_page">
@@ -826,6 +1330,24 @@ layui.use('laypage', function(){
               <p>反馈 <span>&gt;</span></p>
             </div>
           </div>
+        </div>
+        <!--目录-->
+        <div class="form_catalog">
+          <ul>
+            <li class="active">文本框输入</li>
+            <li>数字输入</li>
+            <li>单选框</li>
+            <li>多选框</li>
+            <li>添加标签</li>
+            <li>下拉选择菜单</li>
+            <li>级联选择</li>
+            <li>树选择</li>
+            <li>日期选择</li>
+            <li>时间选择</li>
+            <li>开关</li>
+            <li>上传/导入文件</li>
+            <div class="form_slider"></div>
+          </ul>
         </div>
       </div>
 
@@ -2080,8 +2602,7 @@ stepFun(VnextBtn,VprevBtn,Vsteps,VstepCon,'top');</pre>
     var tops = $(this).position().top;  //获取滑块距离父元素的高度
     $(this).addClass('active').siblings().removeClass('active');
     slider.css({top:tops+8});
-  });
-</pre>
+  });</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>

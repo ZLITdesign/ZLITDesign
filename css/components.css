@@ -692,12 +692,146 @@ html, body {
 
 
 /*表单类控件*/
+.form-box{
+  box-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
+  padding: 30px;
+  border-radius: 4px;
+  width: 720px;
+  box-sizing: border-box;
+  margin: 10px 0;
+}
+.form-box:after{
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  clear: both;
+}
+.input-w{
+  width: 236px;
+}
+.form-number-box div,.form-number-box>span{
+  float: left;
+}
+.form-number-box>span{
+  margin-left: 10px;
+  font-size: 14px;
+  color: #666;
+  line-height: 32px;
+}
+.form-number-box>span:first-of-type{
+  margin-right: 50px;
+}
+
+
+.zlit-form-label{
+  color: #666;
+  font-size: 16px;
+}
+.zlit-number-1{
+  position: relative;
+  height: 32px;
+  width: 137px;
+}
+.zlit-number-1 button{
+  width: 32px;
+  height: 32px;
+  background: #ffffff;
+  outline: none;
+  border: 1px solid #D9D9D9;
+  position: absolute;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  color: #B3B3B9;
+}
+.zlit-number-1 button:hover{
+  color: #108EE9;
+  background: #F9F9F9;
+}
+.zlit-number-1 button:first-child{
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  left: 5px;
+}
+.zlit-number-1 button:last-child{
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  right: 5px;
+}
+.zlit-number-1 input.zlit-input-number{
+  display: inline-block;
+  outline: none;
+  text-align: center;
+  width: 64px;
+  height: 32px;
+  border: 1px solid #D9D9D9;
+  border-left: none;
+  border-right: none;
+  box-sizing: border-box;
+  position: relative;
+  left: 37px;
+}
+.zlit-number-2{
+  width: 88px;
+  height: 32px;
+  position: relative;
+}
+.zlit-number-2 button{
+  width: 22px;
+  height: 17px;
+  background: #ffffff;
+  outline: none;
+  border: 1px solid #D9D9D9;
+  position: absolute;
+  cursor: pointer;
+  font-size: 12px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  color: #B3B3B9;
+  line-height: 17px;
+}
+.zlit-number-2 button:first-child{
+  bottom: 0;
+  right: 0;
+  border-bottom-right-radius: 4px;
+  border-top: none;
+}
+.zlit-number-2 button:last-child{
+  top: 0;
+  right: 0;
+  border-top-right-radius: 4px;
+}
+.zlit-number-2 button:hover{
+  color: #108EE9;
+  background: #F9F9F9;
+}
+.zlit-number-2 input.zlit-input-number{
+  display: inline-block;
+  outline: none;
+  text-align: center;
+  width: 64px;
+  height: 32px;
+  border: 1px solid #D9D9D9;
+  border-right: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  box-sizing: border-box;
+  position: relative;
+  left: 2px;
+}
 
 
 
 
 /*反馈*/
-.feedback_box,.other_box{
+.feedback_box,.other_box,.form_box{
   position: relative;
 }
 .feedback,.other{
@@ -766,19 +900,19 @@ html, body {
 }
 
 /*目录*/
-.feedback_catalog,.other_catalog{
+.feedback_catalog,.other_catalog,.form_catalog{
   position: fixed;
   right: 20px;
   top: 90px;
   background: #fff;
   padding: 10px;
 }
-.feedback_catalog ul,.other_catalog ul{
+.feedback_catalog ul,.other_catalog ul,.form_catalog ul{
   border-left: 1px solid #cacaca;
   padding: 0 20px;
   position: relative;
 }
-.feedback_catalog ul li,.other_catalog ul li{
+.feedback_catalog ul li,.other_catalog ul li,.form_catalog ul li{
   line-height: 22px;
   -webkit-transition: color 0.3s;
   -moz-transition: color 0.3s;
@@ -790,10 +924,10 @@ html, body {
   color: rgba(0,0,0,0.6);
   margin: 8px 0;
 }
-.feedback_catalog ul li.active,.other_catalog ul li.active{
+.feedback_catalog ul li.active,.other_catalog ul li.active,.form_catalog ul li.active{
   color: #108EE9;
 }
-.feedback_catalog ul div.feedback_slider,.other_catalog ul div.other_slider{
+.feedback_catalog ul div.feedback_slider,.other_catalog ul div.other_slider,.form_catalog ul div.form_slider{
   width: 2px;
   height: 22px;
   background: #108EE9;

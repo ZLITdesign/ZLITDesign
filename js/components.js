@@ -8,19 +8,23 @@ layui.use(['element','layer'], function(){
     var catalog1 = $('.component_content>.layui-tab-item').eq(n).hasClass('form_box');
     var catalog2 = $('.component_content>.layui-tab-item').eq(n).hasClass('feedback_box');
     var catalog3 = $('.component_content>.layui-tab-item').eq(n).hasClass('other_box');
-    if (catalog2){
-      // feedback();
-      var floors = $('.feedback_floor');
-      var navLis = $('.feedback_catalog ul li');
-      var slider = $('.feedback_slider');
+    if (catalog1){
+      var floors = $('.form_floor');
+      var navLis = $('.form_catalog ul li');
+      var slider = $('.form_slider');
       catalogFun(floors,navLis,slider);
     }
+    if (catalog2){
+      var floors2 = $('.feedback_floor');
+      var navLis2 = $('.feedback_catalog ul li');
+      var slider2 = $('.feedback_slider');
+      catalogFun(floors2,navLis2,slider2);
+    }
     if (catalog3){
-      // other();
-      var floors1 = $('.other_floor');
-      var navLis1 = $('.other_catalog ul li');
-      var slider1 = $('.other_slider');
-      catalogFun(floors1,navLis1,slider1);
+      var floors3 = $('.other_floor');
+      var navLis3 = $('.other_catalog ul li');
+      var slider3 = $('.other_slider');
+      catalogFun(floors3,navLis3,slider3);
     }
   });
 
@@ -126,70 +130,48 @@ prev_page.click(function () {
 });
 
 
-//反馈目录楼层跳转
-function catalogFun(floors,navLis,slider) {
-  var clientH = $(window).height();
-  var isJump = true;
-  $('.component_content').scroll(function () {
-    if (!isJump){
-      return;
-    }
-    var floorTops = $('.component_content').scrollTop();
-    floors.each(function (i) {
-      if(floorTops>=floors.eq(i).position().top-clientH+10){
-        navLis.eq(i).addClass('active').siblings().removeClass('active');
-        var navTops = navLis.eq(i).position().top;
-        slider.css({top:navTops+8});
-      }
-    });
-  });
 
-  navLis.click(function () {
-    isJump = false;
-    var index = $(this).index();
-    var that = $(this);
-    var t = floors.eq(index).position().top - 20;//获取每个楼层距离body的高度
-    var tops = $(this).position().top;  //获取滑块距离父元素的高度
-    $('.component_content').animate({scrollTop:t},function () {
-      that.addClass('active').siblings().removeClass('active');
-      slider.css({top:tops+8});
-      isJump = true;
-    });
-  });
-}
-/*function feedback(){
-  var floors = $('.feedback_floor');
-  var navLis = $('.feedback_catalog ul li');
-  var slider = $('.feedback_slider');
-  var clientH = $(window).height();
-  var isJump = true;
-  $('.component_content').scroll(function () {
-    if (!isJump){
-      return;
-    }
-    var floorTops = $('.component_content').scrollTop();
-    floors.each(function (i) {
-      if(floorTops>=floors.eq(i).position().top-clientH+10){
-        navLis.eq(i).addClass('active').siblings().removeClass('active');
-        var navTops = navLis.eq(i).position().top;
-        slider.css({top:navTops+8});
-      }
-    });
-  });
+//表单
+layui.use('form', function(){
+  var form = layui.form;
 
-  navLis.click(function () {
-    isJump = false;
-    var index = $(this).index();
-    var that = $(this);
-    var t = floors.eq(index).position().top - 20;//获取每个楼层距离body的高度
-    var tops = $(this).position().top;  //获取滑块距离父元素的高度
-    $('.component_content').animate({scrollTop:t},function () {
-      isJump = true;
-      that.addClass('active').siblings().removeClass('active');
-      slider.css({top:tops+8});
-    });
+  //自定义校验规则
+  form.verify({
+    title: function(value){
+      if(value.length < 5){
+        return '标题至少得5个字符啊';
+      }
+    }
   });
-}*/
+  //监听提交
+  form.on('submit(demo1)', function(data){
+    console.log(data.field);
+    console.log(JSON.stringify(data.field));
+    return false;
+  });
+});
+//数字输入
+$('.zlit-number-reduce').mousedown(function () {
+  var val = Number($(this).next().val());
+  val--;
+  if (val<=0){
+    $(this).next().val(0);
+  }else{
+    $(this).next().val(val);
+  }
+});
+$('.zlit-number-add').mousedown(function () {
+  var val = Number($(this).prev().val());
+  val++;
+  if (val>=999999){
+    $(this).prev().val(999999);
+  }else{
+    $(this).prev().val(val);
+  }
+});
+
+
+
 //反馈
 layui.use('layer', function(){
   var layer = layui.layer;
@@ -438,8 +420,8 @@ layui.use('layer', function(){
   });
 });
 //-------------------------------文字提示--------------------------------
-//插件{白色背景}
 function tooltips(){
+//插件{白色背景}
   $('.w-tl').pt({
     position: 't',
     align: 'l',
@@ -594,40 +576,6 @@ tooltips();
 
 
 //其他
-//其他目录楼层跳转
-/*function other(){
-  var floors = $('.other_floor');
-  var navLis = $('.other_catalog ul li');
-  var slider = $('.other_slider');
-  var clientH = $(window).height();
-  var isJump = true;
-  $('.component_content').scroll(function () {
-    if (!isJump){
-      return;
-    }
-    var floorTops = $('.component_content').scrollTop();
-    floors.each(function (i) {
-      if(floorTops>=floors.eq(i).position().top-clientH+10){
-        navLis.eq(i).addClass('active').siblings().removeClass('active');
-        var navTops = navLis.eq(i).position().top;
-        slider.css({top:navTops+8});
-      }
-    });
-  });
-
-  navLis.click(function () {
-    isJump = false;
-    var index = $(this).index();
-    var that = $(this);
-    var t = floors.eq(index).position().top - 20;//获取每个楼层距离body的高度
-    var tops = $(this).position().top;  //获取滑块距离父元素的高度
-    $('.component_content').animate({scrollTop:t},function () {
-      isJump = true;
-      that.addClass('active').siblings().removeClass('active');
-      slider.css({top:tops+8});
-    });
-  });
-}*/
 //直线进度条
 layui.use('element', function(){
   var element = layui.element;
@@ -815,3 +763,52 @@ paging();
 
 //展示代码
 showCode();
+
+//目录楼层跳转
+  //无滚轮事件
+function catalogFun(floors,navLis,slider) {
+  var isJump = true;
+  navLis.click(function () {
+    isJump = false;
+    var index = $(this).index();
+    var that = $(this);
+    var t = floors.eq(index).position().top - 20;//获取每个楼层距离body的高度
+    var tops = $(this).position().top;  //获取滑块距离父元素的高度
+    $('.component_content').animate({scrollTop:t},function () {
+      that.addClass('active').siblings().removeClass('active');
+      slider.css({top:tops+8});
+      isJump = true;
+    });
+  });
+}
+  //带滚滚轮事件
+/*function catalogFun(floors,navLis,slider) {
+  var clientH = $(window).height();
+  var isJump = true;
+  $('.component_content').scroll(function () {
+    if (!isJump){
+      return;
+    }
+    var floorTops = $('.component_content').scrollTop();
+    floors.each(function (i) {
+      if(floorTops>=floors.eq(i).position().top-clientH+10){
+        navLis.eq(i).addClass('active').siblings().removeClass('active');
+        var navTops = navLis.eq(i).position().top;
+        slider.css({top:navTops+8});
+      }
+    });
+  });
+
+  navLis.click(function () {
+    isJump = false;
+    var index = $(this).index();
+    var that = $(this);
+    var t = floors.eq(index).position().top - 20;//获取每个楼层距离body的高度
+    var tops = $(this).position().top;  //获取滑块距离父元素的高度
+    $('.component_content').animate({scrollTop:t},function () {
+      that.addClass('active').siblings().removeClass('active');
+      slider.css({top:tops+8});
+      isJump = true;
+    });
+  });
+}*/
