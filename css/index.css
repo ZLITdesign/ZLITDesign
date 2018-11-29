@@ -104,7 +104,7 @@ html, body{
 
 .header .header_right_menu .theme{
   float: right;
-  width: 100px;
+  width: 140px;
   height: 30px;
   line-height: 28px;
   font-size: 16px;
@@ -114,13 +114,18 @@ html, body{
   border-radius: 5px;
   border: 1px solid #fff;
   color: #FFFFFF;
-  padding-left: 12px;
+  padding-left: 10px;
   box-sizing: border-box;
   margin-top: 17px;
   cursor: pointer;
 }
 .header .header_right_menu .theme span{
   color: #fff;
+}
+.header .header_right_menu .theme span:first-child{
+  display: inline-block;
+  width: 70%;
+  text-align: center;
 }
 .header .header_right_menu .theme span:nth-child(2){
   font-family: 'SimSun';

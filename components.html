@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>组件</title>
   <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/formSelects-v4.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/showCode.css">
 </head>
@@ -140,20 +141,19 @@
             <p>1.业务图标+菜单文字。</p>
             <p>2.菜单文字长度2-7字为宜。</p>
             <div class="nav-side">
-              <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
-                <li class="layui-nav-item layui-this">
-                  <a href="javascript:;"><i></i>一级导航</a>
-                </li>
-                <li class="layui-nav-item layui-nav-itemed">
-                  <a href="javascript:;"><i></i>一级导航</a>
-                  <dl class="layui-nav-child">
+              <ul class="zlit-nav">
+                <li class="active"><a href="#">一级导航</a></li>
+                <li class="zlit-nav-item zlit-nav-item-active">
+                  <a href="#">一级导航</a>
+                  <i class="layui-icon layui-icon-right"></i>
+                  <dl class="zlit-nav-child">
                     <dd><a href="#">二级导航</a></dd>
                     <dd><a href="#">二级导航</a></dd>
                     <dd><a href="#">二级导航</a></dd>
                   </dl>
                 </li>
-                <li class="layui-nav-item"><a href="#"><i></i>一级导航</a></li>
-                <li class="layui-nav-item"><a href="#"><i></i>一级导航</a></li>
+                <li><a href="#">一级导航</a></li>
+                <li><a href="#">一级导航</a></li>
               </ul>
             </div>
           </div>
@@ -166,34 +166,38 @@
             <p>2.菜单文字长度2-7字为宜。</p>
             <p>3.可同时展开多个。</p>
             <div class="nav-side">
-              <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
-                <li class="layui-nav-item">
-                  <a href="javascript:;"><i></i>一级导航</a>
-                  <dl class="layui-nav-child">
+              <ul class="zlit-nav">
+                <li class="zlit-nav-item">
+                  <a href="#">一级导航</a>
+                  <i class="layui-icon layui-icon-right"></i>
+                  <dl class="zlit-nav-child">
                     <dd><a href="#">二级导航</a></dd>
                     <dd><a href="#">二级导航</a></dd>
                     <dd><a href="#">二级导航</a></dd>
                   </dl>
                 </li>
-                <li class="layui-nav-item layui-nav-itemed">
-                  <a href="javascript:;"><i></i>一级导航</a>
-                  <dl class="layui-nav-child">
-                    <dd class="layui-this"><a href="#">二级导航</a></dd>
-                    <dd><a href="#">二级导航</a></dd>
-                    <dd><a href="#">二级导航</a></dd>
-                  </dl>
-                </li>
-                <li class="layui-nav-item">
-                  <a href="#"><i></i>一级导航</a>
-                  <dl class="layui-nav-child">
+                <li class="zlit-nav-item">
+                  <a href="#">一级导航</a>
+                  <i class="layui-icon layui-icon-right"></i>
+                  <dl class="zlit-nav-child">
                     <dd><a href="#">二级导航</a></dd>
                     <dd><a href="#">二级导航</a></dd>
                     <dd><a href="#">二级导航</a></dd>
                   </dl>
                 </li>
-                <li class="layui-nav-item">
-                  <a href="#"><i></i>一级导航</a>
-                  <dl class="layui-nav-child">
+                <li class="zlit-nav-item">
+                  <a href="#">一级导航</a>
+                  <i class="layui-icon layui-icon-right"></i>
+                  <dl class="zlit-nav-child">
+                    <dd><a href="#">二级导航</a></dd>
+                    <dd><a href="#">二级导航</a></dd>
+                    <dd><a href="#">二级导航</a></dd>
+                  </dl>
+                </li>
+                <li class="zlit-nav-item">
+                  <a href="#">一级导航</a>
+                  <i class="layui-icon layui-icon-right"></i>
+                  <dl class="zlit-nav-child">
                     <dd><a href="#">二级导航</a></dd>
                     <dd><a href="#">二级导航</a></dd>
                     <dd><a href="#">二级导航</a></dd>
@@ -212,67 +216,98 @@
   <!--使用前需引入layui依赖文件-->
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="js/jquery-3.3.1.js"></script>
   <script src="layui/layui.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-  <!--菜单全展开-->
-  <div class="nav-side">
-    <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
-      <li class="layui-nav-item layui-this"><a href="javascript:;"><i></i>一级导航</a></li>
-      <li class="layui-nav-item layui-nav-itemed">
-        <a href="javascript:;"><i></i>一级导航</a>
-        <dl class="layui-nav-child">
-          <dd><a href="#">二级导航</a></dd>
-          <dd><a href="#">二级导航</a></dd>
-          <dd><a href="#">二级导航</a></dd>
-        </dl>
-      </li>
-      <li class="layui-nav-item"><a href="#"><i></i>一级导航</a></li>
-      <li class="layui-nav-item"><a href="#"><i></i>一级导航</a></li>
-    </ul>
-  </div>
-  <!--子菜单收起-->
-  <div class="nav-side">
-    <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
-      <li class="layui-nav-item">
-        <a href="javascript:;"><i></i>一级导航</a>
-        <dl class="layui-nav-child">
-          <dd><a href="#">二级导航</a></dd>
-          <dd><a href="#">二级导航</a></dd>
-          <dd><a href="#">二级导航</a></dd>
-        </dl>
-      </li>
-      <li class="layui-nav-item layui-nav-itemed">
-        <a href="javascript:;"><i></i>一级导航</a>
-        <dl class="layui-nav-child">
-          <dd class="layui-this"><a href="#">二级导航</a></dd>
-          <dd><a href="#">二级导航</a></dd>
-          <dd><a href="#">二级导航</a></dd>
-        </dl>
-      </li>
-      <li class="layui-nav-item">
-        <a href="#"><i></i>一级导航</a>
-        <dl class="layui-nav-child">
-          <dd><a href="#">二级导航</a></dd>
-          <dd><a href="#">二级导航</a></dd>
-          <dd><a href="#">二级导航</a></dd>
-        </dl>
-      </li>
-      <li class="layui-nav-item">
-        <a href="#"><i></i>一级导航</a>
-        <dl class="layui-nav-child">
-          <dd><a href="#">二级导航</a></dd>
-          <dd><a href="#">二级导航</a></dd>
-          <dd><a href="#">二级导航</a></dd>
-        </dl>
-      </li>
-    </ul>
-  </div></pre>
+<!--菜单全展开-->
+<ul class="zlit-nav">
+  <li class="active"><a href="#">一级导航</a></li>
+  <li class="zlit-nav-item zlit-nav-item-active">
+    <a href="#">一级导航</a>
+    <i class="layui-icon layui-icon-right"></i>
+    <dl class="zlit-nav-child">
+      <dd><a href="#">二级导航</a></dd>
+      <dd><a href="#">二级导航</a></dd>
+      <dd><a href="#">二级导航</a></dd>
+    </dl>
+  </li>
+  <li><a href="#">一级导航</a></li>
+  <li><a href="#">一级导航</a></li>
+</ul>
+<!--子菜单收起-->
+<ul class="zlit-nav">
+  <li class="zlit-nav-item">
+    <a href="#">一级导航</a>
+    <i class="layui-icon layui-icon-right"></i>
+    <dl class="zlit-nav-child">
+      <dd><a href="#">二级导航</a></dd>
+      <dd><a href="#">二级导航</a></dd>
+      <dd><a href="#">二级导航</a></dd>
+    </dl>
+  </li>
+  <li class="zlit-nav-item">
+    <a href="#">一级导航</a>
+    <i class="layui-icon layui-icon-right"></i>
+    <dl class="zlit-nav-child">
+      <dd><a href="#">二级导航</a></dd>
+      <dd><a href="#">二级导航</a></dd>
+      <dd><a href="#">二级导航</a></dd>
+    </dl>
+  </li>
+  <li class="zlit-nav-item">
+    <a href="#">一级导航</a>
+    <i class="layui-icon layui-icon-right"></i>
+    <dl class="zlit-nav-child">
+      <dd><a href="#">二级导航</a></dd>
+      <dd><a href="#">二级导航</a></dd>
+      <dd><a href="#">二级导航</a></dd>
+    </dl>
+  </li>
+  <li class="zlit-nav-item">
+    <a href="#">一级导航</a>
+    <i class="layui-icon layui-icon-right"></i>
+    <dl class="zlit-nav-child">
+      <dd><a href="#">二级导航</a></dd>
+      <dd><a href="#">二级导航</a></dd>
+      <dd><a href="#">二级导航</a></dd>
+    </dl>
+  </li>
+</ul>
+</pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
-  <!--js代码-->
-  //启用选项卡
-  layui.use('element', function(){
-    var element = layui.element;
-  });</pre>
+<!--js代码-->
+//参数isOpen是否开启手风琴导航，默认关闭
+function zlitNav(isOpen=false){
+  $('.zlit-nav li').click(function(){
+    var flag = true;  //防止点击过快
+    var isHas = $(this).find('dl').is('dl');   //检测是否存在子级
+    if (isHas){
+      if (!flag){
+        return;
+      }
+      flag = false;
+      if ($(this).height()!==36){
+        $(this).find('dl').stop().slideUp(300,function(){
+          flag = true;
+        }).end().find('i').css({transform:'rotateZ(0)'});
+      }else{
+        $(this).find('dl').stop().slideDown(300,function(){
+          flag = true;
+        }).end().find('i').css({transform:'rotateZ(90deg)'});
+      }
+      if (isOpen){
+        $(this).siblings().find('dl').slideUp().end().find('i').css({transform:'rotateZ(0)'});
+      }
+    }else{
+      $(this).addClass('active').siblings().removeClass('active').find('dd').removeClass('active');
+    }
+  });
+  $('.zlit-nav-child dd').click(function(e){
+    e.stopPropagation();
+    $(this).addClass('active').siblings().removeClass('active').end().closest('li').siblings().find('dd').removeClass('active').end().removeClass('active');
+  });
+}
+zlitNav();</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -629,14 +664,14 @@ layui.use('laypage', function(){
                   <button class="layui-btn layui-btn-disabled zlit-btn-disabled layui-btn-sm">失效按钮</button>
                 </div>
                 <div class="btn-big">
-                  <button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-lg">大尺寸主要按钮</button>
+                  <button class="layui-btn zlit-btn-default layui-btn-lg">大尺寸主要按钮</button>
                   <button class="layui-btn layui-btn-primary zlit-btn-primary layui-btn-lg">大尺寸次要按钮</button>
                 </div>
                 <div class="btn-min">
-                  <button class="layui-btn zlit-btn-default">确定</button>
-                  <button class="layui-btn layui-btn-danger zlit-btn-del">删除</button>
-                  <button class="layui-btn layui-btn-primary zlit-btn-primary">取消</button>
-                  <button class="layui-btn layui-btn-primary zlit-btn-primary">关闭</button>
+                  <button class="layui-btn zlit-btn-default zlit-btn-sm">确定</button>
+                  <button class="layui-btn layui-btn-danger zlit-btn-del zlit-btn-sm">删除</button>
+                  <button class="layui-btn layui-btn-primary zlit-btn-primary zlit-btn-sm">取消</button>
+                  <button class="layui-btn layui-btn-primary zlit-btn-primary zlit-btn-sm">关闭</button>
                 </div>
               </div>
               <div class="often-btn-ellipse">
@@ -655,14 +690,14 @@ layui.use('laypage', function(){
                   <button class="layui-btn layui-btn-disabled zlit-btn-disabled layui-btn-sm zlit-btn-radius">失效按钮</button>
                 </div>
                 <div class="btn-big">
-                  <button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-lg zlit-btn-radius">大尺寸主要按钮</button>
+                  <button class="layui-btn zlit-btn-default layui-btn-lg zlit-btn-radius">大尺寸主要按钮</button>
                   <button class="layui-btn layui-btn-primary zlit-btn-primary layui-btn-lg zlit-btn-radius">大尺寸次要按钮</button>
                 </div>
                 <div class="btn-min">
-                  <button class="layui-btn zlit-btn-default zlit-btn-radius">确定</button>
-                  <button class="layui-btn layui-btn-danger zlit-btn-del zlit-btn-radius">删除</button>
-                  <button class="layui-btn layui-btn-primary zlit-btn-primary zlit-btn-radius">取消</button>
-                  <button class="layui-btn layui-btn-primary zlit-btn-primary zlit-btn-radius">关闭</button>
+                  <button class="layui-btn zlit-btn-default zlit-btn-radius zlit-btn-sm">确定</button>
+                  <button class="layui-btn layui-btn-danger zlit-btn-del zlit-btn-radius zlit-btn-sm">删除</button>
+                  <button class="layui-btn layui-btn-primary zlit-btn-primary zlit-btn-radius zlit-btn-sm">取消</button>
+                  <button class="layui-btn layui-btn-primary zlit-btn-primary zlit-btn-radius zlit-btn-sm">关闭</button>
                 </div>
               </div>
             </div>
@@ -690,14 +725,14 @@ layui.use('laypage', function(){
 <button class="layui-btn layui-btn-disabled zlit-btn-disabled layui-btn-sm">失效按钮</button>
 
   <!--大尺寸按钮-->
-<button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-lg">大尺寸主要按钮</button>
+<button class="layui-btn zlit-btn-default layui-btn-lg">大尺寸主要按钮</button>
 <button class="layui-btn layui-btn-primary zlit-btn-primary layui-btn-lg">大尺寸次要按钮</button>
 
-  <!--确定取消删除-->
-<button class="layui-btn zlit-btn-default">确定</button>
-<button class="layui-btn layui-btn-danger zlit-btn-del">删除</button>
-<button class="layui-btn layui-btn-primary zlit-btn-primary">取消</button>
-<button class="layui-btn layui-btn-primary zlit-btn-primary">关闭</button>
+  <!--确定取消删除按钮-->
+<button class="layui-btn zlit-btn-default zlit-btn-sm">确定</button>
+<button class="layui-btn layui-btn-danger zlit-btn-del zlit-btn-sm">删除</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary zlit-btn-sm">取消</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary zlit-btn-sm">关闭</button>
 
   <!--圆角按钮-->
 统一追加类名“zlit-btn-radius”</pre>
@@ -732,9 +767,9 @@ layui.use('laypage', function(){
             <p>1.增强按钮辨识度可可使用图标+文字按钮，空间有限时可不显示文字。</p>
             <p>2.样式不局限于示例，可按需要参照常用按钮样式。</p>
             <div class="icon_btn">
-              <button class="layui-btn zlit-btn-default"><i class="layui-icon layui-icon-add-1"></i></button>
-              <button class="layui-btn layui-btn-danger zlit-btn-del"><i class="layui-icon layui-icon-delete"></i></button>
-              <button class="layui-btn zlit-btn-default"><i class="layui-icon layui-icon-add-1"></i>添加</button>
+              <button class="layui-btn zlit-btn-default zlit-btn-icon"><i class="layui-icon layui-icon-add-1"></i></button>
+              <button class="layui-btn zlit-btn-del zlit-btn-icon"><i class="layui-icon layui-icon-delete"></i></button>
+              <button class="layui-btn zlit-btn-default"><i class="layui-icon layui-icon-add-1"></i>&nbsp;添加</button>
             </div>
 
             <!--代码展示-->
@@ -745,9 +780,9 @@ layui.use('laypage', function(){
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="layui/layui.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-  <button class="layui-btn zlit-btn-default"><i class="layui-icon layui-icon-add-1"></i></button>
-  <button class="layui-btn layui-btn-danger zlit-btn-del"><i class="layui-icon layui-icon-delete"></i></button>
-  <button class="layui-btn zlit-btn-default"><i class="layui-icon layui-icon-add-1"></i>添加</button></pre>
+  <button class="layui-btn zlit-btn-default zlit-btn-icon"><i class="layui-icon layui-icon-add-1"></i></button>
+  <button class="layui-btn zlit-btn-del zlit-btn-icon"><i class="layui-icon layui-icon-delete"></i></button>
+  <button class="layui-btn zlit-btn-default"><i class="layui-icon layui-icon-add-1"></i>&nbsp;添加</button></pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -827,29 +862,29 @@ layui.use('laypage', function(){
             <p>2.文本域：多行输入需要换行，提示可输入范围，超出不可继续输入。</p>
             <p>3.状态：初始态、激活态、报错态、完成态、禁用态。</p>
             <div class="form-box">
-              <form action="" class="layui-form">
+              <form action="" class="layui-form" id="con_form">
                 <div class="layui-form-item">
                   <label class="layui-form-label zlit-form-label">初始</label>
                   <div class="layui-input-block input-w">
-                    <input type="text" name="name1" required  lay-verify="required" placeholder="输入建议" class="layui-input" lay-verType="tips">
+                    <input type="text" name="init" placeholder="输入建议" value="这是内容" class="layui-input">
                   </div>
                 </div>
                 <div class="layui-form-item">
                   <label class="layui-form-label zlit-form-label">报错</label>
                   <div class="layui-input-block input-w">
-                    <input type="text" name="name2" required lay-verify="required" value="输入错误" class="layui-input" lay-verType="tips">
+                    <input type="text" name="error" value="输入错误" class="layui-input">
                   </div>
                 </div>
                 <div class="layui-form-item">
                   <label class="layui-form-label zlit-form-label">完成</label>
                   <div class="layui-input-block input-w">
-                    <input type="text" name="title" required lay-verify="required|title" value="输入完成" class="layui-input" lay-verType="tips">
+                    <input type="text" name="finish" value="输入完成" class="layui-input">
                   </div>
                 </div>
                 <div class="layui-form-item">
                   <label class="layui-form-label zlit-form-label">禁用</label>
                   <div class="layui-input-block input-w">
-                    <input type="text" name="name4" placeholder="禁用状态，不可编辑" class="layui-input layui-disabled" lay-verType="tips">
+                    <input type="text" name="disable" value="禁用状态，不可编辑" disabled class="layui-input layui-disabled">
                   </div>
                 </div>
                 <div class="layui-form-item">
@@ -874,29 +909,29 @@ layui.use('laypage', function(){
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="layui/layui.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-  <form action="" class="layui-form">
+  <form action="" class="layui-form">   <!--form标签不是必须，可更改，类名layui-form必须-->
     <div class="layui-form-item">
       <label class="layui-form-label zlit-form-label">初始</label>
       <div class="layui-input-block input-w">
-        <input type="text" name="name1" required  lay-verify="required" placeholder="输入建议" class="layui-input numAlpha" lay-verType="tips">
+        <input type="text" name="name1" required  lay-verify="required" placeholder="输入建议" value="这是内容" class="layui-input" lay-verType="tips">
       </div>
     </div>
     <div class="layui-form-item">
       <label class="layui-form-label zlit-form-label">报错</label>
       <div class="layui-input-block input-w">
-        <input type="text" name="name2" required lay-verify="required" value="输入错误" class="layui-input" lay-verType="tips">
+        <input type="text" name="name2" required lay-verify="required|title" value="输入错误" class="layui-input" lay-verType="tips">
       </div>
     </div>
     <div class="layui-form-item">
       <label class="layui-form-label zlit-form-label">完成</label>
       <div class="layui-input-block input-w">
-        <input type="text" name="title" required lay-verify="required|title" value="输入完成" class="layui-input" lay-verType="tips">
+        <input type="text" name="title" required lay-verify="required" value="输入完成" class="layui-input" lay-verType="tips">
       </div>
     </div>
     <div class="layui-form-item">
       <label class="layui-form-label zlit-form-label">禁用</label>
       <div class="layui-input-block input-w">
-        <input type="text" name="name4" placeholder="禁用状态，不可编辑" class="layui-input layui-disabled" lay-verType="tips">
+        <input type="text" name="name4" value="禁用状态，不可编辑" disabled class="layui-input layui-disabled">
       </div>
     </div>
     <div class="layui-form-item">
@@ -907,26 +942,71 @@ layui.use('laypage', function(){
     </div>
     <div class="layui-form-item">
       <div class="layui-input-block">
-        <button class="layui-btn" lay-submit lay-filter="demo1">立即提交</button>
+        <button class="layui-btn zlit-btn-default" lay-submit lay-filter="demo1">立即提交</button>
       </div>
     </div>
   </form></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 layui.use('form', function(){
   var form = layui.form;
-
-  //自定义校验规则
-  form.verify({
-    title: function(value){
-      if(value.length < 5){
-        return '标题至少得5个字符啊';
+  //自定义规则
+  $.validator.addMethod("define", function(value, element, param) {
+    /*let reg = /^\d{4,10}$/;
+    if (reg.test(value)){
+      return value;
+    }*/
+    if (value.length>=param[0] && value.length<=param[1]){
+      return value;
+    }
+  }, '格式不正确');
+  $('#con_form').validate({  //以下init,error,finish,desc等为input的name值
+    rules:{
+      init:{
+        required:true,
+        maxlength:10,
+        define:[6,10]    //自定义规则放在最后
+      },
+      error:{
+        required:true,
+        maxlength:10,
+        define:[6,10],   //自定义规则放在最后
+      },
+      finish:{
+        required:true
+      },
+      desc:{
+        required:true,
+        maxlength:100,
+        define:[50,100],  //自定义规则放在最后
+      }
+    },
+    messages:{
+      init:{
+        required:'此字段必须填写',
+        maxlength: '最多{0}个字符',
+        define:'至少也得输入{0}-{1}位字符啊'
+      },
+      error:{
+        required:'此字段必须填写',
+        maxlength: '最多{0}个字符',
+        define:'至少也得输入{0}-{1}位字符啊'
+      },
+      finish:{
+        required:'此字段必须填写'
+      },
+      desc:{
+        required:'此字段必须填写',
+        maxlength: '最多{0}个字符',
+        define:'至少也得输入{0}-{1}位字符啊'
       }
     }
   });
   //监听提交
   form.on('submit(demo1)', function(data){
-    console.log(data.field);
-    console.log(JSON.stringify(data.field));
+    if ($('#con_form').valid()){
+      console.log(data.field);
+      console.log(JSON.stringify(data.field));
+    }
     return false;
   });
 });</pre>
@@ -959,7 +1039,8 @@ layui.use('form', function(){
 <pre class="layui-code" lay-encode="true">
   <!--使用前需引入layui依赖文件-->
   <link rel="stylesheet" href="layui/css/layui.css">
-  <link rel="stylesheet" href="css/zlitDesign.css"></pre>
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="js/jquery-3.3.1.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
   <!--样式一-->
   <div class="zlit-number-1">
@@ -973,8 +1054,7 @@ layui.use('form', function(){
     <button class="zlit-number-reduce layui-icon layui-icon-down"></button>
     <input value="1" type="text" maxlength="6" class="zlit-input-number" oninput = "value=value.replace(/[^\d]/g,'')">
     <button class="zlit-number-add layui-icon layui-icon-up"></button>
-  </div>
-</pre>
+  </div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 $('.zlit-number-reduce').mousedown(function () {
   var val = Number($(this).next().val());
@@ -1003,50 +1083,98 @@ $('.zlit-number-add').mousedown(function () {
             <div class="form-box">
               <div class="h-slideInput">
                 <div id="slideTest1"></div>
-                <div id="slideTest2"></div>
+                <div class="unit-text">
+                  <div id="slideTest2" class="unit-slide"></div>
+                  <span>单位</span>
+                </div>
+
                 <div id="slideTest3"></div>
+                <div class="unit-text">
+                  <div id="slideTest4" class="unit-slide"></div>
+                  <span>单位</span>
+                </div>
+
+                <div class="double-range">
+                  <div id="slideTest5"></div>
+                  <input type="text" readonly class="layui-slider-input layui-input double-range-text">
+                  <span>单位</span>
+                </div>
+                <div id="slideTest6"></div>
               </div>
-              <div class="v-slideInput"></div>
             </div>
             <!--代码展示-->
             <div class="syntax">
 <pre class="layui-code" lay-encode="true">
   <!--使用前需引入layui依赖文件-->
   <link rel="stylesheet" href="layui/css/layui.css">
-  <link rel="stylesheet" href="css/zlitDesign.css"></pre>
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script>
+  <script src="js/jquery-3.3.1.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-  <!--样式一-->
-  <div class="zlit-number-1">
-    <button class="zlit-number-reduce">-</button>
-    <input value="1" type="text" maxlength="6" class="zlit-input-number" oninput = "value=value.replace(/[^\d]/g,'')">
-    <button class="zlit-number-add">+</button>
-  </div>
+  <div id="slideTest11"></div>
+  <div id="slideTest22"></div>
 
-                <!--样式二-->
-  <div class="zlit-number-2">
-    <button class="zlit-number-reduce layui-icon layui-icon-down"></button>
-    <input value="1" type="text" maxlength="6" class="zlit-input-number" oninput = "value=value.replace(/[^\d]/g,'')">
-    <button class="zlit-number-add layui-icon layui-icon-up"></button>
+  <div id="slideTest33"></div>
+  <div id="slideTest44"></div>
+
+  <div class="double-range">
+    <div id="slideTest55"></div>
+    <input type="text" readonly class="layui-slider-input layui-input double-range-text">
   </div>
-</pre>
+  <div id="slideTest66"></div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
-$('.zlit-number-reduce').mousedown(function () {
-  var val = Number($(this).next().val());
-  val--;
-  if (val<=0){
-    $(this).next().val(0);
-  }else{
-    $(this).next().val(val);
-  }
-});
-$('.zlit-number-add').mousedown(function () {
-  var val = Number($(this).prev().val());
-  val++;
-  if (val>=999999){
-    $(this).prev().val(999999);
-  }else{
-    $(this).prev().val(val);
-  }
+layui.use('slider', function(){
+  var slider = layui.slider;
+  //无步进值无输入框
+  slider.render({
+    elem: '#slideTest11',  //绑定元素
+    theme: '#91D5FF',     //自定义主题色
+    value: 25,            //设置初始值
+  });
+  //无步进值有输入框
+  slider.render({
+    elem: '#slideTest22',  //绑定元素
+    theme: '#91D5FF',     //自定义主题色
+    input: true,          //开启输入框
+    value: 25,            //设置初始值
+  });
+
+  //有步进值无输入框
+  slider.render({
+    elem: '#slideTest33',  //绑定元素
+    theme: '#91D5FF',     //自定义主题色
+    step: 10,              //开启步进值
+    value: 40,            //设置初始值
+    showstep: true        //开启间断点
+  });
+  //有步进值有输入框
+  slider.render({
+    elem: '#slideTest44',  //绑定元素
+    theme: '#91D5FF',     //自定义主题色
+    step: 10,              //开启步进值
+    input: true,          //开启输入框
+    value: 40,            //设置初始值
+    showstep: true        //开启间断点
+  });
+
+  //双滑块带输入框
+  var double = slider.render({
+    elem: '#slideTest55',  //绑定元素
+    theme: '#91D5FF',     //自定义主题色
+    range: true,          //开启拖拽范围
+    value: [5,55],        //设置初始值
+    change: function(vals){
+      $('.double-range-text').val(vals[0]+'-'+vals[1]);
+    }
+  });
+  $('.double-range-text').val(double.config.value[0]+'-'+double.config.value[1]);
+  //双滑块无输入框
+  slider.render({
+    elem: '#slideTest66',  //绑定元素
+    theme: '#91D5FF',     //自定义主题色
+    range: true,          //开启拖拽范围
+    value: [5,55]        //设置初始值
+  });
 });</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
@@ -1060,8 +1188,45 @@ $('.zlit-number-add').mousedown(function () {
             <p>用于在多个备选项中选中单个状态，方便用户在比较中选择。</p>
             <p>1.选项数量2-5个为宜。</p>
             <p>2.一般会提供默认选中项，默认选中第一个。</p>
-            <div class="form-box">
+            <div class="form-box" style="width: 70%;">
+              <form action="" class="layui-form">
+                <div class="radio-style-1">
+                  <div class="layui-form-item">
+                    <label class="layui-form-label zlit-form-label">正常</label>
+                    <div class="layui-input-block zlit-input-block">
+                      <input type="radio" name="radio" value="1" title="选项一">
+                      <input type="radio" name="radio" value="2" title="选项二" checked>
+                      <input type="radio" name="radio" value="3" title="选项三">
+                    </div>
+                  </div>
+                  <div class="layui-form-item">
+                    <label class="layui-form-label zlit-form-label">禁用</label>
+                    <div class="layui-input-block zlit-input-block">
+                      <input type="radio" name="radio1" value="1" title="禁用一" disabled>
+                      <input type="radio" name="radio1" value="2" title="禁用二" disabled checked>
+                      <input type="radio" name="radio1" value="3" title="禁用三" disabled>
+                    </div>
+                  </div>
+                </div>
 
+                <div class="radio-style-2">
+                  <div class="layui-form-item">
+                    <label class="layui-form-label zlit-form-label">正常</label>
+                    <div class="layui-input-block zlit-input-block zlit-input-radio">
+                      <input type="radio" name="name" value="1" title="选项一">
+                      <input type="radio" name="name" value="2" title="选项二" checked>
+                      <input type="radio" name="name" value="3" title="选项三">
+                    </div>
+                  </div>
+                  <div class="layui-form-item">
+                    <label class="layui-form-label zlit-form-label">禁用</label>
+                    <div class="layui-input-block zlit-input-block zlit-input-radio">
+                      <input type="radio" name="name1" value="1" title="禁用一" disabled>
+                      <input type="radio" name="name1" value="2" title="禁用二" disabled checked>
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
 
             <!--代码展示-->
@@ -1071,10 +1236,48 @@ $('.zlit-number-add').mousedown(function () {
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="layui/layui.js"></script></pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-</pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
-</pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <!--圆形风格-->
+  <form action="" class="layui-form">  <!--form标签不是必须，可更改，类名layui-form必须-->
+    <div class="layui-form-item">
+      <label class="layui-form-label zlit-form-label">正常</label>
+      <div class="layui-input-block zlit-input-block">
+        <input type="radio" name="radio" value="1" title="选项一">
+        <input type="radio" name="radio" value="2" title="选项二" checked>
+        <input type="radio" name="radio" value="3" title="选项三">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label zlit-form-label">禁用</label>
+      <div class="layui-input-block zlit-input-block">
+        <input type="radio" name="radio1" value="1" title="禁用一" disabled>
+        <input type="radio" name="radio1" value="2" title="禁用二" disabled checked>
+        <input type="radio" name="radio1" value="3" title="禁用三" disabled>
+      </div>
+    </div>
+  </form>
+
+  <!--矩形风格-->
+  <form action="" class="layui-form">  <!--form标签不是必须，可更改，类名layui-form必须-->
+  <div class="layui-form-item">
+    <label class="layui-form-label zlit-form-label">正常</label>
+    <div class="layui-input-block zlit-input-block zlit-input-radio">
+      <input type="radio" name="name" value="1" title="选项一">
+      <input type="radio" name="name" value="2" title="选项二" checked>
+      <input type="radio" name="name" value="3" title="选项三">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label zlit-form-label">禁用</label>
+    <div class="layui-input-block zlit-input-block zlit-input-radio">
+      <input type="radio" name="name1" value="1" title="禁用一" disabled>
+      <input type="radio" name="name1" value="2" title="禁用二" disabled checked>
+    </div>
+  </div></form></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+layui.use('form', function(){
+  var form = layui.form;
+});</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -1087,8 +1290,27 @@ $('.zlit-number-add').mousedown(function () {
             <p>用于在在一组可选项中进行多项选择时；单个使用可表示两种状态的切换。</p>
             <p>1.选项数量2-5个为宜。</p>
             <p>2.根据实际需要默认勾选选项。</p>
-            <div class="form-box">
-
+            <div class="form-box" style="width: 70%;">
+              <form action="" class="layui-form">
+                <div class="check-style">
+                  <div class="layui-form-item">
+                    <label class="layui-form-label zlit-form-label">正常</label>
+                    <div class="layui-input-block zlit-input-block">
+                      <input type="checkbox" name="" title="选项一" lay-skin="primary">
+                      <input type="checkbox" name="" title="选项二" lay-skin="primary" checked>
+                      <input type="checkbox" name="" title="选项三" lay-skin="primary">
+                    </div>
+                  </div>
+                  <div class="layui-form-item">
+                    <label class="layui-form-label zlit-form-label">禁用</label>
+                    <div class="layui-input-block zlit-input-block">
+                      <input type="checkbox" name="" title="选项一" lay-skin="primary" disabled>
+                      <input type="checkbox" name="" title="选项二" lay-skin="primary" checked disabled>
+                      <input type="checkbox" name="" title="选项三" lay-skin="primary" disabled>
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
 
             <!--代码展示-->
@@ -1098,10 +1320,29 @@ $('.zlit-number-add').mousedown(function () {
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="layui/layui.js"></script></pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-</pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
-</pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <form action="" class="layui-form">  <!--form标签不是必须，可更改，类名layui-form必须-->
+    <div class="layui-form-item">
+      <label class="layui-form-label zlit-form-label">正常</label>
+      <div class="layui-input-block zlit-input-block">
+        <input type="checkbox" name="" title="选项一" lay-skin="primary">
+        <input type="checkbox" name="" title="选项二" lay-skin="primary" checked>
+        <input type="checkbox" name="" title="选项三" lay-skin="primary">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label zlit-form-label">禁用</label>
+      <div class="layui-input-block zlit-input-block">
+        <input type="checkbox" name="" title="选项一" lay-skin="primary" disabled>
+        <input type="checkbox" name="" title="选项二" lay-skin="primary" checked disabled>
+        <input type="checkbox" name="" title="选项三" lay-skin="primary" disabled>
+      </div>
+    </div>
+  </form></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+layui.use('form', function(){
+  var form = layui.form;
+});</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -1114,21 +1355,70 @@ $('.zlit-number-add').mousedown(function () {
             <p>标记属性或维度，可自定义输入添加标签</p>
             <p>1.可添加多个标签，添加后可编辑和删除；修改标签文字失去焦点即可完成修改。</p>
             <p>2.标签字数6字以内为宜。</p>
-            <div class="form-box">
-
+            <div class="form-box" style="width: 70%;">
+              <div class="zlit-label-box">
+                <div class="zlit-label-single">
+                  <span>标签一</span>
+                  <i class="layui-icon layui-icon-close"></i>
+                </div>
+                <div class="zlit-label-single">
+                  <span>标签二</span>
+                  <i class="layui-icon layui-icon-close"></i>
+                </div>
+                <div class="zlit-label-add">
+                  <i class="layui-icon layui-icon-add-1"></i>
+                  <span>添加</span>
+                </div>
+              </div>
             </div>
 
             <!--代码展示-->
             <div class="syntax">
 <pre class="layui-code" lay-encode="true">
-  <!--使用前需引入layui依赖文件-->
-  <link rel="stylesheet" href="layui/css/layui.css">
+  <!--使用前需引入依赖文件-->
   <link rel="stylesheet" href="css/zlitDesign.css">
-  <script src="layui/layui.js"></script></pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-</pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
-</pre>
+  <script src="js/jquery-3.3.1.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <div class="zlit-label-box">
+    <div class="zlit-label-add">
+      <i class="layui-icon layui-icon-add-1"></i>
+      <span>添加</span>
+    </div>
+  </div></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+//删除标签
+$('.zlit-label-box').on('click','.zlit-label-single i',function () {
+  var that = $(this);
+  $(this).closest('.zlit-label-single').animate({width:0,padding:'6px 0'},200,function () {
+    that.closest('.zlit-label-single').remove();
+  });
+});
+//添加标签
+$('.zlit-label-box').on('click','.zlit-label-add', function () {
+  var div = $('<div></div>'),
+      span = $('<span></span>'),
+      i = $('<i></i>');
+  div.css({padding:'6px 0',overflow:'hidden',whiteSpace:'nowrap'}).insertBefore($(this).closest('.zlit-label-add'));
+  i.css({position:'absolute'}).addClass('layui-icon layui-icon-close');
+  span.text('新标签').appendTo(div);
+  div.animate({padding:'6px 35px 6px 10px'},200,function () {
+    i.appendTo(div);
+    div.addClass('zlit-label-single');
+  });
+});
+//修改标签
+$('.zlit-label-box').on('click','.zlit-label-single span',function () {
+  var w = $(this).width();
+  var input = $('<input>');
+  var that = $(this);
+  input.val($(this).text()).css({color:'#108EE9',width:w}).insertBefore($(this));
+  $(this).css({display:'none'});
+  input[0].focus();
+  input.blur(function () {
+    that.css({display:'inline',color:'#333'}).text(input.val());
+    $(this).remove();
+  });
+});</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -1142,8 +1432,22 @@ $('.zlit-number-add').mousedown(function () {
             <p>1.点击或移入触点，出现下拉菜单，在列表中进行选择。</p>
             <p>2.当选项少时(少于 5 项)，可直接将选项平铺，使用单选框的方式。可根据实际应用场景随机应变。</p>
             <p>3.选项很多时可带搜索功能，输入文字出现匹配项。</p>
-            <div class="form-box">
-
+            <div class="form-box select-box">
+              <form action="" class="layui-form">
+                <div class="layui-form-item">
+                  <label class="layui-form-label zlit-form-label">下拉菜单</label>
+                  <div class="layui-input-block">
+                    <select name="city" lay-search>
+                      <option value=""></option>
+                      <option value="0">选项一</option>
+                      <option value="1">选项二</option>
+                      <option value="2">选项三</option>
+                      <option value="3">选项四</option>
+                      <option value="4">选项五</option>
+                    </select>
+                  </div>
+                </div>
+              </form>
             </div>
 
             <!--代码展示-->
@@ -1153,10 +1457,26 @@ $('.zlit-number-add').mousedown(function () {
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="layui/layui.js"></script></pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-</pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
-</pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <form action="" class="layui-form">   <!--form标签不是必须，可更改，类名layui-form必须-->
+    <div class="layui-form-item">
+      <label class="layui-form-label zlit-form-label">下拉菜单</label>
+      <div class="layui-input-block">
+        <select name="city">
+          <option value=""></option>
+          <option value="0">选项一</option>
+          <option value="1">选项二</option>
+          <option value="2">选项三</option>
+          <option value="3">选项四</option>
+          <option value="4">选项五</option>
+        </select>
+      </div>
+    </div>
+  </form></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+layui.use('form', function(){
+  var form = layui.form;
+});</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -1171,9 +1491,13 @@ $('.zlit-number-add').mousedown(function () {
             <p>2.鼠标移入或点击菜单触发子菜单。</p>
             <p>3.选项很多时可带搜索功能，输入文字出现匹配项。</p>
             <div class="form-box">
-
+              <label class="layui-form-label zlit-form-label">级联选择</label>
+              <div class="layui-input-block zlit-cascade">
+                <input type="text" id="cascade" class="layui-input" readonly="readonly">
+              </div>
             </div>
 
+            <a href="https://fly.layui.com/extend/cascader/" style="margin: 0 0 10px 20px;color: #108EE9;display: block;" target="_blank">点击查看扩展插件详情</a>
             <!--代码展示-->
             <div class="syntax">
 <pre class="layui-code" lay-encode="true">
@@ -1181,10 +1505,41 @@ $('.zlit-number-add').mousedown(function () {
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="layui/layui.js"></script></pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-</pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
-</pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <label class="layui-form-label zlit-form-label">级联选择</label>
+  <div class="layui-input-block zlit-cascade">
+    <input type="text" id="cascade1" class="layui-input" readonly="readonly">
+  </div></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+查看数据格式：https://www.easy-mock.com/mock/5bdffa7aae524521410b1598/tableData/cascader
+layui.config({
+  base: "./layui/lay/mymodules/"
+}).use(['form',"cascader"], function(){
+  var cascader = layui.cascader;
+  /*后台参数返回格式：{
+      "Data": data,
+      "Code": 0,
+      "Msg": "错误！！"
+  }*/
+  cascader({
+    elem: "#cascade",             //绑定容器id
+    // data: data,                   //数据,json格式数组
+    url: "https://www.easy-mock.com/mock/5bdffa7aae524521410b1598/tableData/cascader",                //异步数据请求地址
+    type: "get",                  //请求方式
+    // triggerType: "change",     //处罚方式（鼠标点击或鼠标移入）
+    // showLastLevels: true,      //是否显示最后一级
+    // where: {                   //异步传送得参数
+    //     a: "aaa"
+    // },
+    value: ["B", "BB1",'BBB1'],   //已选择得值
+    changeOnSelect: true,         //开启可选择任意一级
+    success: function (valData,labelData) {   //选择后的回调
+      // valData  选项得值
+      // labelData   页面选项显示得值
+      console.log(valData,labelData);
+    }
+  });
+});</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -1198,20 +1553,70 @@ $('.zlit-number-add').mousedown(function () {
             <p>1.一般不要超过3级，可单选可多选。</p>
             <p>2.选项很多时可带搜索功能，输入文字出现匹配项。</p>
             <div class="form-box">
-
+              <label class="layui-form-label zlit-form-label">树选择</label>
+              <div class="layui-input-block" style="width: 300px;">
+                <select name="city" xm-select="example11_1" xm-select-search xm-select-search-type="dl" xm-select-skin="normal">
+                  <option value="">请选择</option>
+                </select>
+              </div>
             </div>
 
+            <a href="https://hnzzmsf.github.io/layui-formSelects/docs/index.html#/" style="margin: 0 0 10px 20px;color: #108EE9;display: block;" target="_blank">点击查看扩展插件文档详情</a>
+            <a href="https://hnzzmsf.github.io/example/example_v4.html" style="margin: 0 0 10px 20px;color: #108EE9;display: block;" target="_blank">点击查看扩展插件示例详情</a>
             <!--代码展示-->
             <div class="syntax">
 <pre class="layui-code" lay-encode="true">
   <!--使用前需引入layui依赖文件-->
   <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/formSelects-v4.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="layui/layui.js"></script></pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-</pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
-</pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <!--使用时请将注释解除-->
+  <!--<select name="city" xm-select="example11_1" xm-select-search xm-select-search-type="dl" xm-select-skin="normal">
+    <option value="">请选择</option>
+  </select>--></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+数据格式请移步https://www.easy-mock.com/mock/5bdffa7aae524521410b1598/tableData/zlittree
+layui.config({
+  base: './layui/lay/mymodules/'
+}).extend({
+  formSelects: 'formSelects-v4'
+}).use(['formSelects'], function(){
+  var formSelects = layui.formSelects;
+  // local模式  data数据为本地定义
+  /*layui.formSelects.data('example11_1', 'local', {   //example11_1为绑定元素的xm-select值
+    arr: [
+      {name: '分组1', type: 'optgroup'},
+      {name: '北京', value: 1, children: [{name: '朝阳', disabled: true, value: 11}, {name: '海淀', value: 12}]},
+      {name: '分组2', type: 'optgroup'},
+      {name: '深圳', value: 2, children: [{name: '龙岗', value: 21}]},
+    ]
+  });
+  formSelects.value('example11_1', [1,2],true);  //设置初始选中项*/
+
+  //server模式  data数据为远程数据
+  layui.formSelects.data('example11_1', 'server', {   //example11_1为绑定元素的xm-select值
+    url: 'https://www.easy-mock.com/mock/5bdffa7aae524521410b1598/tableData/zlittree',
+    success:function (id, url, val, result) {
+      // id:       绑定容器的xm-select值
+      // url:      数据请求的路径
+      // val:      搜索的值
+      // result:   返回的结果
+      formSelects.value('example11_1',[12,17]);   //设置初始选中项
+    }
+  });
+
+  //监听事件获取实时选择数据
+  formSelects.on('example11_1', function(id, vals, choice, isAdd, isDisabled){
+    //id:           点击select的id
+    //vals:         当前select已选中的值
+    //choice:       当前select点击的值
+    //isAdd:        当前操作选中or取消
+    //isDisabled:   当前选项是否是disabled
+    console.log(vals);
+  }, true);
+});</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -1224,8 +1629,47 @@ $('.zlit-number-add').mousedown(function () {
             <p>需要输入一个日期时，点击输入框，弹出日期面板进行选择。</p>
             <p>1.根据需要使用合适维度的日期选择器：年，月，周，日；日期范围选择。</p>
             <p>2.可提供快速跳转今天按钮或其他快捷选项，如昨天，一周前等。</p>
-            <div class="form-box" style="width: 88%;">
-
+            <div class="form-box" style="width: 80%;">
+              <form action="" class="layui-form">
+                <div class="layui-inline">
+                  <label class="layui-form-label zlit-form-label">日期选择</label>
+                  <div class="layui-input-inline">
+                    <div class="zlit-date-range">
+                      <input type="text" class="layui-input" id="date1" placeholder="yyyy/MM/dd">
+                      <i class="layui-icon layui-icon-date"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="layui-inline">
+                  <label class="layui-form-label zlit-form-label">月份选择</label>
+                  <div class="layui-input-inline">
+                    <div class="zlit-date-range">
+                      <input type="text" class="layui-input" id="date2" placeholder="yyyy/MM">
+                      <i class="layui-icon layui-icon-date"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="layui-inline">
+                  <label class="layui-form-label zlit-form-label">年份选择</label>
+                  <div class="layui-input-inline">
+                    <div class="zlit-date-range">
+                      <input type="text" class="layui-input" id="date3" placeholder="yyyy">
+                      <i class="layui-icon layui-icon-date"></i>
+                    </div>
+                  </div>
+                </div>
+                <div style="margin-top: 20px;">
+                  <div class="layui-inline">
+                    <label class="layui-form-label zlit-form-label">日期范围</label>
+                    <div class="layui-input-inline">
+                      <div class="zlit-date-range">
+                        <input type="text" class="layui-input" id="date4" placeholder="yyyy/MM/dd - yyyy/MM/dd">
+                        <i class="layui-icon layui-icon-date"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
 
             <!--代码展示-->
@@ -1235,10 +1679,74 @@ $('.zlit-number-add').mousedown(function () {
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="layui/layui.js"></script></pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-</pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
-</pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <div class="zlit-date-range">
+    <input type="text" class="layui-input" id="date11" placeholder="yyyy/MM/dd">
+    <i class="layui-icon layui-icon-date"></i>
+  </div>
+  <div class="zlit-date-range">
+    <input type="text" class="layui-input" id="date22" placeholder="yyyy/MM">
+    <i class="layui-icon layui-icon-date"></i>
+  </div>
+  <div class="zlit-date-range">
+    <input type="text" class="layui-input" id="date33" placeholder="yyyy">
+    <i class="layui-icon layui-icon-date"></i>
+  </div>
+  <div class="zlit-date-range">
+    <input type="text" class="layui-input" id="date44" placeholder="yyyy/MM/dd - yyyy/MM/dd">
+    <i class="layui-icon layui-icon-date"></i>
+  </div></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+layui.use('laydate', function() {
+  var laydate = layui.laydate;
+
+  //日期选择
+  laydate.render({
+    elem: '#date11',        //绑定容器
+    format: 'yyyy/MM/dd',  //自定义格式
+    theme: '#108EE9',      //自定义颜色主题
+    done: function(value, date){
+      console.log(value); //得到日期生成的值，如：2017-08-18
+      console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+    }
+  });
+
+  //月份选择
+  laydate.render({
+    elem: '#date22',        //绑定容器
+    format: 'yyyy/MM',     //自定义格式
+    theme: '#108EE9',      //自定义颜色主题
+    type: 'month',         //月份选择
+    done: function(value, date){
+      console.log(value); //得到日期生成的值，如：2017-08-18
+      console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+    }
+  });
+
+  //年份选择
+  laydate.render({
+    elem: '#date33',        //绑定容器
+    theme: '#108EE9',      //自定义颜色主题
+    type: 'year',          //年份选择
+    done: function(value, date){
+      console.log(value);  //得到日期生成的值，如：2017-08-18
+      console.log(date);   //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+    }
+  });
+
+  //日期范围
+  laydate.render({
+    elem: '#date44',        //绑定容器
+    theme: '#108EE9',      //自定义颜色主题
+    range: true,           //开启日期选择范围
+    format: 'yyyy/MM/dd',  //自定义格式
+    done: function(value, date, endDate){
+      console.log(value); //得到日期生成的值，如：2017-08-18
+      console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+      console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+    }
+  });
+});</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -1252,7 +1760,15 @@ $('.zlit-number-add').mousedown(function () {
             <p>1.根据需要使用合适维度的时间选择器：时，时-分，时-分-秒；时间范围选择。</p>
             <p>2.可根据实际选择需要提供某些固定时间的选项，同下拉选择菜单</p>
             <div class="form-box">
-
+              <div class="layui-inline">
+                <label class="layui-form-label zlit-form-label">时间选择</label>
+                <div class="layui-input-inline">
+                  <div class="zlit-date-range">
+                    <input type="text" class="layui-input" id="time1" placeholder="HH:mm:ss">
+                    <i class="layui-icon layui-icon-log"></i>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!--代码展示-->
@@ -1262,10 +1778,26 @@ $('.zlit-number-add').mousedown(function () {
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="layui/layui.js"></script></pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-</pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
-</pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <div class="zlit-date-range">
+    <input type="text" class="layui-input" id="time11" placeholder="HH:mm:ss">
+    <i class="layui-icon layui-icon-log"></i>
+  </div></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+layui.use('laydate', function() {
+  var laydate = layui.laydate;
+
+  laydate.render({
+    elem: '#time1',        //绑定容器
+    theme: '#108EE9',      //自定义颜色主题
+    format: 'HH:mm:ss',    //自定义格式
+    type: 'time',          //时间选择
+    done: function(value, date){
+      console.log(value); //得到日期生成的值，如：2017-08-18
+      console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+    }
+  });
+});</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -1278,8 +1810,50 @@ $('.zlit-number-add').mousedown(function () {
             <p>适用需表示两种相互对立的状态间的切换。</p>
             <p>1.根据实际场景需要默认是开状态或关状态。</p>
             <p>2.可搭配“开/关”、“状态文字(如：日间/夜间)”、对错图标符号使用。</p>
-            <div class="form-box">
-
+            <div class="form-box" style="width: 60%;">
+              <form action="" class="layui-form">
+                <div class="layui-form-item">
+                  <p>有文字修饰</p>
+                  <div class="layui-inline">
+                    <label class="layui-form-label zlit-form-label">默认开</label>
+                    <input type="checkbox" name="" lay-skin="switch" lay-text="开|关" checked>
+                  </div>
+                  <div class="layui-inline">
+                    <label class="layui-form-label zlit-form-label">默认关</label>
+                    <input type="checkbox" name="" lay-skin="switch" lay-text="开|关">
+                  </div>
+                  <div class="layui-inline">
+                    <label class="layui-form-label zlit-form-label">默认开</label>
+                    <input type="checkbox" name="" lay-skin="switch" lay-text="日间|夜间" checked>
+                  </div>
+                  <div class="layui-inline">
+                    <label class="layui-form-label zlit-form-label">默认关</label>
+                    <input type="checkbox" name="" lay-skin="switch" lay-text="日间|夜间">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <p>无文字修饰</p>
+                  <div class="layui-inline">
+                    <label class="layui-form-label zlit-form-label">默认开</label>
+                    <input type="checkbox" name="" lay-skin="switch" checked>
+                  </div>
+                  <div class="layui-inline">
+                    <label class="layui-form-label zlit-form-label">默认关</label>
+                    <input type="checkbox" name="" lay-skin="switch">
+                  </div>
+                </div>
+                <div class="layui-form-item" style="margin: 0;">
+                  <p>禁用状态</p>
+                  <div class="layui-inline">
+                    <label class="layui-form-label zlit-form-label">开禁用</label>
+                    <input type="checkbox" name="" lay-skin="switch" checked disabled>
+                  </div>
+                  <div class="layui-inline">
+                    <label class="layui-form-label zlit-form-label">关禁用</label>
+                    <input type="checkbox" name="" lay-skin="switch" disabled>
+                  </div>
+                </div>
+              </form>
             </div>
 
             <!--代码展示-->
@@ -1289,10 +1863,24 @@ $('.zlit-number-add').mousedown(function () {
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="layui/layui.js"></script></pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-</pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
-</pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <div class="layui-form">   <!-- div标签不是必须，类名layui-form是必须的 -->
+    <!--有文字修饰-->
+    <input type="checkbox" name="" lay-skin="switch" lay-text="开|关" checked>
+    <input type="checkbox" name="" lay-skin="switch" lay-text="开|关">
+    <input type="checkbox" name="" lay-skin="switch" lay-text="日间|夜间" checked>
+    <input type="checkbox" name="" lay-skin="switch" lay-text="日间|夜间">
+    <!--无文字修饰-->
+    <input type="checkbox" name="" lay-skin="switch" checked>
+    <input type="checkbox" name="" lay-skin="switch">
+    <!--禁用样式-->
+    <input type="checkbox" name="" lay-skin="switch" checked disabled>
+    <input type="checkbox" name="" lay-skin="switch" disabled>
+  </div></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+layui.use('form', function(){
+  var form = layui.form;
+});</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -1305,13 +1893,16 @@ $('.zlit-number-add').mousedown(function () {
             <p>当需要上传/导入一个或多个文件时。</p>
             <p>1.提示上传条件限制，包括文件格式和大小。</p>
             <p>2.对于较大文件上传时，显示上传进度，上传动作可取消。</p>
+            <!--上传样式一-->
             <div class="form-box">
-
+              <div class="layui-upload zlit-upload">
+                <label class="layui-form-label zlit-form-label">上传文件</label>
+                <button type="button" class="layui-btn layui-btn-primary zlit-btn-primary" id="testList"><i class="layui-icon layui-icon-upload-drag"></i>选择多文件</button>
+                <span class="zlit-upload-span">支持扩展名：.rar .zip .doc .docx .pdf .jpg...</span>
+                <ul id="demoList" class="zlit-upload-list"></ul>
+                <button type="button" class="layui-btn zlit-btn-default" id="testListAction" style="margin: 0 auto;display: block;">开始上传</button>
+              </div>
             </div>
-            <div class="form-box">
-
-            </div>
-
             <!--代码展示-->
             <div class="syntax">
 <pre class="layui-code" lay-encode="true">
@@ -1319,10 +1910,242 @@ $('.zlit-number-add').mousedown(function () {
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="layui/layui.js"></script></pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <div class="layui-upload zlit-upload">
+    <label class="layui-form-label zlit-form-label">上传文件</label>
+    <button type="button" class="layui-btn layui-btn-primary zlit-btn-primary" id="testList1"><i class="layui-icon layui-icon-upload-drag"></i>选择多文件</button>
+    <span class="zlit-upload-span">支持扩展名：.rar .zip .doc .docx .pdf .jpg...</span>
+    <ul id="demoList1" class="zlit-upload-list"></ul>
+    <button type="button" class="layui-btn zlit-btn-default" id="testListAction1">开始上传</button>
+  </div>
 </pre>
-              <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
-</pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+var xhrOnProgress=function(fun) {
+  xhrOnProgress.onprogress = fun; //绑定监听
+  //使用闭包实现监听绑
+  return function() {
+    //通过$.ajaxSettings.xhr();获得XMLHttpRequest对象
+    var xhr = $.ajaxSettings.xhr();
+    //判断监听函数是否为函数
+    if (typeof xhrOnProgress.onprogress !== 'function')
+      return xhr;
+    //如果有监听函数并且xhr对象支持绑定时就把监听函数绑定上去
+    if (xhrOnProgress.onprogress && xhr.upload) {
+      xhr.upload.onprogress = xhrOnProgress.onprogress;
+    }
+    return xhr;
+  }
+}
+layui.use('upload', function() {
+  var upload = layui.upload;
+  //多文件列表示例
+  var demoListView = $('#demoList')
+    ,uploadListIns = upload.render({
+    elem: '#testList'  //绑定的容器
+    ,method: 'post'
+    ,url: './upload.class.php'   //请求的地址
+    ,accept: 'file'    //限定文件格式images/file/video/audio
+    ,multiple: true    //开启多选
+    ,auto: false       //关闭自动上传
+    ,drag: false       //关闭拖拽上传
+    ,bindAction: '#testListAction'    //结合auto:false使用，指向另外一个按钮元素来执行上传动作
+    ,choose: function(obj){
+      var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+
+      //读取本地文件
+      obj.preview(function(index, file, result){
+        //result值为文件的base64格式
+        var li = $(['<li id="upload-'+ index +'">',
+          '<i class="layui-icon layui-icon-note"></i>',
+          '<span class="zlit-file-name"><em class="zlit-upload-msg">等待上传</em>，文件名称：'+file.name+'，文件大小：'+(file.size/1014).toFixed(1)+'kb</span>',
+          '<div class="upload-ctrl"><i class="layui-icon layui-icon-refresh zlit-reload"></i><i class="layui-icon layui-icon-close zlit-delete"></i></div><div class="upload-progress"><div class="inner"></div></div></li>'
+        ].join(''));
+
+        //单个重传
+        li.find('.zlit-reload').on('click', function(){
+          obj.upload(index, file);
+        });
+
+        //删除
+        li.find('.zlit-delete').on('click', function(){
+          delete files[index]; //删除对应的文件
+          li.remove();
+          uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+        });
+        demoListView.append(li);
+      });
+    }
+    ,xhr:xhrOnProgress
+    ,progress:function(value){//上传进度回调 value进度值
+      if (value<100){
+        $('.zlit-upload-msg').html('<em class="zlit-upload-msg" style="color: #108ee9;">正在上传</em>');
+      }
+      $('.inner').css({width:value+'%'});
+    }
+    ,done: function(res, index, upload){
+      if(res.code == 0){ //上传成功
+        var li = demoListView.find('li#upload-'+ index)
+          ,tds = li.children();
+        tds.find('em').html('<em class="zlit-upload-msg" style="color: #5FB878;">上传成功</em>');
+        tds.find('.zlit-reload').css({display:'none'});
+        return delete this.files[index]; //删除文件队列已经上传成功的文件
+      }
+      this.error(index, upload);
+    }
+    ,error: function(index, upload){
+      $('.inner').css({width:'50%',background:'#FF5722'});
+      var li = demoListView.find('li#upload-'+ index)
+        ,tds = li.children();
+      tds.find('em').html('<em class="zlit-upload-msg" style="color: #FF5722;">上传失败</em>');
+      tds.find('.zlit-reload').css({display:'inline'});
+    }
+  });
+});</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+
+            <!--上传样式二-->
+            <div class="form-box">
+              <div class="layui-upload zlit-upload">
+                <label class="layui-form-label zlit-form-label">上传图片</label>
+                <div class="zlit-upload-1 layui-input-block">
+                  <div class="zlit-img-view"></div>
+                  <div class="zlit-upload-1btn" id="upload1">
+                    <p>+</p>
+                    <span>上传</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+  <div class="zlit-upload-1">
+    <div class="zlit-img-view"></div>
+    <div class="zlit-upload-1btn" id="upload">
+      <p>+</p>
+      <span>上传</span>
+    </div>
+  </div></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+layui.use(['upload','layer'], function() {
+  var upload = layui.upload;
+  var layer = layui.layer;
+  upload.render({
+    elem: '#upload1'    //制定容器
+    ,url: './upload.class.php'   //上传地址
+    ,multiple: true       //开启多传
+    ,drag: false        //关闭拖拽上传
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+        var div = $('<div></div>'),img = $('<img/>');
+        img.prop({src:result,alt:file.name});
+        img.appendTo(div);
+        div.appendTo($('.zlit-img-view'));
+      });
+    }
+    ,done: function(res){
+      //上传完毕
+      layer.msg('图片上传成功', {
+        time: 3000, icon: 1
+      });
+    }
+  });
+});</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+
+            <!--上传样式三-->
+            <div class="form-box">
+              <div class="layui-upload zlit-upload">
+                <label class="layui-form-label zlit-form-label">导入文件</label>
+                <div class="zlit-upload-2 layui-input-block">
+                  <div class="zlit-upload-2-title">
+                    <span>导入标题</span>
+                    <i class="layui-icon layui-icon-close"></i>
+                  </div>
+                  <div class="zlit-upload-2-con">
+                    <div class="layui-upload-drag" id="uploadCon">
+                      <div><i class="layui-icon">+</i>选择文件</div>
+                      <p>点击或可以将文件拖入框内，完成上传</p>
+                      <p>支持Excel文件，不大于5M</p>
+                    </div>
+                  </div>
+                  <div class="zlit-upload-2-btn">
+                    <a href="#">下载模板</a>
+                    <div>
+                      <button class="layui-btn zlit-btn-default" id="uploadSub">确定</button>
+                      <button class="layui-btn layui-btn-primary zlit-btn-primary">取消</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+<div class="zlit-upload-2 layui-input-block">
+  <div class="zlit-upload-2-title">
+    <span>导入标题</span>
+    <i class="layui-icon layui-icon-close"></i>
+  </div>
+  <div class="zlit-upload-2-con">
+    <div class="layui-upload-drag" id="uploadCon1">
+      <div><i class="layui-icon">+</i>选择文件</div>
+      <p>点击或可以将文件拖入框内，完成上传</p>
+      <p>支持Excel文件，不大于5M</p>
+    </div>
+  </div>
+  <div class="zlit-upload-2-btn">
+    <a href="#">下载模板</a>
+    <div>
+      <button class="layui-btn zlit-btn-default" id="uploadSub1">确定</button>
+      <button class="layui-btn layui-btn-primary zlit-btn-primary">取消</button>
+    </div>
+  </div>
+</div></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+layui.use(['upload','layer'], function() {
+  var upload = layui.upload;
+  var layer = layui.layer;
+  upload.render({
+    elem: '#uploadCon'   //绑定容器
+    ,url: './upload.class.php'     //请求地址
+    ,accept: 'file'      //文件格式
+    ,auto: false         //关闭自动上传
+    ,bindAction: '#uploadSub'   //结合auto:false使用，指向另外一个按钮元素来执行上传动作
+    ,size: 1024*5        //限制文件最大5MB
+    ,choose: function(obj){
+      this.files = obj.pushFile();  //将每次选择的文件追加到文件队列,以便清除
+      $('.zlit-upload-2-title span').css({color:'#108ee9'});
+      obj.preview(function(index, file, result){
+        $('.zlit-upload-2-title span').text(file.name);
+      });
+    }
+    ,done: function(res,index){
+      //上传完毕
+      $('.zlit-upload-2-title span').css({color:'#5FB878'});
+      layer.msg('图片上传成功', {
+        time: 3000, icon: 1
+      });
+      return delete this.files[index]; //删除文件队列已经上传成功的文件
+    }
+    ,error: function(index, upload){
+      $('.zlit-upload-2-title span').css({color:'#FF5722'});
+    }
+  });
+});</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -1467,7 +2290,8 @@ layui.use('layer', function(){
     background:'rgba(0,0,0,0.6)',
     color:'#fff',
     borderRadius:'4px',
-    fontSize: '14px'
+    fontSize: '14px',
+    border: 'none'
   });
 
   //失败反馈
@@ -1481,7 +2305,8 @@ layui.use('layer', function(){
     background:'rgba(0,0,0,0.6)',
     color:'#fff',
     borderRadius:'4px',
-    fontSize: '14px'
+    fontSize: '14px',
+    border: 'none'
   });
 
   //警示反馈
@@ -1495,7 +2320,8 @@ layui.use('layer', function(){
     background:'rgba(0,0,0,0.6)',
     color:'#fff',
     borderRadius:'4px',
-    fontSize: '14px'
+    fontSize: '14px',
+    border: 'none'
   });
 
   //提示反馈
@@ -1509,7 +2335,8 @@ layui.use('layer', function(){
     background:'rgba(0,0,0,0.6)',
     color:'#fff',
     borderRadius:'4px',
-    fontSize: '14px'
+    fontSize: '14px',
+    border: 'none'
   });
 });</pre>
               </div>
@@ -2213,12 +3040,12 @@ layui.use('layer', function(){
 
 <!--=============================圆形进度条HTML结构=============================-->
   <!--模拟进行中如下：-->
-  <div class="circleChart" id="0"></div>
+  <div class="circleChart" id="01"></div>
   <!--模拟失败如下：-->
-  <div class="circleChart" id="1"></div>
+  <div class="circleChart" id="02"></div>
   <!--成功状态如下：-->
   <!--ps：此处data-value属性为当前进度值，亦可在js中设置value值，详见以下js代码部分-->
-  <div class="circleChart" id="2" data-value="100"></div></pre>
+  <div class="circleChart" id="03" data-value="100"></div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 <!--直线进度条-->
 layui.use('element', function(){
@@ -2248,7 +3075,7 @@ layui.use('element', function(){
 
 <!--圆形进度条js代码-->
 //进行中状态如下：
-$(".circleChart#0").circleChart({
+$(".circleChart#01").circleChart({
   size: 80,  // 滚动条大小
   value: 50,  //当前进度值
   text: 0,    //圆圈中间显示数字
@@ -2274,7 +3101,7 @@ setInterval(function () {
 }, 3000);
 
 //失败状态如下：（value小于0时即为失败）
-$(".circleChart#1").circleChart({
+$(".circleChart#02").circleChart({
   size: 80,
   text: 0,
   value: 60,
@@ -2294,7 +3121,7 @@ setTimeout(function () {
 }, 3000);
 
 //100%成功状态如下：
-$(".circleChart#2").circleChart({
+$(".circleChart#03").circleChart({
   size: 80,
   text: 0,
   color: '#428EE9',
@@ -2637,7 +3464,11 @@ stepFun(VnextBtn,VprevBtn,Vsteps,VstepCon,'top');</pre>
   </div>
 </div>
 </body>
-<script src="js/jquery-3.3.1.js"></script>
+<!--jquery-->
+<script src="./lib/js/jquery-3.3.1.js"></script>
+
+<!--validate验证-->
+<script src="./lib/js/jquery.validate.min.js"></script>
 
 <!--展示代码/换页js文件-->
 <script src="js/share.js"></script>
@@ -2646,10 +3477,10 @@ stepFun(VnextBtn,VprevBtn,Vsteps,VstepCon,'top');</pre>
 <script src="layui/layui.js"></script>
 
 <!--tips文字提示-->
-<script src="js/jquery.pure.tooltips.js"></script>
+<script src="./lib/js/jquery.pure.tooltips.js"></script>
 
 <!--圆形进度条js文件-->
-<script src="js/circleChart.min.js"></script>
+<script src="./lib/js/circleChart.min.js"></script>
 
 <!--本页面js文件-->
 <script src="js/components.js"></script>

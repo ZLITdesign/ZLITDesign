@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>ZLIT-Design共享资源</title>
   <link rel="stylesheet" href="./css/index.css">
-  <script src="./js/jquery-3.3.1.js"></script>
+  <script src="./lib/js/jquery-3.3.1.js"></script>
 </head>
 <body>
   <!--顶部-->
@@ -29,13 +29,14 @@
         <input type="text" placeholder="搜索">
       </div>
       <div class="theme">
-        <span class="theme_text">蓝色版</span>
+        <span class="theme_text">Web 1.0</span>
         <span>&gt;</span>
         <ul class="theme_btn">
-          <li>蓝色版</li>
-          <li>淡蓝版</li>
-          <li>暗黑版</li>
-          <li>灰色版</li>
+          <li>Web 2.0</li>
+          <li>Web 3.0</li>
+          <li>Mobile 1.0</li>
+          <li>Mobile 2.0</li>
+          <li>Mobile 3.0</li>
         </ul>
       </div>
     </div>
@@ -55,11 +56,8 @@
   });
   //主题色切换
   $('.theme_btn li').click(function () {
-    var index = $(this).index();
     var con = $(this).text();
     $('.theme_text').text(con);
-    var color = ['#108EE9','#53d1ff','#464646','#545f64'];
-    $('.header').css({background:color[index]});
   });
 
   //顶部导航滑块

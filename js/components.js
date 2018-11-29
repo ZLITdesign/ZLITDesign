@@ -27,19 +27,6 @@ layui.use(['element','layer'], function(){
       catalogFun(floors3,navLis3,slider3);
     }
   });
-
-  //监听导航点击
-  element.on('nav(demo)', function(elem){
-    // console.log(elem.text())
-    var index = layer.msg(elem.text(), {
-      offset: '30px',
-      anim: 1,
-      time: 2000,
-    });
-    layer.style(index,{
-      background:'#49A9EE'
-    })
-  });
 });
 
 
@@ -47,6 +34,41 @@ layui.use(['element','layer'], function(){
 $('.head-nav-m ul li').click(function () {
   $(this).addClass('active').siblings().removeClass('active');
 });
+
+
+//侧边栏导航
+//参数isOpen是否开启手风琴导航，默认关闭
+function zlitNav(isOpen=false){
+  $('.zlit-nav li').click(function(){
+    var flag = true;  //防止点击过快
+    var isHas = $(this).find('dl').is('dl');   //检测是否存在子级
+    if (isHas){
+      if (!flag){
+        return;
+      }
+      flag = false;
+      if ($(this).height()!==36){
+        $(this).find('dl').stop().slideUp(300,function(){
+          flag = true;
+        }).end().find('i').css({transform:'rotateZ(0)'});
+      }else{
+        $(this).find('dl').stop().slideDown(300,function(){
+          flag = true;
+        }).end().find('i').css({transform:'rotateZ(90deg)'});
+      }
+      if (isOpen){
+        $(this).siblings().find('dl').slideUp().end().find('i').css({transform:'rotateZ(0)'});
+      }
+    }else{
+      $(this).addClass('active').siblings().removeClass('active').find('dd').removeClass('active');
+    }
+  });
+  $('.zlit-nav-child dd').click(function(e){
+    e.stopPropagation();
+    $(this).addClass('active').siblings().removeClass('active').end().closest('li').siblings().find('dd').removeClass('active').end().removeClass('active');
+  });
+}
+zlitNav();
 
 
 //tab标签
@@ -134,19 +156,64 @@ prev_page.click(function () {
 //表单
 layui.use('form', function(){
   var form = layui.form;
-
-  //自定义校验规则
-  form.verify({
-    title: function(value){
-      if(value.length < 5){
-        return '标题至少得5个字符啊';
+  //自定义规则
+  $.validator.addMethod("define", function(value, element, param) {
+    /*let reg = /^\d{4,10}$/;
+    if (reg.test(value)){
+      return value;
+    }*/
+    if (value.length>=param[0] && value.length<=param[1]){
+      return value;
+    }
+  }, '格式不正确');
+  $('#con_form').validate({   //以下init,error,finish,desc等为input的name值
+    rules:{
+      init:{
+        required:true,
+        maxlength:10,
+        define:[6,10]    //自定义规则放在最后
+      },
+      error:{
+        required:true,
+        maxlength:10,
+        define:[6,10],   //自定义规则放在最后
+      },
+      finish:{
+        required:true
+      },
+      desc:{
+        required:true,
+        maxlength:100,
+        define:[50,100],  //自定义规则放在最后
+      }
+    },
+    messages:{
+      init:{
+        required:'此字段必须填写',
+        maxlength: '最多{0}个字符',
+        define:'至少也得输入{0}-{1}位字符啊'
+      },
+      error:{
+        required:'此字段必须填写',
+        maxlength: '最多{0}个字符',
+        define:'至少也得输入{0}-{1}位字符啊'
+      },
+      finish:{
+        required:'此字段必须填写'
+      },
+      desc:{
+        required:'此字段必须填写',
+        maxlength: '最多{0}个字符',
+        define:'至少也得输入{0}-{1}位字符啊'
       }
     }
   });
   //监听提交
   form.on('submit(demo1)', function(data){
-    console.log(data.field);
-    console.log(JSON.stringify(data.field));
+    if ($('#con_form').valid()){
+      console.log(data.field);
+      console.log(JSON.stringify(data.field));
+    }
     return false;
   });
 });
@@ -172,28 +239,425 @@ $('.zlit-number-add').mousedown(function () {
 //滑块输入
 layui.use('slider', function(){
   var slider = layui.slider;
-  //渲染
   slider.render({
     elem: '#slideTest1',  //绑定元素
     theme: '#91D5FF',     //自定义主题色
-    input: true,          //开启输入框
-    value: 25             //设置初始值
+    value: 25,            //设置初始值
   });
   slider.render({
     elem: '#slideTest2',  //绑定元素
     theme: '#91D5FF',     //自定义主题色
-    step: 5,              //开启步进值
     input: true,          //开启输入框
-    value: 40             //设置初始值
+    value: 25,            //设置初始值
   });
+
   slider.render({
     elem: '#slideTest3',  //绑定元素
-    theme: '#91D5FF',      //自定义主题色
-    range: true,           //开启拖拽范围
-    value: [5,55]             //设置初始值
+    theme: '#91D5FF',     //自定义主题色
+    step: 10,              //开启步进值
+    value: 40,            //设置初始值
+    showstep: true        //开启间断点
+  });
+  slider.render({
+    elem: '#slideTest4',  //绑定元素
+    theme: '#91D5FF',     //自定义主题色
+    step: 10,              //开启步进值
+    input: true,          //开启输入框
+    value: 40,            //设置初始值
+    showstep: true        //开启间断点
+  });
+
+
+  var double = slider.render({
+    elem: '#slideTest5',  //绑定元素
+    theme: '#91D5FF',     //自定义主题色
+    range: true,          //开启拖拽范围
+    value: [5,55],        //设置初始值
+    change: function(vals){
+      $('.double-range-text').val(vals[0]+'-'+vals[1]);
+    }
+  });
+  $('.double-range-text').val(double.config.value[0]+'-'+double.config.value[1]);
+
+  slider.render({
+    elem: '#slideTest6',  //绑定元素
+    theme: '#91D5FF',     //自定义主题色
+    range: true,          //开启拖拽范围
+    value: [5,55]        //设置初始值
   });
 });
+//标签
+//删除标签
+$('.zlit-label-box').on('click','.zlit-label-single i',function () {
+  var that = $(this);
+  $(this).closest('.zlit-label-single').animate({width:0,padding:'6px 0'},200,function () {
+    that.closest('.zlit-label-single').remove();
+  });
+});
+//添加标签
+$('.zlit-label-box').on('click','.zlit-label-add', function () {
+  var div = $('<div></div>'),
+      span = $('<span></span>'),
+      i = $('<i></i>');
+  div.css({padding:'6px 0',overflow:'hidden',whiteSpace:'nowrap'}).insertBefore($(this).closest('.zlit-label-add'));
+  i.css({position:'absolute'}).addClass('layui-icon layui-icon-close');
+  span.text('新标签').appendTo(div);
+  div.animate({padding:'6px 35px 6px 10px'},200,function () {
+    i.appendTo(div);
+    div.addClass('zlit-label-single');
+  });
+});
+//修改标签
+$('.zlit-label-box').on('click','.zlit-label-single span',function () {
+  var w = $(this).width();
+  var input = $('<input>');
+  var that = $(this);
+  input.val($(this).text()).css({color:'#108EE9',width:w}).insertBefore($(this));
+  $(this).css({display:'none'});
+  input[0].focus();
+  input.blur(function () {
+    that.css({display:'inline',color:'#333'}).text(input.val());
+    $(this).remove();
+  });
+});
+//级联选择
+layui.config({
+  base: "./layui/lay/mymodules/"
+}).use(['form',"cascader"], function(){
+  var cascader = layui.cascader;
+  var data = [
+    {
+      "id": "A",
+      "name": "一级选项1",
+      "children": [
+        {
+          "id": "AA1",
+          "name": "二级选项1-1"
+        },
+        {
+          "id": "AA2",
+          "name": "二级选项1-2"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "name": "一级选项2",
+      "children": [
+        {
+          "id": "BB1",
+          "name": "二级选项2-1",
+          "children": [
+            {
+              "id": "BBB1",
+              "name": "三级选项2-1-1"
+            },
+            {
+              "id": "BBB2",
+              "name": "三级选项2-1-2"
+            }
+          ]
+        },
+        {
+          "id": "BB2",
+          "name": "二级选项2-2",
+          "children": [
+            {
+              "id": "BBB3",
+              "name": "三级选项2-2-1"
+            },
+            {
+              "id": "BBB4",
+              "name": "三级选项2-2-2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "name": "一级选项3"
+    },
+    {
+      "id": "D",
+      "name": "一级选项4"
+    },
+    {
+      "id": "E",
+      "name": "一级选项5"
+    },
+    {
+      "id": "F",
+      "name": "一级选项6"
+    },
+    {
+      "id": "G",
+      "name": "一级选项7"
+    }
+  ];
+  /*后台参数返回格式：{
+      "Data": data,
+      "Code": 0,
+      "Msg": "错误！！"
+  }*/
+  cascader({
+    elem: "#cascade",             //绑定容器id
+    data: data,                   //数据,json格式数组
+    // url: "https://www.easy-mock.com/mock/5bdffa7aae524521410b1598/tableData/cascader",                //异步数据请求地址
+    type: "get",                  //请求方式
+    // triggerType: "change",     //处罚方式（鼠标点击或鼠标移入）
+    // showLastLevels: true,      //是否显示最后一级
+    // where: {                   //异步传送得参数
+    //     a: "aaa"
+    // },
+    id: ["B", "BB1",'BBB1'],   //已选择得值
+    changeOnSelect: true,         //开启可选择任意一级
+    success: function (valData,labelData) {   //选择后的回调
+      // valData  选项得值
+      // labelData   页面选项显示得值
+      console.log(valData,labelData);
+    }
+  });
+});
+//树选择
+layui.config({
+  base: './layui/lay/mymodules/'
+}).extend({
+  formSelects: 'formSelects-v4'
+}).use(['formSelects'], function(){
+  var formSelects = layui.formSelects;
+  // local模式  data数据为本地定义
+  layui.formSelects.data('example11_1', 'local', {   //example11_1为绑定元素的xm-select值
+    arr: [
+      {name: '分组1', type: 'optgroup'},
+      {name: '北京', value: 1, children: [{name: '朝阳', disabled: true, value: 11}, {name: '海淀', value: 12}]},
+      {name: '分组2', type: 'optgroup'},
+      {name: '深圳', value: 2, children: [{name: '龙岗', value: 21}]},
+    ]
+  });
+  formSelects.value('example11_1', [1,2],true);  //设置初始选中项
 
+  //server模式  data数据为远程数据
+  /*layui.formSelects.data('example11_1', 'server', {   //example11_1为绑定元素的xm-select值
+    url: 'https://www.easy-mock.com/mock/5bdffa7aae524521410b1598/tableData/zlittree',
+    success:function (id, url, val, result) {
+      // id:       绑定容器的xm-select值
+      // url:      数据请求的路径
+      // val:      搜索的值
+      // result:   返回的结果
+      formSelects.value('example11_1',[12,17]);  ////设置初始选中项
+    }
+  });
+  //监听事件获取实时选择数据
+  formSelects.on('example11_1', function(id, vals, choice, isAdd, isDisabled){
+    //id:           点击select的id
+    //vals:         当前select已选中的值
+    //choice:       当前select点击的值
+    //isAdd:        当前操作选中or取消
+    //isDisabled:   当前选项是否是disabled
+    console.log(vals);
+  }, true);*/
+});
+
+
+//日期选择
+layui.use('laydate', function() {
+  var laydate = layui.laydate;
+  laydate.render({
+    elem: '#date1',        //绑定容器
+    format: 'yyyy/MM/dd',  //自定义格式
+    theme: '#108EE9',      //自定义颜色主题
+    done: function(value, date){
+      console.log(value); //得到日期生成的值，如：2017-08-18
+      console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+    }
+  });
+
+  laydate.render({
+    elem: '#date2',        //绑定容器
+    format: 'yyyy/MM',     //自定义格式
+    theme: '#108EE9',      //自定义颜色主题
+    type: 'month',         //月份选择
+    done: function(value, date){
+      console.log(value); //得到日期生成的值，如：2017-08-18
+      console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+    }
+  });
+
+  laydate.render({
+    elem: '#date3',        //绑定容器
+    theme: '#108EE9',      //自定义颜色主题
+    type: 'year',          //年份选择
+    done: function(value, date){
+      console.log(value);  //得到日期生成的值，如：2017-08-18
+      console.log(date);   //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+    }
+  });
+
+  laydate.render({
+    elem: '#date4',        //绑定容器
+    theme: '#108EE9',      //自定义颜色主题
+    range: true,           //开启日期选择范围
+    format: 'yyyy/MM/dd',  //自定义格式
+    done: function(value, date, endDate){
+      console.log(value); //得到日期生成的值，如：2017-08-18
+      console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+      console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+    }
+  });
+
+  laydate.render({
+    elem: '#time1',        //绑定容器
+    theme: '#108EE9',      //自定义颜色主题
+    format: 'HH:mm:ss',    //自定义格式
+    type: 'time',          //时间选择
+    done: function(value, date){
+      console.log(value); //得到日期生成的值，如：2017-08-18
+      console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+    }
+  });
+});
+//文件上传样式一
+//创建进度条监听函数
+var xhrOnProgress=function(fun) {
+  xhrOnProgress.onprogress = fun; //绑定监听
+  //使用闭包实现监听绑
+  return function() {
+    //通过$.ajaxSettings.xhr();获得XMLHttpRequest对象
+    var xhr = $.ajaxSettings.xhr();
+    //判断监听函数是否为函数
+    if (typeof xhrOnProgress.onprogress !== 'function')
+      return xhr;
+    //如果有监听函数并且xhr对象支持绑定时就把监听函数绑定上去
+    if (xhrOnProgress.onprogress && xhr.upload) {
+      xhr.upload.onprogress = xhrOnProgress.onprogress;
+    }
+    return xhr;
+  }
+}
+layui.use('upload', function() {
+  var upload = layui.upload;
+  //多文件列表示例
+  var demoListView = $('#demoList')
+    ,uploadListIns = upload.render({
+    elem: '#testList'  //绑定的容器
+    ,method: 'post'
+    ,url: './upload.class.php'   //请求的地址
+    ,accept: 'file'    //限定文件格式images/file/video/audio
+    ,multiple: true    //开启多选
+    ,auto: false       //关闭自动上传
+    ,drag: false       //关闭拖拽上传
+    ,bindAction: '#testListAction'    //结合auto:false使用，指向另外一个按钮元素来执行上传动作
+    ,choose: function(obj){
+      var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+
+      //读取本地文件
+      obj.preview(function(index, file, result){
+        //result值为文件的base64格式
+        var li = $(['<li id="upload-'+ index +'">',
+          '<i class="layui-icon layui-icon-note"></i>',
+          '<span class="zlit-file-name"><em class="zlit-upload-msg">等待上传</em>，文件名称：'+file.name+'，文件大小：'+(file.size/1014).toFixed(1)+'kb</span>',
+          '<div class="upload-ctrl"><i class="layui-icon layui-icon-refresh zlit-reload"></i><i class="layui-icon layui-icon-close zlit-delete"></i></div><div class="upload-progress"><div class="inner"></div></div></li>'
+        ].join(''));
+
+        //单个重传
+        li.find('.zlit-reload').on('click', function(){
+          obj.upload(index, file);
+        });
+
+        //删除
+        li.find('.zlit-delete').on('click', function(){
+          delete files[index]; //删除对应的文件
+          li.remove();
+          uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+        });
+        demoListView.append(li);
+      });
+    }
+    ,xhr:xhrOnProgress
+    ,progress:function(value){//上传进度回调 value进度值
+      if (value<100){
+        $('.zlit-upload-msg').html('<em class="zlit-upload-msg" style="color: #108ee9;">正在上传</em>');
+      }
+      $('.inner').css({width:value+'%'});
+    }
+    ,done: function(res, index, upload){
+      if(res.code == 0){ //上传成功
+        var li = demoListView.find('li#upload-'+ index)
+          ,tds = li.children();
+        tds.find('em').html('<em class="zlit-upload-msg" style="color: #5FB878;">上传成功</em>');
+        tds.find('.zlit-reload').css({display:'none'});
+        console.log(this.files);
+        return delete this.files[index]; //删除文件队列已经上传成功的文件
+      }
+      this.error(index, upload);
+    }
+    ,error: function(index, upload){
+      $('.inner').css({width:'50%',background:'#F5222D'});
+      var li = demoListView.find('li#upload-'+ index)
+        ,tds = li.children();
+      tds.find('em').html('<em class="zlit-upload-msg" style="color: #F5222D;">上传失败</em>');
+      tds.find('.zlit-reload').css({display:'inline'});
+    }
+  });
+});
+//文件上传样式二
+layui.use(['upload','layer'], function() {
+  var upload = layui.upload;
+  var layer = layui.layer;
+  upload.render({
+    elem: '#upload1'    //制定容器
+    ,url: './upload.class.php'   //上传地址
+    ,multiple: true       //开启多传
+    ,drag: false        //关闭拖拽上传
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+        var div = $('<div></div>'),img = $('<img/>');
+        img.prop({src:result,alt:file.name});
+        img.appendTo(div);
+        div.appendTo($('.zlit-img-view'));
+      });
+    }
+    ,done: function(res,index){
+      //上传完毕
+      layer.msg('图片上传成功', {
+        time: 3000, icon: 1
+      });
+    }
+  });
+});
+//文件上传样式三
+layui.use(['upload','layer'], function() {
+  var upload = layui.upload;
+  var layer = layui.layer;
+  upload.render({
+    elem: '#uploadCon'   //绑定容器
+    ,url: './upload.class.php'     //请求地址
+    ,accept: 'file'      //文件格式
+    ,auto: false         //关闭自动上传
+    ,bindAction: '#uploadSub'   //结合auto:false使用，指向另外一个按钮元素来执行上传动作
+    ,size: 1024*5        //限制文件最大5MB
+    ,choose: function(obj){
+      this.files = obj.pushFile();  //将每次选择的文件追加到文件队列,以便清除
+      $('.zlit-upload-2-title span').css({color:'#108ee9'});
+      obj.preview(function(index, file, result){
+        $('.zlit-upload-2-title span').text(file.name);
+      });
+    }
+    ,done: function(res,index){
+      //上传完毕
+      $('.zlit-upload-2-title span').css({color:'#5FB878'});
+      layer.msg('图片上传成功', {
+        time: 3000, icon: 1
+      });
+      return delete this.files[index]; //删除文件队列已经上传成功的文件
+    }
+    ,error: function(index, upload){
+      $('.zlit-upload-2-title span').css({color:'#F5222D'});
+    }
+  });
+});
 
 
 //反馈
