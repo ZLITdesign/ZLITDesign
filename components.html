@@ -959,12 +959,12 @@ layui.use('form', function(){
       return value;
     }
   }, '格式不正确');
-  $('#con_form').validate({  //以下init,error,finish,desc等为input的name值
+  $('#con_form').validate({   //以下init,error,finish,desc等为input的name值
     rules:{
       init:{
         required:true,
         maxlength:10,
-        define:[6,10]    //自定义规则放在最后
+        define:[2,10]    //自定义规则放在最后
       },
       error:{
         required:true,
@@ -999,6 +999,16 @@ layui.use('form', function(){
         maxlength: '最多{0}个字符',
         define:'至少也得输入{0}-{1}位字符啊'
       }
+    },
+    highlight:function (element) {   //定义验证不通过的处理样式
+      $(element).each(function (i,val) {
+        $(val).addClass('validateError');
+      })
+    },
+    unhighlight:function (element) {  //定义验证通过的处理样式
+      $(element).each(function (i,val) {
+        $(val).removeClass('validateError');
+      })
     }
   });
   //监听提交
