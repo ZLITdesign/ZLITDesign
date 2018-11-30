@@ -846,7 +846,7 @@ html, body {
   margin: 6px 0 0 6px;
 }
 .validateError{
-  animation:error 1s ease-in-out 0.2s infinite;
+  animation:error 0.4s ease-out 3 forwards alternate;
 }
 @keyframes error {
   0%{
