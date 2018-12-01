@@ -1,4 +1,4 @@
-//启用选项卡
+//-------------------------------------------启用选项卡开始------------------------------------
 layui.use(['element','layer'], function(){
   var element = layui.element;
 
@@ -28,15 +28,17 @@ layui.use(['element','layer'], function(){
     }
   });
 });
+//-------------------------------------------启用选项卡结束------------------------------------
 
 
-//导航
+//------------------------------------导航开始---------------------------------------------
 $('.head-nav-m ul li').click(function () {
   $(this).addClass('active').siblings().removeClass('active');
 });
+//------------------------------------导航结束---------------------------------------------
 
 
-//侧边栏导航
+//------------------------------------侧边栏导航开始------------------------------------
 //参数isOpen是否开启手风琴导航，默认关闭
 function zlitNav(isOpen=false){
   $('.zlit-nav li').click(function(){
@@ -69,16 +71,18 @@ function zlitNav(isOpen=false){
   });
 }
 zlitNav();
+//------------------------------------侧边栏导航结束------------------------------------
 
 
-//tab标签
+//-------------------------------------tab标签开始----------------------------------------
 $('.tab-style-1 .layui-tab-title li').click(function () {
   var lefts = $(this).position().left;
   $('.tab-style-1 .layui-tab-title .slider').css({left:lefts+15});
 });
+//-------------------------------------tab标签结束----------------------------------------
 
 
-//分页
+//----------------------------------------分页开始---------------------------------------
 //标准样式完整功能
 layui.use('laypage', function(){
   var laypage = layui.laypage;
@@ -150,10 +154,10 @@ prev_page.click(function () {
     curr_page = 1;
   }
 });
+//----------------------------------------分页结束---------------------------------------
 
 
-
-//表单
+//-----------------------------------------表单开始--------------------------------------
 layui.use('form', function(){
   var form = layui.form;
   //自定义规则
@@ -468,8 +472,6 @@ layui.config({
     console.log(vals);
   }, true);*/
 });
-
-
 //日期选择
 layui.use('laydate', function() {
   var laydate = layui.laydate;
@@ -668,9 +670,10 @@ layui.use(['upload','layer'], function() {
     }
   });
 });
+// -----------------------------------------表单结束--------------------------------------
 
 
-//反馈
+//---------------------------------------反馈开始----------------------------------------
 layui.use('layer', function(){
   var layer = layui.layer;
   //-----------------------------toast提示--------------------------------
@@ -720,7 +723,7 @@ layui.use('layer', function(){
     var index = layer.msg('系统全局公告，放置于页面导航顶部。', {
       offset: 'lt',
       anim: 1,
-      time: 3000,
+      time: 0,
       icon: 0,
       fixed: false,
       closeBtn: 1
@@ -741,7 +744,7 @@ layui.use('layer', function(){
     var index = layer.msg('成功提示的文案。', {
       offset: '24px',
       anim: 1,
-      time: 3000,
+      time: 0,
       icon: 1,
       closeBtn: 1
     });
@@ -760,7 +763,7 @@ layui.use('layer', function(){
     var index = layer.msg('失败提示的文案。', {
       offset: '24px',
       anim: 1,
-      time: 3000,
+      time: 0,
       icon: 2,
       closeBtn: 1
     });
@@ -779,7 +782,7 @@ layui.use('layer', function(){
     var index = layer.msg('警告提示的文案。', {
       offset: '24px',
       anim: 1,
-      time: 3000,
+      time: 0,
       icon: 0,
       closeBtn: 1
     });
@@ -798,7 +801,7 @@ layui.use('layer', function(){
     var index = layer.msg('信息提示的文案。', {
       offset: '24px',
       anim: 1,
-      time: 3000,
+      time: 0,
       icon: 4,
       closeBtn: 1
     });
@@ -917,76 +920,72 @@ layui.use('layer', function(){
     });
   });
 });
-//-------------------------------文字提示--------------------------------
+//文字提示
 function tooltips(){
 //插件{白色背景}
   $('.w-tl').pt({
     position: 't',
     align: 'l',
     content: '信息提示上左对齐',
-    time:2000
+    leaveCloseTime: 2000  //鼠标离开关闭时间，默认500ms
   });
   $('.w-top').pt({
     position: 't',
-    content: '信息提示上对齐',
-    time:2000
+    content: '信息提示上对齐'
   });
   $('.w-tr').pt({
     position: 't',
     align: 'r',
-    content: '信息提示上右对齐',
-    time:2000
+    content: '信息提示上右对齐'
   });
   $('.w-lt').pt({
     position: 'l',
     align: 't',
     content: '信息提示左上对齐信息提示左上对齐信息提示左上对齐',
-    time:2000
+    conAlign: 'left',
+    leaveCloseTime: 20000000
   });
   $('.w-left').pt({
     position: 'l',
     content: '信息提示左对齐信息提示左对齐信息提示左对齐',
-    time:2000
+    conAlign: 'left'
   });
   $('.w-lb').pt({
     position: 'l',
     align: 'b',
     content: '信息提示左下对齐信息提示左下对齐信息提示左下对齐',
-    time:2000
+    conAlign: 'left'
   });
   $('.w-rt').pt({
     position: 'r',
     align: 't',
     content: '信息提示右上对齐信息提示右上对齐信息提示右上对齐',
-    time:2000
+    conAlign: 'left'
   });
   $('.w-right').pt({
     position: 'r',
     content: '信息提示右对齐信息提示右对齐信息提示右对齐',
-    time:2000
+    conAlign: 'left'
   });
   $('.w-rb').pt({
     position: 'r',
     align: 'b',
     content: '信息提示右下对齐信息提示右下对齐信息提示右下对齐',
-    time:2000
+    conAlign: 'left'
   });
   $('.w-bl').pt({
     position: 'b',
     align: 'l',
     content: '信息提示下左对齐',
-    time:2000
   });
   $('.w-bottom').pt({
     position: 'b',
     content: '信息提示下对齐',
-    time:2000
   });
   $('.w-br').pt({
     position: 'b',
     align: 'r',
     content: '信息提示下右对齐',
-    time: 2000
   });
 
 //插件{深色背景}
@@ -994,86 +993,83 @@ function tooltips(){
     position: 't',
     align: 'l',
     content: '信息提示上左对齐',
-    time:2000,
-    fontcolor:'#fff'
+    fontcolor:'#fff',
+    leaveCloseTime: 2000  //鼠标离开关闭时间，默认500ms
   });
   $('.d-top').dt({
     position: 't',
     content: '信息提示上对齐',
-    time:2000,
     fontcolor:'#fff'
   });
   $('.d-tr').dt({
     position: 't',
     align: 'r',
     content: '信息提示上右对齐',
-    time:2000,
     fontcolor:'#fff'
   });
   $('.d-lt').dt({
     position: 'l',
     align: 't',
     content: '信息提示左上对齐信息提示左上对齐信息提示左上对齐',
-    time:2000,
-    fontcolor:'#fff'
+    fontcolor:'#fff',
+    conAlign: 'left'
   });
   $('.d-left').dt({
     position: 'l',
     content: '信息提示左对齐信息提示左对齐信息提示左对齐',
-    time:2000,
-    fontcolor:'#fff'
+    fontcolor:'#fff',
+    conAlign: 'left'
   });
   $('.d-lb').dt({
     position: 'l',
     align: 'b',
     content: '信息提示左下对齐信息提示左下对齐信息提示左下对齐',
-    time:2000,
-    fontcolor:'#fff'
+    fontcolor:'#fff',
+    conAlign: 'left'
   });
   $('.d-rt').dt({
     position: 'r',
     align: 't',
     content: '信息提示右上对齐信息提示右上对齐信息提示右上对齐',
-    time:2000,
-    fontcolor:'#fff'
+    fontcolor:'#fff',
+    conAlign: 'left'
   });
   $('.d-right').dt({
     position: 'r',
     content: '信息提示右对齐信息提示右对齐信息提示右对齐',
-    time:2000
+    fontcolor:'#fff',
+    conAlign: 'left'
   });
   $('.d-rb').dt({
     position: 'r',
     align: 'b',
     content: '信息提示右下对齐信息提示右下对齐信息提示右下对齐',
-    time:2000,
-    fontcolor:'#fff'
+    fontcolor:'#fff',
+    conAlign: 'left'
   });
   $('.d-bl').dt({
     position: 'b',
     align: 'l',
     content: '信息提示下左对齐',
-    time:2000,
     fontcolor:'#fff'
   });
   $('.d-bottom').dt({
     position: 'b',
     content: '信息提示下对齐',
-    time:2000,
     fontcolor:'#fff'
   });
   $('.d-br').dt({
     position: 'b',
     align: 'r',
     content: '信息提示下右对齐',
-    time: 2000,
     fontcolor:'#fff'
   });
 }
 tooltips();
+//---------------------------------------反馈结束----------------------------------------
 
 
-//其他
+//---------------------------------------其他开始----------------------------------------
 //直线进度条
 layui.use('element', function(){
   var element = layui.element;
@@ -1097,7 +1093,6 @@ layui.use('element', function(){
     }, 300+Math.random()*1000);
   });
 });
-
 //圆形进度条
 //进行中状态
 $(".circleChart#0").circleChart({
@@ -1121,7 +1116,6 @@ setInterval(function () {
     value: Math.random() * 100
   });
 }, 3000);
-
 //失败状态
 $(".circleChart#1").circleChart({
   size: 80,
@@ -1140,7 +1134,6 @@ setTimeout(function () {
     value: -1
   });
 }, 3000);
-
 //100%成功状态
 $(".circleChart#2").circleChart({
   size: 80,
@@ -1153,8 +1146,6 @@ $(".circleChart#2").circleChart({
     }
   }
 });
-
-
 //步骤条
 function stepFun(next,prev,steps,stepCon,style){
   var n = 0,          //依赖索引值
@@ -1232,8 +1223,6 @@ var Vsteps = $('.vertical-step .step-single'),
   VprevBtn = $('.vertical-btn button:first-child'),
   VnextBtn = $('.vertical-btn button:last-child');
 stepFun(VnextBtn,VprevBtn,Vsteps,VstepCon,'top');
-
-
 //锚点定位
 function anchors(){
   var navLis = $('.anchors_catalog ul li');
@@ -1245,6 +1234,7 @@ function anchors(){
   });
 }
 anchors();
+// ---------------------------------------其他结束---------------------------------------
 
 
 

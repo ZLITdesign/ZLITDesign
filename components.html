@@ -2387,7 +2387,7 @@ layui.use('layer', function(){
   var index = layer.msg('系统全局公告，放置于页面导航顶部。', {
     offset: 'lt',
     anim: 1,
-    time: 3000,
+    time: 0,
     icon: 0,
     fixed: false,
     closeBtn: 1
@@ -2406,7 +2406,7 @@ layui.use('layer', function(){
   var index = layer.msg('成功提示的文案。', {
     offset: '24px',
     anim: 1,
-    time: 3000,
+    time: 0,
     icon: 1,
     closeBtn: 1
   });
@@ -2422,7 +2422,7 @@ layui.use('layer', function(){
   var index = layer.msg('失败提示的文案。', {
     offset: '24px',
     anim: 1,
-    time: 3000,
+    time: 0,
     icon: 2,
     closeBtn: 1
   });
@@ -2439,7 +2439,7 @@ layui.use('layer', function(){
   var index = layer.msg('警告提示的文案。', {
     offset: '24px',
     anim: 1,
-    time: 3000,
+    time: 0,
     icon: 0,
     closeBtn: 1
   });
@@ -2456,7 +2456,7 @@ layui.use('layer', function(){
   var index = layer.msg('信息提示的文案。', {
     offset: '24px',
     anim: 1,
-    time: 3000,
+    time: 0,
     icon: 4,
     closeBtn: 1
   });
@@ -2708,69 +2708,64 @@ layui.use('layer', function(){
     position: 't',
     align: 'l',
     content: '信息提示上左对齐',
-    time:2000
+    leaveCloseTime: 2000  //鼠标离开关闭时间，默认500ms
   });
   $('.w-top').pt({
     position: 't',
-    content: '信息提示上对齐',
-    time:2000
+    content: '信息提示上对齐'
   });
   $('.w-tr').pt({
     position: 't',
     align: 'r',
-    content: '信息提示上右对齐',
-    time:2000
+    content: '信息提示上右对齐'
   });
   $('.w-lt').pt({
     position: 'l',
     align: 't',
     content: '信息提示左上对齐信息提示左上对齐信息提示左上对齐',
-    time:2000
+    conAlign: 'left'
   });
   $('.w-left').pt({
     position: 'l',
     content: '信息提示左对齐信息提示左对齐信息提示左对齐',
-    time:2000
+    conAlign: 'left'
   });
   $('.w-lb').pt({
     position: 'l',
     align: 'b',
     content: '信息提示左下对齐信息提示左下对齐信息提示左下对齐',
-    time:2000
+    conAlign: 'left'
   });
   $('.w-rt').pt({
     position: 'r',
     align: 't',
     content: '信息提示右上对齐信息提示右上对齐信息提示右上对齐',
-    time:2000
+    conAlign: 'left'
   });
   $('.w-right').pt({
     position: 'r',
     content: '信息提示右对齐信息提示右对齐信息提示右对齐',
-    time:2000
+    conAlign: 'left'
   });
   $('.w-rb').pt({
     position: 'r',
     align: 'b',
     content: '信息提示右下对齐信息提示右下对齐信息提示右下对齐',
-    time:2000
+    conAlign: 'left'
   });
   $('.w-bl').pt({
     position: 'b',
     align: 'l',
     content: '信息提示下左对齐',
-    time:2000
   });
   $('.w-bottom').pt({
     position: 'b',
     content: '信息提示下对齐',
-    time:2000
   });
   $('.w-br').pt({
     position: 'b',
     align: 'r',
     content: '信息提示下右对齐',
-    time: 2000
   });
 
   <!--深色背景-->
@@ -2778,79 +2773,75 @@ layui.use('layer', function(){
     position: 't',
     align: 'l',
     content: '信息提示上左对齐',
-    time:2000,
-    fontcolor:'#fff'
+    fontcolor:'#fff',
+    leaveCloseTime: 2000  //鼠标离开关闭时间，默认500ms
   });
   $('.d-top').dt({
     position: 't',
     content: '信息提示上对齐',
-    time:2000,
     fontcolor:'#fff'
   });
   $('.d-tr').dt({
     position: 't',
     align: 'r',
     content: '信息提示上右对齐',
-    time:2000,
     fontcolor:'#fff'
   });
   $('.d-lt').dt({
     position: 'l',
     align: 't',
     content: '信息提示左上对齐信息提示左上对齐信息提示左上对齐',
-    time:2000,
-    fontcolor:'#fff'
+    fontcolor:'#fff',
+    conAlign: 'left'
   });
   $('.d-left').dt({
     position: 'l',
     content: '信息提示左对齐信息提示左对齐信息提示左对齐',
-    time:2000,
-    fontcolor:'#fff'
+    fontcolor:'#fff',
+    conAlign: 'left'
   });
   $('.d-lb').dt({
     position: 'l',
     align: 'b',
     content: '信息提示左下对齐信息提示左下对齐信息提示左下对齐',
-    time:2000,
-    fontcolor:'#fff'
+    fontcolor:'#fff',
+    conAlign: 'left'
   });
   $('.d-rt').dt({
     position: 'r',
     align: 't',
     content: '信息提示右上对齐信息提示右上对齐信息提示右上对齐',
-    time:2000,
-    fontcolor:'#fff'
+    fontcolor:'#fff',
+    conAlign: 'left'
   });
   $('.d-right').dt({
     position: 'r',
     content: '信息提示右对齐信息提示右对齐信息提示右对齐',
-    time:2000
+    fontcolor:'#fff',
+    conAlign: 'left'
   });
   $('.d-rb').dt({
     position: 'r',
     align: 'b',
     content: '信息提示右下对齐信息提示右下对齐信息提示右下对齐',
-    time:2000,
-    fontcolor:'#fff'
+    fontcolor:'#fff',
+    conAlign: 'left'
   });
   $('.d-bl').dt({
     position: 'b',
     align: 'l',
     content: '信息提示下左对齐',
-    time:2000,
     fontcolor:'#fff'
   });
   $('.d-bottom').dt({
     position: 'b',
     content: '信息提示下对齐',
-    time:2000,
     fontcolor:'#fff'
   });
   $('.d-br').dt({
     position: 'b',
     align: 'r',
     content: '信息提示下右对齐',
-    time: 2000,
     fontcolor:'#fff'
   });</pre>
             </div>

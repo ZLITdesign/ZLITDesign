@@ -947,6 +947,23 @@
   display: inline-block;
   margin: 6px 0 0 6px;
 }
+.validateError{
+  animation:error 0.6s ease-out 3 forwards alternate;
+}
+@keyframes error {
+  0%{
+    border-color: #E6E6E6;
+    -webkit-box-shadow: 0 0 0 0 rgba(0,0,0,0);
+    -moz-box-shadow: 0 0 0 0 rgba(0,0,0,0);
+    box-shadow: 0 0 0 0 rgba(0,0,0,0);
+  }
+  100%{
+    border-color: #F5222D;
+    -webkit-box-shadow: 0 0 2px 1px rgba(245,34,45,0.3);
+    -moz-box-shadow: 0 0 2px 1px rgba(245,34,45,0.3);
+    box-shadow: 0 0 2px 1px rgba(245,34,45,0.3);
+  }
+}
 .layui-form-danger+.layui-form-select .layui-input, .layui-form-danger:focus{
   border-color: #F5222D!important;
   -webkit-box-shadow: 0 0 2px 1px rgba(245,34,45,0.3);
