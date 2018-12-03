@@ -441,6 +441,7 @@
   color: #333;
   border-radius: 4px;
   background-color: #fff;
+  box-sizing: border-box;
 }
 .pt .out, .pt .in {
   display: block;
@@ -537,6 +538,7 @@
   color: #333;
   border-radius: 4px;
   background-color: rgba(0,0,0,0.7);
+  box-sizing: border-box;
 }
 .dt .out, .dt .in {
   display: block;
@@ -734,16 +736,48 @@
 }
 
 /*步骤条*/
+.step-line,.anchors_box{
+  box-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
+  padding: 30px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin: 15px 0;
+}
+.horizontal-box{
+  position: relative;
+  height: 100px;
+}
+.horizontal-con{
+  margin-top: 10px;
+  text-align: center;
+}
+.vertical-box{
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+}
+.vertical-con{
+  height: 238px;
+  line-height: 238px;
+}
+
 .horizontal-pro,.vertical-pro{
   position: relative;
   height: 100%;
 }
-.horizontal-step .step-single:after, .horizontal-step:after, .vertical-step .step-single:after, .vertical-step:after,.vertical-pro:after{
+.horizontal-step .step-single:after, .horizontal-step .step-single>div.step-desc:after, .horizontal-step:after, .vertical-step .step-single:after, .vertical-step:after,.vertical-pro:after, .vertical-step .step-single>div.step-desc:after{
   content: '';
   display: block;
   width: 0;
   height: 0;
   clear: both;
+}
+.horizontal-step .step-single>div.step-desc{
+  float: left;
+}
+.horizontal-step .step-single>div.step-desc, .vertical-step .step-single>div.step-desc{
+  cursor: pointer;
+  user-select: none;
 }
 .horizontal-btn,.vertical-btn{
   position: absolute;
@@ -872,6 +906,7 @@
 /*锚点定位*/
 .anchors_catalog{
   background: #fff;
+  width: 170px;
 }
 .anchors_catalog ul{
   border-left: 1px solid #cacaca;
@@ -885,12 +920,15 @@
   margin: 8px 0;
 }
 .anchors_catalog ul li a{
-  color: rgba(0,0,0,0.6);
+  color: #666;
   -webkit-transition: color 0.3s;
   -moz-transition: color 0.3s;
   -ms-transition: color 0.3s;
   -o-transition: color 0.3s;
   transition: color 0.3s;
+}
+.anchors_catalog ul li:hover a{
+  color: #108EE9;
 }
 .anchors_catalog ul li.active a{
   color: #108EE9;

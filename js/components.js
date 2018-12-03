@@ -942,8 +942,7 @@ function tooltips(){
     position: 'l',
     align: 't',
     content: '信息提示左上对齐信息提示左上对齐信息提示左上对齐',
-    conAlign: 'left',
-    leaveCloseTime: 20000000
+    conAlign: 'left'
   });
   $('.w-left').pt({
     position: 'l',
@@ -1147,82 +1146,124 @@ $(".circleChart#2").circleChart({
   }
 });
 //步骤条
-function stepFun(next,prev,steps,stepCon,style){
+function stepFun(steps,stepCon,style,stepDesc,next=null,prev=null){
+  /*steps     步骤条jQuery对象元素
+  * stepCon   每一步对应的页面
+  * style     字符串类型，传入‘left’则为水平步骤条，传入‘top’则为垂直步骤条
+  * stepDesc  步骤条序号及文字区域的jQuery对象元素
+  * next      下一步按钮，默认值null,即没有按钮可不传入
+  * prev      上一步按钮，默认值null,即没有按钮可不传入
+  * */
   var n = 0,          //依赖索引值
       flag = true;    //防止过快点击
-  // 下一步
-  next.click(function () {
-    if (!flag){
-      return;
-    }
-    flag = false;
-    n++;
-    if (n!=0){
-      prev.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
-    }
-    if (n>=steps.length){
-      n = steps.length-1;
-      flag = true;
-      return;
-    }
-    if (steps.eq(n).index()===steps.length-1){
-      $(this).removeClass('zlit-btn-default').addClass('layui-btn-disabled zlit-btn-disabled');
-    }
-    stepCon.eq(n).addClass('active').siblings().removeClass('active');
+  //下一步按钮
+  if (next){
+    next.click(function () {
+      if (!flag){ return; }
+      flag = false;
+      n++;
+      if (n!=0){ prev.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default'); }
+      if (n>=steps.length){
+        n = steps.length-1;
+        flag = true;
+        return;
+      }
+      if (steps.eq(n).index()===steps.length-1){
+        $(this).removeClass('zlit-btn-default').addClass('layui-btn-disabled zlit-btn-disabled');
+      }
+      stepCon.eq(n).addClass('active').siblings().removeClass('active');
+      steps.eq(n-1).find('.step-child').animate({[style]:0},function () {
+        steps.eq(n).find('.step-circle').addClass('step-circle-active').end().find('.step-con').addClass('step-con-active').text('进行中');
+        steps.eq(n-1).find('.step-circle').removeClass('step-circle-active').addClass('step-circle-end').find('i').text('').addClass('layui-icon-ok');
+        steps.eq(n-1).find('.step-con').removeClass('step-con-active').text('已完成');
+        flag = true;
+      });
+    });
+  }
+  //上一步按钮
+  if (prev){
+    prev.click(function () {
+      if (!flag){ return; }
+      flag = false;
+      n--;
+      if (n<=steps.length-1){ next.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default'); }
+      if (n<0){
+        n = 0;
+        flag = true;
+        return;
+      }
+      if (steps.eq(n).index()===0){ $(this).removeClass('zlit-btn-default').addClass('layui-btn-disabled zlit-btn-disabled'); }
+      stepCon.eq(n).addClass('active').siblings().removeClass('active');
+      steps.eq(n).find('.step-child').animate({[style]:-100+'%'},function () {
+        steps.eq(n+1).find('.step-circle').removeClass('step-circle-active').end().find('.step-con').removeClass('step-con-active').text('待完成');
+        steps.eq(n).find('.step-circle').removeClass('step-circle-end').addClass('step-circle-active').find('i').text(n+1).removeClass('layui-icon-ok');
+        steps.eq(n).find('.step-con').addClass('step-con-active').text('进行中');
+        flag = true;
+      });
+    });
+  }
 
-    steps.eq(n).find('.step-child').animate({[style]:0},function () {
-      steps.eq(n).find('.step-circle').addClass('step-circle-active').end().find('.step-con').addClass('step-con-active').text('进行中');
-      steps.eq(n-1).find('.step-circle').removeClass('step-circle-active').addClass('step-circle-end').find('i').text('').addClass('layui-icon-ok');
-      steps.eq(n-1).find('.step-con').removeClass('step-con-active').text('已完成');
-      flag = true;
-    });
-    steps.eq(n-1).find('.step-child').animate({[style]:100+'%'},function () {
-      flag = true;
-    });
-  });
-
-  //下一步
-  prev.click(function () {
-    if (!flag){
-      return;
-    }
+  //点击步骤序号及文字区域
+  stepDesc.click(function () {
+    if (!flag){ return; }
     flag = false;
-    n--;
-    if (n<=steps.length-1){
-      next.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
+    var k = $(this).closest('.step-single').index(),
+        stepBox = $(this).closest('.step-single').siblings(),
+        that = $(this);
+    n = k;
+    if (next && prev){
+      if (n<steps.length-1 && n>0){
+        next.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
+        prev.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
+      }else if (n===steps.length-1){
+        next.removeClass('zlit-btn-default').addClass('layui-btn-disabled zlit-btn-disabled');
+        prev.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
+      }else if (n===0){
+        next.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
+        prev.removeClass('zlit-btn-default').addClass('layui-btn-disabled zlit-btn-disabled');
+      }
     }
-    if (n<0){
-      n = 0;
-      flag = true;
-      return;
-    }
-    if (steps.eq(n).index()===0){
-      $(this).removeClass('zlit-btn-default').addClass('layui-btn-disabled zlit-btn-disabled');
-    }
-    stepCon.eq(n).addClass('active').siblings().removeClass('active');
-    steps.eq(n+1).find('.step-child').animate({[style]:-100+'%'},function () {
-      steps.eq(n+1).find('.step-circle').removeClass('step-circle-active').end().find('.step-con').removeClass('step-con-active').text('待完成');
-      steps.eq(n).find('.step-circle').removeClass('step-circle-end').addClass('step-circle-active').find('i').text(n+1).removeClass('layui-icon-ok');
-      steps.eq(n).find('.step-con').addClass('step-con-active').text('进行中');
-      flag = true;
-    });
-    steps.eq(n).find('.step-child').animate({[style]:0},function () {
-      flag = true;
+    setTimeout(function () {
+      that.closest('.step-single').find('.step-circle').removeClass('step-circle-end').addClass('step-circle-active')
+        .end().find('.step-con').addClass('step-con-active').text('进行中')
+        .end().find('.step-child').animate({[style]:-100+'%'})
+        .end().find('i').removeClass('layui-icon-ok').text(k+1);
+      stepCon.eq(k).addClass('active').siblings().removeClass('active');
+    },300);
+    stepBox.each(function (i, val) {
+      var j = $(val).index();
+      if (j<k){
+        $(val).find('.step-child').animate({[style]:0},function () {
+          $(val).find('.step-circle').removeClass('step-circle-active').addClass('step-circle-end').find('i').text('').addClass('layui-icon-ok');
+          $(val).find('.step-con').removeClass('step-con-active').text('已完成');
+          flag = true;
+        });
+      }else if (j>k){
+        $(val).find('.step-child').animate({[style]:-100+'%'},function () {
+          flag = true;
+        });
+        setTimeout(function () {
+          $(val).find('.step-circle').removeClass('step-circle-active step-circle-end').find('i').text(j+1).removeClass('layui-icon-ok');
+          $(val).find('.step-con').removeClass('step-con-active').text('待完成');
+        },300);
+      }
     });
   });
 }
 //水平步骤条变量
-var Hsteps = $('.horizontal-step .step-single'),
-  HstepCon = $('.horizontal-con li'),
-  HprevBtn = $('.horizontal-btn button:first-child'),
-  HnextBtn = $('.horizontal-btn button:last-child');
-stepFun(HnextBtn,HprevBtn,Hsteps,HstepCon,'left');
+var Hsteps = $('.test-step .horizontal-step .step-single'),
+  HstepCon = $('.test-step .horizontal-con li'),
+  HstepDesc = $('.test-step .horizontal-step .step-single .step-desc'),
+  HprevBtn = $('.test-step .horizontal-btn button:first-child'),
+  HnextBtn = $('.test-step .horizontal-btn button:last-child');
+stepFun(Hsteps,HstepCon,'left',HstepDesc,HnextBtn,HprevBtn);
 //垂直步骤条变量
-var Vsteps = $('.vertical-step .step-single'),
-  VstepCon = $('.vertical-con li'),
-  VprevBtn = $('.vertical-btn button:first-child'),
-  VnextBtn = $('.vertical-btn button:last-child');
-stepFun(VnextBtn,VprevBtn,Vsteps,VstepCon,'top');
+var Vsteps = $('.test-step .vertical-step .step-single'),
+  VstepCon = $('.test-step .vertical-con li'),
+  VstepDesc = $('.test-step .vertical-step .step-single .step-desc'),
+  VprevBtn = $('.test-step .vertical-btn button:first-child'),
+  VnextBtn = $('.test-step .vertical-btn button:last-child');
+stepFun(Vsteps,VstepCon,'top',VstepDesc,VnextBtn,VprevBtn);
 //锚点定位
 function anchors(){
   var navLis = $('.anchors_catalog ul li');
