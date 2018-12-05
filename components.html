@@ -272,8 +272,7 @@
       <dd><a href="#">二级导航</a></dd>
     </dl>
   </li>
-</ul>
-</pre>
+</ul></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 <!--js代码-->
 //参数isOpen是否开启手风琴导航，默认关闭
@@ -385,7 +384,7 @@ zlitNav();</pre>
 layui.use('element', function(){
 var element = layui.element;
 });
-//tab标签
+//tab标签导航滑块
 $('.tab-style-1 .layui-tab-title li').click(function () {
   var lefts = $(this).position().left;
   $('.tab-style-1 .layui-tab-title .slider').css({left:lefts+15});
@@ -470,13 +469,15 @@ var element = layui.element;
             <div class="crumbs-nav">
               <div class="title">
                 <h3>当前页面标题</h3>
-                <div class="layui-btn layui-btn-primary layui-btn-sm">返回</div>
-                <span class="layui-breadcrumb">
-                  <a href="">首页</a>
-                  <a href="">国际新闻</a>
-                  <a href="">亚太地区</a>
-                  <a><cite>正文</cite></a>
-                </span>
+                <div>
+                  <span class="layui-breadcrumb">
+                    <a href="">首页</a>
+                    <a href="">国际新闻</a>
+                    <a href="">亚太地区</a>
+                    <a><cite>正文</cite></a>
+                  </span>
+                  <div class="layui-btn layui-btn-primary layui-btn-sm">返回</div>
+                </div>
               </div>
               <div class="content"></div>
             </div>
@@ -491,13 +492,15 @@ var element = layui.element;
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
 <div class="crumbs-nav">
   <div class="title">
-    <div class="layui-btn layui-btn-primary layui-btn-sm">返回</div>
-    <span class="layui-breadcrumb">
-      <a href="">首页</a>
-      <a href="">国际新闻</a>
-      <a href="">亚太地区</a>
-      <a><cite>正文</cite></a>
-    </span>
+    <div>
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">国际新闻</a>
+        <a href="">亚太地区</a>
+        <a><cite>正文</cite></a>
+      </span>
+      <div class="layui-btn layui-btn-primary layui-btn-sm">返回</div>
+    </div>
   </div>
 </div></pre>
             </div>
@@ -548,7 +551,7 @@ var element = layui.element;
             <h2>迷你样式</h2>
             <p>适用于卡片，页数一般不超过10页。</p>
             <div class="paging">
-              <div class="paging-4">
+              <div class="paging-4 paging-44">
                 <a href="#" class="prev_page disabled">&lt;</a>
                 <p><span class="current_page">1</span> / <span class="max_page">4</span></p>
                 <a href="#" class="next_page">&gt;</a>
@@ -579,6 +582,13 @@ var element = layui.element;
   <!--简易样式二-->
   <div class="paging paging-3">
     <div id="paging-33"></div>
+  </div>
+
+  <!--迷你样式-->
+  <div class="paging paging-4">
+    <a href="#" class="prev_page disabled">&lt;</a>
+    <p><span class="current_page">1</span> / <span class="max_page">4</span></p>
+    <a href="#" class="next_page">&gt;</a>
   </div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 <!--js代码-->
@@ -621,6 +631,40 @@ layui.use('laypage', function(){
     prev: '<em style="font-family: SimSun">&lt;</em>',
     next: '<em style="font-family: SimSun">&gt;</em>',
   });
+});
+
+//迷你样式
+var curr_page = Number($('.paging-4 .current_page').text());
+var max_page = Number($('.paging-4 .max_page').text());
+var prev_page = $('.paging-4 .prev_page');
+var next_page = $('.paging-4 .next_page');
+next_page.click(function () {
+  curr_page++;
+  if (curr_page < max_page){
+    $('.paging-4 .current_page').text(curr_page);
+    prev_page.removeClass('disabled');
+  }else if(curr_page==max_page){
+    $(this).addClass('disabled');
+    $('.paging-4 .current_page').text(curr_page);
+  }else if (curr_page>max_page){
+    $('.paging-4 .current_page').text(max_page);
+    $(this).addClass('disabled');
+    curr_page = max_page;
+  }
+});
+prev_page.click(function () {
+  curr_page--;
+  if (curr_page>1){
+    $('.paging-4 .current_page').text(curr_page);
+    next_page.removeClass('disabled');
+  }else if(curr_page==1){
+    $(this).addClass('disabled');
+    $('.paging-4 .current_page').text(curr_page);
+  }else if (curr_page<1){
+    $('.paging-4 .current_page').text(1);
+    $(this).addClass('disabled');
+    curr_page = 1;
+  }
 });</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
@@ -793,7 +837,19 @@ layui.use('laypage', function(){
             <p>1.同区域按钮较多时，将同一个操作的多种选项用菜单按钮的方式显示。</p>
             <p>2.样式不局限于示例，可按需要参照常用按钮样式。</p>
             <div class="menu_btn">
-
+              <p style="margin-bottom: 6px;font-size: 14px;color: #666;">注：点击箭头触发切换按钮功能</p>
+              <div class="zlit-menu-btn-box">
+                <span class="zlit-menu-btn-text" id="files-img">选择按钮功能</span>
+                <i class="layui-icon layui-icon-down zlit-menu-btn-change"></i>
+                <ul class="layui-anim zlit-menu-btn">
+                  <li data-id="files-img">上传图片格式</li>
+                  <li data-id="files-file">上传普通文件</li>
+                  <li data-id="files-zip">上传压缩文件</li>
+                  <li data-id="files-video">上传视频格式</li>
+                  <li data-id="files-audio">上传音频格式</li>
+                </ul>
+                <p class="zlit-menu-btn-show"></p>
+              </div>
             </div>
 
             <!--代码展示-->
@@ -802,9 +858,92 @@ layui.use('laypage', function(){
   <!--使用前需引入layui依赖文件-->
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
-  <script src="layui/layui.js"></script></pre>
+  <script src="layui/layui.js"></script>
+ <script src="js/jquery-3.3.1.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-</pre>
+  <div class="zlit-menu-btn-box">
+    <span class="zlit-menu-btn-text" id="files-imgs">选择按钮功能</span>
+    <i class="layui-icon layui-icon-down zlit-menu-btn-change"></i>
+    <ul class="layui-anim zlit-menu-btn">
+      <li data-id="files-imgs">上传图片格式</li>
+      <li data-id="files-file">上传普通文件</li>
+      <li data-id="files-zip">上传压缩文件</li>
+      <li data-id="files-video">上传视频格式</li>
+      <li data-id="files-audio">上传音频格式</li>
+    </ul>
+    <p class="zlit-menu-btn-show"></p>
+  </div></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+function menuBtn(){
+  var flag = true;
+  $('.zlit-menu-btn-change').click(function (e) {
+    //隐藏/显示按钮功能区
+    e.stopPropagation();
+    if (flag) {
+      $('.zlit-menu-btn').addClass('layui-anim-scaleSpring').css({display:'block'});
+      $(this).css({transform:'rotateZ(180deg)',top:'10px'});
+      flag = false;
+    }else{
+      $('.zlit-menu-btn').removeClass('layui-anim-scaleSpring').css({display:'none'});
+      $(this).css({transform:'rotateZ(0deg)',top:'12px'});
+      flag = true;
+    }
+  });
+  $('.zlit-menu-btn li').on('click',function (e) {
+    e.stopPropagation();
+    var str,ids,strId;
+    $(this).addClass('active').siblings().removeClass('active');
+    str = $(this).text();
+    ids = $(this).attr('data-id');
+    $('.zlit-menu-btn-text').text(str);
+    $('.zlit-menu-btn-box').prop('id',ids);
+    $('.zlit-menu-btn').removeClass('layui-anim-scaleSpring').css({display:'none'});
+    $('.zlit-menu-btn-change').css({transform:'rotateZ(0deg)',top:'12px'});
+    flag = true;
+
+    //切换按钮功能
+    strId = $('.zlit-menu-btn-box').attr('id');
+    if (strId==='files-imgs'){
+      uploadFiles('#files-imgs');                   //图片上传
+    }else if(strId==='files-file'){
+      uploadFiles('#files-file','file');            //普通文件上传
+    }else if(strId==='files-zip'){
+      uploadFiles('#files-zip','file','zip|rar|7z');//压缩文件上传
+    }else if(strId==='files-video'){
+      uploadFiles('#files-video','video');          //视频上传
+    }else if(strId==='files-audio'){
+      uploadFiles('#files-audio','audio');          //音频上传
+    }
+
+    $('.zlit-menu-btn-show').text('').find('span').css({display:'none'});
+  });
+
+  function uploadFiles(ele,accpets='images',exts='') {
+    layui.use(['upload','layer'],function () {
+      var upload = layui.upload;
+      var layer = layui.layer;
+      upload.render({
+        elem: ele
+        ,url: './upload.class.php'
+        ,accept: accpets
+        ,exts:exts
+        ,choose: function(obj){
+          obj.preview(function(index, file, result){
+            $('.zlit-menu-btn-show').text(file.name);
+          });
+        }
+        ,done: function(res,index){
+          //上传完毕
+          layer.msg('上传成功', {
+            time: 3000, icon: 1
+          });
+          return delete this.files[index]; //删除文件队列已经上传成功的文件
+        }
+      });
+    });
+  }
+}
+menuBtn();</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -862,7 +1001,7 @@ layui.use('laypage', function(){
             <p>2.文本域：多行输入需要换行，提示可输入范围，超出不可继续输入。</p>
             <p>3.状态：初始态、激活态、报错态、完成态、禁用态。</p>
             <div class="form-box">
-              <form action="" class="layui-form" id="con_form">
+              <form action="" class="layui-form" id="con_form" method="POST">
                 <div class="layui-form-item">
                   <label class="layui-form-label zlit-form-label">初始</label>
                   <div class="layui-input-block input-w">
@@ -907,31 +1046,33 @@ layui.use('laypage', function(){
   <!--使用前需引入layui依赖文件-->
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
-  <script src="layui/layui.js"></script></pre>
+  <script src="layui/layui.js"></script>
+  <script src="js/jquery-3.3.1.js"></script>
+  <script src="js/jquery.validate.min.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-  <form action="" class="layui-form">   <!--form标签不是必须，可更改，类名layui-form必须-->
+  <form action="" class="layui-form" id="con_form1" method="POST">   <!--form标签不是必须，可更改，类名layui-form必须-->
     <div class="layui-form-item">
       <label class="layui-form-label zlit-form-label">初始</label>
       <div class="layui-input-block input-w">
-        <input type="text" name="name1" required  lay-verify="required" placeholder="输入建议" value="这是内容" class="layui-input" lay-verType="tips">
+        <input type="text" name="init" placeholder="输入建议" value="这是内容" class="layui-input">
       </div>
     </div>
     <div class="layui-form-item">
       <label class="layui-form-label zlit-form-label">报错</label>
       <div class="layui-input-block input-w">
-        <input type="text" name="name2" required lay-verify="required|title" value="输入错误" class="layui-input" lay-verType="tips">
+        <input type="text" name="error" value="输入错误" class="layui-input">
       </div>
     </div>
     <div class="layui-form-item">
       <label class="layui-form-label zlit-form-label">完成</label>
       <div class="layui-input-block input-w">
-        <input type="text" name="title" required lay-verify="required" value="输入完成" class="layui-input" lay-verType="tips">
+        <input type="text" name="finish" value="输入完成" class="layui-input">
       </div>
     </div>
     <div class="layui-form-item">
       <label class="layui-form-label zlit-form-label">禁用</label>
       <div class="layui-input-block input-w">
-        <input type="text" name="name4" value="禁用状态，不可编辑" disabled class="layui-input layui-disabled">
+        <input type="text" name="disable" value="禁用状态，不可编辑" disabled class="layui-input layui-disabled">
       </div>
     </div>
     <div class="layui-form-item">
@@ -959,7 +1100,7 @@ layui.use('form', function(){
       return value;
     }
   }, '格式不正确');
-  $('#con_form').validate({   //以下init,error,finish,desc等为input的name值
+  $('#con_form1').validate({   //以下init,error,finish,desc等为input的name值
     rules:{
       init:{
         required:true,
@@ -1013,7 +1154,7 @@ layui.use('form', function(){
   });
   //监听提交
   form.on('submit(demo1)', function(data){
-    if ($('#con_form').valid()){
+    if ($('#con_form1').valid()){
       console.log(data.field);
       console.log(JSON.stringify(data.field));
     }
@@ -1104,12 +1245,12 @@ $('.zlit-number-add').mousedown(function () {
                   <span>单位</span>
                 </div>
 
+                <div id="slideTest5"></div>
                 <div class="double-range">
-                  <div id="slideTest5"></div>
+                  <div id="slideTest6"></div>
                   <input type="text" readonly class="layui-slider-input layui-input double-range-text">
                   <span>单位</span>
                 </div>
-                <div id="slideTest6"></div>
               </div>
             </div>
             <!--代码展示-->
@@ -1121,27 +1262,33 @@ $('.zlit-number-add').mousedown(function () {
   <script src="layui/layui.js"></script>
   <script src="js/jquery-3.3.1.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-  <div id="slideTest11"></div>
-  <div id="slideTest22"></div>
+  <!--单滑块无输入框-->
+  <div id="slideTest11" class="zlit-slide-input"></div>
+  <!--单滑块有输入框-->
+  <div id="slideTest22" class="zlit-slide-input"></div>
 
-  <div id="slideTest33"></div>
-  <div id="slideTest44"></div>
+  <!--单滑块有步进值无输入框-->
+  <div id="slideTest33" class="zlit-slide-input"></div>
+  <!--单滑块有步进值有输入框-->
+  <div id="slideTest44" class="zlit-slide-input"></div>
 
-  <div class="double-range">
-    <div id="slideTest55"></div>
+  <!--双滑块有输入框-->
+  <div id="slideTest55" class="zlit-slide-input"></div>
+  <!--双滑块无输入框-->
+  <div class="double-range zlit-slide-input">
+    <div id="slideTest66"></div>
     <input type="text" readonly class="layui-slider-input layui-input double-range-text">
-  </div>
-  <div id="slideTest66"></div></pre>
+  </div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 layui.use('slider', function(){
   var slider = layui.slider;
-  //无步进值无输入框
+  //单滑块无步进值无输入框
   slider.render({
     elem: '#slideTest11',  //绑定元素
     theme: '#91D5FF',     //自定义主题色
     value: 25,            //设置初始值
   });
-  //无步进值有输入框
+  //单滑块无步进值有输入框
   slider.render({
     elem: '#slideTest22',  //绑定元素
     theme: '#91D5FF',     //自定义主题色
@@ -1149,7 +1296,7 @@ layui.use('slider', function(){
     value: 25,            //设置初始值
   });
 
-  //有步进值无输入框
+  //单滑块有步进值无输入框
   slider.render({
     elem: '#slideTest33',  //绑定元素
     theme: '#91D5FF',     //自定义主题色
@@ -1157,7 +1304,7 @@ layui.use('slider', function(){
     value: 40,            //设置初始值
     showstep: true        //开启间断点
   });
-  //有步进值有输入框
+  //单滑块有步进值有输入框
   slider.render({
     elem: '#slideTest44',  //绑定元素
     theme: '#91D5FF',     //自定义主题色
@@ -1167,9 +1314,16 @@ layui.use('slider', function(){
     showstep: true        //开启间断点
   });
 
+  //双滑块无输入框
+  slider.render({
+    elem: '#slideTest55',  //绑定元素
+    theme: '#91D5FF',     //自定义主题色
+    range: true,          //开启拖拽范围
+    value: [5,55]        //设置初始值
+  });
   //双滑块带输入框
   var double = slider.render({
-    elem: '#slideTest55',  //绑定元素
+    elem: '#slideTest66',  //绑定元素
     theme: '#91D5FF',     //自定义主题色
     range: true,          //开启拖拽范围
     value: [5,55],        //设置初始值
@@ -1178,13 +1332,6 @@ layui.use('slider', function(){
     }
   });
   $('.double-range-text').val(double.config.value[0]+'-'+double.config.value[1]);
-  //双滑块无输入框
-  slider.render({
-    elem: '#slideTest66',  //绑定元素
-    theme: '#91D5FF',     //自定义主题色
-    range: true,          //开启拖拽范围
-    value: [5,55]        //设置初始值
-  });
 });</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
@@ -1214,7 +1361,6 @@ layui.use('slider', function(){
                     <div class="layui-input-block zlit-input-block">
                       <input type="radio" name="radio1" value="1" title="禁用一" disabled>
                       <input type="radio" name="radio1" value="2" title="禁用二" disabled checked>
-                      <input type="radio" name="radio1" value="3" title="禁用三" disabled>
                     </div>
                   </div>
                 </div>
@@ -1262,28 +1408,28 @@ layui.use('slider', function(){
       <div class="layui-input-block zlit-input-block">
         <input type="radio" name="radio1" value="1" title="禁用一" disabled>
         <input type="radio" name="radio1" value="2" title="禁用二" disabled checked>
-        <input type="radio" name="radio1" value="3" title="禁用三" disabled>
       </div>
     </div>
   </form>
 
   <!--矩形风格-->
   <form action="" class="layui-form">  <!--form标签不是必须，可更改，类名layui-form必须-->
-  <div class="layui-form-item">
-    <label class="layui-form-label zlit-form-label">正常</label>
-    <div class="layui-input-block zlit-input-block zlit-input-radio">
-      <input type="radio" name="name" value="1" title="选项一">
-      <input type="radio" name="name" value="2" title="选项二" checked>
-      <input type="radio" name="name" value="3" title="选项三">
+    <div class="layui-form-item">
+      <label class="layui-form-label zlit-form-label">正常</label>
+      <div class="layui-input-block zlit-input-block zlit-input-radio">
+        <input type="radio" name="name" value="1" title="选项一">
+        <input type="radio" name="name" value="2" title="选项二" checked>
+        <input type="radio" name="name" value="3" title="选项三">
+      </div>
     </div>
-  </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label zlit-form-label">禁用</label>
-    <div class="layui-input-block zlit-input-block zlit-input-radio">
-      <input type="radio" name="name1" value="1" title="禁用一" disabled>
-      <input type="radio" name="name1" value="2" title="禁用二" disabled checked>
+    <div class="layui-form-item">
+      <label class="layui-form-label zlit-form-label">禁用</label>
+      <div class="layui-input-block zlit-input-block zlit-input-radio">
+        <input type="radio" name="name1" value="1" title="禁用一" disabled>
+        <input type="radio" name="name1" value="2" title="禁用二" disabled checked>
+      </div>
     </div>
-  </div></form></pre>
+  </form></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 layui.use('form', function(){
   var form = layui.form;
@@ -1334,15 +1480,11 @@ layui.use('form', function(){
   <form action="" class="layui-form">  <!--form标签不是必须，可更改，类名layui-form必须-->
     <div class="layui-form-item">
       <label class="layui-form-label zlit-form-label">正常</label>
-      <div class="layui-input-block zlit-input-block">
+      <div class="layui-input-block zlit-input-block">   <!--div标签不是必须，可更改，类名layui-form必须-->
         <input type="checkbox" name="" title="选项一" lay-skin="primary">
         <input type="checkbox" name="" title="选项二" lay-skin="primary" checked>
         <input type="checkbox" name="" title="选项三" lay-skin="primary">
-      </div>
-    </div>
-    <div class="layui-form-item">
-      <label class="layui-form-label zlit-form-label">禁用</label>
-      <div class="layui-input-block zlit-input-block">
+
         <input type="checkbox" name="" title="选项一" lay-skin="primary" disabled>
         <input type="checkbox" name="" title="选项二" lay-skin="primary" checked disabled>
         <input type="checkbox" name="" title="选项三" lay-skin="primary" disabled>
@@ -1472,7 +1614,7 @@ $('.zlit-label-box').on('click','.zlit-label-single span',function () {
     <div class="layui-form-item">
       <label class="layui-form-label zlit-form-label">下拉菜单</label>
       <div class="layui-input-block">
-        <select name="city">
+        <select name="city" lay-search>
           <option value=""></option>
           <option value="0">选项一</option>
           <option value="1">选项二</option>
@@ -1503,7 +1645,7 @@ layui.use('form', function(){
             <div class="form-box">
               <label class="layui-form-label zlit-form-label">级联选择</label>
               <div class="layui-input-block zlit-cascade">
-                <input type="text" id="cascade" class="layui-input" readonly="readonly">
+                <input type="text" id="cascade" class="layui-input" readonly="readonly" placeholder="请选择">
               </div>
             </div>
 
@@ -1518,7 +1660,7 @@ layui.use('form', function(){
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
   <label class="layui-form-label zlit-form-label">级联选择</label>
   <div class="layui-input-block zlit-cascade">
-    <input type="text" id="cascade1" class="layui-input" readonly="readonly">
+    <input type="text" id="cascade1" class="layui-input" readonly="readonly" placeholder="请选择">
   </div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 查看数据格式：https://www.easy-mock.com/mock/5bdffa7aae524521410b1598/tableData/cascader
@@ -1532,16 +1674,16 @@ layui.config({
       "Msg": "错误！！"
   }*/
   cascader({
-    elem: "#cascade",             //绑定容器id
+    elem: "#cascade1",             //绑定容器id
     // data: data,                   //数据,json格式数组
-    url: "https://www.easy-mock.com/mock/5bdffa7aae524521410b1598/tableData/cascader",                //异步数据请求地址
+    url: "https://www.easy-mock.com/mock/5bdffa7aae524521410b1598/tableData/cascader",  //异步数据请求地址
     type: "get",                  //请求方式
     // triggerType: "change",     //处罚方式（鼠标点击或鼠标移入）
     // showLastLevels: true,      //是否显示最后一级
     // where: {                   //异步传送得参数
     //     a: "aaa"
     // },
-    value: ["B", "BB1",'BBB1'],   //已选择得值
+    id: ["B", "BB1",'BBB1'],   //已选择得值
     changeOnSelect: true,         //开启可选择任意一级
     success: function (valData,labelData) {   //选择后的回调
       // valData  选项得值
@@ -1619,7 +1761,7 @@ layui.config({
 
   //监听事件获取实时选择数据
   formSelects.on('example11_1', function(id, vals, choice, isAdd, isDisabled){
-    //id:           点击select的id
+    //id:           当前select的id
     //vals:         当前select已选中的值
     //choice:       当前select点击的值
     //isAdd:        当前操作选中or取消
@@ -1798,7 +1940,7 @@ layui.use('laydate', function() {
   var laydate = layui.laydate;
 
   laydate.render({
-    elem: '#time1',        //绑定容器
+    elem: '#time11',        //绑定容器
     theme: '#108EE9',      //自定义颜色主题
     format: 'HH:mm:ss',    //自定义格式
     type: 'time',          //时间选择
@@ -1907,10 +2049,12 @@ layui.use('form', function(){
             <div class="form-box">
               <div class="layui-upload zlit-upload">
                 <label class="layui-form-label zlit-form-label">上传文件</label>
-                <button type="button" class="layui-btn layui-btn-primary zlit-btn-primary" id="testList"><i class="layui-icon layui-icon-upload-drag"></i>选择多文件</button>
-                <span class="zlit-upload-span">支持扩展名：.rar .zip .doc .docx .pdf .jpg...</span>
-                <ul id="demoList" class="zlit-upload-list"></ul>
-                <button type="button" class="layui-btn zlit-btn-default" id="testListAction" style="margin: 0 auto;display: block;">开始上传</button>
+                <div class="zlit-upload-0 layui-input-block">
+                  <button type="button" class="layui-btn layui-btn-primary zlit-btn-primary" id="testList"><i class="layui-icon layui-icon-upload-drag"></i>选择多文件</button>
+                  <span class="zlit-upload-span">支持扩展名：.rar .zip .doc .docx .pdf .jpg...</span>
+                  <ul id="demoList" class="zlit-upload-list"></ul>
+                  <button type="button" class="layui-btn zlit-btn-default zlit-upload-0-btn" id="testListAction">开始上传</button>
+                </div>
               </div>
             </div>
             <!--代码展示-->
@@ -1919,16 +2063,18 @@ layui.use('form', function(){
   <!--使用前需引入layui依赖文件-->
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
-  <script src="layui/layui.js"></script></pre>
+  <script src="layui/layui.js"></script>
+  <script src="js/jquery-3.3.1.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
   <div class="layui-upload zlit-upload">
     <label class="layui-form-label zlit-form-label">上传文件</label>
-    <button type="button" class="layui-btn layui-btn-primary zlit-btn-primary" id="testList1"><i class="layui-icon layui-icon-upload-drag"></i>选择多文件</button>
-    <span class="zlit-upload-span">支持扩展名：.rar .zip .doc .docx .pdf .jpg...</span>
-    <ul id="demoList1" class="zlit-upload-list"></ul>
-    <button type="button" class="layui-btn zlit-btn-default" id="testListAction1">开始上传</button>
-  </div>
-</pre>
+    <div class="zlit-upload-0 layui-input-block">
+      <button type="button" class="layui-btn layui-btn-primary zlit-btn-primary" id="testList1"><i class="layui-icon layui-icon-upload-drag"></i>选择多文件</button>
+      <span class="zlit-upload-span">支持扩展名：.rar .zip .doc .docx .pdf .jpg...</span>
+      <ul id="demoList1" class="zlit-upload-list"></ul>
+      <button type="button" class="layui-btn zlit-btn-default zlit-upload-0-btn" id="testListAction1">开始上传</button>
+    </div>
+  </div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 var xhrOnProgress=function(fun) {
   xhrOnProgress.onprogress = fun; //绑定监听
@@ -1949,19 +2095,18 @@ var xhrOnProgress=function(fun) {
 layui.use('upload', function() {
   var upload = layui.upload;
   //多文件列表示例
-  var demoListView = $('#demoList')
+  var demoListView = $('#demoList1')
     ,uploadListIns = upload.render({
-    elem: '#testList'  //绑定的容器
+    elem: '#testList1'  //绑定的容器
     ,method: 'post'
     ,url: './upload.class.php'   //请求的地址
     ,accept: 'file'    //限定文件格式images/file/video/audio
     ,multiple: true    //开启多选
     ,auto: false       //关闭自动上传
     ,drag: false       //关闭拖拽上传
-    ,bindAction: '#testListAction'    //结合auto:false使用，指向另外一个按钮元素来执行上传动作
+    ,bindAction: '#testListAction1'    //结合auto:false使用，指向另外一个按钮元素来执行上传动作
     ,choose: function(obj){
       var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
-
       //读取本地文件
       obj.preview(function(index, file, result){
         //result值为文件的base64格式
@@ -1970,12 +2115,10 @@ layui.use('upload', function() {
           '<span class="zlit-file-name"><em class="zlit-upload-msg">等待上传</em>，文件名称：'+file.name+'，文件大小：'+(file.size/1014).toFixed(1)+'kb</span>',
           '<div class="upload-ctrl"><i class="layui-icon layui-icon-refresh zlit-reload"></i><i class="layui-icon layui-icon-close zlit-delete"></i></div><div class="upload-progress"><div class="inner"></div></div></li>'
         ].join(''));
-
         //单个重传
         li.find('.zlit-reload').on('click', function(){
           obj.upload(index, file);
         });
-
         //删除
         li.find('.zlit-delete').on('click', function(){
           delete files[index]; //删除对应的文件
@@ -2019,10 +2162,11 @@ layui.use('upload', function() {
               <div class="layui-upload zlit-upload">
                 <label class="layui-form-label zlit-form-label">上传图片</label>
                 <div class="zlit-upload-1 layui-input-block">
-                  <div class="zlit-img-view"></div>
-                  <div class="zlit-upload-1btn" id="upload1">
-                    <p>+</p>
-                    <span>上传</span>
+                  <div class="zlit-img-view">
+                    <div class="zlit-upload-1btn" id="upload1">
+                      <p>+</p>
+                      <span>上传</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -2033,13 +2177,18 @@ layui.use('upload', function() {
   <!--使用前需引入layui依赖文件-->
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
-  <script src="layui/layui.js"></script></pre>
+  <script src="layui/layui.js"></script>
+  <script src="js/jquery-3.3.1.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-  <div class="zlit-upload-1">
-    <div class="zlit-img-view"></div>
-    <div class="zlit-upload-1btn" id="upload">
-      <p>+</p>
-      <span>上传</span>
+  <div class="layui-upload zlit-upload">
+    <label class="layui-form-label zlit-form-label">上传图片</label>
+    <div class="zlit-upload-1 layui-input-block">
+      <div class="zlit-img-view">
+        <div class="zlit-upload-1btn" id="upload">
+          <p>+</p>
+          <span>上传</span>
+        </div>
+      </div>
     </div>
   </div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
@@ -2047,7 +2196,7 @@ layui.use(['upload','layer'], function() {
   var upload = layui.upload;
   var layer = layui.layer;
   upload.render({
-    elem: '#upload1'    //制定容器
+    elem: '#upload'    //制定容器
     ,url: './upload.class.php'   //上传地址
     ,multiple: true       //开启多传
     ,drag: false        //关闭拖拽上传
@@ -2057,14 +2206,15 @@ layui.use(['upload','layer'], function() {
         var div = $('<div></div>'),img = $('<img/>');
         img.prop({src:result,alt:file.name});
         img.appendTo(div);
-        div.appendTo($('.zlit-img-view'));
+        div.insertBefore($('.zlit-upload-1btn'));
       });
     }
-    ,done: function(res){
+    ,done: function(res,index){
       //上传完毕
       layer.msg('图片上传成功', {
         time: 3000, icon: 1
       });
+      return delete this.files[index]; //删除文件队列已经上传成功的文件
     }
   });
 });</pre>
@@ -2103,9 +2253,10 @@ layui.use(['upload','layer'], function() {
   <!--使用前需引入layui依赖文件-->
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
-  <script src="layui/layui.js"></script></pre>
+  <script src="layui/layui.js"></script>
+  <script src="js/jquery-3.3.1.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-<div class="zlit-upload-2 layui-input-block">
+<div class="zlit-upload-2">
   <div class="zlit-upload-2-title">
     <span>导入标题</span>
     <i class="layui-icon layui-icon-close"></i>
@@ -2130,11 +2281,11 @@ layui.use(['upload','layer'], function() {
   var upload = layui.upload;
   var layer = layui.layer;
   upload.render({
-    elem: '#uploadCon'   //绑定容器
+    elem: '#uploadCon1'   //绑定容器
     ,url: './upload.class.php'     //请求地址
     ,accept: 'file'      //文件格式
     ,auto: false         //关闭自动上传
-    ,bindAction: '#uploadSub'   //结合auto:false使用，指向另外一个按钮元素来执行上传动作
+    ,bindAction: '#uploadSub1'   //结合auto:false使用，指向另外一个按钮元素来执行上传动作
     ,size: 1024*5        //限制文件最大5MB
     ,choose: function(obj){
       this.files = obj.pushFile();  //将每次选择的文件追加到文件队列,以便清除
@@ -2382,92 +2533,103 @@ layui.use('layer', function(){
 layui.use('layer', function(){
   var layer = layui.layer;
 
-  //系统全局警示
-  var clientW = $(window).width();
-  var index = layer.msg('系统全局公告，放置于页面导航顶部。', {
-    offset: 'lt',
-    anim: 1,
-    time: 0,
-    icon: 0,
-    fixed: false,
-    closeBtn: 1
-  });
-  layer.style(index,{
-    background:'#FFFBE6',
-    color:'rgba(0,0,0,0.6)',
-    borderRadius:'4px',
-    fontSize: '14px',
-    width: clientW,
-    border: '1px solid #FFE58F',
-    boxSizing: 'border-box'
+  //系统全局警告提示
+  $('.warning_box .whiteBg .system_btn').click(function () {
+    var clientW = $(window).width();
+    var index = layer.msg('系统全局公告，放置于页面导航顶部。', {
+      offset: 'lt',
+      anim: 1,
+      time: 0,
+      icon: 0,
+      fixed: false,
+      closeBtn: 1
+    });
+    layer.style(index,{
+      background:'#FFFBE6',
+      color:'rgba(0,0,0,0.6)',
+      borderRadius:'4px',
+      fontSize: '14px',
+      width: clientW,
+      border: '1px solid #FFE58F',
+      boxSizing: 'border-box'
+    })
   });
 
   //成功提示
-  var index = layer.msg('成功提示的文案。', {
-    offset: '24px',
-    anim: 1,
-    time: 0,
-    icon: 1,
-    closeBtn: 1
+  $('.warning_box .whiteBg .success_btn').click(function () {
+    var index = layer.msg('成功提示的文案。', {
+      offset: '24px',
+      anim: 1,
+      time: 0,
+      icon: 1,
+      closeBtn: 1
+    });
+    layer.style(index,{
+      background:'#F6FFED',
+      color:'rgba(0,0,0,0.6)',
+      borderRadius:'4px',
+      fontSize: '14px',
+      border: '1px solid #B7EB8F',
+      boxSizing: 'border-box'
+    })
   });
-  layer.style(index,{
-    background:'#F6FFED',
-    color:'rgba(0,0,0,0.6)',
-    borderRadius:'4px',
-    fontSize: '14px',
-    border: '1px solid #B7EB8F',
-    boxSizing: 'border-box'
-  })
+
   //失败提示
-  var index = layer.msg('失败提示的文案。', {
-    offset: '24px',
-    anim: 1,
-    time: 0,
-    icon: 2,
-    closeBtn: 1
+  $('.warning_box .whiteBg .fail_btn').click(function () {
+    var index = layer.msg('失败提示的文案。', {
+      offset: '24px',
+      anim: 1,
+      time: 0,
+      icon: 2,
+      closeBtn: 1
+    });
+    layer.style(index,{
+      background:'#FFF2F1',
+      color:'rgba(0,0,0,0.6)',
+      borderRadius:'4px',
+      fontSize: '14px',
+      border: '1px solid #FFA39E',
+      boxSizing: 'border-box'
+    })
   });
-  layer.style(index,{
-    background:'#FFF2F1',
-    color:'rgba(0,0,0,0.6)',
-    borderRadius:'4px',
-    fontSize: '14px',
-    border: '1px solid #FFA39E',
-    boxSizing: 'border-box'
-  })
 
   //警告提示
-  var index = layer.msg('警告提示的文案。', {
-    offset: '24px',
-    anim: 1,
-    time: 0,
-    icon: 0,
-    closeBtn: 1
+  $('.warning_box .whiteBg .warning_btn').click(function () {
+    var index = layer.msg('警告提示的文案。', {
+      offset: '24px',
+      anim: 1,
+      time: 0,
+      icon: 0,
+      closeBtn: 1
+    });
+    layer.style(index,{
+      background:'#FFFBE6',
+      color:'rgba(0,0,0,0.6)',
+      borderRadius:'4px',
+      fontSize: '14px',
+      border: '1px solid #FFE58F',
+      boxSizing: 'border-box'
+    })
   });
-  layer.style(index,{
-    background:'#FFFBE6',
-    color:'rgba(0,0,0,0.6)',
-    borderRadius:'4px',
-    fontSize: '14px',
-    border: '1px solid #FFE58F',
-    boxSizing: 'border-box'
-  })
 
-  //普通提示
-  var index = layer.msg('信息提示的文案。', {
-    offset: '24px',
-    anim: 1,
-    time: 0,
-    icon: 4,
-    closeBtn: 1
+  //普通文案提示
+  $('.warning_box .whiteBg .tips_btn').click(function () {
+    var index = layer.msg('信息提示的文案。', {
+      offset: '24px',
+      anim: 1,
+      time: 0,
+      icon: 4,
+      closeBtn: 1
+    });
+    layer.style(index,{
+      background:'#E6F7FF',
+      color:'rgba(0,0,0,0.6)',
+      borderRadius:'4px',
+      fontSize: '14px',
+      border: '1px solid #91D5FF',
+      boxSizing: 'border-box'
+    })
   });
-  layer.style(index,{
-    background:'#E6F7FF',
-    color:'rgba(0,0,0,0.6)',
-    borderRadius:'4px',
-    fontSize: '14px',
-    border: '1px solid #91D5FF',
-    boxSizing: 'border-box'
-  })
 });</pre>
               </div>
               <div class="open_code">代码展示：点击<span>展开</span>代码</div>
@@ -2507,72 +2669,94 @@ layui.use('layer', function(){
 layui.use('layer', function(){
   var layer = layui.layer;
   //提交
-  var index = layer.open({
-    type: 0,
-    icon: 4,
-    title:'普通操作标题',
-    offset: 'auto',
-    content: '继续此操作的一些提示文字信息',
-    btn: ['提交','取消'],
-    yes: function(){
-      //点击提交后。。。
-    }
+  $('.confirm_submit').click(function () {
+    var index = layer.open({
+      type: 0,
+      icon: 4,
+      title:'普通操作标题',
+      offset: 'auto',
+      content: '继续此操作的一些提示文字信息',
+      btn: ['提交','取消'],
+      yes: function(){
+        layer.closeAll();
+      }
+    });
+    layer.style(index,{
+      borderRadius:'6px',
+      overflow:'hidden',
+    });
   });
-  layer.style(index,{
-    borderRadius:'6px',
-    overflow:'hidden',
-  });
-
   //删除
-  var index = layer.open({
-    type: 0,
-    icon: 0,
-    title:'普通操作标题',
-    offset: 'auto',
-    content: '继续此操作的一些提示文字信息',
-    btn: ['删除','取消'],
-    yes: function(){
-      //点击删除后。。。
-    }
+  $('.confirm_delete').click(function () {
+    var index = layer.open({
+      type: 0,
+      icon: 0,
+      title:'普通操作标题',
+      offset: 'auto',
+      content: '继续此操作的一些提示文字信息',
+      btn: ['删除','取消'],
+      yes: function(){
+        layer.closeAll();
+      }
+    });
+    layer.style(index,{
+      borderRadius:'6px',
+      overflow:'hidden',
+    });
   });
-  layer.style(index,{
-    borderRadius:'6px',
-    overflow:'hidden',
+  //成功
+  $('.confirm_success').click(function () {
+    var index = layer.open({
+      type: 0,
+      icon: 1,
+      title:'普通操作标题',
+      offset: 'auto',
+      time: 5000,
+      content: '继续此操作的一些提示文字信息，5秒后自动关闭',
+      btn: ['关闭'],
+      yes: function(){
+        layer.closeAll();
+      }
+    });
+    layer.style(index,{
+      borderRadius:'6px',
+      overflow:'hidden',
+    });
   });
-
-  //操作成功
-  var index = layer.open({
-    type: 0,
-    icon: 1,
-    title:'普通操作标题',
-    offset: 'auto',
-    time: 5000,
-    content: '继续此操作的一些提示文字信息，5秒后自动关闭',
-    btn: ['关闭'],
-    yes: function(){
-      //点击关闭后。。。
-    }
+  //失败
+  $('.confirm_fail').click(function () {
+    var index = layer.open({
+      type: 0,
+      icon: 2,
+      title:'普通操作标题',
+      offset: 'auto',
+      content: '继续此操作的一些提示文字信息',
+      btn: ['关闭'],
+      yes: function(){
+        layer.closeAll();
+      }
+    });
+    layer.style(index,{
+      borderRadius:'6px',
+      overflow:'hidden',
+    });
   });
-  layer.style(index,{
-    borderRadius:'6px',
-    overflow:'hidden',
-  });
-
-  //操作失败
-  var index = layer.open({
-    type: 0,
-    icon: 2,
-    title:'普通操作标题',
-    offset: 'auto',
-    content: '继续此操作的一些提示文字信息',
-    btn: ['关闭'],
-    yes: function(){
-      layer.closeAll();
-    }
-  });
-  layer.style(index,{
-    borderRadius:'6px',
-    overflow:'hidden',
+  //气泡提示
+  $('.tips_del').click(function () {
+    var that = this;
+    var index = layer.tips('<div class="zlit-tips-box"><i class="layui-icon layui-icon-tips zlit-tips-icon"></i><span class="zlit-tips-text">删除后数据不可恢复</span><div class="zlit-tips-btn"><a href="#" class="zlit-tips-btn0">取消</a><a href="#" class="zlit-tips-btn1">删除</a></div></div>',that,{
+      tips: [1,'#fff'],
+      area: ['230px', '76px'],
+      time: 0,
+    });
+    $('.zlit-tips-btn0').on('click',function () {
+      //点击取消要做的事....
+      layer.close(index);
+    });
+    $('.zlit-tips-btn1').on('click',function () {
+      //点击删除要做的事....
+      layer.close(index);
+    });
   });
 });</pre>
             </div>

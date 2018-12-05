@@ -174,8 +174,16 @@
 
 
 /*面包屑导航*/
+.crumbs-nav .title>div:after{
+  content: '';
+  width: 0;
+  height: 0;
+  display: block;
+  clear: both;
+}
 .crumbs-nav .title .layui-breadcrumb{
-  margin-top: 5px;
+  margin: 20px 0;
+  display: inline-block;
 }
 .crumbs-nav .title .layui-breadcrumb>*{
   font-size: 16px;
@@ -184,7 +192,6 @@
   color: #108EE9 !important;
 }
 .crumbs-nav .layui-btn{
-  float: right;
   margin-left: 10px;
   font-size: 14px;
   color: rgba(0,0,0,0.6);
@@ -193,13 +200,21 @@
 .crumbs-nav .layui-btn-primary:hover{
   border-color: #C9C9C9;
 }
+.crumbs-nav .content {
+  background: #F7F8F9;
+  width: 100%;
+  height: 140px;
+}
 
 
 
 /*分页导航*/
 .paging .layui-laypage a,.paging .layui-laypage-curr,.paging .layui-laypage-spr{
-  margin: 0 6px 5px 0;
+  margin: 0 6px 0 0;
   border-radius: 4px;
+}
+.paging .layui-laypage a, .layui-laypage span{
+  margin-bottom: 0;
 }
 .paging-3 .layui-laypage a,.paging-3 .layui-laypage-curr,.paging-3 .layui-laypage-spr, .paging-1 .layui-laypage-spr{
   border: none;
@@ -352,9 +367,92 @@
 .zlit-btn-text{
   border: none;
   color: #108EE9;
+  padding: 0 5px;
 }
 .zlit-btn-text:hover{
   color: #108EE9;
+}
+/* 菜单按钮 */
+.zlit-menu-btn-box{
+  width: 144px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #108EE9;
+  padding: 8px 12px;
+  position: relative;
+  box-sizing: border-box;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.zlit-menu-btn-box span.zlit-menu-btn-text{
+  font-size: 16px;
+  color: #108EE9;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.zlit-menu-btn-box i.zlit-menu-btn-change{
+  font-size: 14px;
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  color: #108EE9;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.zlit-menu-btn-box ul.zlit-menu-btn{
+  width: 100%;
+  background: #fff;
+  -webkit-box-shadow: 0 0 4px 0 rgba(0,0,0,0.4);
+  -moz-box-shadow: 0 0 4px 0 rgba(0,0,0,0.4);
+  box-shadow: 0 0 4px 0 rgba(0,0,0,0.4);
+  position: absolute;
+  left: 0;
+  top: 110%;
+  display: none;
+  z-index: 99;
+}
+.zlit-menu-btn-box ul li{
+  font-size: 16px;
+  color: #333;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+.zlit-menu-btn-box ul li:hover{
+  background-color: #E6F7FF;
+}
+.zlit-menu-btn-box ul li.active{
+  background-color: #E6F7FF;
+}
+.zlit-menu-btn-box p.zlit-menu-btn-show{
+  display: block;
+  font-size: 14px !important;
+  color: #999 !important;
+  position: absolute;
+  left: 105%;
+  bottom: 0;
+  min-width: 260px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.zlit-menu-btn-box:hover span, .zlit-menu-btn-box:hover i,.zlit-menu-btn-box:hover{
+  color: #40A5ED;
+  border-color: #40A5ED;
 }
 /*按钮组*/
 .zlit-btn-group .zlit-btn-main{
@@ -614,6 +712,43 @@
   border-width: 6px 7px 6px 0;
   left: -7px;
   top: 29px;
+}
+.layui-layer-tips .layui-layer-content{
+  box-shadow: 1px 1px 7px rgba(0,0,0,.2) !important;
+}
+.zlit-tips-box{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.zlit-tips-box i.zlit-tips-icon{
+  color: #FAAD14;
+  vertical-align: -1px;
+  margin-right: 5px;
+}
+.zlit-tips-box span.zlit-tips-text{
+  color: #666;
+  font-size: 14px;
+}
+.zlit-tips-box div.zlit-tips-btn{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.zlit-tips-box div.zlit-tips-btn a.zlit-tips-btn0{
+  color: #666;
+  font-size: 14px;
+}
+.zlit-tips-box div.zlit-tips-btn a.zlit-tips-btn0:hover{
+  color: #808080;
+}
+.zlit-tips-box div.zlit-tips-btn a.zlit-tips-btn1{
+  color: #F5222D;
+  font-size: 14px;
+  margin-left: 15px;
+}
+.zlit-tips-box div.zlit-tips-btn a.zlit-tips-btn1:hover{
+  color: #F63942;
 }
 
 
@@ -1114,11 +1249,14 @@
   position: relative;
   left: 2px;
 }
+.zlit-slide-input{
+  margin: 30px 0;
+}
 .double-range{
   position: relative;
 }
 .double-range>div{
-  width: 80%;
+  margin-right: 85px;
 }
 .double-range>input{
   position: absolute;
@@ -1237,10 +1375,11 @@
 .zlit-date-range{
   position: relative;
   min-width: 235px;
+  max-width: 320px;
 }
 .zlit-date-range i{
   position: absolute;
-  top: 11px;
+  top: 8px;
   right: 8px;
   font-size: 16px;
   color: #A0A0A0;
@@ -1254,7 +1393,7 @@
 }
 .zlit-cascade>i{
   position: absolute;
-  top: 12px;
+  top: 9px;
   right: 10px;
   cursor: pointer;
   transition: all 0.3s;
@@ -1348,7 +1487,7 @@ ul.urp-cascader-child::-webkit-scrollbar-track {/*滚动条里面轨道*/
   vertical-align: -2px;
 }
 .zlit-upload{
-  width: 535px;
+  width: 580px;
 }
 .zlit-upload-span{
   font-size: 14px;
@@ -1359,7 +1498,6 @@ ul.urp-cascader-child::-webkit-scrollbar-track {/*滚动条里面轨道*/
 .zlit-upload-list{
   margin-bottom: 20px;
   box-sizing: border-box;
-  padding-left: 110px;
 }
 .zlit-upload-list li{
   position: relative;
@@ -1404,6 +1542,10 @@ ul.urp-cascader-child::-webkit-scrollbar-track {/*滚动条里面轨道*/
   width: 0;
   height: 100%;
   box-sizing: border-box;
+}
+.zlit-upload-0 .zlit-upload-0-btn{
+  margin: 0 auto;
+  display: block;
 }
 .zlit-img-view{
   float: left;

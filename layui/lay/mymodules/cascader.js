@@ -335,12 +335,12 @@ layui.define(["jquery","laytpl","layer"], function (exports) {
                 zIndex++;
                 if (self.onOff) {
                     $(self.elem).siblings(".urp-cascader-content").find("ul").slideDown(100);
-                    $(self.elem).siblings("i").css({transform:'rotateZ(180deg)',top:'10px'});
+                    $(self.elem).siblings("i").css({transform:'rotateZ(180deg)',top:'7px'});
 
                     self.domContent.css("zIndex",zIndex);
                 } else {
                     $(self.elem).siblings(".urp-cascader-content").find("ul").slideUp(100);
-                    $(self.elem).siblings("i").css({transform:'rotateZ(0)',top:'12px'});
+                    $(self.elem).siblings("i").css({transform:'rotateZ(0)',top:'9px'});
                 }
             })
             // 点击外层文档隐藏

@@ -122,20 +122,20 @@ layui.use('laypage', function(){
 });
 
 //迷你样式
-var curr_page = Number($('.paging-4 .current_page').text());
-var max_page = Number($('.paging-4 .max_page').text());
-var prev_page = $('.paging-4 .prev_page');
-var next_page = $('.paging-4 .next_page');
+var curr_page = Number($('.paging-44 .current_page').text());
+var max_page = Number($('.paging-44 .max_page').text());
+var prev_page = $('.paging-44 .prev_page');
+var next_page = $('.paging-44 .next_page');
 next_page.click(function () {
   curr_page++;
   if (curr_page<max_page){
-    $('.paging-4 .current_page').text(curr_page);
+    $('.paging-44 .current_page').text(curr_page);
     prev_page.removeClass('disabled');
   }else if(curr_page==max_page){
     $(this).addClass('disabled');
-    $('.paging-4 .current_page').text(curr_page);
+    $('.paging-44 .current_page').text(curr_page);
   }else if (curr_page>max_page){
-    $('.paging-4 .current_page').text(max_page);
+    $('.paging-44 .current_page').text(max_page);
     $(this).addClass('disabled');
     curr_page = max_page;
   }
@@ -143,18 +143,92 @@ next_page.click(function () {
 prev_page.click(function () {
   curr_page--;
   if (curr_page>1){
-    $('.paging-4 .current_page').text(curr_page);
+    $('.paging-44 .current_page').text(curr_page);
     next_page.removeClass('disabled');
   }else if(curr_page==1){
     $(this).addClass('disabled');
-    $('.paging-4 .current_page').text(curr_page);
+    $('.paging-44 .current_page').text(curr_page);
   }else if (curr_page<1){
-    $('.paging-4 .current_page').text(1);
+    $('.paging-44 .current_page').text(1);
     $(this).addClass('disabled');
     curr_page = 1;
   }
 });
 //----------------------------------------分页结束---------------------------------------
+
+
+//----------------------------------------菜单按钮开始---------------------------------------
+function menuBtn(){
+  var flag = true;
+  $('.zlit-menu-btn-change').click(function (e) {
+    //隐藏/显示按钮功能区
+    e.stopPropagation();
+    if (flag) {
+      $('.zlit-menu-btn').addClass('layui-anim-scaleSpring').css({display:'block'});
+      $(this).css({transform:'rotateZ(180deg)',top:'10px'});
+      flag = false;
+    }else{
+      $('.zlit-menu-btn').removeClass('layui-anim-scaleSpring').css({display:'none'});
+      $(this).css({transform:'rotateZ(0deg)',top:'12px'});
+      flag = true;
+    }
+  });
+  $('.zlit-menu-btn li').on('click',function (e) {
+    e.stopPropagation();
+    var str,ids,strId;
+    $(this).addClass('active').siblings().removeClass('active');
+    str = $(this).text();
+    ids = $(this).attr('data-id');
+    $('.zlit-menu-btn-text').text(str);
+    $('.zlit-menu-btn-box').prop('id',ids);
+    $('.zlit-menu-btn').removeClass('layui-anim-scaleSpring').css({display:'none'});
+    $('.zlit-menu-btn-change').css({transform:'rotateZ(0deg)',top:'12px'});
+    flag = true;
+
+    //切换按钮功能
+    strId = $('.zlit-menu-btn-box').attr('id');
+    if (strId==='files-img'){
+      uploadFiles('#files-img');
+    }else if(strId==='files-file'){
+      uploadFiles('#files-file','file');
+    }else if(strId==='files-zip'){
+      uploadFiles('#files-zip','file','zip|rar|7z');
+    }else if(strId==='files-video'){
+      uploadFiles('#files-video','video');
+    }else if(strId==='files-audio'){
+      uploadFiles('#files-audio','audio');
+    }
+
+    $('.zlit-menu-btn-show').text('').find('span').css({display:'none'});
+  });
+  
+  function uploadFiles(ele,accpets='images',exts='') {
+    layui.use(['upload','layer'],function () {
+      var upload = layui.upload;
+      var layer = layui.layer;
+      upload.render({
+        elem: ele
+        ,url: './upload.class.php'
+        ,accept: accpets
+        ,exts:exts
+        ,choose: function(obj){
+          obj.preview(function(index, file, result){
+            $('.zlit-menu-btn-show').text(file.name);
+          });
+        }
+        ,done: function(res,index){
+          //上传完毕
+          layer.msg('上传成功', {
+            time: 3000, icon: 1
+          });
+          return delete this.files[index]; //删除文件队列已经上传成功的文件
+        }
+      });
+    });
+  }
+}
+menuBtn();
+//----------------------------------------菜单按钮结束---------------------------------------
 
 
 //-----------------------------------------表单开始--------------------------------------
@@ -281,9 +355,14 @@ layui.use('slider', function(){
     showstep: true        //开启间断点
   });
 
-
-  var double = slider.render({
+  slider.render({
     elem: '#slideTest5',  //绑定元素
+    theme: '#91D5FF',     //自定义主题色
+    range: true,          //开启拖拽范围
+    value: [5,55]        //设置初始值
+  });
+  var double = slider.render({
+    elem: '#slideTest6',  //绑定元素
     theme: '#91D5FF',     //自定义主题色
     range: true,          //开启拖拽范围
     value: [5,55],        //设置初始值
@@ -292,13 +371,6 @@ layui.use('slider', function(){
     }
   });
   $('.double-range-text').val(double.config.value[0]+'-'+double.config.value[1]);
-
-  slider.render({
-    elem: '#slideTest6',  //绑定元素
-    theme: '#91D5FF',     //自定义主题色
-    range: true,          //开启拖拽范围
-    value: [5,55]        //设置初始值
-  });
 });
 //标签
 //删除标签
@@ -464,7 +536,7 @@ layui.config({
   });
   //监听事件获取实时选择数据
   formSelects.on('example11_1', function(id, vals, choice, isAdd, isDisabled){
-    //id:           点击select的id
+    //id:           当前select的id
     //vals:         当前select已选中的值
     //choice:       当前select点击的值
     //isAdd:        当前操作选中or取消
@@ -599,7 +671,6 @@ layui.use('upload', function() {
           ,tds = li.children();
         tds.find('em').html('<em class="zlit-upload-msg" style="color: #5FB878;">上传成功</em>');
         tds.find('.zlit-reload').css({display:'none'});
-        console.log(this.files);
         return delete this.files[index]; //删除文件队列已经上传成功的文件
       }
       this.error(index, upload);
@@ -628,7 +699,7 @@ layui.use(['upload','layer'], function() {
         var div = $('<div></div>'),img = $('<img/>');
         img.prop({src:result,alt:file.name});
         img.appendTo(div);
-        div.appendTo($('.zlit-img-view'));
+        div.insertBefore($('.zlit-upload-1btn'));
       });
     }
     ,done: function(res,index){
@@ -636,6 +707,7 @@ layui.use(['upload','layer'], function() {
       layer.msg('图片上传成功', {
         time: 3000, icon: 1
       });
+      return delete this.files[index]; //删除文件队列已经上传成功的文件
     }
   });
 });
@@ -660,7 +732,7 @@ layui.use(['upload','layer'], function() {
     ,done: function(res,index){
       //上传完毕
       $('.zlit-upload-2-title span').css({color:'#5FB878'});
-      layer.msg('图片上传成功', {
+      layer.msg('上传成功', {
         time: 3000, icon: 1
       });
       return delete this.files[index]; //删除文件队列已经上传成功的文件
@@ -891,7 +963,27 @@ layui.use('layer', function(){
   });
   //气泡提示
   $('.tips_del').click(function () {
-    console.log(1);
+    var that = this;
+    var index = layer.tips(`<div class="zlit-tips-box">
+        <i class="layui-icon layui-icon-tips zlit-tips-icon"></i>
+        <span class="zlit-tips-text">删除后数据不可恢复</span>
+        <div class="zlit-tips-btn">
+         <a href="#" class="zlit-tips-btn0">取消</a>
+         <a href="#" class="zlit-tips-btn1">删除</a>
+        </div>
+      </div>`,that,{
+      tips: [1,'#fff'],
+      area: ['230px', '76px'],
+      time: 0,
+    });
+    $('.zlit-tips-btn0').on('click',function () {
+      //点击取消要做的事....
+      layer.close(index);
+    });
+    $('.zlit-tips-btn1').on('click',function () {
+      //点击删除要做的事....
+      layer.close(index);
+    });
   });
 
   //-------------------------------通知提醒框--------------------------------
