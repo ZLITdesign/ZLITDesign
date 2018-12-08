@@ -22,8 +22,10 @@
   <p class="docu_title">创建一个table实例最简单的方式是，在页面放置一个元素<em>&lt;table id=&quot;demo&quot;&gt;&lt;/table&gt;</em>，然后通过<em>table.render()</em> 方法指定该容器。<a href="https://www.easy-mock.com/mock/5bdffa7aae524521410b1598/tableData/demo/table/user" target="_blank" style="color: #1E9FFF;">点击查看数据格式。</a>如下所示：</p>
   <table id="demo" lay-filter="test"></table>
   <script>
-    layui.use('table', function(){
+    var datas;
+    layui.use(['table','layer'], function(){
       var table = layui.table;
+      var layer = layui.layer;
       //第一个实例
 
       table.on('sort(test)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
@@ -31,13 +33,13 @@
         console.log(obj.type); //当前排序类型：desc（降序）、asc（升序）、null（空对象，默认排序）
         console.log(this); //当前排序的 th 对象
       });
-      table.render({
+      datas = table.render({
         elem: '#demo',   //设置绑定容器
         height: 312,     //设置表格高度
-        url: 'data/table.json', //设置数据接口
+        url: 'https://www.easy-mock.com/mock/5bdffa7aae524521410b1598/tableData/demo/table/user', //设置数据接口
         page: true,  //开启分页
         cols: [[ //表头
-          {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'},
+          {field: 'id', title: 'ID', width:80, sort: true},
           {field: 'username', title: '用户名', width:120},
           {field: 'sex', title: '性别', width:80, sort: true},
           {field: 'city', title: '城市', width:80},

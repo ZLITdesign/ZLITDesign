@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>组件</title>
   <link rel="stylesheet" href="layui/css/layui.css">
-  <link rel="stylesheet" href="css/formSelects-v4.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/showCode.css">
 </head>
@@ -156,8 +155,70 @@
                 <li><a href="#">一级导航</a></li>
               </ul>
             </div>
+
+            <!--代码展示-->
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="js/jquery-3.3.1.js"></script>
+  <script src="layui/layui.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+<!--菜单全展开-->
+<ul class="zlit-nav">
+  <li class="active"><a href="#">一级导航</a></li>
+  <li class="zlit-nav-item zlit-nav-item-active">
+    <a href="#">一级导航</a>
+    <i class="layui-icon layui-icon-right"></i>
+    <dl class="zlit-nav-child">
+      <dd><a href="#">二级导航</a></dd>
+      <dd><a href="#">二级导航</a></dd>
+      <dd><a href="#">二级导航</a></dd>
+    </dl>
+  </li>
+  <li><a href="#">一级导航</a></li>
+  <li><a href="#">一级导航</a></li>
+</ul></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+<!--js代码-->
+//参数isOpen是否开启手风琴导航，默认关闭
+function zlitNav(isOpen=false){
+  $('.zlit-nav li').click(function(){
+    var flag = true;  //防止点击过快
+    var isHas = $(this).find('dl').is('dl');   //检测是否存在子级
+    if (isHas){
+      if (!flag){
+        return;
+      }
+      flag = false;
+      if ($(this).height()!==36){
+        $(this).find('dl').stop().slideUp(300,function(){
+          flag = true;
+        }).end().find('i').css({transform:'rotateZ(0)'});
+      }else{
+        $(this).find('dl').stop().slideDown(300,function(){
+          flag = true;
+        }).end().find('i').css({transform:'rotateZ(90deg)'});
+      }
+      if (isOpen){
+        $(this).siblings().find('dl').slideUp().end().find('i').css({transform:'rotateZ(0)'});
+      }
+    }else{
+      $(this).addClass('active').siblings().removeClass('active').find('dd').removeClass('active');
+    }
+  });
+  $('.zlit-nav-child dd').click(function(e){
+    e.stopPropagation();
+    $(this).addClass('active').siblings().removeClass('active').end().closest('li').siblings().find('dd').removeClass('active').end().removeClass('active');
+  });
+}
+zlitNav();</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
         </div>
+
         <div class="explain">
           <div class="explain_con">
             <h2>子菜单收起</h2>
@@ -205,35 +266,16 @@
                 </li>
               </ul>
             </div>
-          </div>
-        </div>
 
-        <!--代码展示-->
-        <div class="explain">
-          <div class="explain_con">
+            <!--代码展示-->
             <div class="syntax">
 <pre class="layui-code" lay-encode="true">
-  <!--使用前需引入layui依赖文件-->
+  <!--使用前需引入依赖文件-->
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="js/jquery-3.3.1.js"></script>
   <script src="layui/layui.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-<!--菜单全展开-->
-<ul class="zlit-nav">
-  <li class="active"><a href="#">一级导航</a></li>
-  <li class="zlit-nav-item zlit-nav-item-active">
-    <a href="#">一级导航</a>
-    <i class="layui-icon layui-icon-right"></i>
-    <dl class="zlit-nav-child">
-      <dd><a href="#">二级导航</a></dd>
-      <dd><a href="#">二级导航</a></dd>
-      <dd><a href="#">二级导航</a></dd>
-    </dl>
-  </li>
-  <li><a href="#">一级导航</a></li>
-  <li><a href="#">一级导航</a></li>
-</ul>
 <!--子菜单收起-->
 <ul class="zlit-nav">
   <li class="zlit-nav-item">
@@ -362,27 +404,27 @@ zlitNav();</pre>
   <script src="layui/layui.js"></script>
   <script src="js/jquery-3.3.1.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-  <!--风格一-->
-  <div class="tab-style-1">
-    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
-      <ul class="layui-tab-title">
-        <li class="layui-this">标签一</li>
-        <li>标签二</li>
-        <li>标签三</li>
-        <div class="slider"></div>
-      </ul>
-      <div class="layui-tab-content" style="height: 100px;">
-        <div class="layui-tab-item layui-show layui-anim layui-anim-left">标签一内容</div>
-        <div class="layui-tab-item layui-anim layui-anim-left">标签二内容</div>
-        <div class="layui-tab-item layui-anim layui-anim-left">标签三内容</div>
-      </div>
+<!--风格一-->
+<div class="tab-style-1">
+  <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+    <ul class="layui-tab-title">
+      <li class="layui-this">标签一</li>
+      <li>标签二</li>
+      <li>标签三</li>
+      <div class="slider"></div>
+    </ul>
+    <div class="layui-tab-content" style="height: 100px;">
+      <div class="layui-tab-item layui-show layui-anim layui-anim-left">标签一内容</div>
+      <div class="layui-tab-item layui-anim layui-anim-left">标签二内容</div>
+      <div class="layui-tab-item layui-anim layui-anim-left">标签三内容</div>
     </div>
-  </div></pre>
+  </div>
+</div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 <!--js代码-->
 //启用选项卡
 layui.use('element', function(){
-var element = layui.element;
+  var element = layui.element;
 });
 //tab标签导航滑块
 $('.tab-style-1 .layui-tab-title li').click(function () {
@@ -421,26 +463,25 @@ $('.tab-style-1 .layui-tab-title li').click(function () {
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
 <!--风格二-->
 <div class="tab-style-2">
-<div class="layui-tab layui-tab-card">
-  <ul class="layui-tab-title">
-    <li class="layui-this">标签一</li>
-    <li>标签二</li>
-    <li>标签三</li>
-  </ul>
-  <div class="layui-tab-content" style="height: 100px;">
-    <div class="layui-tab-item layui-show layui-anim layui-anim-left">标签一内容</div>
-    <div class="layui-tab-item layui-anim layui-anim-left">标签二内容</div>
-    <div class="layui-tab-item layui-anim layui-anim-left">标签三内容</div>
+  <div class="layui-tab layui-tab-card">
+    <ul class="layui-tab-title">
+      <li class="layui-this">标签一</li>
+      <li>标签二</li>
+      <li>标签三</li>
+    </ul>
+    <div class="layui-tab-content" style="height: 100px;">
+      <div class="layui-tab-item layui-show layui-anim layui-anim-left">标签一内容</div>
+      <div class="layui-tab-item layui-anim layui-anim-left">标签二内容</div>
+      <div class="layui-tab-item layui-anim layui-anim-left">标签三内容</div>
+    </div>
   </div>
-</div>
 </div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 <!--js代码-->
 //启用选项卡
 layui.use('element', function(){
-var element = layui.element;
-});
-</pre>
+  var element = layui.element;
+});</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -530,38 +571,7 @@ var element = layui.element;
             <div class="paging paging-1">
               <div id="paging-1"></div>
             </div>
-          </div>
-        </div>
-        <div class="explain">
-          <div class="explain_con">
-            <h2>简易样式</h2>
-            <p>全局页面少于10页使用。</p>
-            <div class="paging">
-              <div class="paging-2">
-                <div id="paging-2"></div>
-              </div>
-              <div class="paging-3">
-                <div id="paging-3"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="explain">
-          <div class="explain_con">
-            <h2>迷你样式</h2>
-            <p>适用于卡片，页数一般不超过10页。</p>
-            <div class="paging">
-              <div class="paging-4 paging-44">
-                <a href="#" class="prev_page disabled">&lt;</a>
-                <p><span class="current_page">1</span> / <span class="max_page">4</span></p>
-                <a href="#" class="next_page">&gt;</a>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="explain">
-          <div class="explain_con">
             <div class="syntax">
 <pre class="layui-code" lay-encode="true">
   <!--使用前需引入layui依赖文件-->
@@ -569,27 +579,10 @@ var element = layui.element;
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="layui/layui.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-  <!--标准样式-->
-  <div class="paging paging-1">
-    <div id="paging-11"></div>
-  </div>
-
-  <!--简易样式一-->
-  <div class="paging paging-2">
-    <div id="paging-22"></div>
-  </div>
-
-  <!--简易样式二-->
-  <div class="paging paging-3">
-    <div id="paging-33"></div>
-  </div>
-
-  <!--迷你样式-->
-  <div class="paging paging-4">
-    <a href="#" class="prev_page disabled">&lt;</a>
-    <p><span class="current_page">1</span> / <span class="max_page">4</span></p>
-    <a href="#" class="next_page">&gt;</a>
-  </div></pre>
+<!--标准样式-->
+<div class="paging paging-1">
+  <div id="paging-11"></div>
+</div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 <!--js代码-->
 //标准样式完整功能
@@ -607,8 +600,42 @@ layui.use('laypage', function(){
       console.log(obj)
     }
   });
-});
+});</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+        <div class="explain">
+          <div class="explain_con">
+            <h2>简易样式</h2>
+            <p>全局页面少于10页使用。</p>
+            <div class="paging">
+              <div class="paging-2">
+                <div id="paging-2"></div>
+              </div>
+              <div class="paging-3">
+                <div id="paging-3"></div>
+              </div>
+            </div>
 
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+<!--简易样式一-->
+<div class="paging paging-2">
+  <div id="paging-22"></div>
+</div>
+
+  <!--简易样式二-->
+<div class="paging paging-3">
+  <div id="paging-33"></div>
+</div></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+<!--js代码-->
 //简易样式
 layui.use('laypage', function(){
   var laypage = layui.laypage;
@@ -631,8 +658,38 @@ layui.use('laypage', function(){
     prev: '<em style="font-family: SimSun">&lt;</em>',
     next: '<em style="font-family: SimSun">&gt;</em>',
   });
-});
+});</pre>
+            </div>
+            <div class="open_code">代码展示：点击<span>展开</span>代码</div>
+          </div>
+        </div>
+        <div class="explain">
+          <div class="explain_con">
+            <h2>迷你样式</h2>
+            <p>适用于卡片，页数一般不超过10页。</p>
+            <div class="paging">
+              <div class="paging-4 paging-44">
+                <a href="#" class="prev_page disabled">&lt;</a>
+                <p><span class="current_page">1</span> / <span class="max_page">4</span></p>
+                <a href="#" class="next_page">&gt;</a>
+              </div>
+            </div>
 
+            <div class="syntax">
+<pre class="layui-code" lay-encode="true">
+  <!--使用前需引入layui依赖文件-->
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="js/jquery-1.9.1.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+<!--迷你样式-->
+<div class="paging paging-4">
+  <a href="#" class="prev_page disabled">&lt;</a>
+  <p><span class="current_page">1</span> / <span class="max_page">4</span></p>
+  <a href="#" class="next_page">&gt;</a>
+</div></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+<!--js代码-->
 //迷你样式
 var curr_page = Number($('.paging-4 .current_page').text());
 var max_page = Number($('.paging-4 .max_page').text());
@@ -1174,13 +1231,13 @@ layui.use('form', function(){
             <div class="form-box form-number-box">
               <div class="zlit-number-1">
                 <button class="zlit-number-reduce">-</button>
-                <input value="1" type="text" maxlength="6" class="zlit-input-number" oninput = "value=value.replace(/[^\d]/g,'')">
+                <input value="1" type="text" maxlength="6" class="zlit-input-number" oninput="value=value===''?0:value.replace(/[^\d]/g,'')">
                 <button class="zlit-number-add">+</button>
               </div>
               <span>单位</span>
               <div class="zlit-number-2">
                 <button class="zlit-number-reduce layui-icon layui-icon-down"></button>
-                <input value="1" type="text" maxlength="6" class="zlit-input-number" oninput = "value=value.replace(/[^\d]/g,'')">
+                <input value="1" type="text" maxlength="6" class="zlit-input-number" oninput="value=value===''?0:value.replace(/[^\d]/g,'')">
                 <button class="zlit-number-add layui-icon layui-icon-up"></button>
               </div>
               <span>单位</span>
@@ -1196,14 +1253,14 @@ layui.use('form', function(){
   <!--样式一-->
   <div class="zlit-number-1">
     <button class="zlit-number-reduce">-</button>
-    <input value="1" type="text" maxlength="6" class="zlit-input-number" oninput = "value=value.replace(/[^\d]/g,'')">
+    <input value="1" type="text" maxlength="6" class="zlit-input-number" oninput="value=value===''?0:value.replace(/[^\d]/g,'')">
     <button class="zlit-number-add">+</button>
   </div>
 
   <!--样式二-->
   <div class="zlit-number-2">
     <button class="zlit-number-reduce layui-icon layui-icon-down"></button>
-    <input value="1" type="text" maxlength="6" class="zlit-input-number" oninput = "value=value.replace(/[^\d]/g,'')">
+    <input value="1" type="text" maxlength="6" class="zlit-input-number" oninput="value=value===''?0:value.replace(/[^\d]/g,'')">
     <button class="zlit-number-add layui-icon layui-icon-up"></button>
   </div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
@@ -1235,13 +1292,13 @@ $('.zlit-number-add').mousedown(function () {
               <div class="h-slideInput">
                 <div id="slideTest1"></div>
                 <div class="unit-text">
-                  <div id="slideTest2" class="unit-slide"></div>
+                  <div id="slideTest2" class="unit-slide zlit-slide-input"></div>
                   <span>单位</span>
                 </div>
 
                 <div id="slideTest3"></div>
                 <div class="unit-text">
-                  <div id="slideTest4" class="unit-slide"></div>
+                  <div id="slideTest4" class="unit-slide zlit-slide-input"></div>
                   <span>单位</span>
                 </div>
 
@@ -1649,7 +1706,7 @@ layui.use('form', function(){
               </div>
             </div>
 
-            <a href="https://fly.layui.com/extend/cascader/" style="margin: 0 0 10px 20px;color: #108EE9;display: block;" target="_blank">点击查看扩展插件详情</a>
+            <a href="https://fly.layui.com/extend/cascader/" style="margin: 0 0 10px 20px;color: #F5222D;display: block;" target="_blank">点击查看扩展插件详情</a>
             <!--代码展示-->
             <div class="syntax">
 <pre class="layui-code" lay-encode="true">
@@ -1713,21 +1770,23 @@ layui.config({
               </div>
             </div>
 
-            <a href="https://hnzzmsf.github.io/layui-formSelects/docs/index.html#/" style="margin: 0 0 10px 20px;color: #108EE9;display: block;" target="_blank">点击查看扩展插件文档详情</a>
-            <a href="https://hnzzmsf.github.io/example/example_v4.html" style="margin: 0 0 10px 20px;color: #108EE9;display: block;" target="_blank">点击查看扩展插件示例详情</a>
+            <a href="https://hnzzmsf.github.io/layui-formSelects/docs/index.html#/" style="margin: 0 0 10px 20px;color: #F5222D;display: block;" target="_blank">点击查看扩展插件文档详情</a>
+            <a href="https://hnzzmsf.github.io/example/example_v4.html" style="margin: 0 0 10px 20px;color: #F5222D;display: block;" target="_blank">点击查看扩展插件示例详情</a>
             <!--代码展示-->
             <div class="syntax">
 <pre class="layui-code" lay-encode="true">
   <!--使用前需引入layui依赖文件-->
   <link rel="stylesheet" href="layui/css/layui.css">
-  <link rel="stylesheet" href="css/formSelects-v4.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="layui/layui.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-  <!--使用时请将注释解除-->
-  <!--<select name="city" xm-select="example11_1" xm-select-search xm-select-search-type="dl" xm-select-skin="normal">
+<!--使用时请将注释解除-->
+<!--<label class="layui-form-label zlit-form-label">树选择</label>
+<div class="layui-input-block" style="width: 300px;">
+  <select name="city" xm-select="example11_1" xm-select-search xm-select-search-type="dl" xm-select-skin="normal">
     <option value="">请选择</option>
-  </select>--></pre>
+  </select>
+</div>--></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 数据格式请移步https://www.easy-mock.com/mock/5bdffa7aae524521410b1598/tableData/zlittree
 layui.config({
@@ -1832,22 +1891,48 @@ layui.config({
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="layui/layui.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-  <div class="zlit-date-range">
-    <input type="text" class="layui-input" id="date11" placeholder="yyyy/MM/dd">
-    <i class="layui-icon layui-icon-date"></i>
+<!--日期选择-->
+<div class="layui-inline">
+  <label class="layui-form-label zlit-form-label">日期选择</label>
+  <div class="layui-input-inline">
+    <div class="zlit-date-range">
+      <input type="text" class="layui-input" id="date11" placeholder="yyyy/MM/dd">
+      <i class="layui-icon layui-icon-date"></i>
+    </div>
   </div>
-  <div class="zlit-date-range">
-    <input type="text" class="layui-input" id="date22" placeholder="yyyy/MM">
-    <i class="layui-icon layui-icon-date"></i>
+</div>
+<!--月份选择-->
+<div class="layui-inline">
+  <label class="layui-form-label zlit-form-label">月份选择</label>
+  <div class="layui-input-inline">
+    <div class="zlit-date-range">
+      <input type="text" class="layui-input" id="date22" placeholder="yyyy/MM">
+      <i class="layui-icon layui-icon-date"></i>
+    </div>
   </div>
-  <div class="zlit-date-range">
-    <input type="text" class="layui-input" id="date33" placeholder="yyyy">
-    <i class="layui-icon layui-icon-date"></i>
+</div>
+<!--年份选择-->
+<div class="layui-inline">
+  <label class="layui-form-label zlit-form-label">年份选择</label>
+  <div class="layui-input-inline">
+    <div class="zlit-date-range">
+      <input type="text" class="layui-input" id="date33" placeholder="yyyy">
+      <i class="layui-icon layui-icon-date"></i>
+    </div>
   </div>
-  <div class="zlit-date-range">
-    <input type="text" class="layui-input" id="date44" placeholder="yyyy/MM/dd - yyyy/MM/dd">
-    <i class="layui-icon layui-icon-date"></i>
-  </div></pre>
+</div>
+<!--日期范围-->
+<div class="layui-inline">
+  <div class="layui-inline">
+    <label class="layui-form-label zlit-form-label">日期范围</label>
+    <div class="layui-input-inline">
+      <div class="zlit-date-range">
+        <input type="text" class="layui-input" id="date44" placeholder="yyyy/MM/dd - yyyy/MM/dd">
+        <i class="layui-icon layui-icon-date"></i>
+      </div>
+    </div>
+  </div>
+</div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 layui.use('laydate', function() {
   var laydate = layui.laydate;
@@ -1931,10 +2016,15 @@ layui.use('laydate', function() {
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="layui/layui.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
-  <div class="zlit-date-range">
-    <input type="text" class="layui-input" id="time11" placeholder="HH:mm:ss">
-    <i class="layui-icon layui-icon-log"></i>
-  </div></pre>
+<div class="layui-inline">
+  <label class="layui-form-label zlit-form-label">时间选择</label>
+  <div class="layui-input-inline">
+    <div class="zlit-date-range">
+      <input type="text" class="layui-input" id="time11" placeholder="HH:mm:ss">
+      <i class="layui-icon layui-icon-log"></i>
+    </div>
+  </div>
+</div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 layui.use('laydate', function() {
   var laydate = layui.laydate;
@@ -2352,10 +2442,10 @@ layui.use(['upload','layer'], function() {
             <div class="toast_box">
               <div class="whiteBg">
                 <span>白色背景</span>
-                <button class="layui-btn layui-btn-primary zlit-btn-primary" data-method="offset" data-type="t">成功</button>
-                <button class="layui-btn layui-btn-primary zlit-btn-primary" data-method="offset" data-type="t">失败</button>
-                <button class="layui-btn layui-btn-primary zlit-btn-primary" data-method="offset" data-type="t">警示</button>
-                <button class="layui-btn layui-btn-primary zlit-btn-primary" data-method="offset" data-type="t">提示</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary">成功</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary">失败</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary">警示</button>
+                <button class="layui-btn layui-btn-primary zlit-btn-primary">提示</button>
               </div>
               <div class="darkBg">
                 <span>深色背景</span>
@@ -2372,132 +2462,157 @@ layui.use(['upload','layer'], function() {
   <!--使用前需引入layui依赖文件-->
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
-  <script src="layui/layui.js"></script></pre>
+  <script src="layui/layui.js"></script>
+  <script src="js/jquery-1.9.1.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-title="HTML">
+<!--按钮只是为了演示弹出效果，并不是必须，按实际情况将js代码写在自己的业务逻辑中！！！-->
+<!--白色背景-->
+<button class="layui-btn layui-btn-primary zlit-btn-primary" id="toast1">成功</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary" id="toast2">失败</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary" id="toast3">警示</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary" id="toast4">提示</button>
+
+<!--深色背景-->
+<button class="layui-btn layui-btn-primary zlit-btn-primary" id="toast5">成功</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary" id="toast6">失败</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary" id="toast7">警示</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary" id="toast8">提示</button></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 <!--js代码-->
 layui.use('layer', function(){
   var layer = layui.layer;
+  //如果页面首次加载时就需要调用弹出层的话，请将代码写在layer.ready(function(){})方法内部,如：layer.ready(function(){layer.msg('提示信息')});
   //白色背景
   //成功反馈
-  var index = layer.msg('提示信息', {
-    offset: '24px',
-    anim: 1,
-    time: 3000,
-    icon: 1
+  $('#toast1').click(function(){
+    var index = layer.msg('这是提示信息', {
+      offset: '24px',
+      anim: 1,
+      time: 3000,
+      icon: 1
+    });
+    layer.style(index,{
+      background:'#fff',
+      color:'rgba(0,0,0,0.6)',
+      boxShadow: '0 2px 8px 0 rgba(0,0,0,0.2)',
+      borderRadius:'4px',
+      fontSize: '14px'
+    });
   });
-  layer.style(index,{
-    background:'#fff',
-    color:'rgba(0,0,0,0.6)',
-    boxShadow: '0 2px 8px 0 rgba(0,0,0,0.2)',
-    borderRadius:'4px',
-    fontSize: '14px'
-  });
-
   //失败反馈
-  var index = layer.msg('提示信息', {
-    offset: '24px',
-    anim: 1,
-    time: 3000,
-    icon: 2
+  $('#toast2').click(function(){
+    var index = layer.msg('这是提示信息', {
+      offset: '24px',
+      anim: 1,
+      time: 3000,
+      icon: 2
+    });
+    layer.style(index,{
+      background:'#fff',
+      color:'rgba(0,0,0,0.6)',
+      boxShadow: '0 2px 8px 0 rgba(0,0,0,0.2)',
+      borderRadius:'4px',
+      fontSize: '14px'
+    });
   });
-  layer.style(index,{
-    background:'#fff',
-    color:'rgba(0,0,0,0.6)',
-    boxShadow: '0 2px 8px 0 rgba(0,0,0,0.2)',
-    borderRadius:'4px',
-    fontSize: '14px'
-  });
-
   //警示反馈
-  var index = layer.msg('提示信息', {
-    offset: '24px',
-    anim: 1,
-    time: 3000,
-    icon: 0
+  $('#toast3').click(function(){
+    var index = layer.msg('这是提示信息', {
+      offset: '24px',
+      anim: 1,
+      time: 3000,
+      icon: 0
+    });
+    layer.style(index,{
+      background:'#fff',
+      color:'rgba(0,0,0,0.6)',
+      boxShadow: '0 2px 8px 0 rgba(0,0,0,0.2)',
+      borderRadius:'4px',
+      fontSize: '14px'
+    });
   });
-  layer.style(index,{
-    background:'#fff',
-    color:'rgba(0,0,0,0.6)',
-    boxShadow: '0 2px 8px 0 rgba(0,0,0,0.2)',
-    borderRadius:'4px',
-    fontSize: '14px'
-  });
-
   //提示反馈
-  var index = layer.msg('提示信息', {
-    offset: '24px',
-    anim: 1,
-    time: 3000,
-    icon: 4
-  });
-  layer.style(index,{
-    background:'#fff',
-    color:'rgba(0,0,0,0.6)',
-    boxShadow: '0 2px 8px 0 rgba(0,0,0,0.2)',
-    borderRadius:'4px',
-    fontSize: '14px'
+  $('#toast4').click(function(){
+    var index = layer.msg('这是提示信息', {
+      offset: '24px',
+      anim: 1,
+      time: 3000,
+      icon: 4
+    });
+    layer.style(index,{
+      background:'#fff',
+      color:'rgba(0,0,0,0.6)',
+      boxShadow: '0 2px 8px 0 rgba(0,0,0,0.2)',
+      borderRadius:'4px',
+      fontSize: '14px'
+    });
   });
 
 
   //深色背景
   //成功反馈
-  var index = layer.msg('提示信息', {
-    offset: '24px',
-    anim: 1,
-    time: 3000,
-    icon: 1
+  $('#toast5').click(function(){
+    var index = layer.msg('这是提示信息', {
+      offset: '24px',
+      anim: 1,
+      time: 3000,
+      icon: 1
+    });
+    layer.style(index,{
+      background:'rgba(0,0,0,0.6)',
+      color:'#fff',
+      borderRadius:'4px',
+      fontSize: '14px',
+      border: 'none'
+    });
   });
-  layer.style(index,{
-    background:'rgba(0,0,0,0.6)',
-    color:'#fff',
-    borderRadius:'4px',
-    fontSize: '14px',
-    border: 'none'
-  });
-
   //失败反馈
-  var index = layer.msg('提示信息', {
-    offset: '24px',
-    anim: 1,
-    time: 3000,
-    icon: 2
+  $('#toast6').click(function(){
+    var index = layer.msg('这是提示信息', {
+      offset: '24px',
+      anim: 1,
+      time: 3000,
+      icon: 2
+    });
+    layer.style(index,{
+      background:'rgba(0,0,0,0.6)',
+      color:'#fff',
+      borderRadius:'4px',
+      fontSize: '14px',
+      border: 'none'
+    });
   });
-  layer.style(index,{
-    background:'rgba(0,0,0,0.6)',
-    color:'#fff',
-    borderRadius:'4px',
-    fontSize: '14px',
-    border: 'none'
-  });
-
   //警示反馈
-  var index = layer.msg('提示信息', {
-    offset: '24px',
-    anim: 1,
-    time: 3000,
-    icon: 0
+   $('#toast7').click(function(){
+    var index = layer.msg('这是提示信息', {
+      offset: '24px',
+      anim: 1,
+      time: 3000,
+      icon: 0
+    });
+    layer.style(index,{
+      background:'rgba(0,0,0,0.6)',
+      color:'#fff',
+      borderRadius:'4px',
+      fontSize: '14px',
+      border: 'none'
+    });
   });
-  layer.style(index,{
-    background:'rgba(0,0,0,0.6)',
-    color:'#fff',
-    borderRadius:'4px',
-    fontSize: '14px',
-    border: 'none'
-  });
-
   //提示反馈
-  var index = layer.msg('提示信息', {
-    offset: '24px',
-    anim: 1,
-    time: 3000,
-    icon: 4
-  });
-  layer.style(index,{
-    background:'rgba(0,0,0,0.6)',
-    color:'#fff',
-    borderRadius:'4px',
-    fontSize: '14px',
-    border: 'none'
+  $('#toast8').click(function(){
+    var index = layer.msg('这是提示信息', {
+      offset: '24px',
+      anim: 1,
+      time: 3000,
+      icon: 4
+    });
+    layer.style(index,{
+      background:'rgba(0,0,0,0.6)',
+      color:'#fff',
+      borderRadius:'4px',
+      fontSize: '14px',
+      border: 'none'
+    });
   });
 });</pre>
               </div>
@@ -2527,14 +2642,22 @@ layui.use('layer', function(){
   <!--使用前需引入layui依赖文件-->
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
-  <script src="layui/layui.js"></script></pre>
+  <script src="layui/layui.js"></script>
+  <script src="js/jquery-1.9.1.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+<!--按钮只是为了演示弹出效果，并不是必须，按实际情况将js代码写在自己的业务逻辑中！！！-->
+<button class="layui-btn layui-btn-primary zlit-btn-primary system_btn">系统</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary success_btn">成功</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary fail_btn">失败</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary warning_btn">警示</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary tips_btn">提示</button></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 <!--js代码-->
 layui.use('layer', function(){
   var layer = layui.layer;
 
   //系统全局警告提示
-  $('.warning_box .whiteBg .system_btn').click(function () {
+  $('.system_btn').click(function () {
     var clientW = $(window).width();
     var index = layer.msg('系统全局公告，放置于页面导航顶部。', {
       offset: 'lt',
@@ -2556,7 +2679,7 @@ layui.use('layer', function(){
   });
 
   //成功提示
-  $('.warning_box .whiteBg .success_btn').click(function () {
+  $('.success_btn').click(function () {
     var index = layer.msg('成功提示的文案。', {
       offset: '24px',
       anim: 1,
@@ -2575,7 +2698,7 @@ layui.use('layer', function(){
   });
 
   //失败提示
-  $('.warning_box .whiteBg .fail_btn').click(function () {
+  $('.fail_btn').click(function () {
     var index = layer.msg('失败提示的文案。', {
       offset: '24px',
       anim: 1,
@@ -2594,7 +2717,7 @@ layui.use('layer', function(){
   });
 
   //警告提示
-  $('.warning_box .whiteBg .warning_btn').click(function () {
+  $('.warning_btn').click(function () {
     var index = layer.msg('警告提示的文案。', {
       offset: '24px',
       anim: 1,
@@ -2613,7 +2736,7 @@ layui.use('layer', function(){
   });
 
   //普通文案提示
-  $('.warning_box .whiteBg .tips_btn').click(function () {
+  $('.tips_btn').click(function () {
     var index = layer.msg('信息提示的文案。', {
       offset: '24px',
       anim: 1,
@@ -2663,7 +2786,18 @@ layui.use('layer', function(){
   <!--使用前需引入layui依赖文件-->
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
-  <script src="layui/layui.js"></script></pre>
+  <script src="layui/layui.js"></script>
+  <script src="js/jquery-1.9.1.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+<!--按钮只是为了演示弹出效果，并不是必须，按实际情况将js代码写在自己的业务逻辑中！！！-->
+<!--模态对话框-->
+<button class="layui-btn layui-btn-primary zlit-btn-primary confirm_submit">提交</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary confirm_del confirm_delete">删除</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary confirm_success">操作成功</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary confirm_fail">操作失败</button>
+
+<!--气泡提示-->
+<button class="layui-btn layui-btn-primary zlit-btn-primary confirm_del tips_del">删除</button></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 <!--js代码-->
 layui.use('layer', function(){
@@ -2782,39 +2916,47 @@ layui.use('layer', function(){
   <!--使用前需引入layui依赖文件-->
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
-  <script src="layui/layui.js"></script></pre>
+  <script src="layui/layui.js"></script>
+  <script src="js/jquery-1.9.1.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+<!--按钮只是为了演示弹出效果，并不是必须，按实际情况将js代码写在自己的业务逻辑中！！！-->
+<button class="layui-btn layui-btn-primary zlit-btn-primary mess-btn1">普通通知</button>
+<button class="layui-btn layui-btn-primary zlit-btn-primary mess-btn2">警示通知</button></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 <!--js代码-->
 layui.use('layer', function(){
   var layer = layui.layer;
+
   //普通通知
-  var index = layer.open({
-    type: 1,
-    offset: 't',
-    title:'普通类提醒标题',
-    content:'<div id="mess-btn1"><p>顶部居中显示，这是一些辅助文字</p><div><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
-    shade:0,
-    area:['276px','140px']
+  $('.mess-btn1').click(function(){
+    var index = layer.open({
+      type: 1,
+      offset: 't',
+      title:'普通类提醒标题',
+      content:'<div id="mess-btn1"><p>顶部居中显示，这是一些辅助文字</p><div><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
+      shade:0,
+      area:['276px','140px']
+    });
   });
 
   //警示通知
-  var index = layer.open({
-    type: 1,
-    offset: 't',
-    title: ['警示类提醒标题','color:#fff;background:rgba(255,0,0,0.5);border-color:rgba(255,0,0,0.5)'],
-    content:'<div id="mess-btn2"><p>顶部居中显示，这是一些辅助文字</p><div><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
-    shade:0,
-    area:['276px','140px']
-  });
-  layer.style(index,{
-    background:'rgba(255,0,0,0.7)'
+  $('.mess-btn2').click(function(){
+    var index = layer.open({
+      type: 1,
+      offset: 't',
+      title: ['警示类提醒标题','color:#fff;background:rgba(255,0,0,0.5);border-color:rgba(255,0,0,0.5)'],
+      content:'<div id="mess-btn2"><p>顶部居中显示，这是一些辅助文字</p><div><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
+      shade:0,
+      area:['276px','140px']
+    });
+    layer.style(index,{
+      background:'rgba(255,0,0,0.7)'
+    });
   });
 });</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
-
-
         </div>
         <div class="explain feedback_floor">
           <div class="explain_con feedback">
@@ -2886,6 +3028,58 @@ layui.use('layer', function(){
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="js/jquery-3.3.1.js"></script>
   <script src="js/jquery.pure.tooltips.js"></script></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+<!--按钮只是为了演示弹出效果，并不是必须，按实际情况将js代码写在自己的业务逻辑中！！！-->
+<!--白色背景-->
+<div class="text_single">
+  <div>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary w-tl">上左</button>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary w-top">上边</button>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary w-tr">上右</button>
+  </div>
+  <div>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary w-lt">左上</button>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary w-rt">右上</button>
+  </div>
+  <div>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary w-left">左边</button>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary w-right">右边</button>
+  </div>
+  <div>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary w-lb">左下</button>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary w-rb">右下</button>
+  </div>
+  <div>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary w-bl">下左</button>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary w-bottom">下边</button>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary w-br">下右</button>
+  </div>
+</div>
+<!--深色背景-->
+<div class="text_single">
+  <div>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary d-tl">上左</button>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary d-top">上边</button>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary d-tr">上右</button>
+  </div>
+  <div>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary d-lt">左上</button>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary d-rt">右上</button>
+  </div>
+  <div>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary d-left">左边</button>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary d-right">右边</button>
+  </div>
+  <div>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary d-lb">左下</button>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary d-rb">右下</button>
+  </div>
+  <div>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary d-bl">下左</button>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary d-bottom">下边</button>
+    <button class="layui-btn layui-btn-primary zlit-btn-primary d-br">下右</button>
+  </div>
+</div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
   <!--白色背景-->
   $('.w-tl').pt({
@@ -3088,8 +3282,7 @@ layui.use('layer', function(){
   <span class="layui-badge-dot zlit-dadge-dot"></span>
   <span class="layui-badge zlit-dadge">6</span>
   <span class="layui-badge zlit-dadge">99+</span>
-  <span class="layui-badge zlit-dadge">new</span>
-</pre>
+  <span class="layui-badge zlit-dadge">new</span></pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
