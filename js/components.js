@@ -383,14 +383,25 @@ $('.zlit-label-box').on('click','.zlit-label-single i',function () {
 //添加标签
 $('.zlit-label-box').on('click','.zlit-label-add', function () {
   var div = $('<div></div>'),
+      input = $('<input>'),
       span = $('<span></span>'),
       i = $('<i></i>');
   div.css({padding:'6px 0',overflow:'hidden',whiteSpace:'nowrap'}).insertBefore($(this).closest('.zlit-label-add'));
   i.css({position:'absolute'}).addClass('layui-icon layui-icon-close');
-  span.text('新标签').appendTo(div);
+  span.css({display:'none'}).appendTo(div);
+  input.val('新标签').css({width:'48px'}).appendTo(div);
+  input.select();
   div.animate({padding:'6px 35px 6px 10px'},200,function () {
     i.appendTo(div);
     div.addClass('zlit-label-single');
+  });
+  input.blur(function () {
+    if (input.val()===''){
+      span.css({display:'inline',color:'#333'}).text('新标签');
+    }else{
+      span.css({display:'inline',color:'#333'}).text(input.val());
+    }
+    $(this).remove();
   });
 });
 //修改标签
@@ -398,11 +409,16 @@ $('.zlit-label-box').on('click','.zlit-label-single span',function () {
   var w = $(this).width();
   var input = $('<input>');
   var that = $(this);
-  input.val($(this).text()).css({color:'#108EE9',width:w}).insertBefore($(this));
+  input.val($(this).text()).css({color:'#333',width:w}).insertBefore($(this));
   $(this).css({display:'none'});
   input[0].focus();
+  input.select();
   input.blur(function () {
-    that.css({display:'inline',color:'#333'}).text(input.val());
+    if (input.val()===''){
+      that.css({display:'inline',color:'#333'}).text('新标签');
+    }else{
+      that.css({display:'inline',color:'#333'}).text(input.val());
+    }
     $(this).remove();
   });
 });
@@ -518,10 +534,14 @@ layui.config({
       {name: '分组1', type: 'optgroup'},
       {name: '北京', value: 1, children: [{name: '朝阳', disabled: true, value: 11}, {name: '海淀', value: 12}]},
       {name: '分组2', type: 'optgroup'},
-      {name: '深圳', value: 2, children: [{name: '龙岗', value: 21}]},
+      {name: '深圳', value: 2, children: [{name: '龙岗', value: 21},{name: '离石', value: 22}]},
     ]
   });
   formSelects.value('example11_1', [1,2],true);  //设置初始选中项
+  $(".xm-select-dl ").mCustomScrollbar({
+    autoHideScrollbar: false,   //滚动条是否隐藏
+    theme: "my-theme",
+  });
 
   //server模式  data数据为远程数据
   /*layui.formSelects.data('example11_1', 'server', {   //example11_1为绑定元素的xm-select值
@@ -551,6 +571,8 @@ layui.use('laydate', function() {
     elem: '#date1',        //绑定容器
     format: 'yyyy/MM/dd',  //自定义格式
     theme: '#108EE9',      //自定义颜色主题
+    eventElem: '.zlit-date-icon1',
+    trigger: 'click',
     done: function(value, date){
       console.log(value); //得到日期生成的值，如：2017-08-18
       console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
@@ -562,6 +584,8 @@ layui.use('laydate', function() {
     format: 'yyyy/MM',     //自定义格式
     theme: '#108EE9',      //自定义颜色主题
     type: 'month',         //月份选择
+    eventElem: '.zlit-date-icon2',
+    trigger: 'click',
     done: function(value, date){
       console.log(value); //得到日期生成的值，如：2017-08-18
       console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
@@ -572,6 +596,8 @@ layui.use('laydate', function() {
     elem: '#date3',        //绑定容器
     theme: '#108EE9',      //自定义颜色主题
     type: 'year',          //年份选择
+    eventElem: '.zlit-date-icon3',
+    trigger: 'click',
     done: function(value, date){
       console.log(value);  //得到日期生成的值，如：2017-08-18
       console.log(date);   //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
@@ -583,6 +609,8 @@ layui.use('laydate', function() {
     theme: '#108EE9',      //自定义颜色主题
     range: true,           //开启日期选择范围
     format: 'yyyy/MM/dd',  //自定义格式
+    eventElem: '.zlit-date-icon4',
+    trigger: 'click',
     done: function(value, date, endDate){
       console.log(value); //得到日期生成的值，如：2017-08-18
       console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
@@ -595,6 +623,8 @@ layui.use('laydate', function() {
     theme: '#108EE9',      //自定义颜色主题
     format: 'HH:mm:ss',    //自定义格式
     type: 'time',          //时间选择
+    eventElem: '.zlit-date-icon5',
+    trigger: 'click',
     done: function(value, date){
       console.log(value); //得到日期生成的值，如：2017-08-18
       console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
@@ -634,11 +664,24 @@ layui.use('upload', function() {
     ,bindAction: '#testListAction'    //结合auto:false使用，指向另外一个按钮元素来执行上传动作
     ,choose: function(obj){
       var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
-
       //读取本地文件
       obj.preview(function(index, file, result){
+        //判断选择的文件是否有重复
+        var lis = $('.zlit-upload-list').find('li');
+        if (lis.length>0){
+          for (var i=0;i<lis.length;i++){
+            var liName = $(lis[i]).data('filename');
+            if (liName===file.name){
+              layer.msg('不要重复选择');
+              return delete files[index];
+            }else{
+              files = this.files = obj.pushFile();
+            }
+          }
+        }
+
         //result值为文件的base64格式
-        var li = $(['<li id="upload-'+ index +'">',
+        var li = $(['<li data-filename="'+ file.name +'" id="upload-'+ index +'">',
           '<i class="layui-icon layui-icon-note"></i>',
           '<span class="zlit-file-name"><em class="zlit-upload-msg">等待上传</em>，文件名称：'+file.name+'，文件大小：'+(file.size/1014).toFixed(1)+'kb</span>',
           '<div class="upload-ctrl"><i class="layui-icon layui-icon-refresh zlit-reload"></i><i class="layui-icon layui-icon-close zlit-delete"></i></div><div class="upload-progress"><div class="inner"></div></div></li>'
@@ -691,16 +734,34 @@ layui.use(['upload','layer'], function() {
   upload.render({
     elem: '#upload1'    //制定容器
     ,url: './upload.class.php'   //上传地址
-    ,multiple: true       //开启多传
+    ,method: 'post'
+    ,multiple: true     //开启多传
     ,drag: false        //关闭拖拽上传
-    ,before: function(obj){
+    ,auto: false        //关闭自动上传
+    ,bindAction: '#uploadImg'
+    ,choose:function (obj) {
+      var files = this.files = obj.pushFile();
       //预读本地文件示例，不支持ie8
-      obj.preview(function(index, file, result){
+      obj.preview(function (index, file, result) {
+        //判断选择的文件是否有重复
+        var imgs = $('.zlit-img-view').find('img');
+        if (imgs.length>0){
+          for (var i=0;i<imgs.length;i++){
+            var imgName = $(imgs[i]).attr('alt');
+            if (imgName===file.name){
+              layer.msg('不要重复选择');
+              return delete files[index];
+            }else{
+              files = this.files = obj.pushFile();
+            }
+          }
+        }
+
         var div = $('<div></div>'),img = $('<img/>');
         img.prop({src:result,alt:file.name});
         img.appendTo(div);
         div.insertBefore($('.zlit-upload-1btn'));
-      });
+      })
     }
     ,done: function(res,index){
       //上传完毕
@@ -1172,13 +1233,13 @@ layui.use('element', function(){
       if(progressNum>100){
         progressNum = 100;
         clearInterval(timer);
-        $('.lineDemo').addClass('zlit-progress-success').removeClass('zlit-progress');
-        $('.lineDemo').find('span').html('');
-        i.appendTo($('.lineDemo'));
+        $('.lineDemo').addClass('zlit-progress-success1');
+        $('.zlit-progress').find('span').html('');
+        i.appendTo($('.zlit-progress'));
       }else{
-        $('.lineDemo').addClass('zlit-progress').removeClass('zlit-progress-success');
-        $('.lineDemo').find('i').remove();
-        $('.lineDemo').find('span').text(progressNum+'%');
+        $('.lineDemo').removeClass('zlit-progress-success');
+        $('.zlit-progress').find('i').remove();
+        $('.zlit-progress').find('span').text(progressNum+'%');
       }
       element.progress('lineDemo', progressNum+'%');
     }, 300+Math.random()*1000);

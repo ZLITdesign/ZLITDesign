@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <title>模块</title>
   <link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
+	<link rel="stylesheet" href="css/showCode.css">
   <link rel="stylesheet" type="text/css" href="css/module.css"/>
-  <script src="./lib/js/jquery-3.3.1.js"></script>
 </head>
 <body>
   <div class="module_wrapper side_box">
@@ -26,9 +26,83 @@
 							<p>2.勾选选择：左栏勾选完成选择，右栏可取消选择；右栏取消选择后左栏同步状态；以常用的选择人员为例。</p>
 							<p>3.选择项目较多的情况下可增加搜索功能。</p>
 							<div class="selectBox">
-								<div class="layui-btn layui-btn-primary btn">穿梭选择</div>
-								<div class="layui-btn layui-btn-primary btn">人员选择</div>
+								<a href="tranfer.html" target="_blank" class="layui-btn layui-btn-primary btn">穿梭选择</a>
+								<a href="" target="_blank"  class="layui-btn layui-btn-primary btn">人员选择</a>
 							</div>
+
+							<!--代码展示-->
+							<div class="syntax">
+<pre class="layui-code" lay-encode="true">
+<!--使用前需引入layui依赖文件-->
+<!--使用时请将以下注释去掉-->
+<!--<link rel="stylesheet" href="layui/css/layui.css">
+<link rel="stylesheet" href="css/zlitDesign.css">
+<script src="layui/layui.js"></script>
+<script src="js/jquery-3.3.1.js"></script>--></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+<div class="layui-input-normal layui-form zlit-tranfer-box">
+	<div class="title">
+		<h3>穿梭选择</h3>
+		<i class="layui-icon layui-icon-close"></i>
+	</div>
+	<form>
+		<div class="zlit-tranfer">
+			<div id="tranferDiv"></div>
+		</div>
+		<div class="zlit-tranfer-btn">
+			<button class="layui-btn zlit-btn-default" type="submit" lay-submit="" lay-filter="submitForm" field-data="menuid">确定</button>
+			<!--<button class="layui-btn zlit-btn-default" id="getSelValue">获取选中值</button>
+			<button class="layui-btn zlit-btn-default" id="getUnSelValue">获取未选中值</button>-->
+			<button class="layui-btn layui-btn-primary zlit-btn-primary">取消</button>
+		</div>
+	</form>
+</div></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+//config的设置是全局的
+layui.config({
+	base: 'layui/lay/mymodules/' //假设这是你存放拓展模块的根目录
+}).use(['transferTool','form'], function () {
+	var transferTool = layui.transferTool;
+	var form = layui.form;
+
+	transferTool.init({
+		elem: "#tranferDiv",
+		seletedValue: "1,2",  //已选,变量逗号隔开
+		url: 'data/list.json',  //url获取数据
+		name: 'province',  //form表单获取的结果值
+		// disabledValue: "2,4"   //不可选,变量逗号隔开
+	});
+
+	//监听提交///保存或修改
+	form.on('submit(submitForm)', function (data) {
+		// layer.alert(JSON.stringify(data.field));
+		// console.log(data.field);
+
+		var arr = $(data.form).serializeArray();
+		var province = [];
+		arr.forEach(function (val,i) {
+			province[i] = val.value;
+		});
+		layer.alert(JSON.stringify(province));
+		return false;
+	});
+
+	//获取选中得值
+	$(document).on("click", "#getSelValue", function (e) {
+		e.preventDefault();
+		alert(transferTool.getSelectedDataId());      //获取选中值的ID
+		alert(transferTool.getSelectedDataTitle());   //获取选中值得文字值
+	});
+
+	//获取未选中得值
+	$(document).on("click", "#getUnSelValue", function (e) {
+		e.preventDefault();
+		alert(transferTool.getUnSelectedDataId());    //获取选中值的ID
+		alert(transferTool.getUnSelectedDataTitle()); //获取选中值得文字值
+	});
+});</pre>
+							</div>
+							<div class="open_code">代码展示：点击<span>展开</span>代码</div>
 						</div>
 					</div>
 					<div class="explain">
@@ -186,6 +260,8 @@
   </div>
 </body>
 <script type="text/javascript" src="layui/layui.js"></script>
+<script src="./lib/js/jquery-3.3.1.js"></script>
+<!--展示代码/换页js文件-->
 <script src="js/share.js"></script>
 <script type="text/javascript" src="js/module.js"></script>
 </html>

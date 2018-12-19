@@ -64,7 +64,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 	    FORM_TEAM_PID = 'XM_PID_VALUE',
 	    CZ = 'xm-cz',
 	    CZ_GROUP = 'xm-cz-group',
-	    TIPS = '请选择',
+	    TIPS = '',
 	    data = {},
 	    events = {
 		on: {},
@@ -682,7 +682,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 		var pid = item[FORM_TEAM_PID];
 		pid ? pid = JSON.parse(pid) : pid = [-1];
 		var attr = pid[0] == -1 ? '' : 'tree-id="' + pid.join('-') + '" tree-folder="' + !!item['XM_TREE_FOLDER'] + '"';
-		return '<dd lay-value="' + item.value + '" class="' + (item.disabled ? DISABLED : '') + ' ' + (clz ? clz : '') + '" ' + attr + '>\n\t\t\t\t\t<div class="xm-unselect xm-form-checkbox ' + (item.disabled ? DISABLED : '') + '"  style="margin-left: ' + (pid.length - 1) * 30 + 'px">\n\t\t\t\t\t\t<i class="' + CHECKBOX_YES + '"></i>\n\t\t\t\t\t\t<span name="' + name + '">' + template + '</span>\n\t\t\t\t\t</div>\n\t\t\t\t</dd>';
+		return '<dd lay-value="' + item.value + '" class="' + (item.disabled ? DISABLED : '') + ' ' + (clz ? clz : '') + '" ' + attr + '>\n\t\t\t\t\t<div class="xm-unselect xm-form-checkbox ' + (item.disabled ? DISABLED : '') + '"  style="margin-left: ' + (pid.length - 1) * 30 + 'px">\n\t\t\t\t\t\t<i class="layui-icon"></i>\n\t\t\t\t\t\t<span name="' + name + '">' + template + '</span>\n\t\t\t\t\t</div>\n\t\t\t\t</dd>';
 	};
 
 	Common.prototype.createQuickBtn = function (obj, right) {

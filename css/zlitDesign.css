@@ -877,38 +877,50 @@
   margin: 30px 10px 0 0;
 }
 /*直线进度条*/
+.zlit-progress, .zlit-progress-fail, .zlit-progress-success, .zlit-progress-wait{
+  margin: 20px 0;
+  padding-right: 36px;
+  position: relative;
+}
 .zlit-progress>span{
   position: absolute;
   top: -5px;
-  right: -40px;
+  right: 0;
   font-size: 14px;
   color: #929292;
 }
-.zlit-progress-fail{
+.zlit-progress i{
+  position: absolute;
+  top: -5px;
+  right: 14px;
+  font-size: 16px;
+  color: #52C41A;
+}
+.zlit-progress-fail1{
   border: 1px solid #F5222D;
   background: transparent;
 }
 .zlit-progress-fail>i{
   position: absolute;
   top: -6px;
-  right: -28px;
+  right: 13px;
   font-size: 18px;
   color: #F5222D;
 }
-.zlit-progress-success>div{
+.zlit-progress-success1>div{
   background: #52C41A!important;
 }
 .zlit-progress-success>i{
   position: absolute;
   top: -5px;
-  right: -25px;
+  right: 14px;
   font-size: 16px;
   color: #52C41A;
 }
 .zlit-progress-wait>i{
   position: absolute;
   top: -5px;
-  right: -25px;
+  right: 14px;
   color: #C0C0C0;
   font-size: 16px;
 }

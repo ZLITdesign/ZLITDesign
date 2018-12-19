@@ -1,0 +1,172 @@
+/*穿梭框*/
+.zlit-tranfer-box{
+  width: 875px;
+  height: 666px;
+  background-color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -333px;
+  margin-left: -438px;
+}
+.zlit-tranfer-box div.title{
+  width: 100%;
+  height: 48px;
+  overflow: hidden;
+  line-height: 48px;
+  padding: 0 18px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #D9D9D9;
+}
+.zlit-tranfer-box div.title h3{
+  font-size: 18px;
+  color: #333333;
+  float: left;
+}
+.zlit-tranfer-box div.title i{
+  font-size: 30px;
+  color: #999999;
+  float: right;
+  cursor: pointer;
+}
+.zlit-tranfer-box div.title i:hover{
+  color: #108EE9;
+}
+.zlit-tranfer-box .zlit-tranfer{
+  padding: 23px 35px 0;
+  box-sizing: border-box;
+}
+.zlit-tranfer-box .zlit-tranfer-btn{
+  margin-top: 28px;
+  height: 64px;
+  background: #F7F8F9;
+  line-height: 64px;
+  text-align: center;
+}
+.zlit-tranfer-box .zlit-tranfer-btn button{
+  padding: 0 34px;
+}
+.clear-btn {
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  margin-top: -8px;
+  font-weight: bold;
+  font-size: 5px;
+  color: #c2c2c2;
+}
+.clear-btn:hover {
+  color:#5FB878;
+  cursor: pointer;
+}
+.drop-search-btn{
+  position: absolute;
+  top: 11px;
+  left: 100px;
+}
+.transfer-panel {
+  border: 1px solid #ddd;
+  background-color: white;
+  margin: 5px;
+  /*display: none;*/
+  width: 360px;
+  height: 490px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.transfer-div{
+  width:100%;
+  height:453px;
+  overflow: auto;
+}
+.transfer-div dd{
+  padding: 0 10px;
+  line-height: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.transfer-div dd:hover{
+  background-color: #dddddd;
+}
+.transfer-panel-left{
+  float: left;
+}
+
+.transfer-panel-right {
+  float: right;
+}
+
+.transfer-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  position: absolute;
+  left:390px;
+}
+.transfer-btn a{
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  text-align: center;
+  padding: 0 0 0 3px;
+  line-height: 32px;
+}
+.transfer-btn a.layui-btn-disabled{
+  background: #E6E6E6;
+  color: #707070;
+}
+.transfer-to-right{
+  top:200px;
+}
+.transfer-to-left{
+  top:257px;
+}
+.transfer-search-div{
+  position: relative;
+  padding:5px 10px;
+  border-bottom: 1px solid #ddd;
+  background: #F7F8F9;
+}
+.transfer-search-div span.selectAll div{
+  position: relative;
+  top: 3px;
+}
+.transfer-search-div input{
+  height: 28px;
+  padding-left: 25px;
+  padding-right: 25px;
+  position: absolute;
+  top: 4px;
+  left: 97px;
+  background: #F7F8F9;
+}
+.transfer-search-div .layui-icon-search{
+  position: absolute;
+  top: 10px;
+  left: 102px;
+  z-index: 99;
+}
+.transfer-search-div .search-clear-btn{
+  position: absolute;
+  top: 20px;
+  right: 70px;
+  z-index: 99;
+}
+.transfer-title{
+  height: 26px;
+  line-height: 26px;
+}
+.selNumber{
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  color: #636364;
+  font-size: 16px;
+}
+.transfer-content dd div.layui-form-checkbox span{
+  color: #333;
+}
+.transfer-content dd div.layui-form-checkbox.layui-disabled span{
+  color: #C2C2C2;
+}
