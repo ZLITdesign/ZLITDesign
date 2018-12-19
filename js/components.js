@@ -573,6 +573,10 @@ layui.use('laydate', function() {
     theme: '#108EE9',      //自定义颜色主题
     eventElem: '.zlit-date-icon1',
     trigger: 'click',
+    ready:function(){
+      // console.log($('.layui-laydate'));
+      // $('.layui-laydate').appendTo($(this.elem).parents('.zlit-date-range'));
+    },
     done: function(value, date){
       console.log(value); //得到日期生成的值，如：2017-08-18
       console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
@@ -1456,7 +1460,7 @@ function catalogFun(floors,navLis,slider) {
     var that = $(this);
     var t = floors.eq(index).position().top - 20;//获取每个楼层距离body的高度
     var tops = $(this).position().top;  //获取滑块距离父元素的高度
-    $('.component_content').animate({scrollTop:t},function () {
+    $('html,body').animate({scrollTop:t},function () {
       that.addClass('active').siblings().removeClass('active');
       slider.css({top:tops+8});
       isJump = true;
@@ -1467,11 +1471,12 @@ function catalogFun(floors,navLis,slider) {
 /*function catalogFun(floors,navLis,slider) {
   var clientH = $(window).height();
   var isJump = true;
-  $('.component_content').scroll(function () {
+  $(window).scroll(function () {
     if (!isJump){
       return;
     }
-    var floorTops = $('.component_content').scrollTop();
+    var floorTops = $('html,body').scrollTop();
+    console.log(floorTops);
     floors.each(function (i) {
       if(floorTops>=floors.eq(i).position().top-clientH+10){
         navLis.eq(i).addClass('active').siblings().removeClass('active');
@@ -1487,7 +1492,7 @@ function catalogFun(floors,navLis,slider) {
     var that = $(this);
     var t = floors.eq(index).position().top - 20;//获取每个楼层距离body的高度
     var tops = $(this).position().top;  //获取滑块距离父元素的高度
-    $('.component_content').animate({scrollTop:t},function () {
+    $('html,body').animate({scrollTop:t},function () {
       that.addClass('active').siblings().removeClass('active');
       slider.css({top:tops+8});
       isJump = true;
