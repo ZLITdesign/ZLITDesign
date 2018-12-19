@@ -573,10 +573,6 @@ layui.use('laydate', function() {
     theme: '#108EE9',      //自定义颜色主题
     eventElem: '.zlit-date-icon1',
     trigger: 'click',
-    ready:function(){
-      // console.log($('.layui-laydate'));
-      // $('.layui-laydate').appendTo($(this.elem).parents('.zlit-date-range'));
-    },
     done: function(value, date){
       console.log(value); //得到日期生成的值，如：2017-08-18
       console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
