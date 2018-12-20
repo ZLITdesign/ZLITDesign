@@ -731,8 +731,8 @@ layui.use('upload', function() {
 layui.use(['upload','layer'], function() {
   var upload = layui.upload;
   var layer = layui.layer;
-  upload.render({
-    elem: '#upload1'    //制定容器
+  var uploadListIns = upload.render({
+    elem: '#upload'    //制定容器
     ,url: './upload.class.php'   //上传地址
     ,method: 'post'
     ,multiple: true     //开启多传
@@ -757,10 +757,20 @@ layui.use(['upload','layer'], function() {
           }
         }
 
-        var div = $('<div></div>'),img = $('<img/>');
+        var div = $('<div class="img"></div>'),img = $('<img/>'),p = $('<p>删除</p>');
         img.prop({src:result,alt:file.name});
         img.appendTo(div);
+        p.appendTo(div);
         div.insertBefore($('.zlit-upload-1btn'));
+
+        //删除
+        div.find('p').on('click', function(){
+          delete files[index]; //删除对应的文件
+          $(this).closest('.img').animate({width:0},100,function () {
+            $(this).closest('.img').remove();
+            uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+          });
+        });
       })
     }
     ,done: function(res,index){
@@ -1456,7 +1466,6 @@ function catalogFun(floors,navLis,slider) {
     var that = $(this);
     var t = floors.eq(index).position().top - 20;//获取每个楼层距离body的高度
     var tops = $(this).position().top;  //获取滑块距离父元素的高度
-    // $('.component_content').animate({scrollTop:t},function () {
     $('html,body').animate({scrollTop:t},function () {
       that.addClass('active').siblings().removeClass('active');
       slider.css({top:tops+8});

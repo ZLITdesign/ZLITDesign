@@ -2306,12 +2306,12 @@ layui.use('upload', function() {
                 <label class="layui-form-label zlit-form-label">上传图片</label>
                 <div class="zlit-upload-1 layui-input-block">
                   <div class="zlit-img-view">
-                    <div class="zlit-upload-1btn" id="upload1">
+                    <div class="zlit-upload-1btn" id="upload">
                       <p>+</p>
                       <span>上传</span>
                     </div>
-                    <p><button type="button" class="layui-btn zlit-btn-default zlit-upload-0-btn" id="uploadImg">开始上传</button></p>
                   </div>
+                  <button type="button" class="layui-btn zlit-btn-default zlit-upload-0-btn" id="uploadImg">开始上传</button>
                 </div>
               </div>
             </div>
@@ -2328,19 +2328,19 @@ layui.use('upload', function() {
     <label class="layui-form-label zlit-form-label">上传图片</label>
     <div class="zlit-upload-1 layui-input-block">
       <div class="zlit-img-view">
-        <div class="zlit-upload-1btn" id="upload">
+        <div class="zlit-upload-1btn" id="upload1">
           <p>+</p>
           <span>上传</span>
         </div>
-        <p><button type="button" class="layui-btn zlit-btn-default zlit-upload-0-btn" id="uploadImg1">开始上传</button></p>
       </div>
+      <button type="button" class="layui-btn zlit-btn-default zlit-upload-0-btn" id="uploadImg1">开始上传</button>
     </div>
   </div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 layui.use(['upload','layer'], function() {
   var upload = layui.upload;
   var layer = layui.layer;
-  upload.render({
+  var uploadListIns = upload.render({
     elem: '#upload1'    //制定容器
     ,url: './upload.class.php'   //上传地址
     ,method: 'post'
@@ -2366,10 +2366,20 @@ layui.use(['upload','layer'], function() {
           }
         }
 
-        var div = $('<div></div>'),img = $('<img/>');
+        var div = $('<div class="img"></div>'),img = $('<img/>'),p = $('<p>删除</p>');
         img.prop({src:result,alt:file.name});
         img.appendTo(div);
+        p.appendTo(div);
         div.insertBefore($('.zlit-upload-1btn'));
+
+        //删除
+        div.find('p').on('click', function(){
+          delete files[index]; //删除对应的文件
+          $(this).closest('.img').animate({width:0},100,function () {
+            $(this).closest('.img').remove();
+            uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+          });
+        });
       })
     }
     ,done: function(res,index){
@@ -2377,7 +2387,7 @@ layui.use(['upload','layer'], function() {
       layer.msg('图片上传成功', {
         time: 3000, icon: 1
       });
-      // return delete this.files[index]; //删除文件队列已经上传成功的文件
+      return delete this.files[index]; //删除文件队列已经上传成功的文件
     }
   });
 });</pre>
