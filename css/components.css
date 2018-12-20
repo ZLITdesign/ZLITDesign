@@ -2224,22 +2224,24 @@ div[xm-select-search-type="1"] .xm-select .xm-select-input{display: none !import
   right: 0;
   bottom: 0;
 }
-.zlit-tips-box div.zlit-tips-btn a.zlit-tips-btn0{
-  color: #666;
+.zlit-tips-box div.zlit-tips-btn em{
   font-size: 14px;
+  font-style: normal;
+  cursor: pointer;
 }
-.zlit-tips-box div.zlit-tips-btn a.zlit-tips-btn0:hover{
+.zlit-tips-box div.zlit-tips-btn em.zlit-tips-btn0{
+  color: #666;
+}
+.zlit-tips-box div.zlit-tips-btn em.zlit-tips-btn0:hover{
   color: #808080;
 }
-.zlit-tips-box div.zlit-tips-btn a.zlit-tips-btn1{
+.zlit-tips-box div.zlit-tips-btn em.zlit-tips-btn1{
   color: #F5222D;
-  font-size: 14px;
   margin-left: 15px;
 }
-.zlit-tips-box div.zlit-tips-btn a.zlit-tips-btn1:hover{
- color: #F63942;
+.zlit-tips-box div.zlit-tips-btn em.zlit-tips-btn1:hover{
+  color: #F63942;
 }
-
 
 /*其他*/
 .other_single div.dadge-one div{

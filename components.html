@@ -3014,7 +3014,12 @@ layui.use('layer', function(){
   //气泡提示
   $('.tips_del').click(function () {
     var that = this;
-    var index = layer.tips('<div class="zlit-tips-box"><i class="layui-icon layui-icon-tips zlit-tips-icon"></i><span class="zlit-tips-text">删除后数据不可恢复</span><div class="zlit-tips-btn"><a href="#" class="zlit-tips-btn0">取消</a><a href="#" class="zlit-tips-btn1">删除</a></div></div>',that,{
+    var tips = [
+      '<div class="zlit-tips-box"><i class="layui-icon layui-icon-tips zlit-tips-icon"></i>',
+      '<span class="zlit-tips-text">删除后数据不可恢复</span><div class="zlit-tips-btn">',
+      '<em class="zlit-tips-btn0">取消</em><em class="zlit-tips-btn1">删除</em></div></div>'
+    ].join('');
+    var index = layer.tips(tips,that,{
       tips: [1,'#fff'],
       area: ['230px', '76px'],
       time: 0,
