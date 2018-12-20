@@ -1456,6 +1456,7 @@ function catalogFun(floors,navLis,slider) {
     var that = $(this);
     var t = floors.eq(index).position().top - 20;//获取每个楼层距离body的高度
     var tops = $(this).position().top;  //获取滑块距离父元素的高度
+    // $('.component_content').animate({scrollTop:t},function () {
     $('html,body').animate({scrollTop:t},function () {
       that.addClass('active').siblings().removeClass('active');
       slider.css({top:tops+8});
