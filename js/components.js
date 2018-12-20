@@ -868,7 +868,6 @@ layui.use('layer', function(){
       anim: 1,
       time: 0,
       icon: 0,
-      fixed: false,
       closeBtn: 1
     });
     layer.style(index,{
@@ -961,14 +960,24 @@ layui.use('layer', function(){
   //-------------------------------操作确认框--------------------------------
   //提交
   $('.confirm_submit').click(function () {
+    var content = [
+      '<i class="zlit-layer-icon iconfont icon-jingshi"></i>',
+      '<h3>普通操作标题</h3>',
+      '<p>继续此操作的一些提示文字信息</p>'
+    ].join('');
     var index = layer.open({
       type: 0,
-      icon: 4,
-      title:'普通操作标题',
+      closeBtn: 0,
+      resize: false,
+      title: false,
       offset: 'auto',
-      content: '继续此操作的一些提示文字信息',
+      content: content,
       btn: ['提交','取消'],
-      yes: function(){
+      area:['390px','200px'],
+      success: function(layero, index){
+        layero.addClass('zlit-layer zlit-layer-submit');
+      },
+      yes: function(){  //按钮1的回调
         layer.closeAll();
       }
     });
@@ -979,14 +988,24 @@ layui.use('layer', function(){
   });
   //删除
   $('.confirm_delete').click(function () {
+    var content = [
+      '<i class="zlit-layer-icon iconfont icon-yiwen"></i>',
+      '<h3>危险操作标题</h3>',
+      '<p>如删除退出等，操作按钮文字为删除退出</p>'
+    ].join('');
     var index = layer.open({
       type: 0,
-      icon: 0,
-      title:'普通操作标题',
+      closeBtn: 0,
+      resize: false,
+      title: false,
       offset: 'auto',
-      content: '继续此操作的一些提示文字信息',
+      content: content,
       btn: ['删除','取消'],
-      yes: function(){
+      area:['390px','200px'],
+      success: function(layero, index){
+        layero.addClass('zlit-layer zlit-layer-delete');
+      },
+      yes: function(){   //按钮1的回调
         layer.closeAll();
       }
     });
@@ -997,16 +1016,35 @@ layui.use('layer', function(){
   });
   //成功
   $('.confirm_success').click(function () {
+    var content = [
+      '<i class="zlit-layer-icon iconfont icon-zhengque"></i>',
+      '<h3>操作成功标题</h3>',
+      '<p>操作成功的结果提示信息</p>',
+      '<span><em>5</em>秒后自动关闭</span>'
+    ].join('');
+    var t = '',nub = 5;
     var index = layer.open({
       type: 0,
-      icon: 1,
-      title:'普通操作标题',
+      closeBtn: 0,
+      resize: false,
+      title: false,
       offset: 'auto',
       time: 5000,
-      content: '继续此操作的一些提示文字信息，5秒后自动关闭',
+      content: content,
       btn: ['关闭'],
-      yes: function(){
+      area:['390px','200px'],
+      success: function(layero, index){
+        layero.addClass('zlit-layer zlit-layer-success');
+        t = setInterval(function () {
+          nub--;
+          layero.find('em').text(nub);
+        },1000);
+      },
+      yes: function(){   //按钮1的回调
         layer.closeAll();
+      },
+      end:function () {
+        clearInterval(t);
       }
     });
     layer.style(index,{
@@ -1016,14 +1054,24 @@ layui.use('layer', function(){
   });
   //失败
   $('.confirm_fail').click(function () {
+    var content = [
+      '<i class="zlit-layer-icon iconfont icon-chucuo"></i>',
+      '<h3>操作失败标题</h3>',
+      '<p>操作失败的原因提示或解决方法</p>'
+    ].join('');
     var index = layer.open({
       type: 0,
-      icon: 2,
-      title:'普通操作标题',
+      closeBtn: 0,
+      resize: false,
+      title: false,
       offset: 'auto',
-      content: '继续此操作的一些提示文字信息',
+      content: content,
       btn: ['关闭'],
-      yes: function(){
+      area:['390px','200px'],
+      success: function(layero, index){
+        layero.addClass('zlit-layer zlit-layer-fail');
+      },
+      yes: function(){   //按钮1的回调
         layer.closeAll();
       }
     });
@@ -1061,11 +1109,18 @@ layui.use('layer', function(){
   $('.mess-btn1').click(function () {
     var index = layer.open({
       type: 1,
+      closeBtn: 0,
       offset: 't',
-      title:'普通类提醒标题',
+      resize: false,
+      title:['普通类提醒标题','color:#333;border:none;text-align:center;padding:0;background:transparent;'],
       content:'<div id="mess-btn1"><p>顶部居中显示，这是一些辅助文字</p><div><button id="sub" class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
       shade:0,
-      area:['276px','140px']
+      anim:1,
+      tipsMore:false,
+      area:['276px','124px']
+    });
+    $('#mess-btn1 button').on('click',function () {
+      layer.close(index);
     });
   });
 
@@ -1073,13 +1128,20 @@ layui.use('layer', function(){
     var index = layer.open({
       type: 1,
       offset: 't',
-      title: ['警示类提醒标题','color:#fff;background:rgba(255,0,0,0.5);border-color:rgba(255,0,0,0.5)'],
+      closeBtn: 0,
+      resize: false,
+      title: ['警示类提醒标题','color:#fff;border:none;text-align:center;padding:0;background:transparent;'],
       content:'<div id="mess-btn2"><p>顶部居中显示，这是一些辅助文字</p><div><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
       shade:0,
-      area:['276px','140px']
+      anim:1,
+      tipsMore:false,
+      area:['276px','124px']
     });
     layer.style(index,{
       background:'rgba(255,0,0,0.7)'
+    });
+    $('#mess-btn2 button').on('click',function () {
+      layer.close(index);
     });
   });
 });

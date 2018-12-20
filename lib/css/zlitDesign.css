@@ -471,11 +471,98 @@
 }
 
 
-
-
 /*反馈*/
+@font-face {font-family: "iconfont";
+  src: url('iconfont/iconfont.eot?t=1545286471570'); /* IE9*/
+  src: url('iconfont/iconfont.eot?t=1545286471570#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAWgAAsAAAAACHQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFY8dkf1Y21hcAAAAYAAAABaAAABmhZx6r9nbHlmAAAB3AAAAbUAAAIk4z3IcWhlYWQAAAOUAAAALwAAADYToeyhaGhlYQAAA8QAAAAcAAAAJAfeA4ZobXR4AAAD4AAAAA4AAAAUFAAAAGxvY2EAAAPwAAAADAAAAAwBQgG4bWF4cAAAA/wAAAAfAAAAIAESAFFuYW1lAAAEHAAAAUUAAAJtPlT+fXBvc3QAAAVkAAAAPAAAAE3+DaqceJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2BkYWCcwMDKwMHUyXSGgYGhH0IzvmYwYuRgYGBiYGVmwAoC0lxTGByeMTxjZm7438AQw9zA0AAUZgTJAQDdXgvmeJztkcENgDAMA68k8EAMwoMhGIIX+6trtE7IGEQ6S7aiPBxgBUxcwqG9NGIepS1zY8/cOXPHI+82hpRQeU9dtBs3Nv45Uu9yHl19ZHuFGqMX8YVe4BNQtg8tAAB4nF2QzW7TQBSF587Y8YIq8bgTx3USZ+IptgTNlNjG2dBGSGkkJBBFAokFcp+ii/RxkmfooosmZY/ET7ttnwHENjHMGCR+pNGZO7r36pxvEEHox3uyImP0AKVoghBEYziEUS6xCOu4FeD8cXaI08S1WN2wWsxN8thK8iwKa8zdTgLM6jiUWM3gFJr7/h7GTD4bPnmVMIDebtDw77f2csx6ImgCdAZtSH0hUiF23i3Ojo7OFhdzfc1hYjuxO9qNJ8Puw4Onru9Bk20J7g5C2m23u30WNdod506vpgJ/nc7U5mw6nc0vFrMpworjE/lC3qB7KFYUdbACaCkQCcRltXAfrFoYZWOIoyxPegowcVkDsH21Mc3N1ao0jNKmYuAUhSNDWhQ0lLoeCFqQ10a5WpWmqXVzrfr2yYld9akUelZIWiCk//Iz+UiOVQaG+H8pJGTaszZSaaKD6tHE9nJtmuvlpdbLHc6HnFcy5OSlsV7+6i7XmwD4I67ON6/f9757nHsIVcwfyE3l1/nXbdvSyH+hYuc3qFb/1pHOqU794lzRkGPzD1/59o7SU839/FxNKJufcKJ7/wAAAHicY2BkYGAA4s29PQvj+W2+MnCzMIDADccQdwT9/yALA3MokMvBwAQSBQAkKAmsAHicY2BkYGBu+N/AEMPCAAJAkpEBFbACAEcLAm54nGNhYGBgQcMAAQQAFQAAAAAAAABkAKYA3gESeJxjYGRgYGBlcGVgZgABJiDmAkIGhv9gPgMAD9MBZAB4nGWPTU7DMBCFX/oHpBKqqGCH5AViASj9EatuWFRq911036ZOmyqJI8et1ANwHo7ACTgC3IA78EgnmzaWx9+8eWNPANzgBx6O3y33kT1cMjtyDRe4F65TfxBukF+Em2jjVbhF/U3YxzOmwm10YXmD17hi9oR3YQ8dfAjXcI1P4Tr1L+EG+Vu4iTv8CrfQ8erCPuZeV7iNRy/2x1YvnF6p5UHFockikzm/gple75KFrdLqnGtbxCZTg6BfSVOdaVvdU+zXQ+ciFVmTqgmrOkmMyq3Z6tAFG+fyUa8XiR6EJuVYY/62xgKOcQWFJQ6MMUIYZIjK6Og7VWb0r7FDwl57Vj3N53RbFNT/c4UBAvTPXFO6stJ5Ok+BPV8bUnV0K27LnpQ0kV7NSRKyQl7WtlRC6gE2ZVeOEXpc0Yk/KGdI/wAJWm7IAAAAeJxjYGKAAC4G7ICVkYmRmZGFkZWRjYG1MrM8NY8tOaM0uTSfPSszL704I5OjKiM1L72wNJWBAQDEAAtL') format('woff'),
+  url('iconfont/iconfont.ttf?t=1545286471570') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont/iconfont.svg?t=1545286471570#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-yiwen:before { content: "\e600"; }
+.icon-chucuo:before { content: "\e601"; }
+.icon-jingshi:before { content: "\e602"; }
+.icon-zhengque:before { content: "\e603"; }
+.zlit-layer .layui-layer-content{
+  padding: 20px 20px 10px !important;
+}
+.layui-layer-content i.zlit-layer-icon{
+  font-style: normal;
+  display: block;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 45px;
+  left: 40px;
+  font-size: 24px;
+}
+.layui-layer-content i.icon-jingshi{
+  color: #108EE9;
+}
+.layui-layer-content i.icon-yiwen{
+  color: #FAAD14;
+}
+.layui-layer-content i.icon-zhengque{
+  color: #52C41A;
+}
+.layui-layer-content i.icon-chucuo{
+  color: #F5222D;
+}
+.layui-layer-content h3{
+  padding-left: 50px;
+  margin: 25px 0 18px;
+  font-size: 20px;
+  color: #333333;
+}
+.layui-layer-content p{
+  padding-left: 50px;
+  font-size: 16px;
+  color: #666;
+}
+.zlit-layer .layui-layer-btn:after{
+  content: '';
+  width: 0;
+  height: 0;
+  display: block;
+  clear: both;
+}
+.zlit-layer .layui-layer-btn a{
+  float: right;
+  border-radius: 4px;
+}
+.zlit-layer-delete .layui-layer-btn a:first-child{
+  background-color: #F5222D;
+  border-color: #F5222D;
+}
+.zlit-layer-success .layui-layer-btn a:first-child, .zlit-layer-fail .layui-layer-btn a:first-child{
+  background-color: #fff;
+  border-color: #D9D9D9;
+  color: #666;
+}
+.zlit-layer-success .layui-layer-content{
+  overflow: visible !important;
+}
+.zlit-layer-success .layui-layer-content span{
+  font-size: 14px;
+  color: #666666;
+  position: absolute;
+  bottom: -32px;
+  right: 88px;
+}
+.zlit-layer-success .layui-layer-content span em{
+  font-style: normal;
+  color: #108EE9;
+}
 .layui-layer-dialog .layui-layer-padding {
   padding: 7px 15px 7px 35px !important;
+  box-sizing: border-box;
 }
 .layui-layer-dialog .layui-layer-content .layui-layer-ico{
   top: 4px !important;
@@ -488,9 +575,7 @@
   right: -3px !important;
   top: -3px !important;
 }
-
-#mess-btn1{
-  padding: 15px;
+#mess-btn1,#mess-btn2{
   text-align: center;
 }
 #mess-btn1 p{
@@ -499,11 +584,6 @@
 }
 #mess-btn1 div{
   margin-top: 14px;
-}
-#mess-btn2{
-  padding: 15px;
-  text-align: center;
-  background: rgba(255,0,0,0.6);
 }
 #mess-btn2 p{
   font-size: 14px;
