@@ -8,6 +8,7 @@
   top: 50%;
   margin-top: -333px;
   margin-left: -438px;
+  border-radius: 4px;
 }
 .zlit-tranfer-box div.title{
   width: 100%;
@@ -68,7 +69,6 @@
   border: 1px solid #ddd;
   background-color: white;
   margin: 5px;
-  /*display: none;*/
   width: 360px;
   height: 490px;
   border-radius: 2px;
@@ -164,8 +164,19 @@
   color: #636364;
   font-size: 16px;
 }
+.transfer-content dd div.layui-form-checkbox{
+  width: 100%;
+}
 .transfer-content dd div.layui-form-checkbox span{
   color: #333;
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 30px;
+  padding: 0;
+}
+.transfer-content dd div.layui-form-checkbox i{
+  top: 6px;
 }
 .transfer-content dd div.layui-form-checkbox.layui-disabled span{
   color: #C2C2C2;

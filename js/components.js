@@ -41,8 +41,8 @@ $('.head-nav-m ul li').click(function () {
 //------------------------------------侧边栏导航开始------------------------------------
 //参数isOpen是否开启手风琴导航，默认关闭
 function zlitNav(isOpen=false){
+  var flag = true;  //防止点击过快
   $('.zlit-nav li').click(function(){
-    var flag = true;  //防止点击过快
     var isHas = $(this).find('dl').is('dl');   //检测是否存在子级
     if (isHas){
       if (!flag){
@@ -122,38 +122,50 @@ layui.use('laypage', function(){
 });
 
 //迷你样式
-var curr_page = Number($('.paging-44 .current_page').text());
-var max_page = Number($('.paging-44 .max_page').text());
-var prev_page = $('.paging-44 .prev_page');
-var next_page = $('.paging-44 .next_page');
-next_page.click(function () {
-  curr_page++;
-  if (curr_page<max_page){
-    $('.paging-44 .current_page').text(curr_page);
-    prev_page.removeClass('disabled');
-  }else if(curr_page==max_page){
-    $(this).addClass('disabled');
-    $('.paging-44 .current_page').text(curr_page);
-  }else if (curr_page>max_page){
-    $('.paging-44 .current_page').text(max_page);
-    $(this).addClass('disabled');
-    curr_page = max_page;
+function miniPage() {
+  var curr_page = Number($('.paging-44 .current_page').text());
+  var max_page = Number($('.paging-44 .max_page').text());
+  var prev_page = $('.paging-44 .prev_page');
+  var next_page = $('.paging-44 .next_page');
+  if (curr_page === 1 && max_page === 1) {
+    prev_page.addClass('disabled');
+    next_page.addClass('disabled');
+    return;
   }
-});
-prev_page.click(function () {
-  curr_page--;
-  if (curr_page>1){
-    $('.paging-44 .current_page').text(curr_page);
-    next_page.removeClass('disabled');
-  }else if(curr_page==1){
-    $(this).addClass('disabled');
-    $('.paging-44 .current_page').text(curr_page);
-  }else if (curr_page<1){
-    $('.paging-44 .current_page').text(1);
-    $(this).addClass('disabled');
-    curr_page = 1;
-  }
-});
+  next_page.click(function (e) {
+    e.preventDefault();
+    curr_page++;
+    if (curr_page<max_page){
+      $('.paging-44 .current_page').text(curr_page);
+      prev_page.removeClass('disabled');
+    }else if(curr_page==max_page){
+      $(this).addClass('disabled');
+      prev_page.removeClass('disabled');
+      $('.paging-44 .current_page').text(curr_page);
+    }else if (curr_page>max_page){
+      $('.paging-44 .current_page').text(max_page);
+      $(this).addClass('disabled');
+      curr_page = max_page;
+    }
+  });
+  prev_page.click(function (e) {
+    e.preventDefault();
+    curr_page--;
+    if (curr_page>1){
+      $('.paging-44 .current_page').text(curr_page);
+      next_page.removeClass('disabled');
+    }else if(curr_page==1){
+      $(this).addClass('disabled');
+      next_page.removeClass('disabled');
+      $('.paging-44 .current_page').text(curr_page);
+    }else if (curr_page<1){
+      $('.paging-44 .current_page').text(1);
+      $(this).addClass('disabled');
+      curr_page = 1;
+    }
+  });
+}
+miniPage();
 //----------------------------------------分页结束---------------------------------------
 
 
@@ -165,11 +177,11 @@ function menuBtn(){
     e.stopPropagation();
     if (flag) {
       $('.zlit-menu-btn').addClass('layui-anim-scaleSpring').css({display:'block'});
-      $(this).css({transform:'rotateZ(180deg)',top:'10px'});
+      $(this).css({transform:'rotateZ(180deg)'});
       flag = false;
     }else{
       $('.zlit-menu-btn').removeClass('layui-anim-scaleSpring').css({display:'none'});
-      $(this).css({transform:'rotateZ(0deg)',top:'12px'});
+      $(this).css({transform:'rotateZ(0deg)'});
       flag = true;
     }
   });
@@ -182,7 +194,7 @@ function menuBtn(){
     $('.zlit-menu-btn-text').text(str);
     $('.zlit-menu-btn-box').prop('id',ids);
     $('.zlit-menu-btn').removeClass('layui-anim-scaleSpring').css({display:'none'});
-    $('.zlit-menu-btn-change').css({transform:'rotateZ(0deg)',top:'12px'});
+    $('.zlit-menu-btn-change').css({transform:'rotateZ(0deg)'});
     flag = true;
 
     //切换按钮功能
@@ -391,7 +403,7 @@ $('.zlit-label-box').on('click','.zlit-label-add', function () {
   span.css({display:'none'}).appendTo(div);
   input.val('新标签').css({width:'48px'}).appendTo(div);
   input.select();
-  div.animate({padding:'6px 35px 6px 10px'},200,function () {
+  div.animate({padding:'6px 30px 6px 10px'},200,function () {
     i.appendTo(div);
     div.addClass('zlit-label-single');
   });
@@ -538,10 +550,6 @@ layui.config({
     ]
   });
   formSelects.value('example11_1', [1,2],true);  //设置初始选中项
-  $(".xm-select-dl ").mCustomScrollbar({
-    autoHideScrollbar: false,   //滚动条是否隐藏
-    theme: "my-theme",
-  });
 
   //server模式  data数据为远程数据
   /*layui.formSelects.data('example11_1', 'server', {   //example11_1为绑定元素的xm-select值
@@ -961,7 +969,7 @@ layui.use('layer', function(){
   //提交
   $('.confirm_submit').click(function () {
     var content = [
-      '<i class="zlit-layer-icon iconfont icon-jingshi"></i>',
+      '<i class="zlit-layer-icon iconfont icon-tijiao"></i>',
       '<h3>普通操作标题</h3>',
       '<p>继续此操作的一些提示文字信息</p>'
     ].join('');
@@ -989,7 +997,7 @@ layui.use('layer', function(){
   //删除
   $('.confirm_delete').click(function () {
     var content = [
-      '<i class="zlit-layer-icon iconfont icon-yiwen"></i>',
+      '<i class="zlit-layer-icon iconfont icon-shanchu"></i>',
       '<h3>危险操作标题</h3>',
       '<p>如删除退出等，操作按钮文字为删除退出</p>'
     ].join('');
@@ -1017,7 +1025,7 @@ layui.use('layer', function(){
   //成功
   $('.confirm_success').click(function () {
     var content = [
-      '<i class="zlit-layer-icon iconfont icon-zhengque"></i>',
+      '<i class="zlit-layer-icon iconfont icon-chenggong"></i>',
       '<h3>操作成功标题</h3>',
       '<p>操作成功的结果提示信息</p>',
       '<span><em>5</em>秒后自动关闭</span>'
@@ -1055,7 +1063,7 @@ layui.use('layer', function(){
   //失败
   $('.confirm_fail').click(function () {
     var content = [
-      '<i class="zlit-layer-icon iconfont icon-chucuo"></i>',
+      '<i class="zlit-layer-icon iconfont icon-shibai"></i>',
       '<h3>操作失败标题</h3>',
       '<p>操作失败的原因提示或解决方法</p>'
     ].join('');
@@ -1084,7 +1092,7 @@ layui.use('layer', function(){
   $('.tips_del').click(function () {
     var that = this;
     var tips = [
-      '<div class="zlit-tips-box"><i class="layui-icon layui-icon-tips zlit-tips-icon"></i>',
+      '<div class="zlit-tips-box"><i class="iconfont icon-shanchu zlit-tips-icon"></i>',
       '<span class="zlit-tips-text">删除后数据不可恢复</span><div class="zlit-tips-btn">',
       '<em class="zlit-tips-btn0">取消</em><em class="zlit-tips-btn1">删除</em></div></div>'
     ].join('');
@@ -1104,43 +1112,59 @@ layui.use('layer', function(){
   });
 
   //-------------------------------通知提醒框--------------------------------
+  var toastNub1 = 0;
   $('.mess-btn1').click(function () {
-    var index = layer.open({
-      type: 1,
-      closeBtn: 0,
-      offset: 't',
-      resize: false,
-      title:['普通类提醒标题','color:#333;border:none;text-align:center;padding:0;background:transparent;'],
-      content:'<div id="mess-btn1"><p>顶部居中显示，这是一些辅助文字</p><div><button id="sub" class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
-      shade:0,
-      anim:1,
-      tipsMore:false,
-      area:['276px','124px']
-    });
-    $('#mess-btn1 button').on('click',function () {
-      layer.close(index);
-    });
+    if (!toastNub1){
+      toastNub1 = layer.open({
+        type: 1,        //弹窗类型
+        closeBtn: 0,    //关闭右上角x号按钮
+        offset: 't',    //弹窗位置
+        resize: false,  //不允许窗口缩放
+        title:['普通类提醒标题','color:#333;border:none;text-align:center;padding:0;background:transparent;'],
+        content:'<div id="mess-btn1"><p>顶部居中显示，这是一些辅助文字</p><div><button class="ctrlBtn1 layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="ctrlBtn2 layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
+        shade:0,        //无背景遮罩
+        anim:1,         //动画类型
+        area:['276px','124px'],    //弹框宽高
+        end:function () {
+          toastNub1 = 0;
+        }
+      });
+      $('#mess-btn1 .ctrlBtn1').on('click',function () {    //操作一按钮点击
+        layer.close(toastNub1);
+      });
+      $('#mess-btn1 .ctrlBtn2').on('click',function () {    //操作二按钮点击
+        layer.close(toastNub1);
+      });
+    }
   });
 
+  var toastNub2 = 0;
   $('.mess-btn2').click(function () {
-    var index = layer.open({
-      type: 1,
-      offset: 't',
-      closeBtn: 0,
-      resize: false,
-      title: ['警示类提醒标题','color:#fff;border:none;text-align:center;padding:0;background:transparent;'],
-      content:'<div id="mess-btn2"><p>顶部居中显示，这是一些辅助文字</p><div><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
-      shade:0,
-      anim:1,
-      tipsMore:false,
-      area:['276px','124px']
-    });
-    layer.style(index,{
-      background:'rgba(255,0,0,0.7)'
-    });
-    $('#mess-btn2 button').on('click',function () {
-      layer.close(index);
-    });
+    if (!toastNub2){
+      toastNub2 = layer.open({
+        type: 1,        //弹窗类型
+        offset: 't',    //弹窗位置
+        closeBtn: 0,    //关闭右上角x号按钮
+        resize: false,  //不允许窗口缩放
+        title: ['警示类提醒标题','color:#fff;border:none;text-align:center;padding:0;background:transparent;'],
+        content:'<div id="mess-btn2"><p>顶部居中显示，这是一些辅助文字</p><div><button class="ctrlBtn1 layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="ctrlBtn2 layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
+        shade:0,        //无背景遮罩
+        anim:1,         //动画类型
+        area:['276px','124px'],      //弹框宽高
+        end:function () {
+          toastNub2 = 0;
+        }
+      });
+      layer.style(toastNub2,{
+        background:'rgba(255,0,0,0.7)'
+      });
+      $('#mess-btn2 .ctrlBtn1').on('click',function () {    //操作一按钮点击
+        layer.close(toastNub2);
+      });
+      $('#mess-btn2 .ctrlBtn2').on('click',function () {    //操作二按钮点击
+        layer.close(toastNub2);
+      });
+    }
   });
 });
 //文字提示

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>测试</title>
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="css/zlitDesign.css">
+  <script src="layui/layui.js"></script>
+  <script src="js/jquery-1.9.1.js"></script>
+  <script src="lib/js/zlitExtend.js"></script>
+</head>
+<body>
+<!--模拟进行中如下：-->
+<div class="circleChart" id="01"></div>
+<!--模拟失败如下：-->
+<div class="circleChart" id="02"></div>
+<!--成功状态如下：-->
+<!--ps：此处data-value属性为当前进度值，亦可在js中设置value值，详见以下js代码部分-->
+<div class="circleChart" id="03" data-value="100"></div>
+
+
+
+<!--水平步骤条-->
+<div class="horizontal-box">
+  <div class="horizontal-pro">
+    <!--步骤条-->
+    <div class="horizontal-step">
+      <div class="step-single">
+        <div class="step-desc">
+          <span class="step-circle step-circle-active"><i class="layui-icon">1</i></span>
+          <span class="step-con step-con-active">进行中</span>
+        </div>
+        <div class="step-hr"><div class="step-child"></div></div>
+      </div>
+      <div class="step-single">
+        <div class="step-desc">
+          <span class="step-circle"><i class="layui-icon">2</i></span>
+          <span class="step-con">待完成</span>
+        </div>
+        <div class="step-hr"><div class="step-child"></div></div>
+      </div>
+      <div class="step-single">
+        <div class="step-desc">
+          <span class="step-circle"><i class="layui-icon">3</i></span>
+          <span class="step-con">待完成</span>
+        </div>
+        <div class="step-hr"><div class="step-child"></div></div>
+      </div>
+      <div class="step-single">
+        <div class="step-desc">
+          <span class="step-circle"><i class="layui-icon">4</i></span>
+          <span class="step-con">待完成</span>
+        </div>
+        <div class="step-hr"><div class="step-child"></div></div>
+      </div>
+      <div class="step-single">
+        <div class="step-desc">
+          <span class="step-circle"><i class="layui-icon">5</i></span>
+          <span class="step-con">待完成</span>
+        </div>
+      </div>
+    </div>
+    <!--页面-->
+    <ul class="horizontal-con">
+      <li class="active">第一步第一步第一步第一步第一步第一步对应的页面</li>
+      <li>第二步第二步第二步第二步第二步第二步对应的页面</li>
+      <li>第三步第三步第三步第三步第三步第三步对应的页面</li>
+      <li>第四步第四步第四步第四步第四步第四步对应的页面</li>
+      <li>第五步第五步第五步第五步第五步第五步对应的页面</li>
+    </ul>
+    <div class="horizontal-btn">
+      <button class="layui-btn layui-btn-disabled zlit-btn-disabled layui-btn-sm">上一步</button>
+      <button class="layui-btn zlit-btn-default layui-btn-sm">下一步</button>
+    </div>
+  </div>
+</div>
+<!--垂直步骤条-->
+<div class="vertical-box">
+  <div class="vertical-pro">
+    <!--步骤条-->
+    <div class="vertical-step">
+      <div class="step-single">
+        <div class="step-desc">
+          <span class="step-circle step-circle-active"><i class="layui-icon">1</i></span>
+          <span class="step-con step-con-active">进行中</span>
+        </div>
+        <div class="step-hr"><div class="step-child"></div></div>
+      </div>
+      <div class="step-single">
+        <div class="step-desc">
+          <span class="step-circle"><i class="layui-icon">2</i></span>
+          <span class="step-con">待完成</span>
+        </div>
+        <div class="step-hr"><div class="step-child"></div></div>
+      </div>
+      <div class="step-single">
+        <div class="step-desc">
+          <span class="step-circle"><i class="layui-icon">3</i></span>
+          <span class="step-con">待完成</span>
+        </div>
+      </div>
+    </div>
+    <!--页面-->
+    <ul class="vertical-con">
+      <li class="active">第一步第一步第一步第一步第一步第一步对应的页面</li>
+      <li>第二步第二步第二步第二步第二步第二步对应的页面</li>
+      <li>第三步第三步第三步第三步第三步第三步对应的页面</li>
+      <li>第四步第四步第四步第四步第四步第四步对应的页面</li>
+      <li>第五步第五步第五步第五步第五步第五步对应的页面</li>
+    </ul>
+    <div class="vertical-btn">
+      <button class="layui-btn layui-btn-disabled zlit-btn-disabled layui-btn-sm">上一步</button>
+      <button class="layui-btn zlit-btn-default layui-btn-sm">下一步</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="anchors_catalog">
+  <ul class="anchors">
+    <li class="active"><a href="#anchors1">锚点文字1</a></li>
+    <li><a href="#anchors2">锚点文字2</a></li>
+    <li><a href="#anchors3">锚点文字3</a></li>
+    <li><a href="#anchors4">锚点文字4</a></li>
+    <li><a href="#anchors5">锚点文字5</a></li>
+    <li><a href="#anchors6">锚点文字6</a></li>
+    <div class="anchors_slider"></div>
+  </ul>
+</div>
+</body>
+</html>
+<script>
+  /*$(".circleChart#01").zlitExtend('zlitCircleChart',{
+    size: 80,  // 滚动条大小
+    value: 100,  //当前进度值
+    // textSize: '16px',
+    onDraw: function (el, circle) {
+      circle.text(Math.round(circle.value) + "%");
+      //进度条100%时的状态色及文字提示
+      if (Math.round(circle.value)===100){
+        circle.text('<i class="layui-icon layui-icon-ok" style="color: #87D068;font-size: 24px;"></i>');
+      }
+      //失败时的状态色及文字提示
+      if (Math.round(circle.value)<0){
+        circle.text('<i class="layui-icon layui-icon-close" style="color: #EF5306;font-size: 24px;"></i>');
+      }
+    }
+  });
+  setInterval(function () {
+    $(".circleChart#01").zlitExtend('zlitCircleChart',{
+      value: Math.random() * 100
+    });
+  }, 3000);
+
+  //失败状态如下：（value小于0时即为失败）
+  $(".circleChart#02").zlitExtend('zlitCircleChart',{
+    size: 80,
+    value: 60,
+    onDraw: function (el, circle) {
+      circle.text(Math.round(circle.value) + "%");
+      if (Math.round(circle.value)<0){
+        circle.text('<i class="layui-icon layui-icon-close" style="color: #EF5306;font-size: 24px;"></i>');
+      }
+    }
+  });
+  //模拟失败
+  setTimeout(function () {
+    $(".circleChart#02").zlitExtend('zlitCircleChart',{
+      value: -1
+    });
+  }, 3000);
+  //100%成功状态如下：
+  $(".circleChart#03").zlitExtend('zlitCircleChart',{
+    size: 80,
+    onDraw: function (el, circle) {
+      circle.text(Math.round(circle.value) + "%");
+      if (Math.round(circle.value)===100){
+        circle.text('<i class="layui-icon layui-icon-ok" style="color: #87D068;font-size: 24px;"></i>');
+      }
+    }
+  });*/
+
+/*$('.horizontal-box').zlitExtend('zlitStep',{
+  steps: $('.horizontal-step .step-single'),
+  stepCon: $('.horizontal-con li'),
+  style: 'left',
+  stepDesc: $('.horizontal-step .step-single .step-desc'),
+  next: $('.horizontal-btn button:last-child'),
+  prev: $('.horizontal-btn button:first-child')
+});
+$('.horizontal-box').zlitExtend('zlitStep',{
+  steps: $('.vertical-step .step-single'),
+  stepCon: $('.vertical-con li'),
+  style: 'top',
+  stepDesc: $('.vertical-step .step-single .step-desc'),
+  next: $('.vertical-btn button:last-child'),
+  prev: $('.vertical-btn button:first-child')
+});*/
+
+$('.anchors_catalog').zlitExtend('zlitAnchor')
+</script>

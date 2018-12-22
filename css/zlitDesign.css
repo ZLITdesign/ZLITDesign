@@ -1,3 +1,43 @@
+/*滚动条*/
+::-webkit-scrollbar {/*滚动条整体样式*/
+  width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+  height: 1px;
+}
+::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+  background: #D8D8D8;
+}
+::-webkit-scrollbar-track {/*滚动条里面轨道*/
+  -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  background: #f9f9f9;
+}
+::-webkit-scrollbar-button{
+  background: #108EE9;
+  display: none;
+}
+::-webkit-scrollbar-track-piece{
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-corner{
+  background: #f1f1f1;
+}
+/*   IE美化  */
+html,body{
+  scrollbar-arrow-color: #fff; /**//*三角箭头的颜色*/
+  scrollbar-face-color: #f1f1f1; /**//*立体滚动条的颜色*/
+  scrollbar-3dlight-color: #f1f1f1; /**//*立体滚动条亮边的颜色*/
+  scrollbar-highlight-color: #fff; /**//*滚动条空白部分的颜色*/
+  scrollbar-shadow-color: #fff; /**//*立体滚动条阴影的颜色*/
+  scrollbar-darkshadow-color: #fff; /**//*立体滚动条强阴影的颜色*/
+  scrollbar-track-color: #f1f1f1; /**//*立体滚动条背景颜色*/
+  scrollbar-base-color:#f1f1f1; /**//*滚动条的基本颜色*/
+}
 /*侧边导航*/
 .zlit-nav{
   width: 224px;
@@ -374,7 +414,7 @@
 }
 /* 菜单按钮 */
 .zlit-menu-btn-box{
-  width: 144px;
+  width: 157px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -389,6 +429,16 @@
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
+.zlit-menu-btn-box:after{
+  content: "";
+  display: block;
+  width: 1px;
+  height: 100%;
+  background: #108EE9;
+  position: absolute;
+  top: 0;
+  right: 35px;
+}
 .zlit-menu-btn-box span.zlit-menu-btn-text{
   font-size: 16px;
   color: #108EE9;
@@ -396,11 +446,16 @@
   outline: none;
   background-color: transparent;
 }
-.zlit-menu-btn-box i.zlit-menu-btn-change{
+.zlit-menu-btn-box span.zlit-menu-btn-change{
   font-size: 14px;
+  display: block;
+  width: 35px;
+  height: 100%;
+  line-height: 36px;
+  text-align: center;
   position: absolute;
-  top: 12px;
-  right: 10px;
+  top: 0;
+  right: 0;
   color: #108EE9;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
@@ -473,11 +528,11 @@
 
 /*反馈*/
 @font-face {font-family: "iconfont";
-  src: url('iconfont/iconfont.eot?t=1545286471570'); /* IE9*/
-  src: url('iconfont/iconfont.eot?t=1545286471570#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAWgAAsAAAAACHQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFY8dkf1Y21hcAAAAYAAAABaAAABmhZx6r9nbHlmAAAB3AAAAbUAAAIk4z3IcWhlYWQAAAOUAAAALwAAADYToeyhaGhlYQAAA8QAAAAcAAAAJAfeA4ZobXR4AAAD4AAAAA4AAAAUFAAAAGxvY2EAAAPwAAAADAAAAAwBQgG4bWF4cAAAA/wAAAAfAAAAIAESAFFuYW1lAAAEHAAAAUUAAAJtPlT+fXBvc3QAAAVkAAAAPAAAAE3+DaqceJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2BkYWCcwMDKwMHUyXSGgYGhH0IzvmYwYuRgYGBiYGVmwAoC0lxTGByeMTxjZm7438AQw9zA0AAUZgTJAQDdXgvmeJztkcENgDAMA68k8EAMwoMhGIIX+6trtE7IGEQ6S7aiPBxgBUxcwqG9NGIepS1zY8/cOXPHI+82hpRQeU9dtBs3Nv45Uu9yHl19ZHuFGqMX8YVe4BNQtg8tAAB4nF2QzW7TQBSF587Y8YIq8bgTx3USZ+IptgTNlNjG2dBGSGkkJBBFAokFcp+ii/RxkmfooosmZY/ET7ttnwHENjHMGCR+pNGZO7r36pxvEEHox3uyImP0AKVoghBEYziEUS6xCOu4FeD8cXaI08S1WN2wWsxN8thK8iwKa8zdTgLM6jiUWM3gFJr7/h7GTD4bPnmVMIDebtDw77f2csx6ImgCdAZtSH0hUiF23i3Ojo7OFhdzfc1hYjuxO9qNJ8Puw4Onru9Bk20J7g5C2m23u30WNdod506vpgJ/nc7U5mw6nc0vFrMpworjE/lC3qB7KFYUdbACaCkQCcRltXAfrFoYZWOIoyxPegowcVkDsH21Mc3N1ao0jNKmYuAUhSNDWhQ0lLoeCFqQ10a5WpWmqXVzrfr2yYld9akUelZIWiCk//Iz+UiOVQaG+H8pJGTaszZSaaKD6tHE9nJtmuvlpdbLHc6HnFcy5OSlsV7+6i7XmwD4I67ON6/f9757nHsIVcwfyE3l1/nXbdvSyH+hYuc3qFb/1pHOqU794lzRkGPzD1/59o7SU839/FxNKJufcKJ7/wAAAHicY2BkYGAA4s29PQvj+W2+MnCzMIDADccQdwT9/yALA3MokMvBwAQSBQAkKAmsAHicY2BkYGBu+N/AEMPCAAJAkpEBFbACAEcLAm54nGNhYGBgQcMAAQQAFQAAAAAAAABkAKYA3gESeJxjYGRgYGBlcGVgZgABJiDmAkIGhv9gPgMAD9MBZAB4nGWPTU7DMBCFX/oHpBKqqGCH5AViASj9EatuWFRq911036ZOmyqJI8et1ANwHo7ACTgC3IA78EgnmzaWx9+8eWNPANzgBx6O3y33kT1cMjtyDRe4F65TfxBukF+Em2jjVbhF/U3YxzOmwm10YXmD17hi9oR3YQ8dfAjXcI1P4Tr1L+EG+Vu4iTv8CrfQ8erCPuZeV7iNRy/2x1YvnF6p5UHFockikzm/gple75KFrdLqnGtbxCZTg6BfSVOdaVvdU+zXQ+ciFVmTqgmrOkmMyq3Z6tAFG+fyUa8XiR6EJuVYY/62xgKOcQWFJQ6MMUIYZIjK6Og7VWb0r7FDwl57Vj3N53RbFNT/c4UBAvTPXFO6stJ5Ok+BPV8bUnV0K27LnpQ0kV7NSRKyQl7WtlRC6gE2ZVeOEXpc0Yk/KGdI/wAJWm7IAAAAeJxjYGKAAC4G7ICVkYmRmZGFkZWRjYG1MrM8NY8tOaM0uTSfPSszL704I5OjKiM1L72wNJWBAQDEAAtL') format('woff'),
-  url('iconfont/iconfont.ttf?t=1545286471570') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('iconfont/iconfont.svg?t=1545286471570#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont/iconfont.eot?t=1545297719675'); /* IE9*/
+  src: url('iconfont/iconfont.eot?t=1545297719675#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAWAAAsAAAAACFAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFY8eEgIY21hcAAAAYAAAABkAAABovz60OdnbHlmAAAB5AAAAYoAAAH44lxU62hlYWQAAANwAAAALwAAADYTokR9aGhlYQAAA6AAAAAcAAAAJAfeA4ZobXR4AAADvAAAAA4AAAAUFAAAAGxvY2EAAAPMAAAADAAAAAwA4AFobWF4cAAAA9gAAAAfAAAAIAETAEFuYW1lAAAD+AAAAUUAAAJtPlT+fXBvc3QAAAVAAAAAPgAAAE/69I1ceJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2BkYWCcwMDKwMHUyXSGgYGhH0IzvmYwYuRgYGBiYGVmwAoC0lxTGByeMT0TY27438AQw9zA0AAUZgTJAQDe8Qv7eJztkcENgCAMRV8BiTFeYQoPjuAgnhy+a2BbHMOfvP70N+VQgAXIxmEUkAfBdVsqkWe2yAun9dVcSJq1jwGatLmbxGZreLIdf6vya496fV3xi038uponeNYm/hvaJ5QXgTwRqHicVZC7TgJBFIbPmWHACyHs1dXIMi5xDWxYBZbdmAB2VBotbXwME0ufwQewkN5KCgoWYqGNiTGh1WfQWAKrs2uCITn5Jmfmn3xzBijAzxt9pWewDipwAMxhxsSNDgYuUhc9v66r6UBNW3Y7aTSSD2eMzcJhzOEm5zXOE9Q4PU3Nwr/TcDY3kR9wUV/Gzo7xbXBuAAARvhc6SXzbyzYlk7b20RaSIgaxlsjjOWPz8Sjm1rvsypdSyZVO+rJr0TMWjUYRSxidf0jSpVwtScd9kRAaiOd6pCHtQF54doWpbhI1RyyXeB2ieLaV1iRVr/tNWvfjTtUJXNxddbtXd4NevPRuilXOqzwolMuHlQpti63BfyC6jseKHoyCaeBT+VCEysKbWnizYEADvOUZ9zLJfzpo2V6gFLDUDPwj9Nto78fVbEhqEfXGhkZgOGVsOvyjp7ccp4Cmo91OlBxBgpSkVpV7wTWFthc5wWfNaVUqLT0qZrUmImUr+cFWStxAL/rcZEiIIp75CyhvdyYAAHicY2BkYGAA4vd6xlfj+W2+MnCzMIDADccGcwT9/xALA3MAkMvBwAQSBQAc5QmYAHicY2BkYGBu+N/AEMPCAAJAkpEBFbACAEcLAm54nGNhYGBgQcMAAQQAFQAAAAAAAAA4AGwAqAD8eJxjYGRgYGBlMGVgYQABJiDmAkIGhv9gPgMADloBVQB4nGWPTU7DMBCFX/oHpBKqqGCH5AViASj9EatuWFRq911036ZOmyqJI8et1ANwHo7ACTgC3IA78EgnmzaWx9+8eWNPANzgBx6O3y33kT1cMjtyDRe4F65TfxBukF+Em2jjVbhF/U3YxzOmwm10YXmD17hi9oR3YQ8dfAjXcI1P4Tr1L+EG+Vu4iTv8CrfQ8erCPuZeV7iNRy/2x1YvnF6p5UHFockikzm/gple75KFrdLqnGtbxCZTg6BfSVOdaVvdU+zXQ+ciFVmTqgmrOkmMyq3Z6tAFG+fyUa8XiR6EJuVYY/62xgKOcQWFJQ6MMUIYZIjK6Og7VWb0r7FDwl57Vj3N53RbFNT/c4UBAvTPXFO6stJ5Ok+BPV8bUnV0K27LnpQ0kV7NSRKyQl7WtlRC6gE2ZVeOEXpc0Yk/KGdI/wAJWm7IAAAAeJxjYGKAAC4G7ICVkYmRmZGFkZWRjYGtOCMzKTGTMzkjNS89PT8vnb04IzEvOaOUrSQzKzMxn4EBANn1C9EAAA==') format('woff'),
+  url('iconfont/iconfont.ttf?t=1545297719675') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont/iconfont.svg?t=1545297719675#iconfont') format('svg'); /* iOS 4.1- */
 }
 .iconfont {
   font-family:"iconfont" !important;
@@ -486,14 +541,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.icon-yiwen:before { content: "\e600"; }
-.icon-chucuo:before { content: "\e601"; }
-.icon-jingshi:before { content: "\e602"; }
-.icon-zhengque:before { content: "\e603"; }
+.icon-shibai:before { content: "\e602"; }
+.icon-chenggong:before { content: "\e603"; }
+.icon-shanchu:before { content: "\e615"; }
+.icon-tijiao:before { content: "\e616"; }
 .zlit-layer .layui-layer-content{
   padding: 20px 20px 10px !important;
 }
-.layui-layer-content i.zlit-layer-icon{
+.zlit-layer .layui-layer-content i.zlit-layer-icon{
   font-style: normal;
   display: block;
   width: 24px;
@@ -503,25 +558,25 @@
   left: 40px;
   font-size: 24px;
 }
-.layui-layer-content i.icon-jingshi{
+.zlit-layer .layui-layer-content i.icon-jingshi{
   color: #108EE9;
 }
-.layui-layer-content i.icon-yiwen{
+.zlit-layer .layui-layer-content i.icon-yiwen{
   color: #FAAD14;
 }
-.layui-layer-content i.icon-zhengque{
+.zlit-layer .layui-layer-content i.icon-zhengque{
   color: #52C41A;
 }
-.layui-layer-content i.icon-chucuo{
+.zlit-layer .layui-layer-content i.icon-chucuo{
   color: #F5222D;
 }
-.layui-layer-content h3{
+.zlit-layer .layui-layer-content h3{
   padding-left: 50px;
   margin: 25px 0 18px;
   font-size: 20px;
   color: #333333;
 }
-.layui-layer-content p{
+.zlit-layer .layui-layer-content p{
   padding-left: 50px;
   font-size: 16px;
   color: #666;
@@ -833,19 +888,22 @@
   right: 0;
   bottom: 0;
 }
-.zlit-tips-box div.zlit-tips-btn a.zlit-tips-btn0{
-  color: #666;
+.zlit-tips-box div.zlit-tips-btn em{
   font-size: 14px;
+  font-style: normal;
+  cursor: pointer;
 }
-.zlit-tips-box div.zlit-tips-btn a.zlit-tips-btn0:hover{
+.zlit-tips-box div.zlit-tips-btn em.zlit-tips-btn0{
+  color: #666;
+}
+.zlit-tips-box div.zlit-tips-btn em.zlit-tips-btn0:hover{
   color: #808080;
 }
-.zlit-tips-box div.zlit-tips-btn a.zlit-tips-btn1{
+.zlit-tips-box div.zlit-tips-btn em.zlit-tips-btn1{
   color: #F5222D;
-  font-size: 14px;
   margin-left: 15px;
 }
-.zlit-tips-box div.zlit-tips-btn a.zlit-tips-btn1:hover{
+.zlit-tips-box div.zlit-tips-btn em.zlit-tips-btn1:hover{
   color: #F63942;
 }
 
@@ -1498,9 +1556,10 @@
   cursor: pointer;
 }
 .zlit-label-box>.zlit-label-single{
-  padding: 6px 35px 6px 10px;
+  padding: 6px 30px 6px 10px;
   overflow: hidden;
   white-space: nowrap;
+  margin-bottom: 8px;
 }
 .zlit-label-box>.zlit-label-add{
   padding: 6px 10px 6px 35px;
@@ -1661,20 +1720,6 @@ ul.urp-cascader-child:first-of-type:after{
   background-color: #fff;
   transform: rotate(45deg);
   border: 1px solid #e4e7ed;
-}
-ul.urp-cascader-child::-webkit-scrollbar {/*滚动条整体样式*/
-  width: 5px;     /*高宽分别对应横竖滚动条的尺寸*/
-  height: 1px;
-}
-ul.urp-cascader-child::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-  background: #D8D8D8;
-}
-ul.urp-cascader-child::-webkit-scrollbar-track {/*滚动条里面轨道*/
-  -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-  border-radius: 10px;
-  background: #f9f9f9;
 }
 .layui-form-onswitch{
   background-color: #108EE9;
@@ -1913,11 +1958,6 @@ select[xm-select]{display: none !important;}
 .xm-select-parent .xm-select-sj {display: inline-block;width: 0;height: 0;border-style: dashed;border-color: transparent;overflow: hidden;position: absolute;right: 10px;top: 50%;margin-top: -3px;cursor: pointer;border-width: 6px;border-top-color: #C2C2C2;border-top-style: solid;transition: all .3s;-webkit-transition: all .3s}
 .xm-select-parent .xm-form-selected .xm-select-sj {margin-top: -9px;transform: rotate(180deg)}
 .xm-select-parent .xm-form-select dl {display: none;position: absolute;left: 0;top: 42px;padding: 5px 0;z-index: 999;min-width: 100%;border: 1px solid #d2d2d2;max-height: 300px;overflow-y: auto;background-color: #fff;border-radius: 2px;box-shadow: 0 2px 4px rgba(0, 0, 0, .12);box-sizing: border-box;animation-fill-mode: both;-webkit-animation-name: layui-upbit;animation-name: layui-upbit;-webkit-animation-duration: .3s;animation-duration: .3s;-webkit-animation-fill-mode: both;animation-fill-mode: both}
-/*.xm-select-parent .xm-form-select dl::-webkit-scrollbar {!*滚动条整体样式*!width: 5px;!*高宽分别对应横竖滚动条的尺寸*!height: 1px;}
-.xm-select-parent .xm-form-select dl::-webkit-scrollbar-thumb {!*滚动条里面小方块*!border-radius: 10px;-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);background: #D8D8D8;}
-.xm-select-parent .xm-form-select dl::-webkit-scrollbar-track {!*滚动条里面轨道*!-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);border-radius: 10px;background: #f9f9f9;}*/
-.mCS-my-theme.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{ background-color: #D8D8D8; }
-.mCS-my-theme.mCSB_scrollTools .mCSB_draggerRail{ background-color: #fff; }
 @-webkit-keyframes layui-upbit {
   from {-webkit-transform: translate3d(0, 30px, 0);opacity: .3}
   to {-webkit-transform: translate3d(0, 0, 0);opacity: 1}
@@ -2040,7 +2080,7 @@ div[xm-select-skin='danger'] .xm-select-linkage-group li:hover {border-left-colo
 /* 快捷操作 */
 .xm-select-tips[style]:hover{background-color: #FFF!important;}
 .xm-select-parent dd > .xm-cz{position: absolute; top: 0px; right: 10px;}
-.xm-select-parent dd > .xm-cz-group{margin-right: 30px; border-right: 2px solid #ddd; height: 16px; margin-top: 10px; line-height: 16px; overflow: hidden;}
+.xm-select-parent dd > .xm-cz-group{margin-right: 30px; border-right: 2px solid #ddd; height: 16px; margin-top: 7px; line-height: 16px; overflow: hidden;}
 .xm-select-parent dd > .xm-cz-group .xm-cz{display: inline-block; margin-right: 30px;}
 .xm-select-parent dd > .xm-cz-group .xm-cz i{margin-right: 10px;}
 .xm-select-parent dd > .xm-cz-group[show='name'] .xm-cz i{display: none;}
@@ -2089,6 +2129,7 @@ div[xm-select-search-type="1"] .xm-select .xm-select-input{display: none !import
   top: 50%;
   margin-top: -333px;
   margin-left: -438px;
+  border-radius: 4px;
 }
 .zlit-tranfer-box div.title{
   width: 100%;
@@ -2149,7 +2190,6 @@ div[xm-select-search-type="1"] .xm-select .xm-select-input{display: none !import
   border: 1px solid #ddd;
   background-color: white;
   margin: 5px;
-  /*display: none;*/
   width: 360px;
   height: 490px;
   border-radius: 2px;
@@ -2245,8 +2285,19 @@ div[xm-select-search-type="1"] .xm-select .xm-select-input{display: none !import
   color: #636364;
   font-size: 16px;
 }
+.transfer-content dd div.layui-form-checkbox{
+  width: 100%;
+}
 .transfer-content dd div.layui-form-checkbox span{
   color: #333;
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 30px;
+  padding: 0;
+}
+.transfer-content dd div.layui-form-checkbox i{
+  top: 6px;
 }
 .transfer-content dd div.layui-form-checkbox.layui-disabled span{
   color: #C2C2C2;

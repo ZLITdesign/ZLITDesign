@@ -933,7 +933,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 				return false;
 			}
 			var dd = othis.is('dd') ? othis : othis.parents('dd');
-			var id = dd.parent('dl').attr('xid');
+      var id = dd.parent('dl').attr('xid');
 
 			if (dd.hasClass(DISABLED)) {
 				//被禁用选项的处理
@@ -1005,7 +1005,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 				var obj = data[id].config.btns.filter(function (bean) {
 					return bean.name == method;
 				})[0];
-				obj && obj.click && obj.click instanceof Function && obj.click(id, _this11);
+        obj && obj.click && obj.click instanceof Function && obj.click(id, _this11);
 				return false;
 			}
 			_this11.handlerLabel(id, dd, !dd.hasClass(THIS));
@@ -1039,7 +1039,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 				};
 			}
 			var val = value.attr('lay-value');
-			return !db[id][val] ? db[id][val] = {
+      return !db[id][val] ? db[id][val] = {
 				name: value.find('span[name]').attr('name'),
 				value: val
 			} : db[id][val];

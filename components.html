@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>组件</title>
   <link rel="stylesheet" href="layui/css/layui.css">
-  <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/showCode.css">
 </head>
@@ -692,38 +691,50 @@ layui.use('laypage', function(){
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 <!--js代码-->
 //迷你样式
-var curr_page = Number($('.paging-4 .current_page').text());
-var max_page = Number($('.paging-4 .max_page').text());
-var prev_page = $('.paging-4 .prev_page');
-var next_page = $('.paging-4 .next_page');
-next_page.click(function () {
-  curr_page++;
-  if (curr_page < max_page){
-    $('.paging-4 .current_page').text(curr_page);
-    prev_page.removeClass('disabled');
-  }else if(curr_page==max_page){
-    $(this).addClass('disabled');
-    $('.paging-4 .current_page').text(curr_page);
-  }else if (curr_page>max_page){
-    $('.paging-4 .current_page').text(max_page);
-    $(this).addClass('disabled');
-    curr_page = max_page;
+function miniPage() {
+  var curr_page = Number($('.paging-44 .current_page').text());
+  var max_page = Number($('.paging-44 .max_page').text());
+  var prev_page = $('.paging-44 .prev_page');
+  var next_page = $('.paging-44 .next_page');
+  if (curr_page === 1 && max_page === 1) {
+    prev_page.addClass('disabled');
+    next_page.addClass('disabled');
+    return;
   }
-});
-prev_page.click(function () {
-  curr_page--;
-  if (curr_page>1){
-    $('.paging-4 .current_page').text(curr_page);
-    next_page.removeClass('disabled');
-  }else if(curr_page==1){
-    $(this).addClass('disabled');
-    $('.paging-4 .current_page').text(curr_page);
-  }else if (curr_page<1){
-    $('.paging-4 .current_page').text(1);
-    $(this).addClass('disabled');
-    curr_page = 1;
-  }
-});</pre>
+  next_page.click(function (e) {
+    e.preventDefault();
+    curr_page++;
+    if (curr_page < max_page){
+      $('.paging-44 .current_page').text(curr_page);
+      prev_page.removeClass('disabled');
+    }else if(curr_page==max_page){
+      $(this).addClass('disabled');
+      prev_page.removeClass('disabled');
+      $('.paging-44 .current_page').text(curr_page);
+    }else if (curr_page>max_page){
+      $('.paging-44 .current_page').text(max_page);
+      $(this).addClass('disabled');
+      curr_page = max_page;
+    }
+  });
+  prev_page.click(function (e) {
+    e.preventDefault();
+    curr_page--;
+    if (curr_page>1){
+      $('.paging-44 .current_page').text(curr_page);
+      next_page.removeClass('disabled');
+    }else if(curr_page==1){
+      $(this).addClass('disabled');
+      next_page.removeClass('disabled');
+      $('.paging-44 .current_page').text(curr_page);
+    }else if (curr_page<1){
+      $('.paging-44 .current_page').text(1);
+      $(this).addClass('disabled');
+      curr_page = 1;
+    }
+  });
+}
+miniPage();</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -741,6 +752,7 @@ prev_page.click(function () {
 
       <!--按钮-->
       <div class="layui-tab-item">
+        <!--常用按钮-->
         <div class="explain">
           <h1>按钮</h1>
           <div class="explain_con">
@@ -842,6 +854,8 @@ prev_page.click(function () {
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
         </div>
+
+        <!--文字按钮-->
         <div class="explain">
           <div class="explain_con">
             <h2>文字按钮</h2>
@@ -863,6 +877,8 @@ prev_page.click(function () {
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
         </div>
+
+        <!--图标按钮-->
         <div class="explain">
           <div class="explain_con">
             <h2>图标按钮</h2>
@@ -889,6 +905,8 @@ prev_page.click(function () {
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
         </div>
+
+        <!--菜单按钮-->
         <div class="explain">
           <div class="explain_con">
             <h2>菜单按钮</h2>
@@ -897,8 +915,8 @@ prev_page.click(function () {
             <div class="menu_btn">
               <p style="margin-bottom: 6px;font-size: 14px;color: #666;">注：点击箭头触发切换按钮功能</p>
               <div class="zlit-menu-btn-box">
-                <span class="zlit-menu-btn-text" id="files-img">选择按钮功能</span>
-                <i class="layui-icon layui-icon-down zlit-menu-btn-change"></i>
+                <span class="zlit-menu-btn-text">选择按钮功能</span>
+                <span class="zlit-menu-btn-change"><i class="layui-icon layui-icon-down "></i></span>
                 <ul class="layui-anim zlit-menu-btn">
                   <li data-id="files-img">上传图片格式</li>
                   <li data-id="files-file">上传普通文件</li>
@@ -920,8 +938,8 @@ prev_page.click(function () {
  <script src="js/jquery-3.3.1.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
   <div class="zlit-menu-btn-box">
-    <span class="zlit-menu-btn-text" id="files-imgs">选择按钮功能</span>
-    <i class="layui-icon layui-icon-down zlit-menu-btn-change"></i>
+    <span class="zlit-menu-btn-text">选择按钮功能</span>
+    <span class="zlit-menu-btn-change"><i class="layui-icon layui-icon-down "></i></span>
     <ul class="layui-anim zlit-menu-btn">
       <li data-id="files-imgs">上传图片格式</li>
       <li data-id="files-file">上传普通文件</li>
@@ -939,11 +957,11 @@ function menuBtn(){
     e.stopPropagation();
     if (flag) {
       $('.zlit-menu-btn').addClass('layui-anim-scaleSpring').css({display:'block'});
-      $(this).css({transform:'rotateZ(180deg)',top:'10px'});
+      $(this).css({transform:'rotateZ(180deg)'});
       flag = false;
     }else{
       $('.zlit-menu-btn').removeClass('layui-anim-scaleSpring').css({display:'none'});
-      $(this).css({transform:'rotateZ(0deg)',top:'12px'});
+      $(this).css({transform:'rotateZ(0deg)'});
       flag = true;
     }
   });
@@ -956,21 +974,21 @@ function menuBtn(){
     $('.zlit-menu-btn-text').text(str);
     $('.zlit-menu-btn-box').prop('id',ids);
     $('.zlit-menu-btn').removeClass('layui-anim-scaleSpring').css({display:'none'});
-    $('.zlit-menu-btn-change').css({transform:'rotateZ(0deg)',top:'12px'});
+    $('.zlit-menu-btn-change').css({transform:'rotateZ(0deg)'});
     flag = true;
 
     //切换按钮功能
     strId = $('.zlit-menu-btn-box').attr('id');
     if (strId==='files-imgs'){
-      uploadFiles('#files-imgs');                   //图片上传
+      uploadFiles('#files-imgs');
     }else if(strId==='files-file'){
-      uploadFiles('#files-file','file');            //普通文件上传
+      uploadFiles('#files-file','file');
     }else if(strId==='files-zip'){
-      uploadFiles('#files-zip','file','zip|rar|7z');//压缩文件上传
+      uploadFiles('#files-zip','file','zip|rar|7z');
     }else if(strId==='files-video'){
-      uploadFiles('#files-video','video');          //视频上传
+      uploadFiles('#files-video','video');
     }else if(strId==='files-audio'){
-      uploadFiles('#files-audio','audio');          //音频上传
+      uploadFiles('#files-audio','audio');
     }
 
     $('.zlit-menu-btn-show').text('').find('span').css({display:'none'});
@@ -1006,6 +1024,8 @@ menuBtn();</pre>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
         </div>
+
+        <!--按钮组-->
         <div class="explain">
           <div class="explain_con">
             <h2>按钮组</h2>
@@ -1595,6 +1615,10 @@ layui.use('form', function(){
   <script src="js/jquery-3.3.1.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
   <div class="zlit-label-box">
+    <div class="zlit-label-single">
+      <span>标签一</span>
+      <i class="layui-icon layui-icon-close"></i>
+    </div>
     <div class="zlit-label-add">
       <i class="layui-icon layui-icon-add-1"></i>
       <span>添加</span>
@@ -1619,7 +1643,7 @@ $('.zlit-label-box').on('click','.zlit-label-add', function () {
   span.css({display:'none'}).appendTo(div);
   input.val('新标签').css({width:'48px'}).appendTo(div);
   input.select();
-  div.animate({padding:'6px 35px 6px 10px'},200,function () {
+  div.animate({padding:'6px 30px 6px 10px'},200,function () {
     i.appendTo(div);
     div.addClass('zlit-label-single');
   });
@@ -1797,11 +1821,9 @@ layui.config({
   <!--使用前需引入layui依赖文件-->
   <!--使用时将以下注释解除-->
   <!--<link rel="stylesheet" href="layui/css/layui.css">
-  <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="layui/layui.js"></script>
-  <script src="js/jquery-1.9.1.js"></script>
-  <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>--></pre>
+  <script src="js/jquery-1.9.1.js"></script>--></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
 <!--使用时请将注释解除-->
 <!--<label class="layui-form-label zlit-form-label">树选择</label>
@@ -1819,32 +1841,27 @@ layui.config({
 }).use(['formSelects'], function(){
   var formSelects = layui.formSelects;
   // local模式  data数据为本地定义
-  /*layui.formSelects.data('example11_1', 'local', {   //example11_1为绑定元素的xm-select值
+  layui.formSelects.data('example11_1', 'local', {   //example11_1为绑定元素的xm-select值
     arr: [
       {name: '分组1', type: 'optgroup'},
       {name: '北京', value: 1, children: [{name: '朝阳', disabled: true, value: 11}, {name: '海淀', value: 12}]},
       {name: '分组2', type: 'optgroup'},
-      {name: '深圳', value: 2, children: [{name: '龙岗', value: 21}]},
+      {name: '深圳', value: 2, children: [{name: '龙岗', value: 21},{name: '离石', value: 22}]},
     ]
   });
-  formSelects.value('example11_1', [1,2],true);  //设置初始选中项*/
-  $(".xm-select-dl ").mCustomScrollbar({
-    autoHideScrollbar: false,   //滚动条是否隐藏
-    theme: "my-theme",
-  });
+  formSelects.value('example11_1', [1,2],true);  //设置初始选中项
 
   //server模式  data数据为远程数据
-  layui.formSelects.data('example11_1', 'server', {   //example11_1为绑定元素的xm-select值
+  /*layui.formSelects.data('example11_1', 'server', {   //example11_1为绑定元素的xm-select值
     url: 'https://www.easy-mock.com/mock/5bdffa7aae524521410b1598/tableData/zlittree',
     success:function (id, url, val, result) {
       // id:       绑定容器的xm-select值
       // url:      数据请求的路径
       // val:      搜索的值
       // result:   返回的结果
-      formSelects.value('example11_1',[12,17]);   //设置初始选中项
+      formSelects.value('example11_1',[12,17]);  ////设置初始选中项
     }
   });
-
   //监听事件获取实时选择数据
   formSelects.on('example11_1', function(id, vals, choice, isAdd, isDisabled){
     //id:           当前select的id
@@ -1853,7 +1870,7 @@ layui.config({
     //isAdd:        当前操作选中or取消
     //isDisabled:   当前选项是否是disabled
     console.log(vals);
-  }, true);
+  }, true);*/
 });</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
@@ -2892,7 +2909,7 @@ layui.use('layer', function(){
   //提交
   $('.confirm_submit').click(function () {
     var content = [
-      '<i class="zlit-layer-icon iconfont icon-jingshi"></i>',
+      '<i class="zlit-layer-icon iconfont icon-tijiao"></i>',
       '<h3>普通操作标题</h3>',
       '<p>继续此操作的一些提示文字信息</p>'
     ].join('');
@@ -2920,7 +2937,7 @@ layui.use('layer', function(){
   //删除
   $('.confirm_delete').click(function () {
     var content = [
-      '<i class="zlit-layer-icon iconfont icon-yiwen"></i>',
+      '<i class="zlit-layer-icon iconfont icon-shanchu"></i>',
       '<h3>危险操作标题</h3>',
       '<p>如删除退出等，操作按钮文字为删除退出</p>'
     ].join('');
@@ -2948,7 +2965,7 @@ layui.use('layer', function(){
   //成功
   $('.confirm_success').click(function () {
     var content = [
-      '<i class="zlit-layer-icon iconfont icon-zhengque"></i>',
+      '<i class="zlit-layer-icon iconfont icon-chenggong"></i>',
       '<h3>操作成功标题</h3>',
       '<p>操作成功的结果提示信息</p>',
       '<span><em>5</em>秒后自动关闭</span>'
@@ -2986,7 +3003,7 @@ layui.use('layer', function(){
   //失败
   $('.confirm_fail').click(function () {
     var content = [
-      '<i class="zlit-layer-icon iconfont icon-chucuo"></i>',
+      '<i class="zlit-layer-icon iconfont icon-shibai"></i>',
       '<h3>操作失败标题</h3>',
       '<p>操作失败的原因提示或解决方法</p>'
     ].join('');
@@ -3015,7 +3032,7 @@ layui.use('layer', function(){
   $('.tips_del').click(function () {
     var that = this;
     var tips = [
-      '<div class="zlit-tips-box"><i class="layui-icon layui-icon-tips zlit-tips-icon"></i>',
+      '<div class="zlit-tips-box"><i class="iconfont icon-shanchu zlit-tips-icon"></i>',
       '<span class="zlit-tips-text">删除后数据不可恢复</span><div class="zlit-tips-btn">',
       '<em class="zlit-tips-btn0">取消</em><em class="zlit-tips-btn1">删除</em></div></div>'
     ].join('');
@@ -3071,44 +3088,60 @@ layui.use('layer', function(){
   var layer = layui.layer;
 
   //普通通知
+  var toastNub1 = 0;
   $('.mess-btn1').click(function () {
-    var index = layer.open({
-      type: 1,
-      closeBtn: 0,
-      offset: 't',
-      resize: false,
-      title:['普通类提醒标题','color:#333;border:none;text-align:center;padding:0;background:transparent;'],
-      content:'<div id="mess-btn1"><p>顶部居中显示，这是一些辅助文字</p><div><button id="sub" class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
-      shade:0,
-      anim:1,
-      tipsMore:false,
-      area:['276px','124px']
-    });
-    $('#mess-btn1 button').on('click',function () {
-      layer.close(index);
-    });
+    if (!toastNub1){
+      toastNub1 = layer.open({
+        type: 1,        //弹窗类型
+        closeBtn: 0,    //关闭右上角x号按钮
+        offset: 't',    //弹窗位置
+        resize: false,  //不允许窗口缩放
+        title:['普通类提醒标题','color:#333;border:none;text-align:center;padding:0;background:transparent;'],
+        content:'<div id="mess-btn1"><p>顶部居中显示，这是一些辅助文字</p><div><button class="ctrlBtn1 layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="ctrlBtn2 layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
+        shade:0,        //无背景遮罩
+        anim:1,         //动画类型
+        area:['276px','124px'],    //弹框宽高
+        end:function () {
+          toastNub1 = 0;
+        }
+      });
+      $('#mess-btn1 .ctrlBtn1').on('click',function () {    //操作一按钮点击
+        layer.close(toastNub1);
+      });
+      $('#mess-btn1 .ctrlBtn2').on('click',function () {    //操作二按钮点击
+        layer.close(toastNub1);
+      });
+    }
   });
 
   //警示通知
+  var toastNub2 = 0;
   $('.mess-btn2').click(function () {
-    var index = layer.open({
-      type: 1,
-      offset: 't',
-      closeBtn: 0,
-      resize: false,
-      title: ['警示类提醒标题','color:#fff;border:none;text-align:center;padding:0;background:transparent;'],
-      content:'<div id="mess-btn2"><p>顶部居中显示，这是一些辅助文字</p><div><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
-      shade:0,
-      anim:1,
-      tipsMore:false,
-      area:['276px','124px']
-    });
-    layer.style(index,{
-      background:'rgba(255,0,0,0.7)'
-    });
-    $('#mess-btn2 button').on('click',function () {
-      layer.close(index);
-    });
+    if (!toastNub2){
+      toastNub2 = layer.open({
+        type: 1,        //弹窗类型
+        offset: 't',    //弹窗位置
+        closeBtn: 0,    //关闭右上角x号按钮
+        resize: false,  //不允许窗口缩放
+        title: ['警示类提醒标题','color:#fff;border:none;text-align:center;padding:0;background:transparent;'],
+        content:'<div id="mess-btn2"><p>顶部居中显示，这是一些辅助文字</p><div><button class="ctrlBtn1 layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="ctrlBtn2 layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
+        shade:0,        //无背景遮罩
+        anim:1,         //动画类型
+        area:['276px','124px'],      //弹框宽高
+        end:function () {
+          toastNub2 = 0;
+        }
+      });
+      layer.style(toastNub2,{
+        background:'rgba(255,0,0,0.7)'
+      });
+      $('#mess-btn2 .ctrlBtn1').on('click',function () {    //操作一按钮点击
+        layer.close(toastNub2);
+      });
+      $('#mess-btn2 .ctrlBtn2').on('click',function () {    //操作二按钮点击
+        layer.close(toastNub2);
+      });
+    }
   });
 });</pre>
             </div>
@@ -3566,7 +3599,7 @@ layui.use('layer', function(){
   <script src="layui/layui.js"></script>
   <!--如果使用圆形进度条请分别引入Jquery.js和circleChart.min.js-->
   <script src="js/jquery-3.3.1.js"></script>
-  <script src="js/circleChart.min.js"></script></pre>
+  <script src="js/circleChart.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
 <!--=============================直线进度条HTML结构=============================-->
 <!--进行中状态如下：-->
@@ -4038,7 +4071,7 @@ stepFun(Vsteps,VstepCon,'top',VstepDesc,VnextBtn,VprevBtn);</pre>
             <p>在右侧使用时高亮火柴棍指示标在文字左侧，左侧使用时高亮火柴棍指示标在文字右侧。</p>
             <div class="anchors_box">
               <div class="anchors_catalog">
-                <ul>
+                <ul class="anchors">
                   <li class="active"><a href="#anchors1">锚点文字1</a></li>
                   <li><a href="#anchors2">锚点文字2</a></li>
                   <li><a href="#anchors3">锚点文字3</a></li>
@@ -4059,7 +4092,7 @@ stepFun(Vsteps,VstepCon,'top',VstepDesc,VnextBtn,VprevBtn);</pre>
 </pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
   <div class="anchors_catalog">
-    <ul>
+    <ul class="anchors">
       <li class="active"><a href="#anchors1">锚点文字1</a></li>
       <li><a href="#anchors2">锚点文字2</a></li>
       <li><a href="#anchors3">锚点文字3</a></li>
@@ -4122,10 +4155,9 @@ stepFun(Vsteps,VstepCon,'top',VstepDesc,VnextBtn,VprevBtn);</pre>
 <script src="./lib/js/jquery.pure.tooltips.js"></script>
 
 <!--圆形进度条js文件-->
-<script src="./lib/js/circleChart.min.js"></script>
+<script src="./lib/js/circleChart.js"></script>
 
 <!--滚动条js文件-->
-<script src="./lib/js/jquery.mCustomScrollbar.concat.min.js"></script>
 
 <!--本页面js文件-->
 <script src="js/components.js"></script>
