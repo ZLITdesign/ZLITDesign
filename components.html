@@ -2140,7 +2140,8 @@ layui.use('upload', function() {
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="layui/layui.js"></script>
-  <script src="js/jquery-3.3.1.js"></script></pre>
+  <script src="js/jquery-3.3.1.js"></script>
+  <script src="js/previewImg.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
   <div class="layui-upload zlit-upload">
     <label class="layui-form-label zlit-form-label">上传图片</label>
@@ -2184,12 +2185,24 @@ layui.use(['upload','layer'], function() {
           }
         }
 
-        var div = $('<div class="img"></div>'),img = $('<img/>'),p = $('<p>删除</p>');
-        img.prop({alt:file.name});
+        //预览列表
+        var div = $('<div class="img" data-magnify="gallery" data-group="g1" data-src="'+result+'" data-caption="'+file.name+'"></div>'),
+          img = $('<img/>'),
+          p = $('<p>删除</p>');
+        img.prop({alt: file.name});
         img.appendTo(div);
-        div.css({backgroundImage:'url("'+result+'")'});
+        div.css({backgroundImage: 'url("' + result + '")'});
         p.appendTo(div);
         div.insertBefore($('.zlit-upload-1btn'));
+        //大图预览
+        div.Magnify({
+          Toolbar: ['prev', 'next', 'rotateLeft', 'rotateRight', 'zoomIn', 'actualSize', 'zoomOut'],
+          keyboard: true,
+          draggable: true,
+          movable: true,
+          // bigView: true,
+          // modalSize: [1024, 768],
+        });
 
         //删除
         div.find('p').on('click', function(){
@@ -3830,6 +3843,9 @@ $('.anchors_catalog').zlitExtend('zlitAnchor')</pre>
     </div>
   </div>
 </div>
+<div class="previewImg">
+
+</div>
 </body>
 <!--jquery-->
 <script src="./lib/js/jquery-1.9.1.js"></script>
@@ -3845,6 +3861,9 @@ $('.anchors_catalog').zlitExtend('zlitAnchor')</pre>
 
 <!--部分公用组件封装js文件-->
 <script src="./lib/js/zlitExtend.js"></script>
+
+<!--图片预览js文件-->
+<script src="./lib/js/previewImg.js"></script>
 
 <!--滚动条js文件-->
 

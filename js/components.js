@@ -1,30 +1,30 @@
 //-------------------------------------------启用选项卡开始------------------------------------
-layui.use(['element','layer'], function(){
+layui.use(['element', 'layer'], function () {
   var element = layui.element;
 
   //监听左侧tab切换执行对应得方法
-  element.on('tab(basics)', function(elem){
+  element.on('tab(basics)', function (elem) {
     var n = $(this).index();
     var catalog1 = $('.component_content>.layui-tab-item').eq(n).hasClass('form_box');
     var catalog2 = $('.component_content>.layui-tab-item').eq(n).hasClass('feedback_box');
     var catalog3 = $('.component_content>.layui-tab-item').eq(n).hasClass('other_box');
-    if (catalog1){
+    if (catalog1) {
       var floors = $('.form_floor');
       var navLis = $('.form_catalog ul li');
       var slider = $('.form_slider');
-      catalogFun(floors,navLis,slider);
+      catalogFun(floors, navLis, slider);
     }
-    if (catalog2){
+    if (catalog2) {
       var floors2 = $('.feedback_floor');
       var navLis2 = $('.feedback_catalog ul li');
       var slider2 = $('.feedback_slider');
-      catalogFun(floors2,navLis2,slider2);
+      catalogFun(floors2, navLis2, slider2);
     }
-    if (catalog3){
+    if (catalog3) {
       var floors3 = $('.other_floor');
       var navLis3 = $('.other_catalog ul li');
       var slider3 = $('.other_slider');
-      catalogFun(floors3,navLis3,slider3);
+      catalogFun(floors3, navLis3, slider3);
     }
   });
 });
@@ -40,7 +40,7 @@ $('.head-nav-m ul li').click(function () {
 
 //------------------------------------侧边栏导航开始------------------------------------
 $('.zlit-nav1').zlitExtend('zlitSlideNav');
-$('.zlit-nav2').zlitExtend('zlitSlideNav',{
+$('.zlit-nav2').zlitExtend('zlitSlideNav', {
   isOpen: true     //参数isOpen是否开启手风琴导航，默认关闭
 });
 //------------------------------------侧边栏导航结束------------------------------------
@@ -54,7 +54,7 @@ $('.tab-style-2').zlitExtend('zlitTabNav');
 
 //----------------------------------------分页开始---------------------------------------
 //标准样式完整功能
-layui.use('laypage', function(){
+layui.use('laypage', function () {
   var laypage = layui.laypage;
   //完整功能
   laypage.render({
@@ -64,14 +64,14 @@ layui.use('laypage', function(){
     prev: '<em style="font-family: SimSun">&lt;</em>',
     next: '<em style="font-family: SimSun">&gt;</em>',
     layout: ['prev', 'page', 'next', 'count', 'limit', 'skip'],
-    jump: function(obj){
+    jump: function (obj) {
       console.log(obj)
     }
   });
 });
 
 //简易样式
-layui.use('laypage', function(){
+layui.use('laypage', function () {
   var laypage = layui.laypage;
   //简易样式一
   laypage.render({
@@ -95,7 +95,7 @@ layui.use('laypage', function(){
 });
 
 //迷你样式
-$('.paging-4').zlitExtend('zlitMiniPage',{
+$('.paging-4').zlitExtend('zlitMiniPage', {
   limit: 5,     //一页显示几条数据
   count: 25     //总过多少条数据
 });
@@ -103,24 +103,25 @@ $('.paging-4').zlitExtend('zlitMiniPage',{
 
 
 //----------------------------------------菜单按钮开始---------------------------------------
-$('.zlit-menu-btn-box').zlitExtend('zlitMenuBtn',{
-  uploadFiles:uploadFiles
+$('.zlit-menu-btn-box').zlitExtend('zlitMenuBtn', {
+  uploadFiles: uploadFiles
 });
-function uploadFiles(ele,accpets='images',exts='') {
-  layui.use(['upload','layer'],function () {
+
+function uploadFiles(ele, accpets = 'images', exts = '') {
+  layui.use(['upload', 'layer'], function () {
     var upload = layui.upload;
     var layer = layui.layer;
     upload.render({
       elem: ele,
       url: './upload.class.php',
       accept: accpets,
-      exts:exts,
-      choose: function(obj){
-        obj.preview(function(index, file, result){
+      exts: exts,
+      choose: function (obj) {
+        obj.preview(function (index, file, result) {
           $('.zlit-menu-btn-show').text(file.name);
         });
       },
-      done: function(res,index){
+      done: function (res, index) {
         //上传完毕
         layer.msg('上传成功', {
           time: 3000, icon: 1
@@ -130,77 +131,78 @@ function uploadFiles(ele,accpets='images',exts='') {
     });
   });
 }
+
 //----------------------------------------菜单按钮结束---------------------------------------
 
 
 //-----------------------------------------表单开始--------------------------------------
-layui.use('form', function(){
+layui.use('form', function () {
   var form = layui.form;
   //自定义规则
-  $.validator.addMethod("define", function(value, element, param) {
+  $.validator.addMethod("define", function (value, element, param) {
     /*let reg = /^\d{4,10}$/;
     if (reg.test(value)){
       return value;
     }*/
-    if (value.length>=param[0] && value.length<=param[1]){
+    if (value.length >= param[0] && value.length <= param[1]) {
       return value;
     }
   }, '格式不正确');
   $('#con_form').validate({   //以下init,error,finish,desc等为input的name值
-    rules:{
-      init:{
-        required:true,
-        maxlength:10,
-        define:[2,10]    //自定义规则放在最后
+    rules: {
+      init: {
+        required: true,
+        maxlength: 10,
+        define: [2, 10]    //自定义规则放在最后
       },
-      error:{
-        required:true,
-        maxlength:10,
-        define:[6,10],   //自定义规则放在最后
+      error: {
+        required: true,
+        maxlength: 10,
+        define: [6, 10],   //自定义规则放在最后
       },
-      finish:{
-        required:true
+      finish: {
+        required: true
       },
-      desc:{
-        required:true,
-        maxlength:100,
-        define:[50,100],  //自定义规则放在最后
+      desc: {
+        required: true,
+        maxlength: 100,
+        define: [50, 100],  //自定义规则放在最后
       }
     },
-    messages:{
-      init:{
-        required:'此字段必须填写',
+    messages: {
+      init: {
+        required: '此字段必须填写',
         maxlength: '最多{0}个字符',
-        define:'至少也得输入{0}-{1}位字符啊'
+        define: '至少也得输入{0}-{1}位字符啊'
       },
-      error:{
-        required:'此字段必须填写',
+      error: {
+        required: '此字段必须填写',
         maxlength: '最多{0}个字符',
-        define:'至少也得输入{0}-{1}位字符啊'
+        define: '至少也得输入{0}-{1}位字符啊'
       },
-      finish:{
-        required:'此字段必须填写'
+      finish: {
+        required: '此字段必须填写'
       },
-      desc:{
-        required:'此字段必须填写',
+      desc: {
+        required: '此字段必须填写',
         maxlength: '最多{0}个字符',
-        define:'至少也得输入{0}-{1}位字符啊'
+        define: '至少也得输入{0}-{1}位字符啊'
       }
     },
-    highlight:function (element) {   //定义验证不通过的处理样式
-      $(element).each(function (i,val) {
+    highlight: function (element) {   //定义验证不通过的处理样式
+      $(element).each(function (i, val) {
         $(val).addClass('validateError');
       })
     },
-    unhighlight:function (element) {  //定义验证通过的处理样式
-      $(element).each(function (i,val) {
+    unhighlight: function (element) {  //定义验证通过的处理样式
+      $(element).each(function (i, val) {
         $(val).removeClass('validateError');
       })
     }
   });
   //监听提交
-  form.on('submit(demo1)', function(data){
-    if ($('#con_form').valid()){
+  form.on('submit(demo1)', function (data) {
+    if ($('#con_form').valid()) {
       console.log(data.field);
       console.log(JSON.stringify(data.field));
     }
@@ -211,7 +213,7 @@ layui.use('form', function(){
 $('.zlit-number-1').zlitExtend('zlitNumInput');
 $('.zlit-number-2').zlitExtend('zlitNumInput');
 //滑块输入
-layui.use('slider', function(){
+layui.use('slider', function () {
   var slider = layui.slider;
   slider.render({
     elem: '#slideTest1',  //绑定元素
@@ -245,25 +247,25 @@ layui.use('slider', function(){
     elem: '#slideTest5',  //绑定元素
     theme: '#91D5FF',     //自定义主题色
     range: true,          //开启拖拽范围
-    value: [5,55]        //设置初始值
+    value: [5, 55]        //设置初始值
   });
   var double = slider.render({
     elem: '#slideTest6',  //绑定元素
     theme: '#91D5FF',     //自定义主题色
     range: true,          //开启拖拽范围
-    value: [5,55],        //设置初始值
-    change: function(vals){
-      $('.double-range-text').val(vals[0]+'-'+vals[1]);
+    value: [5, 55],        //设置初始值
+    change: function (vals) {
+      $('.double-range-text').val(vals[0] + '-' + vals[1]);
     }
   });
-  $('.double-range-text').val(double.config.value[0]+'-'+double.config.value[1]);
+  $('.double-range-text').val(double.config.value[0] + '-' + double.config.value[1]);
 });
 //添加、修改、删除标签
 $('.zlit-label-box').zlitExtend('zlitLabel');
 //级联选择
 layui.config({
   base: "./layui/lay/mymodules/"
-}).use(['form',"cascader"], function(){
+}).use(['form', "cascader"], function () {
   var cascader = layui.cascader;
   var data = [
     {
@@ -350,12 +352,12 @@ layui.config({
     // where: {                   //异步传送得参数
     //     a: "aaa"
     // },
-    id: ["B", "BB1",'BBB1'],   //已选择得值
+    id: ["B", "BB1", 'BBB1'],   //已选择得值
     changeOnSelect: true,         //开启可选择任意一级
-    success: function (valData,labelData) {   //选择后的回调
+    success: function (valData, labelData) {   //选择后的回调
       // valData  选项得值
       // labelData   页面选项显示得值
-      console.log(valData,labelData);
+      console.log(valData, labelData);
     }
   });
 });
@@ -364,7 +366,7 @@ layui.config({
   base: './layui/lay/mymodules/'
 }).extend({
   formSelects: 'formSelects-v4'
-}).use(['formSelects'], function(){
+}).use(['formSelects'], function () {
   var formSelects = layui.formSelects;
   // local模式  data数据为本地定义
   layui.formSelects.data('example11_1', 'local', {   //example11_1为绑定元素的xm-select值
@@ -372,10 +374,10 @@ layui.config({
       {name: '分组1', type: 'optgroup'},
       {name: '北京', value: 1, children: [{name: '朝阳', disabled: true, value: 11}, {name: '海淀', value: 12}]},
       {name: '分组2', type: 'optgroup'},
-      {name: '深圳', value: 2, children: [{name: '龙岗', value: 21},{name: '离石', value: 22}]},
+      {name: '深圳', value: 2, children: [{name: '龙岗', value: 21}, {name: '离石', value: 22}]},
     ]
   });
-  formSelects.value('example11_1', [1,2],true);  //设置初始选中项
+  formSelects.value('example11_1', [1, 2], true);  //设置初始选中项
 
   //server模式  data数据为远程数据
   /*layui.formSelects.data('example11_1', 'server', {   //example11_1为绑定元素的xm-select值
@@ -399,7 +401,7 @@ layui.config({
   }, true);*/
 });
 //日期选择
-layui.use('laydate', function() {
+layui.use('laydate', function () {
   var laydate = layui.laydate;
   laydate.render({
     elem: '#date1',        //绑定容器
@@ -407,7 +409,7 @@ layui.use('laydate', function() {
     theme: '#108EE9',      //自定义颜色主题
     eventElem: '.zlit-date-icon1',
     trigger: 'click',
-    done: function(value, date){
+    done: function (value, date) {
       console.log(value); //得到日期生成的值，如：2017-08-18
       console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
     }
@@ -420,7 +422,7 @@ layui.use('laydate', function() {
     type: 'month',         //月份选择
     eventElem: '.zlit-date-icon2',
     trigger: 'click',
-    done: function(value, date){
+    done: function (value, date) {
       console.log(value); //得到日期生成的值，如：2017-08-18
       console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
     }
@@ -432,7 +434,7 @@ layui.use('laydate', function() {
     type: 'year',          //年份选择
     eventElem: '.zlit-date-icon3',
     trigger: 'click',
-    done: function(value, date){
+    done: function (value, date) {
       console.log(value);  //得到日期生成的值，如：2017-08-18
       console.log(date);   //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
     }
@@ -445,7 +447,7 @@ layui.use('laydate', function() {
     format: 'yyyy/MM/dd',  //自定义格式
     eventElem: '.zlit-date-icon4',
     trigger: 'click',
-    done: function(value, date, endDate){
+    done: function (value, date, endDate) {
       console.log(value); //得到日期生成的值，如：2017-08-18
       console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
       console.log(endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
@@ -459,7 +461,7 @@ layui.use('laydate', function() {
     type: 'time',          //时间选择
     eventElem: '.zlit-date-icon5',
     trigger: 'click',
-    done: function(value, date){
+    done: function (value, date) {
       console.log(value); //得到日期生成的值，如：2017-08-18
       console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
     }
@@ -467,10 +469,10 @@ layui.use('laydate', function() {
 });
 //文件上传样式一
 //创建进度条监听函数
-var xhrOnProgress=function(fun) {
+var xhrOnProgress = function (fun) {
   xhrOnProgress.onprogress = fun; //绑定监听
   //使用闭包实现监听绑
-  return function() {
+  return function () {
     //通过$.ajaxSettings.xhr();获得XMLHttpRequest对象
     var xhr = $.ajaxSettings.xhr();
     //判断监听函数是否为函数
@@ -483,7 +485,7 @@ var xhrOnProgress=function(fun) {
     return xhr;
   }
 }
-layui.use('upload', function() {
+layui.use('upload', function () {
   var upload = layui.upload;
   //多文件列表示例
   var demoListView = $('#demoList');
@@ -496,38 +498,38 @@ layui.use('upload', function() {
     auto: false,       //关闭自动上传
     drag: false,       //关闭拖拽上传
     bindAction: '#testListAction',    //结合auto:false使用，指向另外一个按钮元素来执行上传动作
-    choose: function(obj){
+    choose: function (obj) {
       var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
       //读取本地文件
-      obj.preview(function(index, file, result){
+      obj.preview(function (index, file, result) {
         //判断选择的文件是否有重复
         var lis = $('.zlit-upload-list').find('li');
-        if (lis.length>0){
-          for (var i=0;i<lis.length;i++){
+        if (lis.length > 0) {
+          for (var i = 0; i < lis.length; i++) {
             var liName = $(lis[i]).data('filename');
-            if (liName===file.name){
+            if (liName === file.name) {
               layer.msg('不要重复选择');
               return delete files[index];
-            }else{
+            } else {
               files = this.files = obj.pushFile();
             }
           }
         }
 
         //result值为文件的base64格式
-        var li = $(['<li data-filename="'+ file.name +'" id="upload-'+ index +'">',
+        var li = $(['<li data-filename="' + file.name + '" id="upload-' + index + '">',
           '<i class="layui-icon layui-icon-note"></i>',
-          '<span class="zlit-file-name"><em class="zlit-upload-msg">等待上传</em>，文件名称：'+file.name+'，文件大小：'+(file.size/1014).toFixed(1)+'kb</span>',
+          '<span class="zlit-file-name"><em class="zlit-upload-msg">等待上传</em>，文件名称：' + file.name + '，文件大小：' + (file.size / 1014).toFixed(1) + 'kb</span>',
           '<div class="upload-ctrl"><i class="layui-icon layui-icon-refresh zlit-reload"></i><i class="layui-icon layui-icon-close zlit-delete"></i></div><div class="upload-progress"><div class="inner"></div></div></li>'
         ].join(''));
 
         //单个重传
-        li.find('.zlit-reload').on('click', function(){
+        li.find('.zlit-reload').on('click', function () {
           obj.upload(index, file);
         });
 
         //删除
-        li.find('.zlit-delete').on('click', function(){
+        li.find('.zlit-delete').on('click', function () {
           delete files[index]; //删除对应的文件
           li.remove();
           uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
@@ -535,80 +537,92 @@ layui.use('upload', function() {
         demoListView.append(li);
       });
     }
-    ,xhr:xhrOnProgress
-    ,progress:function(value){//上传进度回调 value进度值
-      if (value<100){
+    , xhr: xhrOnProgress
+    , progress: function (value) {//上传进度回调 value进度值
+      if (value < 100) {
         $('.zlit-upload-msg').html('<em class="zlit-upload-msg" style="color: #108ee9;">正在上传</em>');
       }
-      $('.inner').css({width:value+'%'});
+      $('.inner').css({width: value + '%'});
     }
-    ,done: function(res, index, upload){
-      if(res.code == 0){ //上传成功
-        var li = demoListView.find('li#upload-'+ index)
-          ,tds = li.children();
+    , done: function (res, index, upload) {
+      if (res.code == 0) { //上传成功
+        var li = demoListView.find('li#upload-' + index)
+          , tds = li.children();
         tds.find('em').html('<em class="zlit-upload-msg" style="color: #5FB878;">上传成功</em>');
-        tds.find('.zlit-reload').css({display:'none'});
+        tds.find('.zlit-reload').css({display: 'none'});
         return delete this.files[index]; //删除文件队列已经上传成功的文件
       }
       this.error(index, upload);
     }
-    ,error: function(index, upload){
-      $('.inner').css({width:'50%',background:'#F5222D'});
-      var li = demoListView.find('li#upload-'+ index)
-        ,tds = li.children();
+    , error: function (index, upload) {
+      $('.inner').css({width: '50%', background: '#F5222D'});
+      var li = demoListView.find('li#upload-' + index)
+        , tds = li.children();
       tds.find('em').html('<em class="zlit-upload-msg" style="color: #F5222D;">上传失败</em>');
-      tds.find('.zlit-reload').css({display:'inline'});
+      tds.find('.zlit-reload').css({display: 'inline'});
     }
   });
 });
 //文件上传样式二
-layui.use(['upload','layer'], function() {
+layui.use(['upload', 'layer'], function () {
   var upload = layui.upload;
   var layer = layui.layer;
   var uploadListIns = upload.render({
     elem: '#upload'    //制定容器
-    ,url: './upload.class.php'   //上传地址
-    ,method: 'post'
-    ,multiple: true     //开启多传
-    ,drag: false        //关闭拖拽上传
-    ,auto: false        //关闭自动上传
-    ,bindAction: '#uploadImg'
-    ,choose:function (obj) {
+    , url: './upload.class.php'   //上传地址
+    , method: 'post'
+    , multiple: true     //开启多传
+    , drag: false        //关闭拖拽上传
+    , auto: false        //关闭自动上传
+    , bindAction: '#uploadImg'
+    , choose: function (obj) {
       var files = this.files = obj.pushFile();
       //预读本地文件示例，不支持ie8
       obj.preview(function (index, file, result) {
         //判断选择的文件是否有重复
         var imgs = $('.zlit-img-view').find('img');
-        if (imgs.length>0){
-          for (var i=0;i<imgs.length;i++){
+        if (imgs.length > 0) {
+          for (var i = 0; i < imgs.length; i++) {
             var imgName = $(imgs[i]).attr('alt');
-            if (imgName===file.name){
+            if (imgName === file.name) {
               layer.msg('不要重复选择');
               return delete files[index];
-            }else{
+            } else {
               files = this.files = obj.pushFile();
             }
           }
         }
 
-        var div = $('<div class="img"></div>'),img = $('<img/>'),p = $('<p>删除</p>');
-        img.prop({alt:file.name});
+        //预览列表
+        var div = $('<div class="img" data-magnify="gallery" data-group="g1" data-src="'+result+'" data-caption="'+file.name+'"></div>'),
+          img = $('<img/>'),
+          p = $('<p>删除</p>');
+        img.prop({alt: file.name});
         img.appendTo(div);
-        div.css({backgroundImage:'url("'+result+'")'});
+        div.css({backgroundImage: 'url("' + result + '")'});
         p.appendTo(div);
         div.insertBefore($('.zlit-upload-1btn'));
+        //大图预览
+        div.Magnify({
+          Toolbar: ['prev', 'next', 'rotateLeft', 'rotateRight', 'zoomIn', 'actualSize', 'zoomOut'],
+          keyboard: true,
+          draggable: true,
+          movable: true,
+          // bigView: true,
+          // modalSize: [1024, 768],
+        });
 
         //删除
-        div.find('p').on('click', function(){
+        div.find('p').on('click', function () {
           delete files[index]; //删除对应的文件
-          $(this).closest('.img').animate({width:0},100,function () {
+          $(this).closest('.img').animate({width: 0}, 100, function () {
             $(this).closest('.img').remove();
             uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
           });
         });
       })
     }
-    ,done: function(res,index){
+    , done: function (res, index) {
       //上传完毕
       layer.msg('图片上传成功', {
         time: 3000, icon: 1
@@ -618,33 +632,33 @@ layui.use(['upload','layer'], function() {
   });
 });
 //文件上传样式三
-layui.use(['upload','layer'], function() {
+layui.use(['upload', 'layer'], function () {
   var upload = layui.upload;
   var layer = layui.layer;
   upload.render({
     elem: '#uploadCon'   //绑定容器
-    ,url: './upload.class.php'     //请求地址
-    ,accept: 'file'      //文件格式
-    ,auto: false         //关闭自动上传
-    ,bindAction: '#uploadSub'   //结合auto:false使用，指向另外一个按钮元素来执行上传动作
-    ,size: 1024*5        //限制文件最大5MB
-    ,choose: function(obj){
+    , url: './upload.class.php'     //请求地址
+    , accept: 'file'      //文件格式
+    , auto: false         //关闭自动上传
+    , bindAction: '#uploadSub'   //结合auto:false使用，指向另外一个按钮元素来执行上传动作
+    , size: 1024 * 5        //限制文件最大5MB
+    , choose: function (obj) {
       this.files = obj.pushFile();  //将每次选择的文件追加到文件队列,以便清除
-      $('.zlit-upload-2-title span').css({color:'#108ee9'});
-      obj.preview(function(index, file, result){
+      $('.zlit-upload-2-title span').css({color: '#108ee9'});
+      obj.preview(function (index, file, result) {
         $('.zlit-upload-2-title span').text(file.name);
       });
     }
-    ,done: function(res,index){
+    , done: function (res, index) {
       //上传完毕
-      $('.zlit-upload-2-title span').css({color:'#5FB878'});
+      $('.zlit-upload-2-title span').css({color: '#5FB878'});
       layer.msg('上传成功', {
         time: 3000, icon: 1
       });
       return delete this.files[index]; //删除文件队列已经上传成功的文件
     }
-    ,error: function(index, upload){
-      $('.zlit-upload-2-title span').css({color:'#F5222D'});
+    , error: function (index, upload) {
+      $('.zlit-upload-2-title span').css({color: '#F5222D'});
     }
   });
 });
@@ -652,13 +666,13 @@ layui.use(['upload','layer'], function() {
 
 
 //---------------------------------------反馈开始----------------------------------------
-layui.use('layer', function(){
+layui.use('layer', function () {
   var layer = layui.layer;
   //-----------------------------toast提示--------------------------------
   //白色背景
-  $('.toast_box .whiteBg .layui-btn').on('click', function(){
-    var arr = ['',1,2,0,4],
-        brr = ['','使用时页面顶部居中显示','默认3s消失，可自定义时长。不要超过15个字','这是全局提示，用于操作反馈','字多的时候要延长展示时间'];
+  $('.toast_box .whiteBg .layui-btn').on('click', function () {
+    var arr = ['', 1, 2, 0, 4],
+      brr = ['', '使用时页面顶部居中显示', '默认3s消失，可自定义时长。不要超过15个字', '这是全局提示，用于操作反馈', '字多的时候要延长展示时间'];
     var n = $(this).index();
     var index = layer.msg(brr[n], {
       offset: '24px',
@@ -666,19 +680,19 @@ layui.use('layer', function(){
       time: 3000,
       icon: arr[n]
     });
-    layer.style(index,{
-      background:'#fff',
-      color:'rgba(0,0,0,0.6)',
+    layer.style(index, {
+      background: '#fff',
+      color: 'rgba(0,0,0,0.6)',
       boxShadow: '0 2px 8px 0 rgba(0,0,0,0.2)',
-      borderRadius:'4px',
+      borderRadius: '4px',
       fontSize: '14px'
     });
   });
 
   //深色背景
-  $('.toast_box .darkBg .layui-btn').on('click', function(){
-    var arr = ['',1,2,0,4],
-      brr = ['','使用时页面顶部居中显示','默认3s消失，可自定义时长。不要超过15个字','这是全局提示，用于操作反馈','字多的时候要延长展示时间'];
+  $('.toast_box .darkBg .layui-btn').on('click', function () {
+    var arr = ['', 1, 2, 0, 4],
+      brr = ['', '使用时页面顶部居中显示', '默认3s消失，可自定义时长。不要超过15个字', '这是全局提示，用于操作反馈', '字多的时候要延长展示时间'];
     var n = $(this).index();
     var index = layer.msg(brr[n], {
       offset: '24px',
@@ -686,10 +700,10 @@ layui.use('layer', function(){
       time: 3000,
       icon: arr[n]
     });
-    layer.style(index,{
-      background:'rgba(0,0,0,0.6)',
-      color:'#fff',
-      borderRadius:'4px',
+    layer.style(index, {
+      background: 'rgba(0,0,0,0.6)',
+      color: '#fff',
+      borderRadius: '4px',
       fontSize: '14px'
     })
   });
@@ -705,10 +719,10 @@ layui.use('layer', function(){
       icon: 0,
       closeBtn: 1
     });
-    layer.style(index,{
-      background:'#FFFBE6',
-      color:'rgba(0,0,0,0.6)',
-      borderRadius:'4px',
+    layer.style(index, {
+      background: '#FFFBE6',
+      color: 'rgba(0,0,0,0.6)',
+      borderRadius: '4px',
       fontSize: '14px',
       width: clientW,
       border: '1px solid #FFE58F',
@@ -725,10 +739,10 @@ layui.use('layer', function(){
       icon: 1,
       closeBtn: 1
     });
-    layer.style(index,{
-      background:'#F6FFED',
-      color:'rgba(0,0,0,0.6)',
-      borderRadius:'4px',
+    layer.style(index, {
+      background: '#F6FFED',
+      color: 'rgba(0,0,0,0.6)',
+      borderRadius: '4px',
       fontSize: '14px',
       border: '1px solid #B7EB8F',
       boxSizing: 'border-box'
@@ -744,10 +758,10 @@ layui.use('layer', function(){
       icon: 2,
       closeBtn: 1
     });
-    layer.style(index,{
-      background:'#FFF2F1',
-      color:'rgba(0,0,0,0.6)',
-      borderRadius:'4px',
+    layer.style(index, {
+      background: '#FFF2F1',
+      color: 'rgba(0,0,0,0.6)',
+      borderRadius: '4px',
       fontSize: '14px',
       border: '1px solid #FFA39E',
       boxSizing: 'border-box'
@@ -763,10 +777,10 @@ layui.use('layer', function(){
       icon: 0,
       closeBtn: 1
     });
-    layer.style(index,{
-      background:'#FFFBE6',
-      color:'rgba(0,0,0,0.6)',
-      borderRadius:'4px',
+    layer.style(index, {
+      background: '#FFFBE6',
+      color: 'rgba(0,0,0,0.6)',
+      borderRadius: '4px',
       fontSize: '14px',
       border: '1px solid #FFE58F',
       boxSizing: 'border-box'
@@ -782,10 +796,10 @@ layui.use('layer', function(){
       icon: 4,
       closeBtn: 1
     });
-    layer.style(index,{
-      background:'#E6F7FF',
-      color:'rgba(0,0,0,0.6)',
-      borderRadius:'4px',
+    layer.style(index, {
+      background: '#E6F7FF',
+      color: 'rgba(0,0,0,0.6)',
+      borderRadius: '4px',
       fontSize: '14px',
       border: '1px solid #91D5FF',
       boxSizing: 'border-box'
@@ -807,18 +821,18 @@ layui.use('layer', function(){
       title: false,
       offset: 'auto',
       content: content,
-      btn: ['提交','取消'],
-      area:['390px','200px'],
-      success: function(layero, index){
+      btn: ['提交', '取消'],
+      area: ['390px', '200px'],
+      success: function (layero, index) {
         layero.addClass('zlit-layer zlit-layer-submit');
       },
-      yes: function(){  //按钮1的回调
+      yes: function () {  //按钮1的回调
         layer.closeAll();
       }
     });
-    layer.style(index,{
-      borderRadius:'6px',
-      overflow:'hidden',
+    layer.style(index, {
+      borderRadius: '6px',
+      overflow: 'hidden',
     });
   });
   //删除
@@ -835,18 +849,18 @@ layui.use('layer', function(){
       title: false,
       offset: 'auto',
       content: content,
-      btn: ['删除','取消'],
-      area:['390px','200px'],
-      success: function(layero, index){
+      btn: ['删除', '取消'],
+      area: ['390px', '200px'],
+      success: function (layero, index) {
         layero.addClass('zlit-layer zlit-layer-delete');
       },
-      yes: function(){   //按钮1的回调
+      yes: function () {   //按钮1的回调
         layer.closeAll();
       }
     });
-    layer.style(index,{
-      borderRadius:'6px',
-      overflow:'hidden',
+    layer.style(index, {
+      borderRadius: '6px',
+      overflow: 'hidden',
     });
   });
   //成功
@@ -857,7 +871,7 @@ layui.use('layer', function(){
       '<p>操作成功的结果提示信息</p>',
       '<span><em>5</em>秒后自动关闭</span>'
     ].join('');
-    var t = '',nub = 5;
+    var t = '', nub = 5;
     var index = layer.open({
       type: 0,
       closeBtn: 0,
@@ -867,24 +881,24 @@ layui.use('layer', function(){
       time: 5000,
       content: content,
       btn: ['关闭'],
-      area:['390px','200px'],
-      success: function(layero, index){
+      area: ['390px', '200px'],
+      success: function (layero, index) {
         layero.addClass('zlit-layer zlit-layer-success');
         t = setInterval(function () {
           nub--;
           layero.find('em').text(nub);
-        },1000);
+        }, 1000);
       },
-      yes: function(){   //按钮1的回调
+      yes: function () {   //按钮1的回调
         layer.closeAll();
       },
-      end:function () {
+      end: function () {
         clearInterval(t);
       }
     });
-    layer.style(index,{
-      borderRadius:'6px',
-      overflow:'hidden',
+    layer.style(index, {
+      borderRadius: '6px',
+      overflow: 'hidden',
     });
   });
   //失败
@@ -902,17 +916,17 @@ layui.use('layer', function(){
       offset: 'auto',
       content: content,
       btn: ['关闭'],
-      area:['390px','200px'],
-      success: function(layero, index){
+      area: ['390px', '200px'],
+      success: function (layero, index) {
         layero.addClass('zlit-layer zlit-layer-fail');
       },
-      yes: function(){   //按钮1的回调
+      yes: function () {   //按钮1的回调
         layer.closeAll();
       }
     });
-    layer.style(index,{
-      borderRadius:'6px',
-      overflow:'hidden',
+    layer.style(index, {
+      borderRadius: '6px',
+      overflow: 'hidden',
     });
   });
   //气泡提示
@@ -923,16 +937,16 @@ layui.use('layer', function(){
       '<span class="zlit-tips-text">删除后数据不可恢复</span><div class="zlit-tips-btn">',
       '<em class="zlit-tips-btn0">取消</em><em class="zlit-tips-btn1">删除</em></div></div>'
     ].join('');
-    var index = layer.tips(tips,that,{
-      tips: [1,'#fff'],
+    var index = layer.tips(tips, that, {
+      tips: [1, '#fff'],
       area: ['230px', '76px'],
       time: 0,
     });
-    $('.zlit-tips-btn0').on('click',function () {
+    $('.zlit-tips-btn0').on('click', function () {
       //点击取消要做的事....
       layer.close(index);
     });
-    $('.zlit-tips-btn1').on('click',function () {
+    $('.zlit-tips-btn1').on('click', function () {
       //点击删除要做的事....
       layer.close(index);
     });
@@ -941,25 +955,25 @@ layui.use('layer', function(){
   //-------------------------------通知提醒框--------------------------------
   var toastNub1 = 0;
   $('.mess-btn1').click(function () {
-    if (!toastNub1){
+    if (!toastNub1) {
       toastNub1 = layer.open({
         type: 1,        //弹窗类型
         closeBtn: 0,    //关闭右上角x号按钮
         offset: 't',    //弹窗位置
         resize: false,  //不允许窗口缩放
-        title:['普通类提醒标题','color:#333;border:none;text-align:center;padding:0;background:transparent;'],
-        content:'<div id="mess-btn1"><p>顶部居中显示，这是一些辅助文字</p><div><button class="ctrlBtn1 layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="ctrlBtn2 layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
-        shade:0,        //无背景遮罩
-        anim:1,         //动画类型
-        area:['276px','124px'],    //弹框宽高
-        end:function () {
+        title: ['普通类提醒标题', 'color:#333;border:none;text-align:center;padding:0;background:transparent;'],
+        content: '<div id="mess-btn1"><p>顶部居中显示，这是一些辅助文字</p><div><button class="ctrlBtn1 layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="ctrlBtn2 layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
+        shade: 0,        //无背景遮罩
+        anim: 1,         //动画类型
+        area: ['276px', '124px'],    //弹框宽高
+        end: function () {
           toastNub1 = 0;
         }
       });
-      $('#mess-btn1 .ctrlBtn1').on('click',function () {    //操作一按钮点击
+      $('#mess-btn1 .ctrlBtn1').on('click', function () {    //操作一按钮点击
         layer.close(toastNub1);
       });
-      $('#mess-btn1 .ctrlBtn2').on('click',function () {    //操作二按钮点击
+      $('#mess-btn1 .ctrlBtn2').on('click', function () {    //操作二按钮点击
         layer.close(toastNub1);
       });
     }
@@ -967,35 +981,36 @@ layui.use('layer', function(){
 
   var toastNub2 = 0;
   $('.mess-btn2').click(function () {
-    if (!toastNub2){
+    if (!toastNub2) {
       toastNub2 = layer.open({
         type: 1,        //弹窗类型
         offset: 't',    //弹窗位置
         closeBtn: 0,    //关闭右上角x号按钮
         resize: false,  //不允许窗口缩放
-        title: ['警示类提醒标题','color:#fff;border:none;text-align:center;padding:0;background:transparent;'],
-        content:'<div id="mess-btn2"><p>顶部居中显示，这是一些辅助文字</p><div><button class="ctrlBtn1 layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="ctrlBtn2 layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
-        shade:0,        //无背景遮罩
-        anim:1,         //动画类型
-        area:['276px','124px'],      //弹框宽高
-        end:function () {
+        title: ['警示类提醒标题', 'color:#fff;border:none;text-align:center;padding:0;background:transparent;'],
+        content: '<div id="mess-btn2"><p>顶部居中显示，这是一些辅助文字</p><div><button class="ctrlBtn1 layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作一</button><button class="ctrlBtn2 layui-btn layui-btn-primary zlit-btn-main layui-btn-sm">操作二</button></div></div>',
+        shade: 0,        //无背景遮罩
+        anim: 1,         //动画类型
+        area: ['276px', '124px'],      //弹框宽高
+        end: function () {
           toastNub2 = 0;
         }
       });
-      layer.style(toastNub2,{
-        background:'rgba(255,0,0,0.7)'
+      layer.style(toastNub2, {
+        background: 'rgba(255,0,0,0.7)'
       });
-      $('#mess-btn2 .ctrlBtn1').on('click',function () {    //操作一按钮点击
+      $('#mess-btn2 .ctrlBtn1').on('click', function () {    //操作一按钮点击
         layer.close(toastNub2);
       });
-      $('#mess-btn2 .ctrlBtn2').on('click',function () {    //操作二按钮点击
+      $('#mess-btn2 .ctrlBtn2').on('click', function () {    //操作二按钮点击
         layer.close(toastNub2);
       });
     }
   });
 });
+
 //文字提示
-function tooltips(){
+function tooltips() {
 //插件{白色背景}
   $('.w-tl').pt({
     position: 't',
@@ -1066,167 +1081,168 @@ function tooltips(){
     position: 't',
     align: 'l',
     content: '信息提示上左对齐',
-    fontcolor:'#fff',
+    fontcolor: '#fff',
     leaveCloseTime: 2000  //鼠标离开关闭时间，默认500ms
   });
   $('.d-top').dt({
     position: 't',
     content: '信息提示上对齐',
-    fontcolor:'#fff'
+    fontcolor: '#fff'
   });
   $('.d-tr').dt({
     position: 't',
     align: 'r',
     content: '信息提示上右对齐',
-    fontcolor:'#fff'
+    fontcolor: '#fff'
   });
   $('.d-lt').dt({
     position: 'l',
     align: 't',
     content: '信息提示左上对齐信息提示左上对齐信息提示左上对齐',
-    fontcolor:'#fff',
+    fontcolor: '#fff',
     conAlign: 'left'
   });
   $('.d-left').dt({
     position: 'l',
     content: '信息提示左对齐信息提示左对齐信息提示左对齐',
-    fontcolor:'#fff',
+    fontcolor: '#fff',
     conAlign: 'left'
   });
   $('.d-lb').dt({
     position: 'l',
     align: 'b',
     content: '信息提示左下对齐信息提示左下对齐信息提示左下对齐',
-    fontcolor:'#fff',
+    fontcolor: '#fff',
     conAlign: 'left'
   });
   $('.d-rt').dt({
     position: 'r',
     align: 't',
     content: '信息提示右上对齐信息提示右上对齐信息提示右上对齐',
-    fontcolor:'#fff',
+    fontcolor: '#fff',
     conAlign: 'left'
   });
   $('.d-right').dt({
     position: 'r',
     content: '信息提示右对齐信息提示右对齐信息提示右对齐',
-    fontcolor:'#fff',
+    fontcolor: '#fff',
     conAlign: 'left'
   });
   $('.d-rb').dt({
     position: 'r',
     align: 'b',
     content: '信息提示右下对齐信息提示右下对齐信息提示右下对齐',
-    fontcolor:'#fff',
+    fontcolor: '#fff',
     conAlign: 'left'
   });
   $('.d-bl').dt({
     position: 'b',
     align: 'l',
     content: '信息提示下左对齐',
-    fontcolor:'#fff'
+    fontcolor: '#fff'
   });
   $('.d-bottom').dt({
     position: 'b',
     content: '信息提示下对齐',
-    fontcolor:'#fff'
+    fontcolor: '#fff'
   });
   $('.d-br').dt({
     position: 'b',
     align: 'r',
     content: '信息提示下右对齐',
-    fontcolor:'#fff'
+    fontcolor: '#fff'
   });
 }
+
 tooltips();
 //---------------------------------------反馈结束----------------------------------------
 
 
 //---------------------------------------其他开始----------------------------------------
 //直线进度条
-layui.use('element', function(){
+layui.use('element', function () {
   var element = layui.element;
   //模拟loading
   $('.loadingBtn').click(function () {
     var i = $('<i class="layui-icon layui-icon-ok-circle"></i>');
-    var progressNum = 0, timer = setInterval(function(){
-      progressNum = progressNum + Math.random()*10|0;
-      if(progressNum>100){
+    var progressNum = 0, timer = setInterval(function () {
+      progressNum = progressNum + Math.random() * 10 | 0;
+      if (progressNum > 100) {
         progressNum = 100;
         clearInterval(timer);
         $('.lineDemo').addClass('zlit-progress-success1');
         $('.zlit-progress').find('span').html('');
         i.appendTo($('.zlit-progress'));
-      }else{
+      } else {
         $('.lineDemo').removeClass('zlit-progress-success');
         $('.zlit-progress').find('i').remove();
-        $('.zlit-progress').find('span').text(progressNum+'%');
+        $('.zlit-progress').find('span').text(progressNum + '%');
       }
-      element.progress('lineDemo', progressNum+'%');
-    }, 300+Math.random()*1000);
+      element.progress('lineDemo', progressNum + '%');
+    }, 300 + Math.random() * 1000);
   });
 });
 //圆形进度条
 //进行中状态
-$(".circleChart#0").zlitExtend('zlitCircleChart',{
+$(".circleChart#0").zlitExtend('zlitCircleChart', {
   size: 80,  // 滚动条大小
   value: 100,  //当前进度值
   // textSize: '16px',
   onDraw: function (el, circle) {
     circle.text(Math.round(circle.value) + "%");
     //进度条100%时的状态色及文字提示
-    if (Math.round(circle.value)===100){
+    if (Math.round(circle.value) === 100) {
       circle.text('<i class="layui-icon layui-icon-ok" style="color: #87D068;font-size: 24px;"></i>');
     }
     //失败时的状态色及文字提示
-    if (Math.round(circle.value)<0){
+    if (Math.round(circle.value) < 0) {
       circle.text('<i class="layui-icon layui-icon-close" style="color: #EF5306;font-size: 24px;"></i>');
     }
   }
 });
 setInterval(function () {
-  $(".circleChart#0").zlitExtend('zlitCircleChart',{
+  $(".circleChart#0").zlitExtend('zlitCircleChart', {
     value: Math.random() * 100
   });
 }, 3000);
 //失败状态如下：（value小于0时即为失败）
-$(".circleChart#1").zlitExtend('zlitCircleChart',{
+$(".circleChart#1").zlitExtend('zlitCircleChart', {
   size: 80,
   value: 60,
   onDraw: function (el, circle) {
     circle.text(Math.round(circle.value) + "%");
-    if (Math.round(circle.value)<0){
+    if (Math.round(circle.value) < 0) {
       circle.text('<i class="layui-icon layui-icon-close" style="color: #EF5306;font-size: 24px;"></i>');
     }
   }
 });
 //模拟失败
 setTimeout(function () {
-  $(".circleChart#1").zlitExtend('zlitCircleChart',{
+  $(".circleChart#1").zlitExtend('zlitCircleChart', {
     value: -1
   });
 }, 3000);
 //100%成功状态如下：
-$(".circleChart#2").zlitExtend('zlitCircleChart',{
+$(".circleChart#2").zlitExtend('zlitCircleChart', {
   size: 80,
   onDraw: function (el, circle) {
     circle.text(Math.round(circle.value) + "%");
-    if (Math.round(circle.value)===100){
+    if (Math.round(circle.value) === 100) {
       circle.text('<i class="layui-icon layui-icon-ok" style="color: #87D068;font-size: 24px;"></i>');
     }
   }
 });
 
 //步骤条
-  //水平
-$('.test-step .horizontal-pro').zlitExtend('zlitStep',{
+//水平
+$('.test-step .horizontal-pro').zlitExtend('zlitStep', {
   style: 'left',
   //上一步、下一步按钮不是必须，如果没有可不传入-->
   nextBtn: $('.horizontal-btn button:last-child'),
   prevBtn: $('.horizontal-btn button:first-child')
 });
-  //垂直
-$('.test-step .vertical-pro').zlitExtend('zlitStep',{
+//垂直
+$('.test-step .vertical-pro').zlitExtend('zlitStep', {
   style: 'top',
   //上一步、下一步按钮不是必须，如果没有可不传入-->
   nextBtn: $('.vertical-btn button:last-child'),
@@ -1237,7 +1253,6 @@ $('.anchors_catalog').zlitExtend('zlitAnchor');
 // ---------------------------------------其他结束---------------------------------------
 
 
-
 //底部翻页
 paging();
 
@@ -1246,8 +1261,8 @@ paging();
 showCode();
 
 //目录楼层跳转
-  //无滚轮事件
-function catalogFun(floors,navLis,slider) {
+//无滚轮事件
+function catalogFun(floors, navLis, slider) {
   var isJump = true;
   navLis.click(function () {
     isJump = false;
@@ -1255,14 +1270,15 @@ function catalogFun(floors,navLis,slider) {
     var that = $(this);
     var t = floors.eq(index).position().top - 20;//获取每个楼层距离body的高度
     var tops = $(this).position().top;  //获取滑块距离父元素的高度
-    $('html,body').animate({scrollTop:t},function () {
+    $('html,body').animate({scrollTop: t}, function () {
       that.addClass('active').siblings().removeClass('active');
-      slider.css({top:tops+8});
+      slider.css({top: tops + 8});
       isJump = true;
     });
   });
 }
-  //带滚滚轮事件
+
+//带滚滚轮事件
 /*function catalogFun(floors,navLis,slider) {
   var clientH = $(window).height();
   var isJump = true;
