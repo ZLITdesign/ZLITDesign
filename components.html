@@ -2185,8 +2185,9 @@ layui.use(['upload','layer'], function() {
         }
 
         var div = $('<div class="img"></div>'),img = $('<img/>'),p = $('<p>删除</p>');
-        img.prop({src:result,alt:file.name});
+        img.prop({alt:file.name});
         img.appendTo(div);
+        div.css({backgroundImage:'url("'+result+'")'});
         p.appendTo(div);
         div.insertBefore($('.zlit-upload-1btn'));
 

@@ -1421,7 +1421,7 @@ ul.urp-cascader-child:first-of-type:after{
   vertical-align: -2px;
 }
 .zlit-upload{
-  width: 603px;
+  width: 566px;
 }
 .zlit-upload-span{
   font-size: 14px;
@@ -1481,10 +1481,8 @@ ul.urp-cascader-child:first-of-type:after{
   margin: 0 auto;
   display: block;
 }
-.zlit-img-view{
-  margin-right: 10px;
-}
 .zlit-img-view div{
+  width: 104px;
   height: 104px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -1494,8 +1492,15 @@ ul.urp-cascader-child:first-of-type:after{
   margin: 0 10px 10px 0;
   position: relative;
 }
+.zlit-img-view div.img{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
 .zlit-img-view div.img>img{
-  height: 100%;
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 .zlit-img-view div.img>p{
   width: 100%;
