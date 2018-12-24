@@ -132,6 +132,7 @@
 
       <!--侧边导航-->
       <div class="layui-tab-item">
+        <!--菜单全展开侧导航-->
         <div class="explain">
           <h1>侧边栏导航</h1>
           <div class="explain_con">
@@ -140,7 +141,7 @@
             <p>1.业务图标+菜单文字。</p>
             <p>2.菜单文字长度2-7字为宜。</p>
             <div class="nav-side">
-              <ul class="zlit-nav">
+              <ul class="zlit-nav zlit-nav1">
                 <li class="active"><a href="#">一级导航</a></li>
                 <li class="zlit-nav-item zlit-nav-item-active">
                   <a href="#">一级导航</a>
@@ -163,10 +164,11 @@
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="js/jquery-3.3.1.js"></script>
+  <script src="js/zlitExtend.js"></script>
   <script src="layui/layui.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
 <!--菜单全展开-->
-<ul class="zlit-nav">
+<ul class="zlit-nav zlit-nav1">
   <li class="active"><a href="#">一级导航</a></li>
   <li class="zlit-nav-item zlit-nav-item-active">
     <a href="#">一级导航</a>
@@ -182,43 +184,13 @@
 </ul></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 <!--js代码-->
-//参数isOpen是否开启手风琴导航，默认关闭
-function zlitNav(isOpen=false){
-  $('.zlit-nav li').click(function(){
-    var flag = true;  //防止点击过快
-    var isHas = $(this).find('dl').is('dl');   //检测是否存在子级
-    if (isHas){
-      if (!flag){
-        return;
-      }
-      flag = false;
-      if ($(this).height()!==36){
-        $(this).find('dl').stop().slideUp(300,function(){
-          flag = true;
-        }).end().find('i').css({transform:'rotateZ(0)'});
-      }else{
-        $(this).find('dl').stop().slideDown(300,function(){
-          flag = true;
-        }).end().find('i').css({transform:'rotateZ(90deg)'});
-      }
-      if (isOpen){
-        $(this).siblings().find('dl').slideUp().end().find('i').css({transform:'rotateZ(0)'});
-      }
-    }else{
-      $(this).addClass('active').siblings().removeClass('active').find('dd').removeClass('active');
-    }
-  });
-  $('.zlit-nav-child dd').click(function(e){
-    e.stopPropagation();
-    $(this).addClass('active').siblings().removeClass('active').end().closest('li').siblings().find('dd').removeClass('active').end().removeClass('active');
-  });
-}
-zlitNav();</pre>
+$('.zlit-nav1').zlitExtend('zlitSlideNav');</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
         </div>
 
+        <!--子菜单收起侧导航-->
         <div class="explain">
           <div class="explain_con">
             <h2>子菜单收起</h2>
@@ -227,7 +199,7 @@ zlitNav();</pre>
             <p>2.菜单文字长度2-7字为宜。</p>
             <p>3.可同时展开多个。</p>
             <div class="nav-side">
-              <ul class="zlit-nav">
+              <ul class="zlit-nav zlit-nav2">
                 <li class="zlit-nav-item">
                   <a href="#">一级导航</a>
                   <i class="layui-icon layui-icon-right"></i>
@@ -274,10 +246,11 @@ zlitNav();</pre>
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="js/jquery-3.3.1.js"></script>
+  <script src="js/zlitExtend.js"></script>
   <script src="layui/layui.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
 <!--子菜单收起-->
-<ul class="zlit-nav">
+<ul class="zlit-nav zlit-nav2">
   <li class="zlit-nav-item">
     <a href="#">一级导航</a>
     <i class="layui-icon layui-icon-right"></i>
@@ -318,37 +291,9 @@ zlitNav();</pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 <!--js代码-->
 //参数isOpen是否开启手风琴导航，默认关闭
-function zlitNav(isOpen=false){
-  $('.zlit-nav li').click(function(){
-    var flag = true;  //防止点击过快
-    var isHas = $(this).find('dl').is('dl');   //检测是否存在子级
-    if (isHas){
-      if (!flag){
-        return;
-      }
-      flag = false;
-      if ($(this).height()!==36){
-        $(this).find('dl').stop().slideUp(300,function(){
-          flag = true;
-        }).end().find('i').css({transform:'rotateZ(0)'});
-      }else{
-        $(this).find('dl').stop().slideDown(300,function(){
-          flag = true;
-        }).end().find('i').css({transform:'rotateZ(90deg)'});
-      }
-      if (isOpen){
-        $(this).siblings().find('dl').slideUp().end().find('i').css({transform:'rotateZ(0)'});
-      }
-    }else{
-      $(this).addClass('active').siblings().removeClass('active').find('dd').removeClass('active');
-    }
-  });
-  $('.zlit-nav-child dd').click(function(e){
-    e.stopPropagation();
-    $(this).addClass('active').siblings().removeClass('active').end().closest('li').siblings().find('dd').removeClass('active').end().removeClass('active');
-  });
-}
-zlitNav();</pre>
+$('.zlit-nav2').zlitExtend('zlitSlideNav',{
+  isOpen: true
+});</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -365,8 +310,6 @@ zlitNav();</pre>
       </div>
 
       <!--tab标签页-->
-      <!--风格一类名  tab-style-1-->
-      <!--风格二类名  tab-style-2-->
       <div class="layui-tab-item">
         <div class="explain">
           <h1>Tab标签页</h1>
@@ -376,6 +319,8 @@ zlitNav();</pre>
             <p>2.标签数量7个以内，文字长度2-7字为宜。</p>
           </div>
         </div>
+
+        <!--风格一类名  tab-style-1-->
         <div class="explain">
           <div class="explain_con">
             <h2>基础样式</h2>
@@ -402,7 +347,8 @@ zlitNav();</pre>
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="layui/layui.js"></script>
-  <script src="js/jquery-3.3.1.js"></script></pre>
+  <script src="js/jquery-3.3.1.js"></script>
+  <script src="js/zlitExtend.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
 <!--风格一-->
 <div class="tab-style-1">
@@ -422,19 +368,13 @@ zlitNav();</pre>
 </div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 <!--js代码-->
-//启用选项卡
-layui.use('element', function(){
-  var element = layui.element;
-});
-//tab标签导航滑块
-$('.tab-style-1 .layui-tab-title li').click(function () {
-  var lefts = $(this).position().left;
-  $('.tab-style-1 .layui-tab-title .slider').css({left:lefts+15});
-});</pre>
+$('.zlit-nav1').zlitExtend('zlitSlideNav');</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
         </div>
+
+        <!--风格二类名  tab-style-2-->
         <div class="explain">
           <div class="explain_con">
             <h2>选项卡样式</h2>
@@ -459,7 +399,9 @@ $('.tab-style-1 .layui-tab-title li').click(function () {
   <!--使用前需引入layui依赖文件-->
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
-  <script src="layui/layui.js"></script></pre>
+  <script src="layui/layui.js"></script>
+  <script src="js/jquery-1.9.1.js"></script>
+  <script src="js/zlitExtend.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
 <!--风格二-->
 <div class="tab-style-2">
@@ -479,9 +421,7 @@ $('.tab-style-1 .layui-tab-title li').click(function () {
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 <!--js代码-->
 //启用选项卡
-layui.use('element', function(){
-  var element = layui.element;
-});</pre>
+$('.tab-style-2').zlitExtend('zlitTabNav');</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -564,6 +504,8 @@ layui.use('element', function(){
         <div class="explain">
           <h1>分页导航</h1>
         </div>
+
+        <!--标准样式完整功能-->
         <div class="explain">
           <div class="explain_con">
             <h2>标准样式</h2>
@@ -605,6 +547,8 @@ layui.use('laypage', function(){
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
         </div>
+
+        <!--简易样式-->
         <div class="explain">
           <div class="explain_con">
             <h2>简易样式</h2>
@@ -663,6 +607,8 @@ layui.use('laypage', function(){
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
         </div>
+
+        <!--迷你样式-->
         <div class="explain">
           <div class="explain_con">
             <h2>迷你样式</h2>
@@ -677,10 +623,10 @@ layui.use('laypage', function(){
 
             <div class="syntax">
 <pre class="layui-code" lay-encode="true">
-  <!--使用前需引入layui依赖文件-->
-  <link rel="stylesheet" href="layui/css/layui.css">
+  <!--使用前需引入依赖文件-->
   <link rel="stylesheet" href="css/zlitDesign.css">
-  <script src="js/jquery-1.9.1.js"></script></pre>
+  <script src="js/jquery-1.9.1.js"></script>
+  <script src="js/zlitExtend.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
 <!--迷你样式-->
 <div class="paging paging-4">
@@ -690,51 +636,10 @@ layui.use('laypage', function(){
 </div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
 <!--js代码-->
-//迷你样式
-function miniPage() {
-  var curr_page = Number($('.paging-44 .current_page').text());
-  var max_page = Number($('.paging-44 .max_page').text());
-  var prev_page = $('.paging-44 .prev_page');
-  var next_page = $('.paging-44 .next_page');
-  if (curr_page === 1 && max_page === 1) {
-    prev_page.addClass('disabled');
-    next_page.addClass('disabled');
-    return;
-  }
-  next_page.click(function (e) {
-    e.preventDefault();
-    curr_page++;
-    if (curr_page < max_page){
-      $('.paging-44 .current_page').text(curr_page);
-      prev_page.removeClass('disabled');
-    }else if(curr_page==max_page){
-      $(this).addClass('disabled');
-      prev_page.removeClass('disabled');
-      $('.paging-44 .current_page').text(curr_page);
-    }else if (curr_page>max_page){
-      $('.paging-44 .current_page').text(max_page);
-      $(this).addClass('disabled');
-      curr_page = max_page;
-    }
-  });
-  prev_page.click(function (e) {
-    e.preventDefault();
-    curr_page--;
-    if (curr_page>1){
-      $('.paging-44 .current_page').text(curr_page);
-      next_page.removeClass('disabled');
-    }else if(curr_page==1){
-      $(this).addClass('disabled');
-      next_page.removeClass('disabled');
-      $('.paging-44 .current_page').text(curr_page);
-    }else if (curr_page<1){
-      $('.paging-44 .current_page').text(1);
-      $(this).addClass('disabled');
-      curr_page = 1;
-    }
-  });
-}
-miniPage();</pre>
+$('.paging-4').zlitExtend('zlitMiniPage',{
+  limit: 5,     //一页显示几条数据
+  count: 25     //总过多少条数据
+});</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -935,7 +840,8 @@ miniPage();</pre>
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="layui/layui.js"></script>
- <script src="js/jquery-3.3.1.js"></script></pre>
+  <script src="js/jquery-3.3.1.js"></script>
+  <script src="js/zlitExtend.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
   <div class="zlit-menu-btn-box">
     <span class="zlit-menu-btn-text">选择按钮功能</span>
@@ -950,76 +856,33 @@ miniPage();</pre>
     <p class="zlit-menu-btn-show"></p>
   </div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
-function menuBtn(){
-  var flag = true;
-  $('.zlit-menu-btn-change').click(function (e) {
-    //隐藏/显示按钮功能区
-    e.stopPropagation();
-    if (flag) {
-      $('.zlit-menu-btn').addClass('layui-anim-scaleSpring').css({display:'block'});
-      $(this).css({transform:'rotateZ(180deg)'});
-      flag = false;
-    }else{
-      $('.zlit-menu-btn').removeClass('layui-anim-scaleSpring').css({display:'none'});
-      $(this).css({transform:'rotateZ(0deg)'});
-      flag = true;
-    }
-  });
-  $('.zlit-menu-btn li').on('click',function (e) {
-    e.stopPropagation();
-    var str,ids,strId;
-    $(this).addClass('active').siblings().removeClass('active');
-    str = $(this).text();
-    ids = $(this).attr('data-id');
-    $('.zlit-menu-btn-text').text(str);
-    $('.zlit-menu-btn-box').prop('id',ids);
-    $('.zlit-menu-btn').removeClass('layui-anim-scaleSpring').css({display:'none'});
-    $('.zlit-menu-btn-change').css({transform:'rotateZ(0deg)'});
-    flag = true;
-
-    //切换按钮功能
-    strId = $('.zlit-menu-btn-box').attr('id');
-    if (strId==='files-imgs'){
-      uploadFiles('#files-imgs');
-    }else if(strId==='files-file'){
-      uploadFiles('#files-file','file');
-    }else if(strId==='files-zip'){
-      uploadFiles('#files-zip','file','zip|rar|7z');
-    }else if(strId==='files-video'){
-      uploadFiles('#files-video','video');
-    }else if(strId==='files-audio'){
-      uploadFiles('#files-audio','audio');
-    }
-
-    $('.zlit-menu-btn-show').text('').find('span').css({display:'none'});
-  });
-
-  function uploadFiles(ele,accpets='images',exts='') {
-    layui.use(['upload','layer'],function () {
-      var upload = layui.upload;
-      var layer = layui.layer;
-      upload.render({
-        elem: ele
-        ,url: './upload.class.php'
-        ,accept: accpets
-        ,exts:exts
-        ,choose: function(obj){
-          obj.preview(function(index, file, result){
-            $('.zlit-menu-btn-show').text(file.name);
-          });
-        }
-        ,done: function(res,index){
-          //上传完毕
-          layer.msg('上传成功', {
-            time: 3000, icon: 1
-          });
-          return delete this.files[index]; //删除文件队列已经上传成功的文件
-        }
-      });
+$('.zlit-menu-btn-box').zlitExtend('zlitMenuBtn',{
+  uploadFiles:uploadFiles
+});
+function uploadFiles(ele,accpets='images',exts='') {
+  layui.use(['upload','layer'],function () {
+    var upload = layui.upload;
+    var layer = layui.layer;
+    upload.render({
+      elem: ele,
+      url: './upload.class.php',
+      accept: accpets,
+      exts:exts,
+      choose: function(obj){
+        obj.preview(function(index, file, result){
+          $('.zlit-menu-btn-show').text(file.name);
+        });
+      },
+      done: function(res,index){
+        //上传完毕
+        layer.msg('上传成功', {
+          time: 3000, icon: 1
+        });
+        return delete this.files[index]; //删除文件队列已经上传成功的文件
+      }
     });
-  }
-}
-menuBtn();</pre>
+  });
+}</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -1269,7 +1132,8 @@ layui.use('form', function(){
   <!--使用前需引入layui依赖文件-->
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
-  <script src="js/jquery-3.3.1.js"></script></pre>
+  <script src="js/jquery-3.3.1.js"></script>
+  <script src="js/zlitExtend.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
   <!--样式一-->
   <div class="zlit-number-1">
@@ -1285,24 +1149,8 @@ layui.use('form', function(){
     <button class="zlit-number-add layui-icon layui-icon-up"></button>
   </div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
-$('.zlit-number-reduce').mousedown(function () {
-  var val = Number($(this).next().val());
-  val--;
-  if (val<=0){
-    $(this).next().val(0);
-  }else{
-    $(this).next().val(val);
-  }
-});
-$('.zlit-number-add').mousedown(function () {
-  var val = Number($(this).prev().val());
-  val++;
-  if (val>=999999){
-    $(this).prev().val(999999);
-  }else{
-    $(this).prev().val(val);
-  }
-});</pre>
+$('.zlit-number-1').zlitExtend('zlitNumInput');
+$('.zlit-number-2').zlitExtend('zlitNumInput');</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
 
@@ -1612,7 +1460,8 @@ layui.use('form', function(){
 <pre class="layui-code" lay-encode="true">
   <!--使用前需引入依赖文件-->
   <link rel="stylesheet" href="css/zlitDesign.css">
-  <script src="js/jquery-3.3.1.js"></script></pre>
+  <script src="js/jquery-3.3.1.js"></script>
+  <script src="js/zlitExtend.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
   <div class="zlit-label-box">
     <div class="zlit-label-single">
@@ -1625,55 +1474,7 @@ layui.use('form', function(){
     </div>
   </div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
-//删除标签
-$('.zlit-label-box').on('click','.zlit-label-single i',function () {
-  var that = $(this);
-  $(this).closest('.zlit-label-single').animate({width:0,padding:'6px 0'},200,function () {
-    that.closest('.zlit-label-single').remove();
-  });
-});
-//添加标签
-$('.zlit-label-box').on('click','.zlit-label-add', function () {
-  var div = $('<div></div>'),
-      input = $('<input>'),
-      span = $('<span></span>'),
-      i = $('<i></i>');
-  div.css({padding:'6px 0',overflow:'hidden',whiteSpace:'nowrap'}).insertBefore($(this).closest('.zlit-label-add'));
-  i.css({position:'absolute'}).addClass('layui-icon layui-icon-close');
-  span.css({display:'none'}).appendTo(div);
-  input.val('新标签').css({width:'48px'}).appendTo(div);
-  input.select();
-  div.animate({padding:'6px 30px 6px 10px'},200,function () {
-    i.appendTo(div);
-    div.addClass('zlit-label-single');
-  });
-  input.blur(function () {
-    if (input.val()===''){
-      span.css({display:'inline',color:'#333'}).text('新标签');
-    }else{
-      span.css({display:'inline',color:'#333'}).text(input.val());
-    }
-    $(this).remove();
-  });
-});
-//修改标签
-$('.zlit-label-box').on('click','.zlit-label-single span',function () {
-  var w = $(this).width();
-  var input = $('<input>');
-  var that = $(this);
-  input.val($(this).text()).css({color:'#333',width:w}).insertBefore($(this));
-  $(this).css({display:'none'});
-  input[0].focus();
-  input.select();
-  input.blur(function () {
-    if (input.val()===''){
-      that.css({display:'inline',color:'#333'}).text('新标签');
-    }else{
-      that.css({display:'inline',color:'#333'}).text(input.val());
-    }
-    $(this).remove();
-  });
-});</pre>
+$('.zlit-label-box').zlitExtend('zlitLabel');</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -3443,6 +3244,8 @@ layui.use('layer', function(){
 
       <!--其他-->
       <div class="layui-tab-item other_box">
+
+        <!--徽标数-->
         <div class="explain other_floor">
           <h1>其他</h1>
           <div class="explain_con other">
@@ -3479,6 +3282,8 @@ layui.use('layer', function(){
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
         </div>
+
+        <!--标签-->
         <div class="explain other_floor">
           <div class="explain_con other">
             <h2>标签</h2>
@@ -3540,6 +3345,8 @@ layui.use('layer', function(){
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
         </div>
+
+        <!--进度条-->
         <div class="explain other_floor">
           <div class="explain_con other">
             <h2>进度条</h2>
@@ -3547,6 +3354,7 @@ layui.use('layer', function(){
             <p>1.根据实际运用场景选择合适的样式或尺寸。</p>
             <p>2.可暂停和取消当前操作</p>
             <div class="other_single">
+              <!--直线进度条-->
               <div class="progress-line">
                 <div class="progress-w">
                   <!--进行中状态如下：-->
@@ -3583,6 +3391,8 @@ layui.use('layer', function(){
                 </div>
                 <button class="layui-btn zlit-btn-default layui-btn-sm loadingBtn">模拟loading</button>
               </div>
+
+              <!--圆形进度条-->
               <div class="progress-circular" style="height: 226px;">
                 <div class="circleChart" id="0"></div>
                 <div class="circleChart" id="1"></div>
@@ -3599,7 +3409,7 @@ layui.use('layer', function(){
   <script src="layui/layui.js"></script>
   <!--如果使用圆形进度条请分别引入Jquery.js和circleChart.min.js-->
   <script src="js/jquery-3.3.1.js"></script>
-  <script src="js/circleChart.js"></script></pre>
+  <script src="js/zlitExtend.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
 <!--=============================直线进度条HTML结构=============================-->
 <!--进行中状态如下：-->
@@ -3670,38 +3480,32 @@ layui.use('element', function(){
 });
 
 <!--圆形进度条js代码-->
-//进行中状态如下：
-$(".circleChart#01").circleChart({
+//进行中状态
+$(".circleChart#01").zlitExtend('zlitCircleChart',{
   size: 80,  // 滚动条大小
-  value: 50,  //当前进度值
-  text: 0,    //圆圈中间显示数字
-  color: '#428EE9',   //进度条颜色
+  value: 100,  //当前进度值
   // textSize: '16px',
   onDraw: function (el, circle) {
     circle.text(Math.round(circle.value) + "%");
-      //进度条100%时的状态色及文字提示
+    //进度条100%时的状态色及文字提示
     if (Math.round(circle.value)===100){
       circle.text('<i class="layui-icon layui-icon-ok" style="color: #87D068;font-size: 24px;"></i>');
     }
-      //失败时的状态色及文字提示
+    //失败时的状态色及文字提示
     if (Math.round(circle.value)<0){
       circle.text('<i class="layui-icon layui-icon-close" style="color: #EF5306;font-size: 24px;"></i>');
     }
   }
 });
-  //模拟失败
 setInterval(function () {
-  $("#01").circleChart({
+  $(".circleChart#01").zlitExtend('zlitCircleChart',{
     value: Math.random() * 100
   });
 }, 3000);
-
 //失败状态如下：（value小于0时即为失败）
-$(".circleChart#02").circleChart({
+$(".circleChart#02").zlitExtend('zlitCircleChart',{
   size: 80,
-  text: 0,
   value: 60,
-  color: '#EF5306',
   onDraw: function (el, circle) {
     circle.text(Math.round(circle.value) + "%");
     if (Math.round(circle.value)<0){
@@ -3709,18 +3513,15 @@ $(".circleChart#02").circleChart({
     }
   }
 });
-  //模拟失败
+//模拟失败
 setTimeout(function () {
-  $("#02").circleChart({
+  $(".circleChart#02").zlitExtend('zlitCircleChart',{
     value: -1
   });
 }, 3000);
-
 //100%成功状态如下：
-$(".circleChart#03").circleChart({
+$(".circleChart#03").zlitExtend('zlitCircleChart',{
   size: 80,
-  text: 0,
-  color: '#428EE9',
   onDraw: function (el, circle) {
     circle.text(Math.round(circle.value) + "%");
     if (Math.round(circle.value)===100){
@@ -3732,6 +3533,8 @@ $(".circleChart#03").circleChart({
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
         </div>
+
+        <!--步骤条-->
         <div class="explain other_floor">
           <div class="explain_con other">
             <h2>步骤条</h2>
@@ -3844,226 +3647,120 @@ $(".circleChart#03").circleChart({
   <!--使用前需引入js,css依赖文件-->
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="css/zlitDesign.css">
-  <script src="js/jquery-3.3.1.js"></script></pre>
+  <script src="js/jquery-3.3.1.js"></script>
+  <script src="js/zlitExtend.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
 <!--水平步骤条-->
-<div class="horizontal-box">
-  <div class="horizontal-pro">
-    <!--步骤条-->
-    <div class="horizontal-step">
-      <div class="step-single">
-        <div class="step-desc">
-          <span class="step-circle step-circle-active"><i class="layui-icon">1</i></span>
-          <span class="step-con step-con-active">进行中</span>
-        </div>
-        <div class="step-hr"><div class="step-child"></div></div>
+<div class="horizontal-pro">
+  <!--步骤条-->
+  <div class="horizontal-step">
+    <div class="step-single">
+      <div class="step-desc">
+        <span class="step-circle step-circle-active"><i class="layui-icon">1</i></span>
+        <span class="step-con step-con-active">进行中</span>
       </div>
-      <div class="step-single">
-        <div class="step-desc">
-          <span class="step-circle"><i class="layui-icon">2</i></span>
-          <span class="step-con">待完成</span>
-        </div>
-        <div class="step-hr"><div class="step-child"></div></div>
+      <div class="step-hr"><div class="step-child"></div></div>
+    </div>
+    <div class="step-single">
+      <div class="step-desc">
+        <span class="step-circle"><i class="layui-icon">2</i></span>
+        <span class="step-con">待完成</span>
       </div>
-      <div class="step-single">
-        <div class="step-desc">
-          <span class="step-circle"><i class="layui-icon">3</i></span>
-          <span class="step-con">待完成</span>
-        </div>
-        <div class="step-hr"><div class="step-child"></div></div>
+      <div class="step-hr"><div class="step-child"></div></div>
+    </div>
+    <div class="step-single">
+      <div class="step-desc">
+        <span class="step-circle"><i class="layui-icon">3</i></span>
+        <span class="step-con">待完成</span>
       </div>
-      <div class="step-single">
-        <div class="step-desc">
-          <span class="step-circle"><i class="layui-icon">4</i></span>
-          <span class="step-con">待完成</span>
-        </div>
-        <div class="step-hr"><div class="step-child"></div></div>
+      <div class="step-hr"><div class="step-child"></div></div>
+    </div>
+    <div class="step-single">
+      <div class="step-desc">
+        <span class="step-circle"><i class="layui-icon">4</i></span>
+        <span class="step-con">待完成</span>
       </div>
-      <div class="step-single">
-        <div class="step-desc">
-          <span class="step-circle"><i class="layui-icon">5</i></span>
-          <span class="step-con">待完成</span>
-        </div>
+      <div class="step-hr"><div class="step-child"></div></div>
+    </div>
+    <div class="step-single">
+      <div class="step-desc">
+        <span class="step-circle"><i class="layui-icon">5</i></span>
+        <span class="step-con">待完成</span>
       </div>
     </div>
-    <!--页面-->
-    <ul class="horizontal-con">
-      <li class="active">第一步第一步第一步第一步第一步第一步对应的页面</li>
-      <li>第二步第二步第二步第二步第二步第二步对应的页面</li>
-      <li>第三步第三步第三步第三步第三步第三步对应的页面</li>
-      <li>第四步第四步第四步第四步第四步第四步对应的页面</li>
-      <li>第五步第五步第五步第五步第五步第五步对应的页面</li>
-    </ul>
-    <div class="horizontal-btn">
-      <button class="layui-btn layui-btn-disabled zlit-btn-disabled layui-btn-sm">上一步</button>
-      <button class="layui-btn zlit-btn-default layui-btn-sm">下一步</button>
-    </div>
+  </div>
+  <!--页面-->
+  <ul class="horizontal-con">
+    <li class="active">第一步第一步第一步第一步第一步第一步对应的页面</li>
+    <li>第二步第二步第二步第二步第二步第二步对应的页面</li>
+    <li>第三步第三步第三步第三步第三步第三步对应的页面</li>
+    <li>第四步第四步第四步第四步第四步第四步对应的页面</li>
+    <li>第五步第五步第五步第五步第五步第五步对应的页面</li>
+  </ul>
+  <div class="horizontal-btn">
+    <button class="layui-btn layui-btn-disabled zlit-btn-disabled layui-btn-sm">上一步</button>
+    <button class="layui-btn zlit-btn-default layui-btn-sm">下一步</button>
   </div>
 </div>
 
-<!--垂直步骤条-->
-<div class="vertical-box">
-  <div class="vertical-pro">
-    <!--步骤条-->
-    <div class="vertical-step">
-      <div class="step-single">
-        <div class="step-desc">
-          <span class="step-circle step-circle-active"><i class="layui-icon">1</i></span>
-          <span class="step-con step-con-active">进行中</span>
-        </div>
-        <div class="step-hr"><div class="step-child"></div></div>
+  <!--垂直步骤条-->
+<div class="vertical-pro">
+  <!--步骤条-->
+  <div class="vertical-step">
+    <div class="step-single">
+      <div class="step-desc">
+        <span class="step-circle step-circle-active"><i class="layui-icon">1</i></span>
+        <span class="step-con step-con-active">进行中</span>
       </div>
-      <div class="step-single">
-        <div class="step-desc">
-          <span class="step-circle"><i class="layui-icon">2</i></span>
-          <span class="step-con">待完成</span>
-        </div>
-        <div class="step-hr"><div class="step-child"></div></div>
+      <div class="step-hr"><div class="step-child"></div></div>
+    </div>
+    <div class="step-single">
+      <div class="step-desc">
+        <span class="step-circle"><i class="layui-icon">2</i></span>
+        <span class="step-con">待完成</span>
       </div>
-      <div class="step-single">
-        <div class="step-desc">
-          <span class="step-circle"><i class="layui-icon">3</i></span>
-          <span class="step-con">待完成</span>
-        </div>
+      <div class="step-hr"><div class="step-child"></div></div>
+    </div>
+    <div class="step-single">
+      <div class="step-desc">
+        <span class="step-circle"><i class="layui-icon">3</i></span>
+        <span class="step-con">待完成</span>
       </div>
     </div>
-    <!--页面-->
-    <ul class="vertical-con">
-      <li class="active">第一步第一步第一步第一步第一步第一步对应的页面</li>
-      <li>第二步第二步第二步第二步第二步第二步对应的页面</li>
-      <li>第三步第三步第三步第三步第三步第三步对应的页面</li>
-      <li>第四步第四步第四步第四步第四步第四步对应的页面</li>
-      <li>第五步第五步第五步第五步第五步第五步对应的页面</li>
-    </ul>
-    <div class="vertical-btn">
-      <button class="layui-btn layui-btn-disabled zlit-btn-disabled layui-btn-sm">上一步</button>
-      <button class="layui-btn zlit-btn-default layui-btn-sm">下一步</button>
-    </div>
+  </div>
+  <!--页面-->
+  <ul class="vertical-con">
+    <li class="active">第一步第一步第一步第一步第一步第一步对应的页面</li>
+    <li>第二步第二步第二步第二步第二步第二步对应的页面</li>
+    <li>第三步第三步第三步第三步第三步第三步对应的页面</li>
+    <li>第四步第四步第四步第四步第四步第四步对应的页面</li>
+    <li>第五步第五步第五步第五步第五步第五步对应的页面</li>
+  </ul>
+  <div class="vertical-btn">
+    <button class="layui-btn layui-btn-disabled zlit-btn-disabled layui-btn-sm">上一步</button>
+    <button class="layui-btn zlit-btn-default layui-btn-sm">下一步</button>
   </div>
 </div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
-function stepFun(steps,stepCon,style,stepDesc,next=null,prev=null){
-  /*steps     步骤条jQuery对象元素
-  * stepCon   每一步对应的页面
-  * style     字符串类型，传入‘left’则为水平步骤条，传入‘top’则为垂直步骤条
-  * stepDesc  步骤条序号及文字区域的jQuery对象元素
-  * next      下一步按钮，默认值null,即没有按钮可不传入
-  * prev      上一步按钮，默认值null,即没有按钮可不传入
-  * */
-  var n = 0,          //依赖索引值
-      flag = true;    //防止过快点击
-  //下一步按钮
-  if (next){
-    next.click(function () {
-      if (!flag){ return; }
-      flag = false;
-      n++;
-      if (n!=0){ prev.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default'); }
-      if (n>=steps.length){
-        n = steps.length-1;
-        flag = true;
-        return;
-      }
-      if (steps.eq(n).index()===steps.length-1){
-        $(this).removeClass('zlit-btn-default').addClass('layui-btn-disabled zlit-btn-disabled');
-      }
-      stepCon.eq(n).addClass('active').siblings().removeClass('active');
-      steps.eq(n-1).find('.step-child').animate({[style]:0},function () {
-        steps.eq(n).find('.step-circle').addClass('step-circle-active').end().find('.step-con').addClass('step-con-active').text('进行中');
-        steps.eq(n-1).find('.step-circle').removeClass('step-circle-active').addClass('step-circle-end').find('i').text('').addClass('layui-icon-ok');
-        steps.eq(n-1).find('.step-con').removeClass('step-con-active').text('已完成');
-        flag = true;
-      });
-    });
-  }
-  //上一步按钮
-  if (prev){
-    prev.click(function () {
-      if (!flag){ return; }
-      flag = false;
-      n--;
-      if (n<=steps.length-1){ next.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default'); }
-      if (n<0){
-        n = 0;
-        flag = true;
-        return;
-      }
-      if (steps.eq(n).index()===0){ $(this).removeClass('zlit-btn-default').addClass('layui-btn-disabled zlit-btn-disabled'); }
-      stepCon.eq(n).addClass('active').siblings().removeClass('active');
-      steps.eq(n).find('.step-child').animate({[style]:-100+'%'},function () {
-        steps.eq(n+1).find('.step-circle').removeClass('step-circle-active').end().find('.step-con').removeClass('step-con-active').text('待完成');
-        steps.eq(n).find('.step-circle').removeClass('step-circle-end').addClass('step-circle-active').find('i').text(n+1).removeClass('layui-icon-ok');
-        steps.eq(n).find('.step-con').addClass('step-con-active').text('进行中');
-        flag = true;
-      });
-    });
-  }
-
-  //点击步骤序号及文字区域
-  stepDesc.click(function () {
-    if (!flag){ return; }
-    flag = false;
-    var k = $(this).closest('.step-single').index(),
-        stepBox = $(this).closest('.step-single').siblings(),
-        that = $(this);
-    n = k;
-    if (next && prev){
-      if (n < steps.length-1 && n > 0){
-        next.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
-        prev.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
-      }else if (n===steps.length-1){
-        next.removeClass('zlit-btn-default').addClass('layui-btn-disabled zlit-btn-disabled');
-        prev.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
-      }else if (n===0){
-        next.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
-        prev.removeClass('zlit-btn-default').addClass('layui-btn-disabled zlit-btn-disabled');
-      }
-    }
-    setTimeout(function () {
-      that.closest('.step-single').find('.step-circle').removeClass('step-circle-end').addClass('step-circle-active')
-        .end().find('.step-con').addClass('step-con-active').text('进行中')
-        .end().find('.step-child').animate({[style]:-100+'%'})
-        .end().find('i').removeClass('layui-icon-ok').text(k+1);
-      stepCon.eq(k).addClass('active').siblings().removeClass('active');
-    },300);
-    stepBox.each(function (i, val) {
-      var j = $(val).index();
-      if (j < k){
-        $(val).find('.step-child').animate({[style]:0},function () {
-          $(val).find('.step-circle').removeClass('step-circle-active').addClass('step-circle-end').find('i').text('').addClass('layui-icon-ok');
-          $(val).find('.step-con').removeClass('step-con-active').text('已完成');
-          flag = true;
-        });
-      }else if (j>k){
-        $(val).find('.step-child').animate({[style]:-100+'%'},function () {
-          flag = true;
-        });
-        setTimeout(function () {
-          $(val).find('.step-circle').removeClass('step-circle-active step-circle-end').find('i').text(j+1).removeClass('layui-icon-ok');
-          $(val).find('.step-con').removeClass('step-con-active').text('待完成');
-        },300);
-      }
-    });
-  });
-}
-//水平步骤条变量
-var Hsteps = $('.horizontal-step .step-single'),
-  HstepCon = $('.horizontal-con li'),
-  HstepDesc = $('.horizontal-step .step-single .step-desc'),
-  HprevBtn = $('.horizontal-btn button:first-child'),
-  HnextBtn = $('.horizontal-btn button:last-child');
-stepFun(Hsteps,HstepCon,'left',HstepDesc,HnextBtn,HprevBtn);
-//垂直步骤条变量
-var Vsteps = $('.vertical-step .step-single'),
-  VstepCon = $('.vertical-con li'),
-  VstepDesc = $('.vertical-step .step-single .step-desc'),
-  VprevBtn = $('.vertical-btn button:first-child'),
-  VnextBtn = $('.vertical-btn button:last-child');
-stepFun(Vsteps,VstepCon,'top',VstepDesc,VnextBtn,VprevBtn);</pre>
+$('.horizontal-pro').zlitExtend('zlitStep',{
+  style: 'left',
+  //上一步、下一步按钮不是必须，如果没有可不传入-->
+  nextBtn: $('.horizontal-btn button:last-child'),
+  prevBtn: $('.horizontal-btn button:first-child')
+});
+$('.vertical-pro').zlitExtend('zlitStep',{
+  style: 'top',
+  // 上一步、下一步按钮不是必须，如果没有可不传入
+  nextBtn: $('.vertical-btn button:last-child'),
+  prevBtn: $('.vertical-btn button:first-child')
+});
+<!-- 如果页面存在多个垂直或水平滚动条，请在滚动条最外层标签添加id来区分不同的步骤条容器。如给页面中的第一个水平步骤条添加了id="one"，则代码初始化写成$('.horizontal-pro#one').zlitExtend('zlitStep',{....});  或者  $('#one').zlitExtend('zlitStep',{....}); --></pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
         </div>
+
+        <!--锚点定位-->
         <div class="explain other_floor">
           <div class="explain_con other">
             <h2>锚点定位</h2>
@@ -4089,7 +3786,7 @@ stepFun(Vsteps,VstepCon,'top',VstepDesc,VnextBtn,VprevBtn);</pre>
   <!--使用前需引入js,css依赖文件-->
   <link rel="stylesheet" href="css/zlitDesign.css">
   <script src="js/jquery-3.3.1.js"></script>
-</pre>
+  <script src="js/zlitExtend.js"></script></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
   <div class="anchors_catalog">
     <ul class="anchors">
@@ -4103,13 +3800,7 @@ stepFun(Vsteps,VstepCon,'top',VstepDesc,VnextBtn,VprevBtn);</pre>
     </ul>
   </div></pre>
 <pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
-  var navLis = $('.anchors_catalog ul li');
-  var slider = $('.anchors_slider');
-  navLis.click(function () {
-    var tops = $(this).position().top;  //获取滑块距离父元素的高度
-    $(this).addClass('active').siblings().removeClass('active');
-    slider.css({top:tops+8});
-  });</pre>
+$('.anchors_catalog').zlitExtend('zlitAnchor')</pre>
             </div>
             <div class="open_code">代码展示：点击<span>展开</span>代码</div>
           </div>
@@ -4145,19 +3836,19 @@ stepFun(Vsteps,VstepCon,'top',VstepDesc,VnextBtn,VprevBtn);</pre>
 <!--validate验证-->
 <script src="./lib/js/jquery.validate.min.js"></script>
 
-<!--展示代码/换页js文件-->
-<script src="js/share.js"></script>
-
 <!--layui  js文件-->
 <script src="layui/layui.js"></script>
 
 <!--tips文字提示-->
 <script src="./lib/js/jquery.pure.tooltips.js"></script>
 
-<!--圆形进度条js文件-->
-<script src="./lib/js/circleChart.js"></script>
+<!--部分公用组件封装js文件-->
+<script src="./lib/js/zlitExtend.js"></script>
 
 <!--滚动条js文件-->
+
+<!--展示代码/换页js文件-->
+<script src="js/share.js"></script>
 
 <!--本页面js文件-->
 <script src="js/components.js"></script>

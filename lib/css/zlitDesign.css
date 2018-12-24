@@ -1063,34 +1063,20 @@ html,body{
   font-size: 16px;
 }
 /*步骤条*/
-.step-line,.anchors_box{
-  box-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
-  padding: 30px;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin: 15px 0;
-}
-.horizontal-box{
-  position: relative;
-  height: 100px;
-}
 .horizontal-con{
-  margin-top: 10px;
   text-align: center;
-}
-.vertical-box{
-  position: relative;
-  height: 280px;
-  overflow: hidden;
+  margin-top: 20px;
 }
 .vertical-con{
-  height: 238px;
-  line-height: 238px;
+  line-height: 3em;
 }
-
 .horizontal-pro,.vertical-pro{
   position: relative;
-  height: 100%;
+  padding-bottom: 50px;
+}
+.horizontal-step{
+  width: 1280px;
+  margin: 0 auto;
 }
 .horizontal-step .step-single:after, .horizontal-step .step-single>div.step-desc:after, .horizontal-step:after, .vertical-step .step-single:after, .vertical-step:after,.vertical-pro:after, .vertical-step .step-single>div.step-desc:after{
   content: '';
@@ -1162,7 +1148,7 @@ html,body{
   background: #108EE9;
 }
 .vertical-step{
-  margin-right: 20px;
+  margin: 0 30px
 }
 .vertical-step,.vertical-con{
   float: left;
