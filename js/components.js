@@ -613,7 +613,8 @@ layui.use(['upload', 'layer'], function () {
         });
 
         //删除
-        div.find('p').on('click', function () {
+        div.find('p').on('click', function (e) {
+          e.stopPropagation();
           delete files[index]; //删除对应的文件
           $(this).closest('.img').animate({width: 0}, 100, function () {
             $(this).closest('.img').remove();
