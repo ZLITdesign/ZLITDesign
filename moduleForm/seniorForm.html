@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>高级表单示例</title>
+  <link rel="stylesheet" href="../layui/css/layui.css">
+  <link rel="stylesheet" href="../lib/css/zlitDesign.css">
+</head>
+<style>
+  html, body {
+    height: 100%;
+  }
+
+  .box {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .title {
+    width: 840px;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-top: 60px;
+  }
+
+  .title h2 {
+    font-size: 24px;
+    color: #ffffff;
+    float: left;
+    margin-right: 12px;
+  }
+
+  .title div {
+    float: left;
+    text-align: center;
+    line-height: 36px;
+    height: 36px;
+    width: 88px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #D9D9D9;
+    margin-right: 8px;
+    user-select: none;
+    cursor: pointer;
+    color: #666;
+    background: #fff;
+    transition: all 0.3s;
+  }
+
+  .title div.active {
+    border-color: #108EE9;
+    color: #108EE9;
+  }
+
+  .title div:hover {
+    border-color: #108EE9;
+    color: #108EE9;
+  }
+
+  .basicsForm {
+    width: 840px;
+    height: 722px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -420px;
+    margin-top: -361px;
+    border-radius: 4px;
+    background: #fff;
+    overflow: hidden;
+    padding: 40px;
+  }
+
+  .layui-form-item h3 {
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 25px;
+    position: relative;
+  }
+
+  .layui-form-item h3:after {
+    content: '';
+    display: block;
+    width: 90%;
+    height: 1px;
+    background: #E6E6E6;
+    position: absolute;
+    top: 50%;
+    right: 0;
+  }
+
+  .layui-input-block {
+    margin-bottom: 12px;
+  }
+
+  .layui-form-item {
+    margin-bottom: 30px;
+  }
+
+  .layui-input-block .addBtn {
+    border: 1px dashed #D9D9D9;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #666;
+    width: 327px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .layui-input-block .addBtn:hover {
+    color: #108EE9;
+    border-color: #108EE9;
+  }
+
+  .layui-input-block i.icon-delete {
+    color: #C2C2C2;
+    margin-top: 8px;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .layui-input-block i.icon-delete:hover {
+    color: #108EE9;
+  }
+</style>
+<body>
+<div class="box">
+  <div class="title">
+    <h2>高级表单示例</h2>
+  </div>
+  <div class="basicsForm">
+    <div class="zlit-basicsForm formBasics">
+      <form action="" class="layui-form">
+        <div class="layui-form-item">
+          <h3>成员信息</h3>
+          <label class="layui-form-label zlit-form-label">成员</label>
+          <div class="layui-input-block">
+            <div class="layui-input-inline" style="width: 100px;">
+              <input type="text" name="price_min" placeholder="姓名" value="陈小慧" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid">--</div>
+            <div class="layui-input-inline" style="width: 200px;">
+              <input type="text" name="price_max" placeholder="身份证号" value="51000000000000000X" autocomplete="off" class="layui-input">
+            </div>
+            <i class="iconfont icon-delete"></i>
+          </div>
+          <div class="layui-input-block">
+            <div class="layui-input-inline" style="width: 100px;">
+              <input type="text" name="price_min" placeholder="姓名" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid">--</div>
+            <div class="layui-input-inline" style="width: 200px;">
+              <input type="text" name="price_max" placeholder="身份证号" autocomplete="off" class="layui-input">
+            </div>
+            <i class="iconfont icon-delete"></i>
+          </div>
+          <div class="layui-input-block">
+            <div class="addBtn">+ 添加</div>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <h3>公司信息</h3>
+          <label class="layui-form-label zlit-form-label">公司地址</label>
+          <div class="layui-input-block">
+            <input type="text" name="price_max" value="山西省太原市小店区坞城南路75号" autocomplete="off" class="layui-input">
+          </div>
+          <label class="layui-form-label zlit-form-label">家庭地址</label>
+          <div class="layui-input-block">
+            <input type="text" name="price_max" value="山西省太原市小店区坞城南路75号" autocomplete="off" class="layui-input">
+          </div>
+          <label class="layui-form-label zlit-form-label">公司邮箱</label>
+          <div class="layui-input-block">
+            <input type="text" name="price_max" value="taiyaunzhilin@zlit.com.cn" autocomplete="off"
+                   class="layui-input">
+          </div>
+          <label class="layui-form-label zlit-form-label">联系电话</label>
+          <div class="layui-input-block">
+            <div class="layui-input-inline" style="width: 100px;">
+              <input type="text" name="price_min" value="0351" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid">--</div>
+            <div class="layui-input-inline" style="width: 200px;">
+              <input type="text" name="price_max" value="7564345" autocomplete="off" class="layui-input">
+            </div>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <h3>发票信息</h3>
+          <label class="layui-form-label zlit-form-label">开票信息</label>
+          <div class="layui-input-block">
+            <input type="checkbox" name="" lay-skin="switch" lay-text="开|关">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+<script src="../layui/layui.js"></script>
+<script src="../lib/js/jquery-3.3.1.js"></script>
+<script>
+  layui.use('form', function () {
+    var form = layui.form;
+  });
+  $('.layui-form-item').on('click','.icon-delete',function () {
+    $(this).closest('.layui-input-block').remove();
+  });
+  $('.addBtn').click(function () {
+    var ele = [
+      '<div class="layui-input-inline" style="width: 100px;">',
+      '<input type="text" name="price_min" placeholder="姓名" autocomplete="off" class="layui-input"></div>',
+      '<div class="layui-form-mid">--</div>',
+      '<div class="layui-input-inline" style="width: 200px;">',
+      '<input type="text" name="price_max" placeholder="身份证号" autocomplete="off" class="layui-input"></div>',
+      '<i class="iconfont icon-delete"></i>'
+    ].join('');
+    var div = $('<div class="layui-input-block"></div>');
+    div.html(ele);
+    div.insertBefore($(this).parents('.layui-input-block'));
+  })
+</script>
+</html>

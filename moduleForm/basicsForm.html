@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>常用示例</title>
+  <link rel="stylesheet" href="../layui/css/layui.css">
+  <link rel="stylesheet" href="../lib/css/zlitDesign.css">
+</head>
+<style>
+  html,body{
+    height: 100%;
+  }
+  .box{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    overflow: hidden;
+    position: relative;
+  }
+  .title{
+    width: 840px;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-top: 60px;
+  }
+  .title h2{
+    font-size: 24px;
+    color: #ffffff;
+    float: left;
+    margin-right: 12px;
+  }
+  .title div{
+    float: left;
+    text-align: center;
+    line-height: 36px;
+    height: 36px;
+    width: 88px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #D9D9D9;
+    margin-right: 8px;
+    user-select: none;
+    cursor: pointer;
+    color: #666;
+    background: #fff;
+    transition: all 0.3s;
+  }
+  .title div.active{
+    border-color: #108EE9;
+    color: #108EE9;
+  }
+  .title div:hover{
+    border-color: #108EE9;
+    color: #108EE9;
+  }
+  .basicsForm{
+    width: 840px;
+    height: 722px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -420px;
+    margin-top: -361px;
+    border-radius: 4px;
+    background: #fff;
+    overflow: hidden;
+  }
+  .basicsForm .form-title{
+    width: 100%;
+    height: 48px;
+    padding: 0 15px;
+    border-bottom: 1px solid #E6E6E6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .basicsForm .form-title p{
+    line-height: 48px;
+    font-size: 18px;
+    color: #333333;
+  }
+  .basicsForm .form-title i{
+    font-size: 26px;
+    cursor: pointer;
+    transition: all 0.3s;
+    user-select: none;
+    color: #999;
+  }
+  .basicsForm .form-title i:hover{
+    color: #108EE9;
+  }
+  .formBasics .layui-form-item{
+    margin-bottom: 10px;
+  }
+  .formBasics{
+    width: 100%;
+    padding: 10px 100px;
+    box-sizing: border-box;
+  }
+  .formBasics .layui-form-item:last-child .layui-input-block{
+    width: auto;
+    padding-right: 30px;
+  }
+
+  .zlit-form-label-left{
+    text-align: left;
+  }
+  .zlit-form-label-block{
+    float: none;
+    text-align: left;
+  }
+  .zlit-form-input-block{
+    margin-left: 10px;
+  }
+</style>
+<body>
+  <div class="box">
+    <div class="title">
+      <h2>基础表单常用示例</h2>
+      <div class="textleft">左对齐</div>
+      <div class="active textright">右对齐</div>
+      <div class="textblock">顶部对齐</div>
+    </div>
+    <div class="basicsForm">
+      <div class="form-title">
+        <p>添加考生</p>
+        <i class="layui-icon layui-icon-close"></i>
+      </div>
+      <div class="zlit-basicsForm formBasics">
+        <form action="" class="layui-form">
+          <div class="layui-form-item">
+            <label class="layui-form-label zlit-form-label">姓名</label>
+            <div class="layui-input-block">
+              <input type="text" name="name" placeholder="输入考生姓名" class="layui-input">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label zlit-form-label">性别</label>
+            <div class="layui-input-block zlit-input-block">
+              <input type="radio" name="sex" value="1" title="男" checked>
+              <input type="radio" name="sex" value="0" title="女">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label zlit-form-label">身份证号</label>
+            <div class="layui-input-block">
+              <input type="text" name="id" placeholder="输入身份证号" class="layui-input">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label zlit-form-label">准考证号</label>
+            <div class="layui-input-block">
+              <input type="text" name="kh" placeholder="输入准考证号" class="layui-input">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label zlit-form-label">所在地区</label>
+            <div class="layui-input-block zlit-cascade">
+              <input type="text" id="cascade1" class="layui-input" readonly="readonly" placeholder="请选择">
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label zlit-form-label">所在学校</label>
+            <div class="layui-input-block">
+              <select name="city" lay-search="">
+                <option value=""></option>
+                <option value="0">山西大学</option>
+                <option value="1">财经大学</option>
+                <option value="2">武汉大学</option>
+                <option value="3">忻州师院</option>
+                <option value="4">吕梁学院</option>
+              </select>
+            </div>
+          </div>
+          <div class="layui-form-item category">
+            <label class="layui-form-label zlit-form-label">报考类别</label>
+            <div class="layui-input-block zlit-input-block zlit-input-radio">
+              <input type="radio" name="name" value="1" title="A类">
+              <input type="radio" name="name" value="2" title="B类" checked>
+              <input type="radio" name="name" value="3" title="C类">
+              <input type="radio" name="name" value="3" title="D类">
+            </div>
+          </div>
+          <div class="layui-form-item layui-upload zlit-upload">
+            <label class="layui-form-label zlit-form-label">照片</label>
+            <div class="zlit-upload-1 layui-input-block">
+              <div class="zlit-img-view">
+                <div class="zlit-upload-1btn" id="upload1">
+                  <p>+</p>
+                  <span>上传</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="layui-form-item">
+            <label class="layui-form-label zlit-form-label">备注</label>
+            <div class="layui-input-block">
+              <textarea placeholder="输入备注信息..." class="layui-textarea" name="desc"></textarea>
+            </div>
+          </div>
+          <div class="layui-form-item" style="text-align: center">
+            <button class="layui-btn zlit-btn-default">确定</button>
+            <button class="layui-btn layui-btn-primary zlit-btn-primary">取消</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../layui/layui.js"></script>
+<script src="../lib/js/jquery-3.3.1.js"></script>
+<script>
+  layui.config({
+    base: "../layui/lay/mymodules/"
+  }).use(['form',"cascader"], function(){
+    var form = layui.form;
+    var cascader = layui.cascader;
+    /*后台参数返回格式：{
+        "Data": data,
+        "Code": 0,
+        "Msg": "错误！！"
+    }*/
+    cascader({
+      elem: "#cascade1",             //绑定容器id
+      // data: data,                   //数据,json格式数组
+      url: "https://www.easy-mock.com/mock/5bdffa7aae524521410b1598/tableData/cascader",  //异步数据请求地址
+      type: "get",                  //请求方式
+      // triggerType: "change",     //触发方式（鼠标点击或鼠标移入）
+      // showLastLevels: true,      //是否显示最后一级
+      // where: {                   //异步传送得参数
+      //     a: "aaa"
+      // },
+      id: ["B", "BB1",'BBB1'],   //已选择得值
+      changeOnSelect: true,         //开启可选择任意一级
+      success: function (valData,labelData) {   //选择后的回调
+        // valData  选项得值
+        // labelData   页面选项显示得值
+        console.log(valData,labelData);
+      }
+    });
+  });
+
+  $('.title div').click(function () {
+    $(this).addClass('active').siblings().removeClass('active');
+    if ($(this).hasClass('textleft')){
+      $('.layui-form-label').addClass('zlit-form-label-left').removeClass('zlit-form-label-block');
+      $('.layui-input-block').removeClass('zlit-form-input-block');
+      $('.layui-form-label').css({float:'left'});
+      $('.category').nextAll().css({display:'block'});
+    }else if ($(this).hasClass('textblock')){
+      $('.layui-form-label').addClass('zlit-form-label-block');
+      $('.layui-input-block').addClass('zlit-form-input-block');
+      $('.layui-form-label').css({float:'none'});
+      $('.category').nextAll().css({display:'none'});
+    }else if ($(this).hasClass('textright')){
+      $('.layui-form-label').removeClass('zlit-form-label-left zlit-form-label-block');
+      $('.layui-input-block').removeClass('zlit-form-input-block');
+      $('.layui-form-label').css({float:'left'});
+      $('.category').nextAll().css({display:'block'});
+    }
+  });
+</script>
+</html>

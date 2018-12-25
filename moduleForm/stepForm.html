@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>分步表单示例</title>
+  <link rel="stylesheet" href="../layui/css/layui.css">
+  <link rel="stylesheet" href="../lib/css/zlitDesign.css">
+</head>
+<style>
+  html, body {
+    height: 100%;
+  }
+
+  .box {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .title {
+    width: 790px;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-top: 100px;
+  }
+
+  .title h2 {
+    font-size: 24px;
+    color: #ffffff;
+    float: left;
+    margin-right: 12px;
+  }
+
+  .title div {
+    float: left;
+    text-align: center;
+    line-height: 36px;
+    height: 36px;
+    width: 88px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #D9D9D9;
+    margin-right: 8px;
+    user-select: none;
+    cursor: pointer;
+    color: #666;
+    background: #fff;
+    transition: all 0.3s;
+  }
+
+  .title div.active {
+    border-color: #108EE9;
+    color: #108EE9;
+  }
+
+  .title div:hover {
+    border-color: #108EE9;
+    color: #108EE9;
+  }
+
+  .basicsForm {
+    width: 790px;
+    height: 624px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -395px;
+    margin-top: -312px;
+    border-radius: 4px;
+    background: #fff;
+    overflow: hidden;
+    padding: 40px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .formBasics{
+    height: 100%;
+  }
+  .layui-input-block, .layui-input-block .zlit-date-range{
+    width: 240px;
+    text-align: left;
+  }
+
+  .horizontal-pro{
+    height: 100%;
+  }
+</style>
+<body>
+<div class="box">
+  <div class="title">
+    <h2>分步表单示例</h2>
+  </div>
+  <div class="basicsForm">
+    <div class="formBasics">
+      <div class="horizontal-pro">
+        <!--步骤条-->
+        <div class="horizontal-step">
+          <div class="step-single">
+            <div class="step-desc">
+              <span class="step-circle step-circle-active"><i class="layui-icon">1</i></span>
+              <span class="step-con step-con-active">进行中</span>
+            </div>
+            <div class="step-hr"><div class="step-child"></div></div>
+          </div>
+          <div class="step-single">
+            <div class="step-desc">
+              <span class="step-circle"><i class="layui-icon">2</i></span>
+              <span class="step-con">待完成</span>
+            </div>
+            <div class="step-hr"><div class="step-child"></div></div>
+          </div>
+          <div class="step-single">
+            <div class="step-desc">
+              <span class="step-circle"><i class="layui-icon">3</i></span>
+              <span class="step-con">待完成</span>
+            </div>
+          </div>
+        </div>
+        <!--页面-->
+        <ul class="horizontal-con">
+          <li class="active">
+            <form action="" class="layui-form">
+              <div class="layui-form-item">
+                <label class="layui-form-label zlit-form-label">日期选择</label>
+                <div class="layui-input-block">
+                  <div class="zlit-date-range">
+                    <input type="text" class="layui-input" id="date11" placeholder="yyyy/MM/dd">
+                    <i class="layui-icon layui-icon-date zlit-date-icon1"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label zlit-form-label">通知时间</label>
+                <div class="layui-input-block zlit-input-block">
+                  <input type="radio" name="radio" value="1" title="需审核" checked>
+                  <input type="radio" name="radio" value="2" title="无需审核">
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label zlit-form-label">通知方式</label>
+                <div class="layui-input-block zlit-input-block">
+                  <input type="checkbox" name="" title="短信" lay-skin="primary" checked>
+                  <input type="checkbox" name="" title="邮件" lay-skin="primary">
+                  <input type="checkbox" name="" title="微信你" lay-skin="primary">
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label zlit-form-label">通知标题</label>
+                <div class="layui-input-block zlit-input-block">
+                  <input type="text" name="init" placeholder="输入建议" value="这是内容" class="layui-input">
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label zlit-form-label">备注说明</label>
+                <div class="layui-input-block" style="width: 80%;">
+                  <textarea placeholder="请输入建议" class="layui-textarea" name="desc"></textarea>
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <div class="layui-upload zlit-upload">
+                  <label class="layui-form-label zlit-form-label">上传图片</label>
+                  <div class="zlit-upload-1 layui-input-block">
+                    <div class="zlit-img-view">
+                      <div class="zlit-upload-1btn" id="upload1">
+                        <p>+</p>
+                        <span>上传</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </li>
+          <li>
+            <form action="" class="layui-form">
+              <div class="layui-form-item">
+                <label class="layui-form-label zlit-form-label">通知时间</label>
+                <div class="layui-input-block zlit-input-block">
+                  <input type="radio" name="radio" value="1" title="需审核" checked>
+                  <input type="radio" name="radio" value="2" title="无需审核">
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label zlit-form-label">通知方式</label>
+                <div class="layui-input-block zlit-input-block">
+                  <input type="checkbox" name="" title="短信" lay-skin="primary" checked>
+                  <input type="checkbox" name="" title="邮件" lay-skin="primary">
+                  <input type="checkbox" name="" title="微信你" lay-skin="primary">
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label zlit-form-label">通知标题</label>
+                <div class="layui-input-block zlit-input-block">
+                  <input type="text" name="init" placeholder="输入建议" value="这是内容" class="layui-input">
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label zlit-form-label">备注说明</label>
+                <div class="layui-input-block" style="width: 80%;">
+                  <textarea placeholder="请输入建议" class="layui-textarea" name="desc"></textarea>
+                </div>
+              </div>
+            </form>
+          </li>
+          <li>
+            <form action="" class="layui-form">
+              <div class="layui-form-item">
+                <label class="layui-form-label zlit-form-label">通知标题</label>
+                <div class="layui-input-block zlit-input-block">
+                  <input type="text" name="init" placeholder="输入建议" value="这是内容" class="layui-input">
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label zlit-form-label">通知时间</label>
+                <div class="layui-input-block zlit-input-block">
+                  <input type="radio" name="radio" value="1" title="需审核" checked>
+                  <input type="radio" name="radio" value="2" title="无需审核">
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label zlit-form-label">通知标题</label>
+                <div class="layui-input-block zlit-input-block">
+                  <input type="text" name="init" placeholder="输入建议" value="这是内容" class="layui-input">
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label zlit-form-label">通知方式</label>
+                <div class="layui-input-block zlit-input-block">
+                  <input type="checkbox" name="" title="短信" lay-skin="primary" checked>
+                  <input type="checkbox" name="" title="邮件" lay-skin="primary">
+                  <input type="checkbox" name="" title="微信你" lay-skin="primary">
+                </div>
+              </div>
+              <div class="layui-form-item">
+                <label class="layui-form-label zlit-form-label">备注说明</label>
+                <div class="layui-input-block" style="width: 80%;">
+                  <textarea placeholder="请输入建议" class="layui-textarea" name="desc"></textarea>
+                </div>
+              </div>
+            </form>
+          </li>
+        </ul>
+        <div class="horizontal-btn">
+          <button class="layui-btn layui-btn-disabled zlit-btn-disabled layui-btn-sm">上一步</button>
+          <button class="layui-btn zlit-btn-default layui-btn-sm">下一步</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script src="../layui/layui.js"></script>
+<script src="../lib/js/jquery-3.3.1.js"></script>
+<script src="../lib/js/zlitExtend.js"></script>
+<script>
+  layui.use(['form','laydate'], function () {
+    var form = layui.form;
+    var laydate = layui.laydate;
+
+    laydate.render({
+      elem: '#date11',        //绑定容器
+      format: 'yyyy/MM/dd',  //自定义格式
+      theme: '#108EE9',      //自定义颜色主题
+      eventElem: '.zlit-date-icon1',
+      trigger: 'click',
+      done: function(value, date){
+        console.log(value); //得到日期生成的值，如：2017-08-18
+        console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+      }
+    });
+  });
+  $('.layui-form-item').on('click','.icon-delete',function () {
+    $(this).closest('.layui-input-block').remove();
+  });
+  $('.addBtn').click(function () {
+    var ele = [
+      '<div class="layui-input-inline" style="width: 100px;">',
+      '<input type="text" name="price_min" placeholder="姓名" autocomplete="off" class="layui-input"></div>',
+      '<div class="layui-form-mid">--</div>',
+      '<div class="layui-input-inline" style="width: 200px;">',
+      '<input type="text" name="price_max" placeholder="身份证号" autocomplete="off" class="layui-input"></div>',
+      '<i class="iconfont icon-delete"></i>'
+    ].join('');
+    var div = $('<div class="layui-input-block"></div>');
+    div.html(ele);
+    div.insertBefore($(this).parents('.layui-input-block'));
+  });
+
+  $('.horizontal-pro').zlitExtend('zlitStep',{
+    style: 'left',
+    //上一步、下一步按钮不是必须，如果没有可不传入-->
+    nextBtn: $('.horizontal-btn button:last-child'),
+    prevBtn: $('.horizontal-btn button:first-child')
+  });
+</script>
+</html>

@@ -26,7 +26,7 @@
 							<p>2.勾选选择：左栏勾选完成选择，右栏可取消选择；右栏取消选择后左栏同步状态；以常用的选择人员为例。</p>
 							<p>3.选择项目较多的情况下可增加搜索功能。</p>
 							<div class="selectBox">
-								<a href="tranfer.html" target="_blank" class="layui-btn layui-btn-primary btn">穿梭选择</a>
+								<a href="moduleTranfer/tranfer.html" target="_blank" class="layui-btn layui-btn-primary btn">穿梭选择</a>
 								<a href="" target="_blank"  class="layui-btn layui-btn-primary btn">人员选择</a>
 							</div>
 
@@ -130,9 +130,76 @@ layui.config({
 							<p>适用于较少数据的收集、校验或提交。</p>
 							<p>当垂直方向空间受限且表单较简单时，可以在一行内放置表单；常用于列表页搜索项。</p>
 							<div class="selectBox">
-								<div class="layui-btn layui-btn-primary btn">常用示例</div>
-								<div class="layui-btn layui-btn-primary btn">行内示例</div>
+								<a href="moduleForm/basicsForm.html" target="_blank" class="layui-btn layui-btn-primary btn">常用示例</a>
+								<a href="moduleForm/lineForm.html" target="_blank" class="layui-btn layui-btn-primary btn">行内示例</a>
 							</div>
+
+							<!--代码展示-->
+							<div class="syntax">
+<pre class="layui-code" lay-encode="true">
+<!--使用前需引入layui依赖文件-->
+<!--使用时请将以下注释去掉-->
+<!--<link rel="stylesheet" href="layui/css/layui.css">
+<link rel="stylesheet" href="css/zlitDesign.css">
+<script src="layui/layui.js"></script>--></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+<!--默认右对齐-->
+<form action="" class="layui-form">
+	<div class="layui-form-item">
+		<label class="layui-form-label zlit-form-label">姓名</label>
+		<div class="layui-input-block">
+			<input type="text" name="name" placeholder="输入考生姓名" class="layui-input">
+		</div>
+	</div>
+</form>
+	<!--左对齐，给label标签加zlit-form-label-left类名-->
+<form action="" class="layui-form">
+	<div class="layui-form-item">
+		<label class="layui-form-label zlit-form-label zlit-form-label-left">姓名</label>
+		<div class="layui-input-block">
+			<input type="text" name="name" placeholder="输入考生姓名" class="layui-input">
+		</div>
+	</div>
+</form>
+	<!--顶部对齐，给label标签加zlit-form-label-block类名，给类名为layui-input-block的div标签加zlit-form-input-block类名-->
+<form action="" class="layui-form">
+	<div class="layui-form-item">
+		<label class="layui-form-label zlit-form-label zlit-form-label-block">姓名</label>
+		<div class="layui-input-block zlit-form-input-block">
+			<input type="text" name="name" placeholder="输入考生姓名" class="layui-input">
+		</div>
+	</div>
+</form>
+
+<!--行内表单示例-->
+<form action="" class="layui-form">
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label zlit-form-label">条件一</label>
+			<div class="layui-input-inline">
+				<input type="text" name="init" placeholder="输入建议" value="这是内容" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label zlit-form-label">条件二</label>
+			<div class="layui-input-inline">
+				<input type="text" name="init" placeholder="输入建议" value="这是内容" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label zlit-form-label">条件三</label>
+			<div class="layui-input-inline">
+				<input type="text" name="init" placeholder="输入建议" value="这是内容" class="layui-input">
+			</div>
+		</div>
+	</div>
+</form></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+layui.use(['form'],function () {
+	var form = layui.form;
+});</pre>
+							</div>
+							<div class="open_code">代码展示：点击<span>展开</span>代码</div>
 						</div>
 					</div>
 					<div class="explain">
@@ -140,7 +207,7 @@ layui.config({
 							<h2>高级表单</h2>
 							<p>适用于一次性输入和提交大批量数据的场景。</p>
 							<div class="selectBox">
-								<div class="layui-btn layui-btn-primary btn">示例</div>
+								<a href="moduleForm/seniorForm.html" target="_blank" class="layui-btn layui-btn-primary btn">示例</a>
 							</div>
 						</div>
 					</div>
@@ -149,7 +216,7 @@ layui.config({
 							<h2>分步表单</h2>
 							<p>适用于用户不熟悉的复杂任务或任务存在先后关系时，将其分成多个步骤(3-5步)，指导用户完成。</p>
 							<div class="selectBox">
-								<div class="layui-btn layui-btn-primary btn">示例</div>
+								<a href="moduleForm/stepForm.html" target="_blank" class="layui-btn layui-btn-primary btn">示例</a>
 							</div>
 						</div>
 					</div>
