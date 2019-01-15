@@ -116,6 +116,7 @@ html, body {
 
 .unity-module{
   margin-top: 12px;
+  margin-bottom: 15px;
 }
 .unity-module:after{
   content: '';
@@ -140,6 +141,14 @@ html, body {
 }
 .unity-module div:hover{
   box-shadow: 0 0 4px 0 rgba(255,153,0,0.5);
+}
+.unity-module>div>a{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.unity-module>div>a:hover{
+  color: #333;
 }
 
 

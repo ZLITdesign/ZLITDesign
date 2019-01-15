@@ -10,111 +10,92 @@
   <script src="lib/js/zlitExtend.js"></script>
 </head>
 <body>
-<!--水平步骤条-->
-<div class="horizontal-pro">
-  <!--步骤条-->
-  <div class="horizontal-step">
-    <div class="step-single">
-      <div class="step-desc">
-        <span class="step-circle step-circle-active"><i class="layui-icon">1</i></span>
-        <span class="step-con step-con-active">进行中</span>
-      </div>
-      <div class="step-hr"><div class="step-child"></div></div>
-    </div>
-    <div class="step-single">
-      <div class="step-desc">
-        <span class="step-circle"><i class="layui-icon">2</i></span>
-        <span class="step-con">待完成</span>
-      </div>
-      <div class="step-hr"><div class="step-child"></div></div>
-    </div>
-    <div class="step-single">
-      <div class="step-desc">
-        <span class="step-circle"><i class="layui-icon">3</i></span>
-        <span class="step-con">待完成</span>
-      </div>
-      <div class="step-hr"><div class="step-child"></div></div>
-    </div>
-    <div class="step-single">
-      <div class="step-desc">
-        <span class="step-circle"><i class="layui-icon">4</i></span>
-        <span class="step-con">待完成</span>
-      </div>
-      <div class="step-hr"><div class="step-child"></div></div>
-    </div>
-    <div class="step-single">
-      <div class="step-desc">
-        <span class="step-circle"><i class="layui-icon">5</i></span>
-        <span class="step-con">待完成</span>
-      </div>
-    </div>
-  </div>
-  <!--页面-->
-  <ul class="horizontal-con">
-    <li class="active">第一步第一步第一步第一步第一步第一步对应的页面</li>
-    <li>第二步第二步第二步第二步第二步第二步对应的页面</li>
-    <li>第三步第三步第三步第三步第三步第三步对应的页面</li>
-    <li>第四步第四步第四步第四步第四步第四步对应的页面</li>
-    <li>第五步第五步第五步第五步第五步第五步对应的页面</li>
-  </ul>
-  <div class="horizontal-btn">
-    <button class="layui-btn layui-btn-disabled zlit-btn-disabled layui-btn-sm">上一步</button>
-    <button class="layui-btn zlit-btn-default layui-btn-sm">下一步</button>
-  </div>
-</div>
 
-<!--垂直步骤条-->
-<div class="vertical-pro">
-  <!--步骤条-->
-  <div class="vertical-step">
-    <div class="step-single">
-      <div class="step-desc">
-        <span class="step-circle step-circle-active"><i class="layui-icon">1</i></span>
-        <span class="step-con step-con-active">进行中</span>
-      </div>
-      <div class="step-hr"><div class="step-child"></div></div>
-    </div>
-    <div class="step-single">
-      <div class="step-desc">
-        <span class="step-circle"><i class="layui-icon">2</i></span>
-        <span class="step-con">待完成</span>
-      </div>
-      <div class="step-hr"><div class="step-child"></div></div>
-    </div>
-    <div class="step-single">
-      <div class="step-desc">
-        <span class="step-circle"><i class="layui-icon">3</i></span>
-        <span class="step-con">待完成</span>
-      </div>
-    </div>
-  </div>
-  <!--页面-->
-  <ul class="vertical-con">
-    <li class="active">第一步第一步第一步第一步第一步第一步对应的页面</li>
-    <li>第二步第二步第二步第二步第二步第二步对应的页面</li>
-    <li>第三步第三步第三步第三步第三步第三步对应的页面</li>
-    <li>第四步第四步第四步第四步第四步第四步对应的页面</li>
-    <li>第五步第五步第五步第五步第五步第五步对应的页面</li>
-  </ul>
-  <div class="vertical-btn">
-    <button class="layui-btn layui-btn-disabled zlit-btn-disabled layui-btn-sm">上一步</button>
-    <button class="layui-btn zlit-btn-default layui-btn-sm">下一步</button>
-  </div>
-</div>
-
+<input type="text" name="user" placeholder="账户" class="layui-input">
+<input type="password" name="pass" placeholder="密码" class="layui-input">
 </body>
 </html>
 <script>
 
-$('.horizontal-pro').zlitExtend('zlitStep',{
-  style: 'left',
-  nextBtn: $('.horizontal-btn button:last-child'),
-  prevBtn: $('.horizontal-btn button:first-child')
-});
-$('.vertical-pro').zlitExtend('zlitStep',{
-  style: 'top',
-  nextBtn: $('.vertical-btn button:last-child'),
-  prevBtn: $('.vertical-btn button:first-child')
-});
+  var arrs = [];
+
+  function haha() {
+    var data = [
+      {
+        name: '中国',
+        children: [
+          {
+            name: '教第三节课',
+
+          },
+          {
+            name: '教呼呼',
+            children: [
+              {
+                name: '大一',
+                children: [
+                  {
+                    name: '课程1',
+                    children: [
+                      {
+                        name: '1231'
+                      },
+                      {
+                        name: '121'
+                      }
+                    ]
+                  },
+                  {
+                    name: '课程2',
+                    children: [
+                      {
+                        name: '1232'
+                      },
+                      {
+                        name: '122'
+                      }
+                    ]
+                  },
+                  {
+                    name: '课程3',
+                    children: [
+                      {
+                        name: '1233'
+                      },
+                      {
+                        name: '123'
+                      }
+                    ]
+                  },
+
+                ]
+              }
+            ]
+          },
+          {
+            name: '活动',
+            children: null
+          }
+        ]
+      }
+    ];
+    getArray(data, '活动');
+    // console.log(data);
+    for (var i in undefined) {
+      alert(123);
+    }
+  }
+haha();
+  function getArray(data, name) {
+    for (var i in data) {
+      if (data[i].name == name) {
+        // console.log(data[i]);
+        break;
+      } else {
+        getArray(data[i].children, name);
+      }
+    }
+  }
+
 
 </script>

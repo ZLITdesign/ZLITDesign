@@ -5,6 +5,7 @@
   <title>模块</title>
   <link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
 	<link rel="stylesheet" href="css/showCode.css">
+	<link rel="stylesheet" href="./lib/css/zlitDesign.css">
   <link rel="stylesheet" type="text/css" href="css/module.css"/>
 </head>
 <body>
@@ -288,11 +289,146 @@ layui.use(['form'],function () {
 						<div class="explain_con">
 							<h2>基础</h2>
 							<div class="unity-module">
-								<div>系统激活</div>
-								<div>登录</div>
-								<div>账号设置</div>
-								<div>消息提醒</div>
+								<div class="systemActive">系统激活</div>
+								<div><a href="moduleUnified/login.html" target="_blank">登录</a></div>
+								<div><a href="moduleUnified/setting.html" target="_blank">账号设置</a></div>
+								<div><a href="moduleUnified/message.html" target="_blank">消息提醒</a></div>
 							</div>
+
+							<!--系统激活代码展示-->
+							<div class="syntax">
+<pre class="layui-code" lay-encode="true">
+<!--使用前需引入layui依赖文件-->
+<!--使用时请将以下注释去掉-->
+<!--<link rel="stylesheet" href="layui/css/layui.css">
+<link rel="stylesheet" href="css/zlitDesign.css">
+<script src="layui/layui.js"></script>
+<script src="js/jquery-3.3.1.js"></script>--></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+<div id="demoTest">点击测试系统激活弹框</div></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+layui.use(['layer'], function(){
+  var layer = layui.layer;
+  $('#demoTest').click(function () {
+    var content = [
+      '<div class="layui-form-item systemBox">',
+      '<h3>系统激活</h3>',
+      '<label class="layui-form-label zlit-form-label">激活码</label><div class="layui-input-block">',
+      '<input type="text" name="init" placeholder="请输入6位数字" class="layui-input">',
+      '<button class="layui-btn zlit-btn-default zlit-btn-sm demoBtn">确定</button>',
+      '</div></div>'
+    ].join('');
+    var index = layer.open({
+      type: 0,
+      title: false, //不显示标题
+      btn: false,
+			resize: false,
+      area:['390px','200px'],
+      content: content, //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+    });
+    $('.demoBtn').on('click',function () {
+      //点击确定要做的事
+      //模拟ajax
+      setTimeout(function () {
+        layer.close(index);
+      },2000);
+    })
+  });
+});</pre>
+							</div>
+							<div class="open_code">代码展示：点击<span>展开</span>系统激活代码</div>
+
+							<!--登录模块代码展示-->
+							<div class="syntax">
+<pre class="layui-code" lay-encode="true">
+<!--使用前需引入layui依赖文件-->
+<!--使用时请将以下注释去掉-->
+<!--<link rel="stylesheet" href="layui/css/layui.css">
+<link rel="stylesheet" href="css/zlitDesign.css">
+<script src="layui/layui.js"></script>
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/zlitExtend.js"></script>--></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="HTML">
+<!-- 备注：
+html标签的类名是必须项，不可不写;
+body标签的类名是必须项，不可不写
+类名logo_title  系统标题区域
+类名logo_input  表单输入区域
+类名other_login 其他方式登录
+类名logo_btm    登陆页底部
+-->
+<!--使用前请去除以下注释-->
+<!--<!DOCTYPE html>
+<html lang="en" class="login_html">
+<body class="login_body">
+	<div class="login_box">
+		<div class="logo_title">
+			<div><img src=""></div>
+			<p>智林信息技术XXX系统</p>
+		</div>
+		<div class="logo_input">
+			<form action="" class="layui-form">
+				<div class="logo_input_title">
+					<ul>
+						<li class="active">账户密码登录</li>
+						<li>手机号登录</li>
+						<div class="slider"></div>
+					</ul>
+				</div>
+				<div class="logo_input_con">
+					<div class="active">
+						<input type="text" name="user" placeholder="账户" class="layui-input">
+						<input type="password" name="pass" placeholder="密码" class="layui-input">
+					</div>
+					<div>
+						<input type="text" name="phone" placeholder="手机号" class="layui-input">
+						<div class="code">
+							<input type="text" name="yzcode" placeholder="验证码" class="layui-input">
+							<a class="layui-btn layui-btn-primary zlit-btn-primary">获取验证码</a>
+						</div>
+					</div>
+				</div>
+				<div class="remember">
+					<div class="zlit-input-block">
+						<input type="checkbox" name="" title="自动登陆" lay-skin="primary">
+					</div>
+					<a href="">忘记密码</a>
+				</div>
+				<div class="ctrl">
+					<button class="layui-btn zlit-btn-default layui-btn-lg">登录</button>
+				</div>
+			</form>
+		</div>
+		<div class="other_login">
+			<div>
+				<span>其他登陆方式</span>
+				<a href=""><i class="iconfont icon-qq-copy"></i></a>
+				<a href=""><i class="iconfont icon-weixin-copy"></i></a>
+			</div>
+			<a>注册账户</a>
+		</div>
+	</div>
+	<div class="logo_btm">
+		<dl>
+			<dd><a href="#">帮助</a></dd>
+			<dd><a href="#">隐私</a></dd>
+			<dd><a href="#">条款</a></dd>
+		</dl>
+		<p>copyright © 2018 太原智林信息技术股份有限公司</p>
+	</div>
+</body>
+</html>--></pre>
+<pre class="layui-code" lay-encode="true" lay-height="500" lay-title="JavaScript">
+layui.use('form',function () {
+	var form = layui.form;
+});
+
+//登录
+$('.login_box').zlitExtend('zlitLogin');</pre>
+							</div>
+							<div class="open_code">代码展示：点击<span>展开</span>登录模块代码</div>
+
+							<!--账号设置代码展示-->
 						</div>
 					</div>
 					<div class="explain">

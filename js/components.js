@@ -369,16 +369,121 @@ layui.config({
 }).use(['formSelects'], function () {
   var formSelects = layui.formSelects;
   // local模式  data数据为本地定义
+  //disabled设置是否禁用，true则禁用，false则启用
+  //selected设置是否选中，true则选中，false则未选中
+  var dataArr = [
+    {name: '分组1', type: 'optgroup'},
+    {
+      name: '北京', value: 1, children: [
+        {name: '朝阳', disabled: false, value: 11},
+        {name: '海淀', value: 12, selected: false}
+      ]
+    },
+    {name: '分组2', type: 'optgroup'},
+    {
+      name: '山西', value: 2, children: [
+        {name: '太原', value: 21},
+        {
+          name: '吕梁', value: 22, children: [
+            {name: '离石', value: 31},
+            {name: '柳林', value: 32},
+            {name: '中阳', value: 33}
+          ]
+        }, {name: '晋城', value: 23}
+      ]
+    },
+  ];
   layui.formSelects.data('example11_1', 'local', {   //example11_1为绑定元素的xm-select值
-    arr: [
-      {name: '分组1', type: 'optgroup'},
-      {name: '北京', value: 1, children: [{name: '朝阳', disabled: true, value: 11}, {name: '海淀', value: 12}]},
-      {name: '分组2', type: 'optgroup'},
-      {name: '深圳', value: 2, children: [{name: '龙岗', value: 21}, {name: '离石', value: 22}]},
-    ]
+    arr: dataArr
   });
-  formSelects.value('example11_1', [1, 2], true);  //设置初始选中项
+  // formSelects.value('example11_1', [1, 2], true);  //设置初始选中项
+  formSelects.btns('example11_1', ['remove'], {show: ''});
+  formSelects.on('example11_1', function (id, vals, choice, isSelected, isDisabled) {
+    //id:           当前select的id
+    //vals:         当前select已选中的值
+    //choice:       当前select点击的值
+    //isSelected:   当前操作选中or取消
+    //isDisabled:   当前选项是否是disabled
+    if (choice.XM_TREE_FOLDER && isSelected) {
+      selArray('example11_1', choice.children, true);    //全选
+    } else if (choice.XM_TREE_FOLDER && !isSelected) {
+      selArray('example11_1', choice.children, false);   //取消全选
+    }
+    //点击父级的递归判断
+    function selArray(ele, data, flag) {
+      /*
+      * ele   下拉树容器的xm-select值
+      * data  当前点击的数据
+      * falg  全选(true)或取消全选(false)
+      * */
+      var arr = [];
+      for (var i in data) {
+        arr.push(data[i].value);
+        if (flag) {  //如果当前点击的值选中则子元素全选中
+          formSelects.value(ele, arr, true);
+        } else {     //如果当前点击的值取消选中则子元素全取消选中
+          formSelects.value(ele, arr, false);
+        }
+        if (data[i].XM_TREE_FOLDER) {
+          selArray(ele, data[i].children, flag);
+        }
+      }
+    }
 
+    var selArr = formSelects.value('example11_1');    //当前总共已选择几条数据
+    var parId, parVal;
+    if (choice.XM_PID_VALUE){
+      parId = JSON.parse( choice.XM_PID_VALUE ).join('-');
+      parId = parId.substring(0,parId.lastIndexOf('-'));
+      parVal = Number($('dd[tree-id='+ parId +']').attr('lay-value'));
+      selSingle('example11_1', dataArr, parVal, selArr, parId);
+    }
+    //点击子级的递归判断
+    function selSingle(ele,data,parVal,selArr,parId) {
+      /*
+      * ele     下拉树容器的xm-select值
+      * data    ajax获取的所有数据
+      * parVal  当前选择数据的父级的value值
+      * selArr  当前总共选择了几条数据
+      * parId   当前点击选择数据的父级
+      * */
+      var arr = [];   //存储已选子级数据，以便进行比较
+      for (var i in data) {
+        if (data[i].value && parVal){
+          if (data[i].value === parVal){
+            for (var j=0;j<data[i].children.length;j++){
+              for (var k=0;k<selArr.length;k++){
+                if (data[i].children[j].name===selArr[k].name){
+                  arr.push(selArr[k]);
+                  if (data[i].children.length===arr.length){
+                    formSelects.value(ele,[parVal],true);
+                  }else{
+                    formSelects.value(ele,[parVal],false);
+                    if (parId.includes('-')){
+                      var parIds = parId.substring(0,parId.lastIndexOf('-'));
+                      var parVals = Number($('dd[tree-id='+ parIds +']').attr('lay-value'));
+                      formSelects.value(ele,[parVals],false);
+                    }
+                  }
+                }
+              }
+            }
+            break;
+          }else{
+            selSingle(ele, data[i].children, parVal, selArr, parId);
+          }
+        }
+      }
+    }
+  }, true);
+  // 获取值
+  $('#demoSel').click(function () {
+    console.log(formSelects.value('example11_1'));
+    console.log(formSelects.value('example11_1', 'val'));
+    console.log(formSelects.value('example11_1', 'valStr'));
+    console.log(formSelects.value('example11_1', 'name'));
+    console.log(formSelects.value('example11_1', 'nameStr'));
+  })
   //server模式  data数据为远程数据
   /*layui.formSelects.data('example11_1', 'server', {   //example11_1为绑定元素的xm-select值
     url: 'https://www.easy-mock.com/mock/5bdffa7aae524521410b1598/tableData/zlittree',
@@ -395,9 +500,10 @@ layui.config({
     //id:           当前select的id
     //vals:         当前select已选中的值
     //choice:       当前select点击的值
-    //isAdd:        当前操作选中or取消
+    //isSelected:   当前操作选中or取消
     //isDisabled:   当前选项是否是disabled
-    console.log(vals);
+    console.log(vals);        //获取当前选中的值
+    console.log(formSelects.value('example11_1'));   //获取选中的所有值
   }, true);*/
 });
 //日期选择
@@ -594,7 +700,7 @@ layui.use(['upload', 'layer'], function () {
         }
 
         //预览列表
-        var div = $('<div class="img" data-magnify="gallery" data-group="g1" data-src="'+result+'" data-caption="'+file.name+'"></div>'),
+        var div = $('<div class="img" data-magnify="gallery" data-group="g1" data-src="' + result + '" data-caption="' + file.name + '"></div>'),
           img = $('<img/>'),
           p = $('<p>删除</p>');
         img.prop({alt: file.name});

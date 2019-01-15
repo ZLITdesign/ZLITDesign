@@ -753,74 +753,74 @@
     * */
     zlitStep: function (options) {
       var setting = $.extend({
-        steps: '',
-        stepCon: '',
         style: 'left',
-        stepDesc: '',
-        next: null,
-        prev: null
+        nextBtn: null,
+        prevBtn: null,
       }, options);
 
       var n = 0,          //依赖索引值
         flag = true;    //防止过快点击
+      var steps = setting.style === 'left' ? this.find('.horizontal-step .step-single') : this.find('.vertical-step .step-single'),
+        stepCon = setting.style === 'left' ? this.find('.horizontal-con li') : this.find('.vertical-con li'),
+        stepDesc = setting.style === 'left' ? this.find('.horizontal-step .step-single .step-desc') : this.find('.vertical-step .step-single .step-desc');
       //下一步按钮
-      if (setting.next) {
-        setting.next.click(function () {
+      if (setting.nextBtn) {
+        setting.nextBtn.click(function () {
           if (!flag) {
             return;
           }
           flag = false;
           n++;
           if (n != 0) {
-            setting.prev.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
+            setting.prevBtn.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
           }
-          if (n >= setting.steps.length) {
-            n = setting.steps.length - 1;
+          if (n >= steps.length) {
+            n = steps.length - 1;
             flag = true;
             return;
           }
-          if (setting.steps.eq(n).index() === setting.steps.length - 1) {
+          if (steps.eq(n).index() === steps.length - 1) {
             $(this).removeClass('zlit-btn-default').addClass('layui-btn-disabled zlit-btn-disabled');
           }
-          setting.stepCon.eq(n).addClass('active').siblings().removeClass('active');
-          setting.steps.eq(n - 1).find('.step-child').animate({[setting.style]: 0}, function () {
-            setting.steps.eq(n).find('.step-circle').addClass('step-circle-active').end().find('.step-con').addClass('step-con-active').text('进行中');
-            setting.steps.eq(n - 1).find('.step-circle').removeClass('step-circle-active').addClass('step-circle-end').find('i').text('').addClass('layui-icon-ok');
-            setting.steps.eq(n - 1).find('.step-con').removeClass('step-con-active').text('已完成');
+          stepCon.eq(n).addClass('active').siblings().removeClass('active');
+          steps.eq(n - 1).find('.step-child').animate({[setting.style]: 0}, function () {
+            steps.eq(n).find('.step-circle').addClass('step-circle-active').end().find('.step-con').addClass('step-con-active').text('进行中');
+            steps.eq(n - 1).find('.step-circle').removeClass('step-circle-active').addClass('step-circle-end').find('i').text('').addClass('layui-icon-ok');
+            steps.eq(n - 1).find('.step-con').removeClass('step-con-active').text('已完成');
             flag = true;
           });
         });
       }
       //上一步按钮
-      if (setting.prev) {
-        setting.prev.click(function () {
+      if (setting.prevBtn) {
+        setting.prevBtn.click(function () {
           if (!flag) {
             return;
           }
           flag = false;
           n--;
-          if (n <= setting.steps.length - 1) {
-            setting.next.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
+          if (n <= steps.length - 1) {
+            setting.nextBtn.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
           }
           if (n < 0) {
             n = 0;
             flag = true;
             return;
           }
-          if (setting.steps.eq(n).index() === 0) {
+          if (steps.eq(n).index() === 0) {
             $(this).removeClass('zlit-btn-default').addClass('layui-btn-disabled zlit-btn-disabled');
           }
-          setting.stepCon.eq(n).addClass('active').siblings().removeClass('active');
-          setting.steps.eq(n).find('.step-child').animate({[setting.style]: -100 + '%'}, function () {
-            setting.steps.eq(n + 1).find('.step-circle').removeClass('step-circle-active').end().find('.step-con').removeClass('step-con-active').text('待完成');
-            setting.steps.eq(n).find('.step-circle').removeClass('step-circle-end').addClass('step-circle-active').find('i').text(n + 1).removeClass('layui-icon-ok');
-            setting.steps.eq(n).find('.step-con').addClass('step-con-active').text('进行中');
+          stepCon.eq(n).addClass('active').siblings().removeClass('active');
+          steps.eq(n).find('.step-child').animate({[setting.style]: -100 + '%'}, function () {
+            steps.eq(n + 1).find('.step-circle').removeClass('step-circle-active').end().find('.step-con').removeClass('step-con-active').text('待完成');
+            steps.eq(n).find('.step-circle').removeClass('step-circle-end').addClass('step-circle-active').find('i').text(n + 1).removeClass('layui-icon-ok');
+            steps.eq(n).find('.step-con').addClass('step-con-active').text('进行中');
             flag = true;
           });
         });
       }
       //点击步骤序号及文字区域
-      setting.stepDesc.click(function () {
+      stepDesc.click(function () {
         if (!flag) {
           return;
         }
@@ -829,16 +829,16 @@
           stepBox = $(this).closest('.step-single').siblings(),
           that = $(this);
         n = k;
-        if (setting.next && setting.prev) {
-          if (n < setting.steps.length - 1 && n > 0) {
-            setting.next.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
-            setting.prev.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
-          } else if (n === setting.steps.length - 1) {
-            setting.next.removeClass('zlit-btn-default').addClass('layui-btn-disabled zlit-btn-disabled');
-            setting.prev.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
+        if (setting.nextBtn && setting.prevBtn) {
+          if (n < steps.length - 1 && n > 0) {
+            setting.nextBtn.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
+            setting.prevBtn.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
+          } else if (n === steps.length - 1) {
+            setting.nextBtn.removeClass('zlit-btn-default').addClass('layui-btn-disabled zlit-btn-disabled');
+            setting.prevBtn.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
           } else if (n === 0) {
-            setting.next.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
-            setting.prev.removeClass('zlit-btn-default').addClass('layui-btn-disabled zlit-btn-disabled');
+            setting.nextBtn.removeClass('layui-btn-disabled zlit-btn-disabled').addClass('zlit-btn-default');
+            setting.prevBtn.removeClass('zlit-btn-default').addClass('layui-btn-disabled zlit-btn-disabled');
           }
         }
         setTimeout(function () {
@@ -846,7 +846,7 @@
             .end().find('.step-con').addClass('step-con-active').text('进行中')
             .end().find('.step-child').animate({[setting.style]: -100 + '%'})
             .end().find('i').removeClass('layui-icon-ok').text(k + 1);
-          setting.stepCon.eq(k).addClass('active').siblings().removeClass('active');
+          stepCon.eq(k).addClass('active').siblings().removeClass('active');
         }, 300);
         stepBox.each(function (i, val) {
           var j = $(val).index();
@@ -878,7 +878,38 @@
       navLis.click(function () {
         var tops = $(this).position().top;  //获取滑块距离父元素的高度
         $(this).addClass('active').siblings().removeClass('active');
-        slider.css({top:tops+8});
+        slider.css({top: tops + 8});
+      });
+    },
+
+    /*
+    * 登录组件
+    * */
+    zlitLogin: function () {
+      this.find('.logo_input_title ul li').click(function () {
+        var lefts = $(this).position().left;
+        var index = $(this).index();
+        $(this).addClass('active').siblings().removeClass('active');
+        $('.logo_input_title ul div.slider').css({left:lefts});
+        $('.logo_input_con>div').eq(index).addClass('active').siblings().removeClass('active');
+      });
+
+      var t, flag = true;
+      this.find('.code a').click(function (e) {
+        if (!flag){ return; }
+        flag = false;
+        e.preventDefault();
+        var that = $(this), nub = 60;
+        $(this).text(nub+'s重新发送').addClass('layui-btn-disabled').removeClass('layui-btn-primary zlit-btn-primary');
+        t = setInterval(function () {
+          nub--;
+          that.text(nub+'s重新发送');
+          if (nub<=0){
+            clearInterval(t);
+            that.text('获取验证码').removeClass('layui-btn-disabled').addClass('layui-btn-primary zlit-btn-primary');
+            flag = true;
+          }
+        },1000);
       });
     }
   };
