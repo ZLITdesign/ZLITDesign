@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="./layui/css/layui.css">
+</head>
+<body>
+  <div>
+    <form action="" class="layui-form">
+      <input type="checkbox" name="familyTypes" title="短信" lay-skin="primary" value="1">
+      <input type="checkbox" name="familyTypes" title="邮件" lay-skin="primary" value="2">
+      <input type="checkbox" name="familyTypes" title="微信" lay-skin="primary" value="3">
+      <input type="checkbox" name="flows" title="值1" lay-skin="primary" value="1">
+      <input type="checkbox" name="flows" title="值2" lay-skin="primary" value="2">
+      <input type="checkbox" name="flows" title="值3" lay-skin="primary" value="3">
+      <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+    </form>
+  </div>
+  <script src="./layui/layui.js"></script>
+  <script src="./lib/js/jquery-3.3.1.js"></script>
+  <script>
+    layui.use('form', function () {
+      var form = layui.form;
+      form.on('submit(demo1)', function(data){
+        var familyTypes = [], flows = [];
+        $("input:checkbox[name='familyTypes']:checked").each(function(i){
+          familyTypes[i] = $(this).val();
+        });
+        $("input:checkbox[name='flows']:checked").each(function(i){
+          flows[i] = $(this).val();
+        });
+        data.field.familyTypes = familyTypes.join(",");//将数组合并成字符串
+        data.field.flows = flows.join(",");//将数组合并成字符串
+        console.log(data.field);
+        return false;
+      });
+    });
+  </script>
+</body>
+</html>
